@@ -1,0 +1,37 @@
+<svg width="520" height="170" viewBox="0 0 520 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="170" fill="url(#bg)"/>
+  <path d="M0 140C150 116 300 150 520 124V170H0Z" fill="#DBEEFF" opacity=".42"/>
+
+  <!-- Leaf (large, left) -->
+  <!-- stem -->
+  <path d="M178 158L178 78" stroke="#0D62D8" stroke-width="5" stroke-linecap="round"/>
+  <!-- left lobe -->
+  <path d="M178 78C178 78 130 52 120 18C148 14 176 36 178 78Z" fill="white" stroke="#0D62D8" stroke-width="4" stroke-linejoin="round"/>
+  <!-- right lobe -->
+  <path d="M178 78C178 78 226 52 236 18C208 14 180 36 178 78Z" fill="white" stroke="#0D62D8" stroke-width="4" stroke-linejoin="round"/>
+  <!-- veins -->
+  <path d="M178 78L144 40" stroke="#0D62D8" stroke-width="2.5" stroke-linecap="round" opacity=".4"/>
+  <path d="M178 78L212 40" stroke="#0D62D8" stroke-width="2.5" stroke-linecap="round" opacity=".4"/>
+  <path d="M178 105L158 88" stroke="#0D62D8" stroke-width="2.5" stroke-linecap="round" opacity=".3"/>
+  <path d="M178 105L198 88" stroke="#0D62D8" stroke-width="2.5" stroke-linecap="round" opacity=".3"/>
+
+  <!-- Globe (right) -->
+  <circle cx="378" cy="84" r="64" fill="white" stroke="#0D62D8" stroke-width="4"/>
+  <!-- equator -->
+  <path d="M314 84H442" stroke="#0D62D8" stroke-width="3" opacity=".4"/>
+  <!-- meridian oval -->
+  <ellipse cx="378" cy="84" rx="30" ry="64" fill="none" stroke="#0D62D8" stroke-width="3" opacity=".4"/>
+  <!-- latitude lines -->
+  <path d="M318 58C330 62 356 64 378 64C400 64 426 62 438 58" stroke="#0D62D8" stroke-width="2.5" opacity=".3" fill="none"/>
+  <path d="M318 110C330 106 356 104 378 104C400 104 426 106 438 110" stroke="#0D62D8" stroke-width="2.5" opacity=".3" fill="none"/>
+
+  <circle cx="66" cy="28" r="9" fill="#0D62D8"/>
+  <circle cx="466" cy="148" r="7" fill="#0D62D8" opacity=".3"/>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="520" y2="170" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF6FF"/>
+      <stop offset="1" stop-color="#FAFFFE"/>
+    </linearGradient>
+  </defs>
+</svg>

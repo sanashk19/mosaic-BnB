@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="tileAccent" x1="30" x2="130" y1="30" y2="130" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0c61c9"/>
+      <stop offset="0.5" stop-color="#09a6c8"/>
+      <stop offset="0.74" stop-color="#d99a20"/>
+      <stop offset="1" stop-color="#45a44c"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" fill="none"/>
+  <path d="M80 28 94 66 132 80 94 94 80 132 66 94 28 80 66 66Z" fill="none" stroke="#0c61c9" stroke-width="3.5" opacity="0.42"/>
+  <path d="M80 48 90 80 80 112 70 80Z" fill="none" stroke="#d99a20" stroke-width="3" opacity="0.48"/>
+  <path d="M48 80 80 70 112 80 80 90Z" fill="none" stroke="#09a6c8" stroke-width="3" opacity="0.5"/>
+  <circle cx="80" cy="80" r="18" fill="none" stroke="#45a44c" stroke-width="3" opacity="0.48"/>
+  <circle cx="80" cy="80" r="6" fill="url(#tileAccent)" opacity="0.32"/>
+  <path d="M12 12 30 12 30 30M148 12 130 12 130 30M12 148 30 148 30 130M148 148 130 148 130 130" fill="none" stroke="#09a6c8" stroke-width="2" opacity="0.18"/>
+</svg>

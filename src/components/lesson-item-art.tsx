@@ -1,0 +1,389 @@
+import Image from "next/image";
+
+export type LessonItemArtId =
+  | "airplane"
+  | "alarm-clock"
+  | "ambulance"
+  | "atm-machine"
+  | "apple-pie"
+  | "ball"
+  | "bank-card-cash"
+  | "bus"
+  | "cash-withdrawal"
+  | "chat-phone"
+  | "child-benefit"
+  | "comb"
+  | "cool-jacket"
+  | "cotton-shirt"
+  | "credit-contract"
+  | "cutlets"
+  | "deodorant"
+  | "delivery-truck"
+  | "detergent-box"
+  | "digital-thermometer"
+  | "doctor-calendar"
+  | "document-category"
+  | "education-category"
+  | "elder-helper"
+  | "entertainment-ticket"
+  | "expiry-cream"
+  | "face-cream"
+  | "final-checklist"
+  | "fork"
+  | "game-controller"
+  | "glass"
+  | "gov-portal"
+  | "grocery-bag"
+  | "health-category"
+  | "healthy-dinner"
+  | "jacket"
+  | "jeans"
+  | "knife"
+  | "lipstick"
+  | "mug"
+  | "napkin"
+  | "nail-scissors"
+  | "alarm-clock-0700-realistic"
+  | "analog-clock-0700-realistic"
+  | "atm-standalone-realistic"
+  | "care-no-machine-wash-realistic"
+  | "contact-mom-realistic"
+  | "cosmetic-label-realistic"
+  | "destination-airport-realistic"
+  | "destination-bus-stop-realistic"
+  | "destination-clinic-realistic"
+  | "destination-home-realistic"
+  | "detergent-label-realistic"
+  | "expense-entertainment-realistic"
+  | "expense-grocery-realistic"
+  | "expense-transit-realistic"
+  | "expense-utility-realistic"
+  | "hair-dry-realistic"
+  | "hair-normal-realistic"
+  | "hair-oily-realistic"
+  | "headphones-realistic"
+  | "menu-cake-realistic"
+  | "menu-chips-realistic"
+  | "menu-compote-realistic"
+  | "menu-salad-realistic"
+  | "menu-soda-realistic"
+  | "menu-soup-realistic"
+  | "mygov-portal-screen-realistic"
+  | "outfit-party-pants"
+  | "outfit-party-full"
+  | "outfit-party-shirt"
+  | "outfit-school-pants"
+  | "outfit-school-full"
+  | "outfit-school-shirt"
+  | "outfit-sport-shorts"
+  | "outfit-sport-full"
+  | "outfit-sport-tee"
+  | "outfit-student-base"
+  | "parcel-box"
+  | "pension-card"
+  | "password-key"
+  | "phone-call"
+  | "photo-card"
+  | "plate"
+  | "polite-message"
+  | "receipt-paper"
+  | "recipe-bread-realistic"
+  | "recipe-cucumber-realistic"
+  | "recipe-egg-realistic"
+  | "recipe-ground-meat-realistic"
+  | "recipe-onion-realistic"
+  | "recipe-sugar-realistic"
+  | "realistic-apple-pie"
+  | "realistic-atm"
+  | "realistic-cosmetics"
+  | "realistic-credit-contract"
+  | "realistic-cutlets"
+  | "realistic-detergent-dosage"
+  | "realistic-family-expenses"
+  | "realistic-family-income"
+  | "realistic-final-checklist"
+  | "realistic-hair-care"
+  | "realistic-healthy-dinner"
+  | "realistic-hygiene-kit"
+  | "realistic-internet-safety"
+  | "realistic-messenger"
+  | "realistic-mygov-portal"
+  | "realistic-package-tracking"
+  | "realistic-phone-calls"
+  | "realistic-safe-headphones"
+  | "realistic-seasonal-clothing"
+  | "realistic-silk-handwash"
+  | "realistic-skin-care"
+  | "realistic-skincare-routine"
+  | "realistic-station-board"
+  | "realistic-sun-care"
+  | "realistic-table-setting"
+  | "realistic-thermometer"
+  | "realistic-train-ticket"
+  | "realistic-transport-types"
+  | "realistic-washing-machine"
+  | "realistic-young-outfit"
+  | "salary-money"
+  | "school-uniform"
+  | "shampoo"
+  | "shampoo-dry-realistic"
+  | "shampoo-kids-realistic"
+  | "shampoo-normal-realistic"
+  | "shampoo-oily-realistic"
+  | "seasonal-rain-jacket-realistic"
+  | "seasonal-school-uniform-realistic"
+  | "seasonal-sweater-realistic"
+  | "skin-dry-realistic"
+  | "skin-normal-realistic"
+  | "skin-oily-realistic"
+  | "safety-shield"
+  | "silk-blouse"
+  | "side-income"
+  | "sms-code-phone"
+  | "soap"
+  | "skincare-rinse-realistic"
+  | "skincare-towel-realistic"
+  | "skincare-wet-face-realistic"
+  | "spoon"
+  | "sport-outfit"
+  | "station-board"
+  | "suspicious-link"
+  | "sunscreen"
+  | "taxi"
+  | "taxes-category"
+  | "table-setting-realistic"
+  | "timer-five"
+  | "toothbrush"
+  | "toothpaste"
+  | "towel"
+  | "train"
+  | "train-seat"
+  | "train-seat-map-realistic"
+  | "train-ticket"
+  | "transit-card"
+  | "umbrella"
+  | "utility-bill"
+  | "unknown-caller-realistic"
+  | "walking-shoes"
+  | "washing-machine"
+  | "washing-machine-front-realistic"
+  | "weather-cloudy-realistic"
+  | "weather-cold-realistic"
+  | "weather-evening-realistic"
+  | "weather-hot-realistic"
+  | "weather-rain-realistic"
+  | "wool-sweater";
+
+const ART_PATH: Record<LessonItemArtId, string> = {
+  airplane: "/generated-images/lesson-items/webp/airplane.webp",
+  "alarm-clock": "/generated-images/lesson-items/webp/alarm-clock.webp",
+  ambulance: "/generated-images/lesson-items/webp/ambulance.webp",
+  "atm-machine": "/generated-images/lesson-items/webp/atm-machine.webp",
+  "apple-pie": "/generated-images/lesson-items/webp/apple-pie.webp",
+  ball: "/generated-images/lesson-items/webp/ball.webp",
+  "bank-card-cash": "/generated-images/lesson-items/webp/bank-card-cash.webp",
+  bus: "/generated-images/lesson-items/webp/bus.webp",
+  "cash-withdrawal": "/generated-images/lesson-items/webp/cash-withdrawal.webp",
+  "chat-phone": "/generated-images/lesson-items/webp/chat-phone.webp",
+  "child-benefit": "/generated-images/lesson-items/webp/child-benefit.webp",
+  comb: "/generated-images/lesson-items/webp/comb.webp",
+  "cool-jacket": "/generated-images/lesson-items/webp/cool-jacket.webp",
+  "cotton-shirt": "/generated-images/lesson-items/webp/cotton-shirt.webp",
+  "credit-contract": "/generated-images/lesson-items/webp/credit-contract.webp",
+  cutlets: "/generated-images/lesson-items/webp/cutlets.webp",
+  deodorant: "/generated-images/lesson-items/webp/deodorant.webp",
+  "delivery-truck": "/generated-images/lesson-items/webp/delivery-truck.webp",
+  "detergent-box": "/generated-images/lesson-items/webp/detergent-box.webp",
+  "digital-thermometer": "/generated-images/lesson-items/webp/digital-thermometer.webp",
+  "doctor-calendar": "/generated-images/lesson-items/webp/doctor-calendar.webp",
+  "document-category": "/generated-images/lesson-items/webp/document-category.webp",
+  "education-category": "/generated-images/lesson-items/webp/education-category.webp",
+  "elder-helper": "/generated-images/lesson-items/webp/elder-helper.webp",
+  "entertainment-ticket": "/generated-images/lesson-items/webp/entertainment-ticket.webp",
+  "expiry-cream": "/generated-images/lesson-items/webp/expiry-cream.webp",
+  "face-cream": "/generated-images/lesson-items/webp/face-cream.webp",
+  "final-checklist": "/generated-images/lesson-items/webp/final-checklist.webp",
+  fork: "/generated-images/lesson-items/webp/fork.webp",
+  "game-controller": "/generated-images/lesson-items/webp/game-controller.webp",
+  glass: "/generated-images/lesson-items/webp/glass.webp",
+  "gov-portal": "/generated-images/lesson-items/webp/gov-portal.webp",
+  "grocery-bag": "/generated-images/lesson-items/webp/grocery-bag.webp",
+  "health-category": "/generated-images/lesson-items/webp/health-category.webp",
+  "healthy-dinner": "/generated-images/lesson-items/webp/healthy-dinner.webp",
+  jacket: "/generated-images/lesson-items/webp/jacket.webp",
+  jeans: "/generated-images/lesson-items/webp/jeans.webp",
+  knife: "/generated-images/lesson-items/webp/knife.webp",
+  lipstick: "/generated-images/lesson-items/webp/lipstick.webp",
+  mug: "/generated-images/lesson-items/webp/mug.webp",
+  napkin: "/generated-images/lesson-items/webp/napkin.webp",
+  "nail-scissors": "/generated-images/lesson-items/webp/nail-scissors.webp",
+  "alarm-clock-0700-realistic": "/generated-images/lesson-items/webp/alarm-clock-0700-realistic.webp",
+  "analog-clock-0700-realistic": "/generated-images/lesson-items/webp/analog-clock-0700-realistic.webp",
+  "atm-standalone-realistic": "/generated-images/lesson-items/webp/atm-standalone-realistic.webp",
+  "care-no-machine-wash-realistic": "/generated-images/lesson-items/webp/care-no-machine-wash-realistic.webp",
+  "contact-mom-realistic": "/generated-images/lesson-items/webp/contact-mom-realistic.webp",
+  "cosmetic-label-realistic": "/generated-images/lesson-items/webp/cosmetic-label-realistic.webp",
+  "destination-airport-realistic": "/generated-images/lesson-items/webp/destination-airport-realistic.webp",
+  "destination-bus-stop-realistic": "/generated-images/lesson-items/webp/destination-bus-stop-realistic.webp",
+  "destination-clinic-realistic": "/generated-images/lesson-items/webp/destination-clinic-realistic.webp",
+  "destination-home-realistic": "/generated-images/lesson-items/webp/destination-home-realistic.webp",
+  "detergent-label-realistic": "/generated-images/lesson-items/webp/detergent-label-realistic.webp",
+  "expense-entertainment-realistic": "/generated-images/lesson-items/webp/expense-entertainment-realistic.webp",
+  "expense-grocery-realistic": "/generated-images/lesson-items/webp/expense-grocery-realistic.webp",
+  "expense-transit-realistic": "/generated-images/lesson-items/webp/expense-transit-realistic.webp",
+  "expense-utility-realistic": "/generated-images/lesson-items/webp/expense-utility-realistic.webp",
+  "hair-dry-realistic": "/generated-images/lesson-items/webp/hair-dry-realistic.webp",
+  "hair-normal-realistic": "/generated-images/lesson-items/webp/hair-normal-realistic.webp",
+  "hair-oily-realistic": "/generated-images/lesson-items/webp/hair-oily-realistic.webp",
+  "headphones-realistic": "/generated-images/lesson-items/webp/headphones-realistic.webp",
+  "menu-cake-realistic": "/generated-images/lesson-items/webp/menu-cake-realistic.webp",
+  "menu-chips-realistic": "/generated-images/lesson-items/webp/menu-chips-realistic.webp",
+  "menu-compote-realistic": "/generated-images/lesson-items/webp/menu-compote-realistic.webp",
+  "menu-salad-realistic": "/generated-images/lesson-items/webp/menu-salad-realistic.webp",
+  "menu-soda-realistic": "/generated-images/lesson-items/webp/menu-soda-realistic.webp",
+  "menu-soup-realistic": "/generated-images/lesson-items/webp/menu-soup-realistic.webp",
+  "mygov-portal-screen-realistic": "/generated-images/lesson-items/webp/mygov-portal-screen-realistic.webp",
+  "outfit-party-pants": "/generated-images/lesson-items/webp/outfit-party-pants-realistic.webp",
+  "outfit-party-full": "/generated-images/lesson-items/webp/outfit-party-full-realistic.webp",
+  "outfit-party-shirt": "/generated-images/lesson-items/webp/outfit-party-shirt-realistic.webp",
+  "outfit-school-pants": "/generated-images/lesson-items/webp/outfit-school-pants-realistic.webp",
+  "outfit-school-full": "/generated-images/lesson-items/webp/outfit-school-full-realistic.webp",
+  "outfit-school-shirt": "/generated-images/lesson-items/webp/outfit-school-shirt-realistic.webp",
+  "outfit-sport-shorts": "/generated-images/lesson-items/webp/outfit-sport-shorts-realistic.webp",
+  "outfit-sport-full": "/generated-images/lesson-items/webp/outfit-sport-full-realistic.webp",
+  "outfit-sport-tee": "/generated-images/lesson-items/webp/outfit-sport-tee-realistic.webp",
+  "outfit-student-base": "/generated-images/lesson-items/webp/outfit-student-base-realistic-v2.webp",
+  "parcel-box": "/generated-images/lesson-items/webp/parcel-box.webp",
+  "pension-card": "/generated-images/lesson-items/webp/pension-card.webp",
+  "password-key": "/generated-images/lesson-items/webp/password-key.webp",
+  "phone-call": "/generated-images/lesson-items/webp/phone-call.webp",
+  "photo-card": "/generated-images/lesson-items/webp/photo-card.webp",
+  plate: "/generated-images/lesson-items/webp/plate.webp",
+  "polite-message": "/generated-images/lesson-items/webp/polite-message.webp",
+  "receipt-paper": "/generated-images/lesson-items/webp/receipt-paper.webp",
+  "recipe-bread-realistic": "/generated-images/lesson-items/webp/recipe-bread-realistic.webp",
+  "recipe-cucumber-realistic": "/generated-images/lesson-items/webp/recipe-cucumber-realistic.webp",
+  "recipe-egg-realistic": "/generated-images/lesson-items/webp/recipe-egg-realistic.webp",
+  "recipe-ground-meat-realistic": "/generated-images/lesson-items/webp/recipe-ground-meat-realistic.webp",
+  "recipe-onion-realistic": "/generated-images/lesson-items/webp/recipe-onion-realistic.webp",
+  "recipe-sugar-realistic": "/generated-images/lesson-items/webp/recipe-sugar-realistic.webp",
+  "realistic-apple-pie": "/generated-images/lesson-items/webp/realistic-apple-pie.webp",
+  "realistic-atm": "/generated-images/lesson-items/webp/realistic-atm.webp",
+  "realistic-cosmetics": "/generated-images/lesson-items/webp/realistic-cosmetics.webp",
+  "realistic-credit-contract": "/generated-images/lesson-items/webp/realistic-credit-contract.webp",
+  "realistic-cutlets": "/generated-images/lesson-items/webp/realistic-cutlets.webp",
+  "realistic-detergent-dosage": "/generated-images/lesson-items/webp/realistic-detergent-dosage.webp",
+  "realistic-family-expenses": "/generated-images/lesson-items/webp/realistic-family-expenses.webp",
+  "realistic-family-income": "/generated-images/lesson-items/webp/realistic-family-income.webp",
+  "realistic-final-checklist": "/generated-images/lesson-items/webp/realistic-final-checklist.webp",
+  "realistic-hair-care": "/generated-images/lesson-items/webp/realistic-hair-care.webp",
+  "realistic-healthy-dinner": "/generated-images/lesson-items/webp/realistic-healthy-dinner.webp",
+  "realistic-hygiene-kit": "/generated-images/lesson-items/webp/realistic-hygiene-kit.webp",
+  "realistic-internet-safety": "/generated-images/lesson-items/webp/realistic-internet-safety.webp",
+  "realistic-messenger": "/generated-images/lesson-items/webp/realistic-messenger.webp",
+  "realistic-mygov-portal": "/generated-images/lesson-items/webp/realistic-mygov-portal.webp",
+  "realistic-package-tracking": "/generated-images/lesson-items/webp/realistic-package-tracking.webp",
+  "realistic-phone-calls": "/generated-images/lesson-items/webp/realistic-phone-calls.webp",
+  "realistic-safe-headphones": "/generated-images/lesson-items/webp/realistic-safe-headphones.webp",
+  "realistic-seasonal-clothing": "/generated-images/lesson-items/webp/realistic-seasonal-clothing.webp",
+  "realistic-silk-handwash": "/generated-images/lesson-items/webp/realistic-silk-handwash.webp",
+  "realistic-skin-care": "/generated-images/lesson-items/webp/realistic-skin-care.webp",
+  "realistic-skincare-routine": "/generated-images/lesson-items/webp/realistic-skincare-routine.webp",
+  "realistic-station-board": "/generated-images/lesson-items/webp/realistic-station-board.webp",
+  "realistic-sun-care": "/generated-images/lesson-items/webp/realistic-sun-care.webp",
+  "realistic-table-setting": "/generated-images/lesson-items/webp/realistic-table-setting.webp",
+  "realistic-thermometer": "/generated-images/lesson-items/webp/realistic-thermometer.webp",
+  "realistic-train-ticket": "/generated-images/lesson-items/webp/realistic-train-ticket.webp",
+  "realistic-transport-types": "/generated-images/lesson-items/webp/realistic-transport-types.webp",
+  "realistic-washing-machine": "/generated-images/lesson-items/webp/realistic-washing-machine.webp",
+  "realistic-young-outfit": "/generated-images/lesson-items/webp/realistic-young-outfit.webp",
+  "salary-money": "/generated-images/lesson-items/webp/salary-money.webp",
+  "school-uniform": "/generated-images/lesson-items/webp/school-uniform.webp",
+  shampoo: "/generated-images/lesson-items/webp/shampoo.webp",
+  "shampoo-dry-realistic": "/generated-images/lesson-items/webp/shampoo-dry-realistic.webp",
+  "shampoo-kids-realistic": "/generated-images/lesson-items/webp/shampoo-kids-realistic.webp",
+  "shampoo-normal-realistic": "/generated-images/lesson-items/webp/shampoo-normal-realistic.webp",
+  "shampoo-oily-realistic": "/generated-images/lesson-items/webp/shampoo-oily-realistic.webp",
+  "seasonal-rain-jacket-realistic": "/generated-images/lesson-items/webp/seasonal-rain-jacket-realistic.webp",
+  "seasonal-school-uniform-realistic": "/generated-images/lesson-items/webp/seasonal-school-uniform-realistic.webp",
+  "seasonal-sweater-realistic": "/generated-images/lesson-items/webp/seasonal-sweater-realistic.webp",
+  "skin-dry-realistic": "/generated-images/lesson-items/webp/skin-dry-realistic.webp",
+  "skin-normal-realistic": "/generated-images/lesson-items/webp/skin-normal-realistic.webp",
+  "skin-oily-realistic": "/generated-images/lesson-items/webp/skin-oily-realistic.webp",
+  "safety-shield": "/generated-images/lesson-items/webp/safety-shield.webp",
+  "silk-blouse": "/generated-images/lesson-items/webp/silk-blouse.webp",
+  "side-income": "/generated-images/lesson-items/webp/side-income.webp",
+  "sms-code-phone": "/generated-images/lesson-items/webp/sms-code-phone.webp",
+  soap: "/generated-images/lesson-items/webp/soap.webp",
+  "skincare-rinse-realistic": "/generated-images/lesson-items/webp/skincare-rinse-realistic.webp",
+  "skincare-towel-realistic": "/generated-images/lesson-items/webp/skincare-towel-realistic.webp",
+  "skincare-wet-face-realistic": "/generated-images/lesson-items/webp/skincare-wet-face-realistic.webp",
+  spoon: "/generated-images/lesson-items/webp/spoon.webp",
+  "sport-outfit": "/generated-images/lesson-items/webp/sport-outfit.webp",
+  "station-board": "/generated-images/lesson-items/webp/station-board.webp",
+  "suspicious-link": "/generated-images/lesson-items/webp/suspicious-link.webp",
+  sunscreen: "/generated-images/lesson-items/webp/sunscreen.webp",
+  taxi: "/generated-images/lesson-items/webp/taxi.webp",
+  "taxes-category": "/generated-images/lesson-items/webp/taxes-category.webp",
+  "table-setting-realistic": "/generated-images/lesson-items/webp/table-setting-realistic.webp",
+  "timer-five": "/generated-images/lesson-items/webp/timer-five.webp",
+  toothbrush: "/generated-images/lesson-items/webp/toothbrush.webp",
+  toothpaste: "/generated-images/lesson-items/webp/toothpaste.webp",
+  towel: "/generated-images/lesson-items/webp/towel.webp",
+  train: "/generated-images/lesson-items/webp/train.webp",
+  "train-seat": "/generated-images/lesson-items/webp/train-seat.webp",
+  "train-seat-map-realistic": "/generated-images/lesson-items/webp/train-seat-map-realistic.webp",
+  "train-ticket": "/generated-images/lesson-items/webp/train-ticket.webp",
+  "transit-card": "/generated-images/lesson-items/webp/transit-card.webp",
+  umbrella: "/generated-images/lesson-items/webp/umbrella.webp",
+  "utility-bill": "/generated-images/lesson-items/webp/utility-bill.webp",
+  "unknown-caller-realistic": "/generated-images/lesson-items/webp/unknown-caller-realistic.webp",
+  "walking-shoes": "/generated-images/lesson-items/webp/walking-shoes.webp",
+  "washing-machine": "/generated-images/lesson-items/webp/washing-machine.webp",
+  "washing-machine-front-realistic": "/generated-images/lesson-items/webp/washing-machine-front-realistic.webp",
+  "weather-cloudy-realistic": "/generated-images/lesson-items/webp/weather-cloudy-realistic.webp",
+  "weather-cold-realistic": "/generated-images/lesson-items/webp/weather-cold-realistic.webp",
+  "weather-evening-realistic": "/generated-images/lesson-items/webp/weather-evening-realistic.webp",
+  "weather-hot-realistic": "/generated-images/lesson-items/webp/weather-hot-realistic.webp",
+  "weather-rain-realistic": "/generated-images/lesson-items/webp/weather-rain-realistic.webp",
+  "wool-sweater": "/generated-images/lesson-items/webp/wool-sweater.webp",
+};
+
+const ART_INTRINSIC_SIZE: Partial<Record<LessonItemArtId, { width: number; height: number }>> = {
+  "headphones-realistic": { width: 314, height: 313 },
+};
+
+export function LessonItemArt({
+  id,
+  alt = "",
+  size = 80,
+  className,
+  loading = "eager",
+}: {
+  id: LessonItemArtId;
+  alt?: string;
+  size?: number;
+  className?: string;
+  loading?: "eager" | "lazy";
+}) {
+  const intrinsic = ART_INTRINSIC_SIZE[id];
+  const height = intrinsic
+    ? Math.max(1, Math.floor((size * intrinsic.height) / intrinsic.width))
+    : size;
+
+  return (
+    <Image
+      src={ART_PATH[id]}
+      alt={alt}
+      width={size}
+      height={height}
+      className={className ? `lesson-item-art ${className}` : "lesson-item-art"}
+      style={{ width: size, height: "auto", maxHeight: size }}
+      loading={loading}
+      fetchPriority={loading === "eager" ? "high" : "auto"}
+      decoding="async"
+      unoptimized
+      draggable={false}
+    />
+  );
+}

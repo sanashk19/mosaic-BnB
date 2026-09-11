@@ -1,0 +1,29 @@
+<svg width="520" height="170" viewBox="0 0 520 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="170" fill="url(#bg)"/>
+  <path d="M0 136C140 112 290 148 520 122V170H0Z" fill="#FFE8BE" opacity=".5"/>
+
+  <!-- Shopping bag -->
+  <rect x="110" y="38" width="116" height="100" rx="18" fill="white" stroke="#E88818" stroke-width="4"/>
+  <path d="M142 38V26C142 13 153 6 168 6C183 6 194 13 194 26V38" stroke="#E88818" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M142 78H194" stroke="#E88818" stroke-width="3" stroke-linecap="round" opacity=".4"/>
+  <path d="M146 96L160 110L194 80" stroke="#19A577" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Payment card -->
+  <rect x="284" y="40" width="152" height="96" rx="16" fill="#10213B" opacity=".9"/>
+  <rect x="284" y="56" width="152" height="18" fill="#19A577" opacity=".55"/>
+  <rect x="300" y="64" width="28" height="22" rx="5" fill="#E8B840" opacity=".85"/>
+  <rect x="300" y="100" width="64" height="8" rx="4" fill="white" opacity=".3"/>
+  <rect x="300" y="114" width="44" height="7" rx="3.5" fill="white" opacity=".2"/>
+  <circle cx="410" cy="62" r="10" fill="none" stroke="white" stroke-width="3" opacity=".3"/>
+  <circle cx="422" cy="62" r="10" fill="none" stroke="white" stroke-width="3" opacity=".5"/>
+
+  <circle cx="68" cy="28" r="9" fill="#19A577"/>
+  <circle cx="464" cy="40" r="7" fill="#E88818"/>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="520" y2="170" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7EB"/>
+      <stop offset="1" stop-color="#FFFEFB"/>
+    </linearGradient>
+  </defs>
+</svg>

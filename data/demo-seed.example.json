@@ -1,0 +1,11 @@
+{
+  "note": "This is a safe example file for documentation only. The app creates fictional demo users on first login from src/data/demo-user.ts.",
+  "runtimeDatabase": "data/uquvli-db.json is generated locally and ignored by Git.",
+  "demoLogins": [
+    { "role": "parent", "code": "1", "password": "1" },
+    { "role": "student", "code": "2", "password": "2" },
+    { "role": "teacher", "code": "3", "password": "3" },
+    { "role": "researcher", "code": "4", "password": "4" }
+  ],
+  "containsRealPeople": false
+}

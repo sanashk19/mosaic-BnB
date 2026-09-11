@@ -1,0 +1,352 @@
+.page {
+  width: min(100%, 1680px);
+  margin: 0 auto;
+  padding: 42px 24px 84px;
+  color: #10213b;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
+  gap: 28px;
+  align-items: end;
+  padding: 26px 0 26px;
+}
+
+.heroText {
+  min-width: 0;
+}
+
+.kicker,
+.sectionKicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 30px;
+  border: 1px solid rgba(13, 80, 207, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #24528f;
+  font-size: 0.82rem;
+  font-weight: 850;
+  line-height: 1;
+  padding: 7px 12px;
+}
+
+.title {
+  max-width: 940px;
+  margin-top: 18px;
+  font-size: clamp(2.1rem, 4.8vw, 4.7rem);
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.lead {
+  max-width: 880px;
+  margin-top: 18px;
+  color: #4f617a;
+  font-size: 1.08rem;
+  line-height: 1.62;
+}
+
+.sharePanel {
+  min-width: 0;
+  border: 1px solid rgba(13, 80, 207, 0.14);
+  border-top: 4px solid #0d50cf;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 18px 46px rgba(16, 33, 59, 0.09);
+  padding: 20px;
+}
+
+.sharePanel span {
+  display: block;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 850;
+}
+
+.sharePanel a {
+  display: block;
+  margin-top: 8px;
+  color: #0d50cf;
+  font-size: 1.02rem;
+  font-weight: 900;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.sharePanel p {
+  margin-top: 12px;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 28px;
+  padding: 14px;
+  border: 1px solid rgba(16, 33, 59, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.toc a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  border: 1px solid rgba(13, 80, 207, 0.14);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #24528f;
+  font-size: 0.88rem;
+  font-weight: 850;
+  line-height: 1;
+  padding: 0 12px;
+}
+
+.diagramStack {
+  display: grid;
+  gap: 28px;
+  min-width: 0;
+}
+
+.diagramSection {
+  min-width: 0;
+  scroll-margin-top: 96px;
+}
+
+.sectionHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 520px);
+  gap: 22px;
+  align-items: end;
+  margin-bottom: 14px;
+}
+
+.sectionTitle {
+  margin-top: 10px;
+  color: #10213b;
+  font-size: clamp(1.55rem, 2.2vw, 2.25rem);
+  line-height: 1.16;
+  letter-spacing: 0;
+}
+
+.sectionLead {
+  color: #64748b;
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.diagramFrame {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(16, 33, 59, 0.11);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 18px 46px rgba(16, 33, 59, 0.09);
+}
+
+.diagramToolbar {
+  display: flex;
+  min-width: 0;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(16, 33, 59, 0.1);
+  background: #f8fafc;
+  padding: 10px 14px;
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.diagramToolbar span:first-child {
+  color: #24528f;
+}
+
+.diagramControls {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+}
+
+.diagramControls span {
+  margin-right: 4px;
+}
+
+.diagramControls button {
+  display: inline-flex;
+  min-width: 34px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(13, 80, 207, 0.16);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #0d50cf;
+  font-size: 0.9rem;
+  font-weight: 900;
+  line-height: 1;
+  padding: 0 10px;
+}
+
+.diagramControls button:hover {
+  border-color: rgba(13, 80, 207, 0.28);
+  background: #f5f9ff;
+}
+
+.diagramControls button:focus-visible {
+  outline: 3px solid rgba(13, 80, 207, 0.2);
+  outline-offset: 2px;
+}
+
+.diagramControls strong {
+  display: inline-flex;
+  min-width: 48px;
+  justify-content: center;
+  color: #10213b;
+  font-size: 0.84rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.diagramScroller {
+  width: 100%;
+  min-width: 0;
+  max-height: min(78vh, 820px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 18px;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.diagramScroller:focus-visible {
+  outline: 3px solid rgba(13, 80, 207, 0.2);
+  outline-offset: -3px;
+}
+
+.diagramScrollerDragging {
+  cursor: grabbing;
+}
+
+.diagramCanvas {
+  width: max-content;
+  min-width: 100%;
+  min-height: 180px;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(13, 80, 207, 0.045) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(13, 80, 207, 0.045) 1px, transparent 1px),
+    #ffffff;
+  background-size: 28px 28px;
+  padding: 10px;
+  zoom: var(--diagram-scale);
+}
+
+.diagramCanvas :global(svg) {
+  display: block;
+  width: auto;
+  max-width: none;
+  height: auto;
+  min-width: 980px;
+}
+
+.diagramCanvas :global(.node rect),
+.diagramCanvas :global(.node polygon),
+.diagramCanvas :global(.node path) {
+  rx: 8px;
+  ry: 8px;
+}
+
+.diagramCanvas :global(.nodeLabel),
+.diagramCanvas :global(.edgeLabel) {
+  line-height: 1.25;
+}
+
+.diagramCanvas :global(.cluster rect) {
+  rx: 8px;
+  ry: 8px;
+  fill: rgba(248, 250, 252, 0.74) !important;
+  stroke: rgba(100, 116, 139, 0.42) !important;
+}
+
+.diagramLoading,
+.diagramError {
+  display: grid;
+  min-height: 180px;
+  place-items: center;
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 750;
+}
+
+.diagramError {
+  align-items: start;
+  justify-items: start;
+  overflow: auto;
+  margin: 0;
+  padding: 16px;
+  color: #9f1239;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .sectionHeader {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .diagramToolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .diagramControls {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .diagramControls span {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 28px 16px 64px;
+  }
+
+  .title {
+    font-size: clamp(2rem, 11vw, 3rem);
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .toc {
+    padding: 10px;
+  }
+
+  .toc a {
+    width: 100%;
+  }
+
+  .diagramScroller {
+    padding: 12px;
+  }
+
+  .diagramCanvas :global(svg) {
+    min-width: 820px;
+  }
+}

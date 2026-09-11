@@ -1,0 +1,27 @@
+<svg width="520" height="170" viewBox="0 0 520 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="170" fill="url(#bg)"/>
+  <path d="M0 138C110 115 250 148 520 122V170H0Z" fill="#D9F7E4" opacity=".45"/>
+
+  <!-- Medical cross in rounded square (left) -->
+  <rect x="88" y="28" width="120" height="120" rx="22" fill="white" stroke="#159868" stroke-width="4"/>
+  <!-- cross horizontal bar -->
+  <rect x="104" y="76" width="88" height="26" rx="8" fill="#159868"/>
+  <!-- cross vertical bar -->
+  <rect x="135" y="45" width="26" height="92" rx="8" fill="#159868"/>
+
+  <!-- Heart (right) -->
+  <path d="M370 140C370 140 304 102 304 62C304 44 318 32 336 32C350 32 362 40 370 52C378 40 390 32 404 32C422 32 436 44 436 62C436 102 370 140 370 140Z" fill="white" stroke="#159868" stroke-width="4.5" stroke-linejoin="round"/>
+
+  <!-- Pulse line below heart -->
+  <path d="M302 155H328L336 142L344 162L352 130L362 162L370 142L378 162L388 130L396 162L404 142L412 155H438" stroke="#159868" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
+
+  <circle cx="66" cy="28" r="9" fill="#159868"/>
+  <circle cx="464" cy="40" r="7" fill="#159868" opacity=".4"/>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="520" y2="170" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EFFBF3"/>
+      <stop offset="1" stop-color="#FAFFFE"/>
+    </linearGradient>
+  </defs>
+</svg>

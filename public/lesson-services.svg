@@ -1,0 +1,43 @@
+<svg width="520" height="170" viewBox="0 0 520 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="170" fill="url(#bg)"/>
+  <path d="M0 136C140 112 290 148 520 120V170H0Z" fill="#EAE0FF" opacity=".42"/>
+
+  <!-- Government building (left) -->
+  <!-- base platform -->
+  <rect x="68" y="144" width="172" height="10" rx="4" fill="#7054DF"/>
+  <!-- steps -->
+  <rect x="78" y="132" width="152" height="14" rx="3" fill="#7054DF" opacity=".65"/>
+  <!-- main walls -->
+  <rect x="96" y="64" width="116" height="70" fill="white" stroke="#7054DF" stroke-width="3.5"/>
+  <!-- roof pediment -->
+  <path d="M78 66L154 18L230 66" fill="white" stroke="#7054DF" stroke-width="4" stroke-linejoin="round"/>
+  <!-- columns -->
+  <rect x="106" y="66" width="10" height="68" rx="3" fill="#7054DF" opacity=".18"/>
+  <rect x="128" y="66" width="10" height="68" rx="3" fill="#7054DF" opacity=".18"/>
+  <rect x="150" y="66" width="10" height="68" rx="3" fill="#7054DF" opacity=".18"/>
+  <rect x="172" y="66" width="10" height="68" rx="3" fill="#7054DF" opacity=".18"/>
+  <rect x="194" y="66" width="10" height="68" rx="3" fill="#7054DF" opacity=".18"/>
+  <!-- door -->
+  <rect x="144" y="100" width="20" height="34" rx="4" fill="#7054DF" opacity=".3"/>
+
+  <!-- Document (right) -->
+  <path d="M302 22H408L438 52V158H302V22Z" fill="white" stroke="#7054DF" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M408 22V52H438" stroke="#7054DF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- text lines -->
+  <rect x="322" y="72" width="88" height="9" rx="4.5" fill="#7054DF" opacity=".18"/>
+  <rect x="322" y="94" width="72" height="9" rx="4.5" fill="#7054DF" opacity=".18"/>
+  <rect x="322" y="116" width="80" height="9" rx="4.5" fill="#7054DF" opacity=".18"/>
+  <!-- stamp/approval -->
+  <circle cx="390" cy="148" r="20" fill="#7054DF"/>
+  <path d="M380 148L387 155L402 139" stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <circle cx="66" cy="26" r="9" fill="#7054DF"/>
+  <circle cx="466" cy="40" r="7" fill="#7054DF" opacity=".45"/>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="520" y2="170" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F0FF"/>
+      <stop offset="1" stop-color="#FDFCFF"/>
+    </linearGradient>
+  </defs>
+</svg>
