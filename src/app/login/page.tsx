@@ -9,28 +9,28 @@ import { demoLoginProfiles } from "@/data/demo-user";
 
 const dict = {
   ru: {
-    pressDigits: "Нажми цифры",
-    deleteAria: "Удалить",
-    loginAria: "Войти",
-    eyebrow: "Вход",
-    heading: "Привет! Войди в кабинет.",
-    lead: "Нажми на свою кнопку. Код и пароль появятся сами.",
-    whoAreYou: "Кто ты?",
-    codeLabel: "Код",
-    yourCode: "Твой код",
-    password: "Пароль",
-    hide: "Скрыть",
-    loginTitle: "Войти",
-    loginSub: "Напиши код и пароль. Потом нажми кнопку.",
-    buttons: "Кнопки",
-    writeCode: "Напиши код",
-    writePassword: "Напиши пароль",
-    opening: "Открываю...",
-    loginAction: "Войти",
-    noCabinet: "Ещё нет кабинета?",
-    create: "Создать",
-    toHome: "На главную",
-    loginFailed: "Не получилось войти.",
+    pressDigits: "Press digits",
+    deleteAria: "Delete",
+    loginAria: "Sign In",
+    eyebrow: "Sign In",
+    heading: "Welcome! Sign in to your account.",
+    lead: "Select a demo profile or enter your access credentials below.",
+    whoAreYou: "Quick Demo Profiles",
+    codeLabel: "User Code",
+    yourCode: "Your code",
+    password: "Password",
+    hide: "Hide",
+    loginTitle: "Sign In",
+    loginSub: "Enter your code and password, then click sign in.",
+    buttons: "Keypad",
+    writeCode: "Enter code",
+    writePassword: "Enter password",
+    opening: "Opening...",
+    loginAction: "Sign In",
+    noCabinet: "Don't have an account yet?",
+    create: "Sign Up",
+    toHome: "Back to Home",
+    loginFailed: "Unable to sign in. Please check credentials.",
   },
   uz: {
     pressDigits: "Raqamlarni bos",
@@ -77,7 +77,7 @@ function NumericKeyboard({
     onChange(value.slice(0, -1));
   }
 
-  const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "←", "0", "✓"];
+  const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "DEL", "0", "OK"];
 
   return (
     <div className="numpad">
@@ -86,8 +86,8 @@ function NumericKeyboard({
       </div>
       <div className="numpad-grid">
         {keys.map((key) => {
-          const isBack = key === "←";
-          const isOk = key === "✓";
+          const isBack = key === "DEL";
+          const isOk = key === "OK";
           return (
             <button
               key={key}

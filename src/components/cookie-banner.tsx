@@ -11,13 +11,13 @@ const COOKIE_CHANGE_EVENT = "uquvli-cookie-change";
 
 const dict = {
   ru: {
-    title: "Мы используем cookies",
+    title: "We use cookies",
     copyBefore:
-      "Технически необходимые cookies нужны для входа, localStorage — для выбора по баннеру и настроек. Подробнее в ",
-    copyLink: "политике cookies",
+      "Technically necessary cookies are required for navigation and authentication, while local storage saves your preferences. Learn more in our ",
+    copyLink: "cookie policy",
     copyAfter: ".",
-    onlyRequired: "Только необходимые",
-    gotIt: "Понятно",
+    onlyRequired: "Only necessary",
+    gotIt: "Got it",
   },
   uz: {
     title: "Biz cookie fayllaridan foydalanamiz",

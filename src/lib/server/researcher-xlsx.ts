@@ -11,15 +11,15 @@ import type {
 
 const dict = {
   ru: {
-    overview: "Обзор",
+    overview: "Review",
     indicator: "Показатель",
     value: "Значение",
     participantsHeader: "— УЧАСТНИКИ —",
-    teachers: "Учителей",
+    teachers: "Teachers",
     studentsInExport: "Учеников в выгрузке",
     experimentalGroup: "Экспериментальная группа",
     controlGroup: "Контрольная группа",
-    noGroup: "Без группы",
+    noGroup: "Without a group",
     progressHeader: "— ПРОГРЕСС —",
     avgScoreAll: "Средний балл (все)",
     questionnairesHeader: "— АНКЕТЫ —",
@@ -32,56 +32,56 @@ const dict = {
     avgFinalCtrl: "Ср. балл выходной — Контр.",
     deltaCtrl: "Прирост — Контр.",
     exportDate: "Дата выгрузки",
-    studentsSheet: "Ученики",
-    name: "Имя",
-    group: "Группа",
-    teacher: "Учитель",
-    organization: "Организация",
-    classLabel: "Класс",
-    loginCode: "Код входа",
+    studentsSheet: "Students",
+    name: "Name",
+    group: "Group",
+    teacher: "Teacher",
+    organization: "Organization",
+    classLabel: "Class",
+    loginCode: "At the entrance",
     lessonsCompleted: "Уроков пройдено",
-    avgScore: "Средний балл",
+    avgScore: "Average score",
     correctAnswers: "Верных ответов",
     wrongAnswers: "Ошибок",
     hints: "Подсказок",
-    initialQuestionnaire: "Входная анкета",
-    finalQuestionnaire: "Выходная анкета",
-    lastActivity: "Последняя активность",
+    initialQuestionnaire: "Entry form",
+    finalQuestionnaire: "Exit form",
+    lastActivity: "Last activity",
     idForLink: "ID (для связи)",
     yes: "Да",
     no: "Нет",
     notVisited: "Не входил",
-    eventsSheet: "События",
+    eventsSheet: "Events",
     dateTime: "Дата и время",
-    student: "Ученик",
-    lesson: "Урок",
+    student: "Student",
+    lesson: "Lesson",
     action: "Действие",
     correctAnswersCol: "Верных ответов",
     wrongAnswersCol: "Ошибок",
     hintsCol: "Подсказок",
     studentId: "ID ученика",
-    questionnairesSheet: "Анкеты",
+    questionnairesSheet: "Questionnaires",
     filledDate: "Дата заполнения",
     questionnaireType: "Тип анкеты",
     totalScore: "Сумма баллов",
-    questionN: (n: number) => `Вопрос ${n}`,
+    questionN: (n: number) =>`Вопрос ${n}`,
     questionsLegendSheet: "Тексты вопросов",
     number: "Номер",
     questionText: "Текст вопроса",
     beforeAfterSheet: "До — После",
-    lessons: "Уроков",
-    avgScoreShort: "Ср. балл",
+    lessons: "Lessons",
+    avgScoreShort: "Wed. point",
     initialScore: "Балл входной анкеты",
     finalScore: "Балл выходной анкеты",
     delta: "Прирост",
     initialDate: "Дата входной анкеты",
     finalDate: "Дата выходной анкеты",
     noQuestionnaire: "Нет анкеты",
-    initialType: "Входная",
-    finalType: "Выходная",
-    groupExperimental: "Экспериментальная",
-    groupControl: "Контрольная",
-    groupNone: "Без группы",
+    initialType: "Entrance",
+    finalType: "Day off",
+    groupExperimental: "Experimental",
+    groupControl: "Test",
+    groupNone: "Without a group",
     actionLessonStart: "Начало урока",
     actionLessonComplete: "Завершение урока",
     actionStepView: "Просмотр шага",
@@ -145,7 +145,7 @@ const dict = {
     filledDate: "Toʻldirilgan sana",
     questionnaireType: "Anketa turi",
     totalScore: "Ballar yigʻindisi",
-    questionN: (n: number) => `${n}-savol`,
+    questionN: (n: number) =>`${n}-savol`,
     questionsLegendSheet: "Savol matnlari",
     number: "Raqam",
     questionText: "Savol matni",
@@ -492,7 +492,7 @@ function buildSheets(
     ],
   };
 
-  // Анкеты — полный текст вопросов в заголовке
+  // UI Logic
   const questionnaireQs = getQuestionnaireQuestions(locale);
   const initialQs = questionnaireQs.initial;
   const finalQs = questionnaireQs.final;
@@ -515,7 +515,7 @@ function buildSheets(
       ],
       ...questionnaires.map((submission) => {
         const student = studentsById.get(submission.userId);
-        const qs = submission.type === "initial" ? initialQs : finalQs;
+        const qs = submission.type ==="initial" ? initialQs : finalQs;
         const answersMap = new Map(
           submission.answers.map((a) => [a.questionId, a.score]),
         );
@@ -533,8 +533,8 @@ function buildSheets(
     ],
   };
 
-  // Подписи вопросов отдельной строкой под заголовком анкет
-  // (вставляем после шапки чтобы исследователь видел тексты)
+  // UI Logic
+  // UI Logic
   const questionsLegendSheet: SheetSpec = {
     name: d.questionsLegendSheet,
     widths: [16, 16, 60],
@@ -545,11 +545,11 @@ function buildSheets(
     ],
   };
 
-  // Лист «До — После» — прирост по каждому ученику
+  // UI Logic
   const beforeAfterRows = students.map((student) => {
     const teacher = student.teacherId ? teachersById.get(student.teacherId) : undefined;
     const initial = questionnaires.find(
-      (q) => q.userId === student.id && q.type === "initial",
+      (q) => q.userId === student.id && q.type ==="initial",
     );
     const final = questionnaires.find(
       (q) => q.userId === student.id && q.type === "final",
@@ -603,7 +603,7 @@ function buildSheets(
 }
 
 function workbookXml(sheets: SheetSpec[]) {
-  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  return`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
   <sheets>
     ${sheets.map((sheet, index) => (

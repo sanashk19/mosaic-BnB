@@ -17,17 +17,17 @@ type PortalSearchProps = {
 
 const dict = {
   ru: {
-    placeholder: "Поиск по урокам, темам и разделам",
-    ariaLabel: "Поиск по платформе",
-    findButton: "Найти",
-    tryLabel: "Попробуйте: здоровье",
+    placeholder: "Search by lessons, topics and sections",
+    ariaLabel: "Search by platform",
+    findButton: "Find",
+    tryLabel: "Try: health",
     hint1: "Telegram",
-    hint2: "покупки",
-    hint3: "первая помощь",
-    nothingFound: "Ничего не найдено",
-    nothingFoundHint: "Попробуйте открыть полную программу или изменить запрос.",
-    typeMore: "Введите еще немного текста",
-    typeMoreHint: "Поиск начинается с двух символов, чтобы интерфейс не перегружался.",
+    hint2: "purchases",
+    hint3: "first aid",
+    nothingFound: "Nothing found",
+    nothingFoundHint: "Try opening the full program or changing the query.",
+    typeMore: "Enter some more text",
+    typeMoreHint: "The search starts with two characters so that the interface does not become overloaded.",
   },
   uz: {
     placeholder: "Darslar, mavzular va boʻlimlar boʻyicha qidiruv",

@@ -6,18 +6,18 @@ import { CabinetIcon } from "@/components/ui-icons";
 
 const dict = {
   ru: {
-    panelLabel: "Задание урока",
-    instructionLabel: "Что нужно сделать",
-    question: "Вопрос",
-    answersLabel: "Варианты ответа",
-    hint: "Подсказка",
+    panelLabel: "Lesson assignment",
+    instructionLabel: "What to do",
+    question: "Question",
+    answersLabel: "Answer options",
+    hint: "Clue",
   },
   uz: {
-    panelLabel: "Dars topshirigʻi",
-    instructionLabel: "Nima qilish kerak",
-    question: "Savol",
-    answersLabel: "Javob variantlari",
-    hint: "Maslahat",
+    panelLabel: "Lesson assignment",
+    instructionLabel: "What to do",
+    question: "Question",
+    answersLabel: "Answer options",
+    hint: "Clue",
   },
 } as const;
 

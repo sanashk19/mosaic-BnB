@@ -10,9 +10,9 @@ type DiagramSection = {
 };
 
 export const metadata: Metadata = {
-  title: "Карта пользовательских путей",
+  title: "User Path Map",
   description:
-    "Подробная Mermaid-карта работы платформы UQUVLI.UZ для гостя, родителя, ученика, педагога и исследователя.",
+    "A detailed Mermaid map of the UQUVLI.UZ platform for guests, parents, students, teachers and researchers.",
 };
 
 const shareUrl = "https://uquvli.uz/karta-saita";
@@ -20,75 +20,75 @@ const shareUrl = "https://uquvli.uz/karta-saita";
 const diagramSections: DiagramSection[] = [
   {
     id: "overview",
-    title: "Общая карта платформы",
-    lead: "Вся логика платформы на одной схеме: публичная зона, кабинеты ролей и серверные API.",
+    title: "General platform map",
+    lead: "All platform logic on one diagram: public zone, role accounts and server APIs.",
     chart: String.raw`flowchart LR
   %% UQUVLI.UZ user journey map
 
-  subgraph Public["Публичная зона"]
-    Home["Главная страница<br/>Пользователь знакомится с платформой"]
-    Program["Программа<br/>Смотрит направления и уроки"]
-    LessonCard["Карточка урока<br/>Открывает описание /lesson/[slug]"]
-    Register["Создать кабинет<br/>Переход на /register"]
-    Login["Войти<br/>Переход на /login"]
-    ChooseRole["Выбирает роль<br/>родитель / ученик / педагог / исследователь"]
+  subgraph Public["Public area"]
+    Home["Home page<br/>The user gets acquainted with the platform"]
+    Program["Program<br/>Looks at directions and lessons"]
+    LessonCard["Lesson card<br/>Opens description of /lesson/[slug]"]
+    Register["Create an account<br/>Go to /register"]
+    Login["Login<br/>Go to /login"]
+    ChooseRole["Selects a role<br/>parent / student / teacher / researcher"]
   end
 
-  subgraph Parent["Родитель"]
-    ParentCabinet["Кабинет родителя<br/>/dashboard"]
-    ParentInitial["Первичная анкета<br/>/onboarding/anketa"]
-    ParentToday["Сегодня<br/>видит состояние обучения ребёнка"]
-    ParentLessons["Уроки<br/>открывает материалы ребёнка"]
-    ParentProgress["Прогресс<br/>смотрит завершённые уроки"]
-    ParentFamily["Семья<br/>анкеты и домашний ритм"]
-    ParentAccount["Аккаунт<br/>данные семьи и ребёнка"]
-    ParentFinal["Финальная анкета<br/>после прохождения всех уроков"]
+  subgraph Parent["Parent"]
+    ParentCabinet["Parent's office<br/>/dashboard"]
+    ParentInitial["Primary questionnaire<br/>/onboarding/anketa"]
+    ParentToday["Today<br />sees the state of child's education"]
+    ParentLessons["Lessons<br/>opens the child's materials"]
+    ParentProgress["Progress<br/>view completed lessons"]
+    ParentFamily["Family<br/>profiles and home rhythm"]
+    ParentAccount["Account<br/>family and child details"]
+    ParentFinal["Final questionnaire<br/>after completing all lessons"]
   end
 
-  subgraph Student["Ученик"]
-    StudentLogin["Вход кодом<br/>нажимает кнопку роли или вводит код"]
-    StudentCabinet["Кабинет ученика<br/>упрощённый режим"]
-    StudentToday["Сегодня<br/>одна большая кнопка старта"]
-    StudentClassLesson["Урок открыт педагогом<br/>classState.openLessonSlug"]
-    StudentNextLesson["Следующий урок<br/>если педагог ничего не открыл"]
-    StudentLesson["Проходит урок<br/>правила -> тренажёр -> ситуации -> вопросы"]
-    StudentSave["Завершает урок<br/>прогресс сохраняется"]
+  subgraph Student["Student"]
+    StudentLogin["Login with code<br/>click the role button or enter the code"]
+    StudentCabinet["Student's office<br/>simplified mode"]
+    StudentToday["Today<br/>one big start button"]
+    StudentClassLesson["Lesson opened by teacher<br />classState.openLessonSlug"]
+    StudentNextLesson["Next lesson<br/>if the teacher did not reveal anything"]
+    StudentLesson["Lesson progresses<br/>rules -> simulator -> situations -> questions"]
+    StudentSave["Ends the lesson<br/>progress is saved"]
   end
 
-  subgraph Teacher["Педагог"]
-    TeacherCabinet["Кабинет педагога<br/>/dashboard"]
-    TeacherToday["Сегодня<br/>группа, активный урок, ученики"]
-    AddStudent["Добавляет ученика<br/>имя, класс, группа"]
-    OpenClassLesson["Открывает урок классу<br/>кнопка Открыть классу"]
-    CloseClassLesson["Закрывает активный урок<br/>кнопка Закрыть урок"]
-    TeacherLessons["Уроки<br/>список модулей и уроков"]
-    PreviewLesson["Предпросмотр урока<br/>открывает материал"]
-    DownloadDocx["Скачивает план урока .docx<br/>готовый PhD-документ"]
-    TeacherProgress["Прогресс учеников<br/>смотрит динамику группы"]
+  subgraph Teacher["Teacher"]
+    TeacherCabinet["Teacher's office<br/>/dashboard"]
+    TeacherToday["Today<br />group, active lesson, students"]
+    AddStudent["Adds student<br/>name, class, group"]
+    OpenClassLesson["Opens a lesson to the class<br/>Open to class button"]
+    CloseClassLesson["Closes the active lesson<br/>Close lesson button"]
+    TeacherLessons["Lessons<br/>list of modules and lessons"]
+    PreviewLesson["Lesson preview<br/>opens the material"]
+    DownloadDocx["Downloads lesson plan .docx<br/>ready PhD document"]
+    TeacherProgress["Student progress<br/>looks at group dynamics"]
   end
 
-  subgraph Researcher["Исследователь"]
-    ResearcherCabinet["Исследовательский кабинет<br/>/dashboard"]
-    ResearcherOverview["Сводка<br/>школы, учителя, ученики, события"]
-    ResearcherTeachers["Учителя<br/>создаёт и просматривает педагогов"]
-    ResearcherStudents["Ученики<br/>список участников эксперимента"]
-    ResearcherFilters["Фильтры<br/>школа, группа, поиск"]
-    ResearcherAddStudent["Добавляет ученика<br/>привязка к педагогу"]
-    ResearcherGroup["Меняет группу<br/>experimental / control"]
-    ResearcherAnalytics["Аналитика<br/>анкеты, события, прогресс"]
-    ResearcherExport["Экспорт данных<br/>скачивает XLSX"]
+  subgraph Researcher["Researcher"]
+    ResearcherCabinet["Research office<br/>/dashboard"]
+    ResearcherOverview["Summary<br />schools, teachers, students, events"]
+    ResearcherTeachers["Teachers<br/>creates and views teachers"]
+    ResearcherStudents["Students<br/>list of experiment participants"]
+    ResearcherFilters["Filters<br/>school, group, search"]
+    ResearcherAddStudent["Adds a student<br/>link to a teacher"]
+    ResearcherGroup["Changes group<br/>experimental / control"]
+    ResearcherAnalytics["Analytics<br/>questionnaires, events, progress"]
+    ResearcherExport["Data export<br/>downloads XLSX"]
   end
 
-  subgraph Server["Серверные данные и API"]
-    AuthApi["/api/auth/*<br/>логин, регистрация, сессия"]
-    DashboardRoute["/dashboard<br/>единая точка входа в кабинет"]
-    LessonRoute["/lesson/[slug]<br/>публичный и кабинетный урок"]
-    ClassApi["/api/class-state/*<br/>открытый урок класса"]
-    ProgressApi["/api/progress/complete<br/>сохранение завершения урока"]
-    QuestionnaireApi["/api/questionnaires<br/>первичная и финальная анкеты"]
-    TeacherApi["/api/teacher/students<br/>ученики педагога"]
-    ResearcherApi["/api/researcher/*<br/>данные, пользователи, экспорт"]
-    DocxApi["/api/lessons/[slug]/docx<br/>скачивание плана урока"]
+  subgraph Server["Server data and API"]
+    AuthApi["/api/auth/*<br/>login, registration, session"]
+    DashboardRoute["/dashboard<br/>single entry point to your account"]
+    LessonRoute["/lesson/[slug]<br/>public and classroom lesson"]
+    ClassApi["/api/class-state/*<br/>open class lesson"]
+    ProgressApi["/api/progress/complete<br/>save lesson completion"]
+    QuestionnaireApi["/api/questionnaires<br/>initial and final questionnaires"]
+    TeacherApi["/api/teacher/students<br/>teacher’s students"]
+    ResearcherApi["/api/researcher/*<br/>data, users, export"]
+    DocxApi["/api/lessons/[slug]/docx<br/>download lesson plan"]
   end
 
   Home --> Program --> LessonCard
@@ -159,9 +159,9 @@ const diagramSections: DiagramSection[] = [
   ResearcherExport --> ResearcherApi
   DownloadDocx --> DocxApi
 
-  OpenClassLesson -. "ученик видит открытый урок" .-> StudentClassLesson
-  StudentSave -. "данные видят родитель / педагог / исследователь" .-> TeacherProgress
-  QuestionnaireApi -. "анкеты уходят в аналитику" .-> ResearcherAnalytics
+  OpenClassLesson -. "the student sees an open lesson" .-> StudentClassLesson
+  StudentSave -. "the data is seen by the parent/teacher/researcher" .-> TeacherProgress
+  QuestionnaireApi -. "questionnaires go into analytics" .-> ResearcherAnalytics
 
   classDef public fill:#eaf3ff,stroke:#0d50cf,color:#10213b
   classDef parent fill:#e9f8f2,stroke:#168661,color:#10213b
@@ -178,31 +178,31 @@ const diagramSections: DiagramSection[] = [
   },
   {
     id: "guest",
-    title: "Детальная карта гостя",
-    lead: "Путь человека, который ещё не авторизован: от главной страницы до выбора роли.",
+    title: "Detailed guest card",
+    lead: "The path of a person who is not yet authorized: from the main page to choosing a role.",
     chart: String.raw`flowchart TD
-  GuestStart["Гость открывает uquvli.uz"]
-  GuestHome["Главная страница<br/>читает, для кого платформа"]
-  GuestProgramClick["Нажимает Программа"]
-  GuestProgram["Смотрит направления<br/>диагностика, здоровье, быт, транспорт, коммуникация, безопасность, госуслуги"]
-  GuestLessonClick["Нажимает карточку урока"]
-  GuestLesson["Открывает /lesson/[slug]<br/>читает описание и видит учебный материал"]
-  GuestDecision{"Что делает дальше?"}
-  GuestRegisterClick["Нажимает Начать обучение"]
-  GuestRegister["Переходит на /register"]
-  GuestLoginClick["Нажимает Войти"]
-  GuestLogin["Переходит на /login"]
-  GuestRole["Выбирает роль<br/>parent / student / teacher / researcher"]
-  GuestAuthApi["/api/auth/*<br/>создаётся или проверяется сессия"]
-  GuestDashboard["Открывается /dashboard<br/>платформа показывает кабинет по роли"]
+  GuestStart["The guest opens uquvli.uz"]
+  GuestHome["Home page<br/>reads who the platform is for"]
+  GuestProgramClick["Clicks Program"]
+  GuestProgram["Looks at areas<br/>diagnostics, health, everyday life, transport, communications, security, government services"]
+  GuestLessonClick["Clicks the lesson card"]
+  GuestLesson["Opens /lesson/[slug]<br/>reads the description and sees the training material"]
+  GuestDecision{"What does it do next?"}
+  GuestRegisterClick["Clicks Start training"]
+  GuestRegister["Goes to /register"]
+  GuestLoginClick["Clicks Login"]
+  GuestLogin["Goes to /login"]
+  GuestRole["Selects the role<br />parent / student / teacher / researcher"]
+  GuestAuthApi["/api/auth/*<br/>a session is being created or verified"]
+  GuestDashboard["/dashboard opens<br/>the platform shows the account by role"]
 
   GuestStart --> GuestHome
   GuestHome --> GuestProgramClick --> GuestProgram
   GuestProgram --> GuestLessonClick --> GuestLesson
   GuestHome --> GuestDecision
   GuestLesson --> GuestDecision
-  GuestDecision -- "создать кабинет" --> GuestRegisterClick --> GuestRegister --> GuestRole
-  GuestDecision -- "уже есть доступ" --> GuestLoginClick --> GuestLogin --> GuestRole
+  GuestDecision -- "create an office" --> GuestRegisterClick --> GuestRegister --> GuestRole
+  GuestDecision -- "already have access" --> GuestLoginClick --> GuestLogin --> GuestRole
   GuestRole --> GuestAuthApi --> GuestDashboard
 
   classDef action fill:#eaf3ff,stroke:#0d50cf,color:#10213b
@@ -214,31 +214,31 @@ const diagramSections: DiagramSection[] = [
   },
   {
     id: "parent",
-    title: "Детальная карта родителя",
-    lead: "Обязательная входная анкета, кабинет родителя, контроль прогресса и финальная анкета.",
+    title: "Detailed parent card",
+    lead: "Mandatory entrance questionnaire, parent's office, progress monitoring and final questionnaire.",
     chart: String.raw`flowchart TD
-  ParentStart["Родитель нажимает Создать кабинет / Войти"]
-  ParentAuth["Авторизация или регистрация<br/>/api/auth/login или /api/auth/register"]
-  ParentSession["Сессия родителя<br/>роль parent"]
-  ParentCheck{"Первичная анкета заполнена?"}
-  ParentOnboarding["Заполняет первичную анкету<br/>/onboarding/anketa"]
-  ParentQuestionApi["Сохранение анкеты<br/>/api/questionnaires type=initial"]
-  ParentDashboard["Кабинет родителя<br/>/dashboard"]
-  ParentToday["Вкладка Сегодня<br/>общий статус ребёнка, следующий урок, подсказки"]
-  ParentLessons["Вкладка Уроки<br/>открывает материалы ребёнка"]
-  ParentProgress["Вкладка Прогресс<br/>видит завершённые уроки и динамику"]
-  ParentFamily["Вкладка Семья<br/>домашний ритм, анкеты, поддержка"]
-  ParentAccount["Вкладка Аккаунт<br/>данные взрослого и ребёнка"]
-  ParentDone{"Все уроки завершены?"}
-  ParentFinalCta["Видит приглашение<br/>заполнить выходную анкету"]
-  ParentFinal["Заполняет финальную анкету<br/>type=final"]
-  ParentFinalApi["Сохранение финальной анкеты<br/>/api/questionnaires"]
-  ParentObserve["Продолжает наблюдать<br/>обновлённый прогресс и результаты ребёнка"]
-  ResearcherData["Данные доступны исследователю<br/>анкеты initial / final"]
+  ParentStart["The parent clicks Create Account / Login"]
+  ParentAuth["Authorization or Registration<br/>/api/auth/login or /api/auth/register"]
+  ParentSession["Parent session<br />role parent"]
+  ParentCheck{"Is the initial form completed?"}
+  ParentOnboarding["Fills out the initial form<br/>/onboarding/anketa"]
+  ParentQuestionApi["Saving a questionnaire<br/>/api/questionnaires type=initial"]
+  ParentDashboard["Parent's office<br/>/dashboard"]
+  ParentToday["Today tab<br />general status of the child, next lesson, tips"]
+  ParentLessons["The Lessons tab<br/>opens the child’s materials"]
+  ParentProgress["The Progress tab<br/>shows completed lessons and dynamics"]
+  ParentFamily["Family tab<br/>home rhythm, questionnaires, support"]
+  ParentAccount["Account tab<br/>adult and child data"]
+  ParentDone{"Are all lessons completed?"}
+  ParentFinalCta["Sees an invitation<br/>to fill out an exit form"]
+  ParentFinal["Fills out the final form<br/>type=final"]
+  ParentFinalApi["Saving the final questionnaire<br/>/api/questionnaires"]
+  ParentObserve["Continues to monitor<br />updated progress and results of the child"]
+  ResearcherData["Data is available to the researcher<br/>initial / final questionnaires"]
 
   ParentStart --> ParentAuth --> ParentSession --> ParentCheck
-  ParentCheck -- "нет" --> ParentOnboarding --> ParentQuestionApi --> ParentDashboard
-  ParentCheck -- "да" --> ParentDashboard
+  ParentCheck -- "No" --> ParentOnboarding --> ParentQuestionApi --> ParentDashboard
+  ParentCheck -- "yes" --> ParentDashboard
   ParentDashboard --> ParentToday
   ParentDashboard --> ParentLessons
   ParentDashboard --> ParentProgress
@@ -247,10 +247,10 @@ const diagramSections: DiagramSection[] = [
   ParentToday --> ParentDone
   ParentLessons --> ParentDone
   ParentProgress --> ParentDone
-  ParentDone -- "нет" --> ParentObserve
-  ParentDone -- "да" --> ParentFinalCta --> ParentFinal --> ParentFinalApi --> ParentObserve
-  ParentQuestionApi -. "попадает в аналитику" .-> ResearcherData
-  ParentFinalApi -. "сравнение до / после" .-> ResearcherData
+  ParentDone -- "No" --> ParentObserve
+  ParentDone -- "yes" --> ParentFinalCta --> ParentFinal --> ParentFinalApi --> ParentObserve
+  ParentQuestionApi -. "gets into analytics" .-> ResearcherData
+  ParentFinalApi -. "before/after comparison" .-> ResearcherData
 
   classDef parent fill:#e9f8f2,stroke:#168661,color:#10213b
   classDef api fill:#f8fafc,stroke:#64748b,color:#10213b
@@ -261,34 +261,34 @@ const diagramSections: DiagramSection[] = [
   },
   {
     id: "student",
-    title: "Детальная карта ученика",
-    lead: "Упрощённый путь ученика: код, активный урок от педагога или следующий урок, прохождение и сохранение прогресса.",
+    title: "Detailed student card",
+    lead: "A simplified student path: code, an active lesson from a teacher or the next lesson, passing and saving progress.",
     chart: String.raw`flowchart TD
-  StudentStart["Ученик открывает вход"]
-  StudentCode["Нажимает роль Ученик<br/>или вводит код и пароль"]
-  StudentAuth["Система проверяет доступ<br/>/api/auth/login"]
-  StudentCabinet["Кабинет ученика<br/>/dashboard"]
-  StudentToday["Экран Сегодня<br/>одна большая кнопка старта"]
-  ClassStateRequest["Проверка активного урока<br/>/api/class-state"]
-  StudentDecision{"Педагог открыл урок классу?"}
-  StudentOpened["Открывается урок класса<br/>classState.openLessonSlug"]
-  StudentNext["Открывается следующий доступный урок<br/>если активного урока нет"]
-  LessonRoute["Переход на /lesson/[slug]"]
-  StudentRules["Читает правила урока<br/>нажимает Дальше"]
-  StudentTrainer["Проходит тренажёр<br/>действует как в приложении или ситуации"]
-  StudentScenario["Разбирает ситуации<br/>выбирает спокойный и безопасный ответ"]
-  StudentQuiz["Отвечает на короткие вопросы"]
-  StudentFinish["Нажимает Завершить урок"]
-  StudentProgressApi["Прогресс сохраняется<br/>/api/progress/complete"]
-  StudentReturn["Возвращается в кабинет<br/>видит обновлённый прогресс"]
-  ParentSees["Родитель видит прогресс ребёнка"]
-  TeacherSees["Педагог видит прогресс группы"]
-  ResearcherSees["Исследователь видит событие и прогресс"]
+  StudentStart["Student opens the entrance"]
+  StudentCode["Press the Student role<br/>or enter the code and password"]
+  StudentAuth["The system checks access<br/>/api/auth/login"]
+  StudentCabinet["Student's office<br/>/dashboard"]
+  StudentToday["Today screen<br/>one big start button"]
+  ClassStateRequest["Checking the active lesson<br/>/api/class-state"]
+  StudentDecision{"Did the teacher open the lesson to the class?"}
+  StudentOpened["Opens a class lesson<br />classState.openLessonSlug"]
+  StudentNext["The next available lesson opens<br/>if there is no active lesson"]
+  LessonRoute["Go to /lesson/[slug]"]
+  StudentRules["Reads the lesson rules<br/>clicks Next"]
+  StudentTrainer["The simulator passes<br/>acts as in the application or situation"]
+  StudentScenario["Analyzes situations<br/>chooses a calm and safe answer"]
+  StudentQuiz["Answers short questions"]
+  StudentFinish["Clicks Finish lesson"]
+  StudentProgressApi["Progress is saved<br/>/api/progress/complete"]
+  StudentReturn["Returns to office<br/>sees updated progress"]
+  ParentSees["Parent sees child's progress"]
+  TeacherSees["The teacher sees the group’s progress"]
+  ResearcherSees["The researcher sees the event and progress"]
 
   StudentStart --> StudentCode --> StudentAuth --> StudentCabinet --> StudentToday
   StudentToday --> ClassStateRequest --> StudentDecision
-  StudentDecision -- "да" --> StudentOpened --> LessonRoute
-  StudentDecision -- "нет" --> StudentNext --> LessonRoute
+  StudentDecision -- "yes" --> StudentOpened --> LessonRoute
+  StudentDecision -- "No" --> StudentNext --> LessonRoute
   LessonRoute --> StudentRules --> StudentTrainer --> StudentScenario --> StudentQuiz --> StudentFinish
   StudentFinish --> StudentProgressApi --> StudentReturn
   StudentProgressApi -.-> ParentSees
@@ -304,28 +304,28 @@ const diagramSections: DiagramSection[] = [
   },
   {
     id: "teacher",
-    title: "Детальная карта педагога",
-    lead: "Работа с классом: ученики, открытие урока классу, закрытие активного урока, планы .docx и прогресс.",
+    title: "Detailed teacher card",
+    lead: "Working with the class: students, opening a lesson to the class, closing an active lesson, .docx plans and progress.",
     chart: String.raw`flowchart TD
-  TeacherStart["Педагог нажимает Войти"]
-  TeacherAuth["Авторизация<br/>почта/код и пароль"]
-  TeacherDashboard["Кабинет педагога<br/>/dashboard"]
-  TeacherToday["Вкладка Сегодня<br/>группа, ученики, активный урок"]
-  TeacherAddClick["Нажимает Добавить ученика"]
-  TeacherAddForm["Заполняет данные<br/>имя, класс, группа, заметки"]
-  TeacherAddApi["Создание ученика<br/>/api/teacher/students"]
-  TeacherOpen["Выбирает урок<br/>нажимает Открыть классу"]
-  TeacherClassApi["Сервер сохраняет активный урок<br/>/api/class-state/open"]
-  StudentSees["Ученики видят этот урок<br/>в своём кабинете"]
-  TeacherClose["Нажимает Закрыть урок"]
-  TeacherCloseApi["Сервер закрывает активный урок<br/>/api/class-state/close"]
-  TeacherLessons["Вкладка Уроки<br/>список модулей и уроков"]
-  TeacherPreview["Открывает предпросмотр<br/>/lesson/[slug]"]
-  TeacherDocxClick["Нажимает План урока .docx"]
-  TeacherDocxApi["Скачивание документа<br/>/api/lessons/[slug]/docx"]
-  TeacherDocxFile["Получает готовый PhD-документ<br/>один в один по шаблону урока"]
-  TeacherProgress["Вкладка Прогресс / ученики<br/>смотрит прохождение и результаты"]
-  TeacherAccount["Аккаунт<br/>данные школы и группы"]
+  TeacherStart["The teacher clicks Login"]
+  TeacherAuth["Authorization<br/>mail/code and password"]
+  TeacherDashboard["Teacher's office<br/>/dashboard"]
+  TeacherToday["Today tab<br/>group, students, active lesson"]
+  TeacherAddClick["Clicks Add student"]
+  TeacherAddForm["Fills in data<br/>name, class, group, notes"]
+  TeacherAddApi["Creating students<br/>/api/teacher/students"]
+  TeacherOpen["Selects a lesson<br/>clicks Open to class"]
+  TeacherClassApi["Server saves active lesson<br/>/api/class-state/open"]
+  StudentSees["Students see this lesson<br />in their classroom"]
+  TeacherClose["Clicks Close lesson"]
+  TeacherCloseApi["The server closes the active lesson<br/>/api/class-state/close"]
+  TeacherLessons["Lessons tab<br/>list of modules and lessons"]
+  TeacherPreview["Opens preview<br/>/lesson/[slug]"]
+  TeacherDocxClick["Clicks Lesson Plan .docx"]
+  TeacherDocxApi["Downloading the document<br/>/api/lessons/[slug]/docx"]
+  TeacherDocxFile["Receives a finished PhD document<br/>one-to-one according to the lesson template"]
+  TeacherProgress["Tab Progress / students<br/>views progress and results"]
+  TeacherAccount["Account<br/>school and group details"]
 
   TeacherStart --> TeacherAuth --> TeacherDashboard
   TeacherDashboard --> TeacherToday
@@ -337,7 +337,7 @@ const diagramSections: DiagramSection[] = [
   TeacherLessons --> TeacherDocxClick --> TeacherDocxApi --> TeacherDocxFile
   TeacherDashboard --> TeacherProgress
   TeacherDashboard --> TeacherAccount
-  StudentSees -. "после завершения учениками" .-> TeacherProgress
+  StudentSees -. "upon completion by students" .-> TeacherProgress
 
   classDef teacher fill:#f0edff,stroke:#6750c8,color:#10213b
   classDef api fill:#f8fafc,stroke:#64748b,color:#10213b
@@ -348,29 +348,29 @@ const diagramSections: DiagramSection[] = [
   },
   {
     id: "researcher",
-    title: "Детальная карта исследователя",
-    lead: "Исследовательский кабинет: учителя, ученики, фильтры, группы, анкеты, события, прогресс и экспорт XLSX.",
+    title: "Detailed explorer map",
+    lead: "Research office: teachers, students, filters, groups, questionnaires, events, progress and XLSX export.",
     chart: String.raw`flowchart TD
-  ResearcherStart["Исследователь нажимает Войти"]
-  ResearcherAuth["Авторизация<br/>роль researcher"]
-  ResearcherCabinet["Исследовательский кабинет<br/>/dashboard"]
-  ResearcherLoad["Загрузка данных<br/>/api/researcher/data"]
-  ResearcherSummary["Сводка<br/>школы, педагоги, ученики, события"]
-  ResearcherTeachers["Раздел Учителя<br/>создаёт и просматривает педагогов"]
-  ResearcherCreateTeacher["Создаёт педагога<br/>/api/researcher/users"]
-  ResearcherStudents["Раздел Ученики<br/>видит всех участников"]
-  ResearcherFilter["Фильтрует список<br/>школа, группа, поиск по имени"]
-  ResearcherAdd["Добавляет ученика<br/>выбирает педагога и группу"]
-  ResearcherAddApi["Создание участника<br/>/api/researcher/users"]
-  ResearcherGroup["Меняет группу ученика<br/>experimental / control"]
-  ResearcherGroupApi["Обновление группы<br/>/api/researcher/students/[studentId]"]
-  ResearcherDetail["Открывает карточку ученика<br/>прогресс, педагог, школа, анкеты"]
-  ResearcherEvents["Смотрит журнал событий<br/>старт урока, ответы, подсказки, завершение"]
-  ResearcherQuestionnaires["Смотрит анкеты<br/>initial / final"]
-  ResearcherAnalytics["Смотрит аналитику<br/>сравнение групп и динамики"]
-  ResearcherExportClick["Нажимает Экспорт XLSX"]
-  ResearcherExportApi["Генерация файла<br/>/api/researcher/export/xlsx"]
-  ResearcherExportFile["Скачивает таблицу<br/>для анализа исследования"]
+  ResearcherStart["The researcher clicks Login"]
+  ResearcherAuth["Authorization<br/>researcher role"]
+  ResearcherCabinet["Research office<br/>/dashboard"]
+  ResearcherLoad["Loading data<br/>/api/researcher/data"]
+  ResearcherSummary["Summary<br/>schools, teachers, students, events"]
+  ResearcherTeachers["The Teachers section<br/>creates and views teachers"]
+  ResearcherCreateTeacher["Created by teacher<br/>/api/researcher/users"]
+  ResearcherStudents["The Students section<br/>sees all participants"]
+  ResearcherFilter["Filters the list<br/>school, group, search by name"]
+  ResearcherAdd["Adds a student<br/>selects a teacher and group"]
+  ResearcherAddApi["Creating a member<br/>/api/researcher/users"]
+  ResearcherGroup["Changes student group<br/>experimental / control"]
+  ResearcherGroupApi["Group update<br/>/api/researcher/students/[studentId]"]
+  ResearcherDetail["Opens student card<br/>progress, teacher, school, questionnaires"]
+  ResearcherEvents["Looks at the event log<br />lesson start, answers, hints, completion"]
+  ResearcherQuestionnaires["Looks at profiles<br/>initial / final"]
+  ResearcherAnalytics["Looks at analytics<br/>comparison of groups and dynamics"]
+  ResearcherExportClick["Clicks Export XLSX"]
+  ResearcherExportApi["Generating file<br/>/api/researcher/export/xlsx"]
+  ResearcherExportFile["Downloads a table<br/>for analysis of the study"]
 
   ResearcherStart --> ResearcherAuth --> ResearcherCabinet --> ResearcherLoad
   ResearcherLoad --> ResearcherSummary
@@ -384,9 +384,9 @@ const diagramSections: DiagramSection[] = [
   ResearcherCabinet --> ResearcherQuestionnaires
   ResearcherCabinet --> ResearcherAnalytics
   ResearcherCabinet --> ResearcherExportClick --> ResearcherExportApi --> ResearcherExportFile
-  ResearcherQuestionnaires -. "данные анкет" .-> ResearcherAnalytics
-  ResearcherEvents -. "события уроков" .-> ResearcherAnalytics
-  ResearcherDetail -. "индивидуальная динамика" .-> ResearcherAnalytics
+  ResearcherQuestionnaires -. "questionnaire data" .-> ResearcherAnalytics
+  ResearcherEvents -. "lesson events" .-> ResearcherAnalytics
+  ResearcherDetail -. "individual dynamics" .-> ResearcherAnalytics
 
   classDef researcher fill:#fff0f3,stroke:#bf3e5b,color:#10213b
   classDef api fill:#f8fafc,stroke:#64748b,color:#10213b
@@ -397,57 +397,20 @@ const diagramSections: DiagramSection[] = [
   },
   {
     id: "data",
-    title: "Карта данных и серверных взаимодействий",
-    lead: "Что происходит после кликов: авторизация, уроки, classState, прогресс, анкеты, документы и экспорт.",
+    title: "Map of data and server interactions",
+    lead: "What happens after clicks: authorization, lessons, classState, progress, questionnaires, documents and export.",
     chart: String.raw`flowchart LR
-  UserAction["Действие пользователя<br/>клик, форма, прохождение урока"]
+  UserAction["User action<br/>click, form, completing a lesson"]
 
-  Auth["Вход / регистрация<br/>/api/auth/*"]
-  Session["Сессия пользователя<br/>роль и профиль"]
-  Dashboard["Кабинет<br/>/dashboard"]
-  Lesson["Урок<br/>/lesson/[slug]"]
-  ClassState["Открытый урок класса<br/>/api/class-state/*"]
-  Progress["Прогресс урока<br/>/api/progress/complete"]
-  Questionnaires["Анкеты<br/>/api/questionnaires"]
-  TeacherStudents["Ученики педагога<br/>/api/teacher/students"]
-  ResearcherData["Исследовательские данные<br/>/api/researcher/*"]
-  Docx["План урока .docx<br/>/api/lessons/[slug]/docx"]
-  Export["Экспорт XLSX<br/>/api/researcher/export/xlsx"]
-
-  ParentView["Родитель видит<br/>прогресс и анкеты"]
-  StudentView["Ученик видит<br/>открытый или следующий урок"]
-  TeacherView["Педагог видит<br/>класс, активный урок, прогресс"]
-  ResearcherView["Исследователь видит<br/>сводку, события, аналитику"]
-
-  UserAction --> Auth --> Session --> Dashboard
-  Dashboard --> Lesson
-  Dashboard --> ClassState
-  Dashboard --> Progress
-  Dashboard --> Questionnaires
-  Dashboard --> TeacherStudents
-  Dashboard --> ResearcherData
-  Dashboard --> Docx
-  Dashboard --> Export
-
-  ClassState --> StudentView
-  Lesson --> Progress
-  Progress --> ParentView
-  Progress --> TeacherView
-  Progress --> ResearcherData
-  Questionnaires --> ParentView
-  Questionnaires --> ResearcherData
-  TeacherStudents --> TeacherView
-  TeacherStudents --> ResearcherData
-  ResearcherData --> ResearcherView
-  Docx --> TeacherView
-  Export --> ResearcherView
-
-  classDef action fill:#eaf3ff,stroke:#0d50cf,color:#10213b
-  classDef api fill:#f8fafc,stroke:#64748b,color:#10213b
-  classDef view fill:#e9f8f2,stroke:#168661,color:#10213b
-  class UserAction action
-  class Auth,Session,Dashboard,Lesson,ClassState,Progress,Questionnaires,TeacherStudents,ResearcherData,Docx,Export api
-  class ParentView,StudentView,TeacherView,ResearcherView view`,
+  Auth["Login / Registration<br/>/api/auth/*"]
+  Session["User session<br/>role and profile"]
+  Dashboard["Cabinet<br/>/dashboard"]
+  Lesson["Lesson<br/>/lesson/[slug]"]
+  ClassState["Open class lesson<br/>/api/class-state/*"]
+  Progress["Lesson progress<br/>/api/progress/complete"]
+  Questionnaires["Questionnaires<br/>/api/questionnaires"]
+  TeacherStudents["Teacher's students<br/>/api/teacher/students"]
+  Researcher`,
   },
 ];
 
@@ -456,25 +419,21 @@ export default function SiteMapPage() {
     <main className={styles.page}>
       <section className={styles.hero} aria-labelledby="journey-title">
         <div className={styles.heroText}>
-          <span className={styles.kicker}>Mermaid-карта в браузере</span>
-          <h1 id="journey-title" className={styles.title}>
-            Карта пользовательских путей UQUVLI.UZ
-          </h1>
-          <p className={styles.lead}>
-            Это те же схемы Mermaid, но уже отрисованные на сайте. Можно открыть
-            ссылку, показать на компьютере и двигаться по подробному флоу каждой
-            роли без редакторов и специальных программ.
-          </p>
+          <span className={styles.kicker}>Mermaid card in browser</span>
+          <h1 id="journey-title" className={styles.title}>Map of user paths UQUVLI.UZ</h1>
+          <p className={styles.lead}>These are the same Mermaid diagrams, but already drawn on the website. Can be opened
+            link, show on your computer and follow the detailed flow of each
+            roles without editors and special programs.</p>
         </div>
 
-        <aside className={styles.sharePanel} aria-label="Ссылка для отправки">
-          <span>Ссылка для отправки</span>
+        <aside className={styles.sharePanel} aria-label="Submit link">
+          <span>Submit link</span>
           <a href={shareUrl}>{shareUrl}</a>
-          <p>Большие схемы можно прокручивать по горизонтали внутри блока.</p>
+          <p>Large diagrams can be scrolled horizontally within the block.</p>
         </aside>
       </section>
 
-      <nav className={styles.toc} aria-label="Навигация по схемам">
+      <nav className={styles.toc} aria-label="Scheme navigation">
         {diagramSections.map((section) => (
           <a key={section.id} href={`#${section.id}`}>
             {section.title}
@@ -492,9 +451,7 @@ export default function SiteMapPage() {
           >
             <div className={styles.sectionHeader}>
               <div>
-                <span className={styles.sectionKicker}>
-                  Схема {index + 1} из {diagramSections.length}
-                </span>
+                <span className={styles.sectionKicker}>Diagram {index + 1} of {diagramSections.length}</span>
                 <h2 id={`${section.id}-title`} className={styles.sectionTitle}>
                   {section.title}
                 </h2>

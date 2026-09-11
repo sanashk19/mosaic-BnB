@@ -11,7 +11,7 @@ type HomepageHeroActionsProps = {
 };
 
 const dict = {
-  ru: { openCabinet: "Открыть кабинет" },
+  ru: { openCabinet: "Open account" },
   uz: { openCabinet: "Kabinetni ochish" },
 } as const;
 

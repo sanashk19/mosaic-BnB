@@ -37,7 +37,7 @@ export async function GET(request: Request) {
 
     if (user.role !== "researcher" && requestedUserId !== user.id) {
       throw new HttpError(403, {
-        ru: "Можно смотреть только свои анкеты.",
+        ru: "You can only view your profiles.",
         uz: "Faqat oʻz anketalaringizni koʻrishingiz mumkin.",
       });
     }
@@ -49,7 +49,7 @@ export async function GET(request: Request) {
 
     if (!type) {
       throw new HttpError(400, {
-        ru: "Укажите тип анкеты.",
+        ru: "Specify the type of questionnaire.",
         uz: "Anketa turini koʻrsating.",
       });
     }
@@ -68,7 +68,7 @@ export async function POST(request: Request) {
 
     if (input.userId !== user.id) {
       throw new HttpError(403, {
-        ru: "Можно сохранять только свою анкету.",
+        ru: "You can only save your profile.",
         uz: "Faqat oʻz anketangizni saqlashingiz mumkin.",
       });
     }

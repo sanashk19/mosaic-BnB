@@ -1,4 +1,4 @@
-/* LessonPlayer — современный интерактивный проигрыватель урока (10 экранов) */
+/* UI Module */
 
 .lp-root {
   --lp-accent: #2563eb;
@@ -430,7 +430,7 @@
   border-style: solid;
 }
 .lp-zone.is-marked::after {
-  content: "✓";
+  content: "OK";
   position: absolute;
   top: -6px;
   right: -6px;
@@ -439,7 +439,8 @@
   background: var(--lp-good);
   color: white;
   border-radius: 50%;
-  font-size: 14px;
+  font-size: 10px;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -731,7 +732,7 @@
 .lp-finished-card h2 { margin: 0; font-size: 28px; color: #166534; }
 .lp-finished-card p { margin: 0; font-size: 18px; color: #166534; }
 
-/* ── Showcase: реальный мокап + список частей справа ─────────────────── */
+/* UI Module */
 
 .lp-explorer-showcase {
   display: grid;
@@ -809,7 +810,7 @@
   50% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
 }
 
-/* Topbar с прогресс-баром и кнопкой запуска тренажёра */
+/* UI Module */
 .lp-topbar {
   display: grid;
   grid-template-columns: 1fr auto;

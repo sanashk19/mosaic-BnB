@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { LessonItemArt, type LessonItemArtId } from "@/components/lesson-item-art";
-import { LessonExperience } from "@/components/lesson-experience";
-import { LessonPlayer } from "@/components/lesson-player";
+import { AdaptiveLessonView } from "@/components/adaptive-lesson-view";
+import type { LessonItemArtId } from "@/components/lesson-item-art";
 import { allLessons, getLessonBySlugLocalized } from "@/data/program";
+import type { AccessibilitySupportType } from "@/lib/adaptation/adaptation-types";
 import { getLocale } from "@/lib/i18n";
 
 type LessonPageProps = {
   params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ profile?: string }>;
 };
 
 const dict = {
   ru: {
-    notFound: "Урок не найден",
-    allDirections: "Все направления",
-    saveProgress: "Сохранить прогресс в кабинете",
-    rulesCardCopy: "правила, ситуации и мини-проверка в одном уроке",
+    notFound: "Lesson not found",
+    allDirections: "All Curriculum Tracks",
+    saveProgress: "Save progress in dashboard",
+    rulesCardCopy: "rules, real situations, and mini-checks in one lesson",
   },
   uz: {
     notFound: "Dars topilmadi",
@@ -79,8 +79,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function LessonPage({ params }: LessonPageProps) {
+export default async function LessonPage({ params, searchParams }: LessonPageProps) {
   const { slug } = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : {};
+  const requestedProfile = (resolvedSearchParams.profile as AccessibilitySupportType) || "none";
   const locale = await getLocale();
   const lesson = getLessonBySlugLocalized(slug, locale);
 
@@ -93,44 +95,12 @@ export default async function LessonPage({ params }: LessonPageProps) {
 
   return (
     <main className="lesson-public-page">
-      <section className="lesson-public-hero">
-        <div className="marketing-wrap lesson-public-head">
-          <div className="marketing-copy">
-            <span className="eyebrow">{lesson.moduleTitle}</span>
-            <h1>{lesson.title}</h1>
-            <p>{lesson.intro}</p>
-            <div className="marketing-actions">
-              <Link className="button button-secondary" href="/program">
-                {t.allDirections}
-              </Link>
-              <Link className="button button-primary" href="/register">
-                {t.saveProgress}
-              </Link>
-            </div>
-          </div>
-
-          <aside className={`lesson-public-card${cardArt ? " lesson-public-card--with-art" : ""}`}>
-            {cardArt ? (
-              <div className="lesson-public-card-art" aria-hidden="true">
-                <LessonItemArt id={cardArt} size={136} />
-              </div>
-            ) : null}
-            <span>{lesson.duration}</span>
-            <strong>{lesson.rules.length}</strong>
-            <p>{t.rulesCardCopy}</p>
-          </aside>
-        </div>
-      </section>
-
-      <section className="marketing-section">
-        <div className="marketing-wrap">
-          {lesson.screens && lesson.screens.length > 0 ? (
-            <LessonPlayer screens={lesson.screens} lessonTitle={lesson.title} />
-          ) : (
-            <LessonExperience lesson={lesson} />
-          )}
-        </div>
-      </section>
+      <AdaptiveLessonView
+        originalLesson={lesson}
+        initialProfile={requestedProfile}
+        dict={t}
+        cardArt={cardArt}
+      />
     </main>
   );
 }

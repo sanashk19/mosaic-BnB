@@ -1,3 +1,5 @@
+import type { AccessibilityProfile } from "@/lib/adaptation/adaptation-types";
+
 export type UserRole = "student" | "parent" | "teacher" | "researcher";
 
 export type StudentGroup = "experimental" | "control";
@@ -8,6 +10,7 @@ export type UserProfile = {
   teacherName: string;
   organizationName: string;
   supportNotes: string;
+  accessibilityProfile?: AccessibilityProfile;
 };
 
 export type ProgressEntry = {
@@ -32,6 +35,7 @@ export type CurrentUser = {
   studentCode?: string;
   teacherId?: string;
   group?: StudentGroup;
+  accessibilityProfile?: AccessibilityProfile;
 };
 
 export type RegisterInput = {
@@ -48,6 +52,7 @@ export type AddStudentInput = {
   childClass: string;
   group: StudentGroup;
   notes?: string;
+  accessibilityProfile?: AccessibilityProfile;
 };
 
 export type LoginInput = {

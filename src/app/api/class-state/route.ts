@@ -19,21 +19,21 @@ export async function GET(request: Request) {
 
     if (!requestedTeacherId) {
       throw new HttpError(400, {
-        ru: "Не указан учитель.",
+        ru: "Teacher not specified.",
         uz: "Oʻqituvchi koʻrsatilmagan.",
       });
     }
 
     if (user.role === "teacher" && requestedTeacherId !== user.id) {
       throw new HttpError(403, {
-        ru: "Учитель может управлять только своим классом.",
+        ru: "The teacher can only manage his own class.",
         uz: "Oʻqituvchi faqat oʻz sinfini boshqara oladi.",
       });
     }
 
     if (user.role === "student" && requestedTeacherId !== user.teacherId) {
       throw new HttpError(403, {
-        ru: "Ученик может смотреть только свой класс.",
+        ru: "A student can only watch his own class.",
         uz: "Oʻquvchi faqat oʻz sinfini koʻra oladi.",
       });
     }

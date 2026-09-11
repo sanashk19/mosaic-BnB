@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useAuth } from "@/components/auth-provider";
 import { useLocale } from "@/components/locale-provider";
-import { NationalEmblem } from "@/components/national-emblem";
+import { MosaicLogo } from "@/components/mosaic-logo";
 import { GlobeIcon, MenuIcon } from "@/components/ui-icons";
 import { isCabinetRoute } from "@/lib/is-cabinet-route";
 import type { Locale } from "@/lib/i18n-shared";
@@ -13,22 +13,26 @@ import type { Locale } from "@/lib/i18n-shared";
 type NavItem = { href: string; label: string; activePath: string };
 
 const navStartByLocale: Record<Locale, NavItem[]> = {
-  ru: [{ href: "/", label: "Главная", activePath: "/" }],
-  uz: [{ href: "/", label: "Bosh sahifa", activePath: "/" }],
+  ru: [
+    { href: "/", label: "Home", activePath: "/" },
+    { href: "/educators", label: "For Teachers", activePath: "/educators" },
+    { href: "/families", label: "For Families", activePath: "/families" },
+  ],
+  uz: [
+    { href: "/", label: "Home", activePath: "/" },
+    { href: "/educators", label: "For Teachers", activePath: "/educators" },
+    { href: "/families", label: "For Families", activePath: "/families" },
+  ],
 };
 
 const navEndByLocale: Record<Locale, NavItem[]> = {
   ru: [
-    { href: "/educators", label: "Для школ", activePath: "/educators" },
-    { href: "/families", label: "Для родителей", activePath: "/families" },
-    { href: "/about", label: "Возможности", activePath: "/about" },
-    { href: "/contacts", label: "Контакты", activePath: "/contacts" },
+    { href: "/about", label: "About", activePath: "/about" },
+    { href: "/contacts", label: "Contact", activePath: "/contacts" },
   ],
   uz: [
-    { href: "/educators", label: "Maktablar uchun", activePath: "/educators" },
-    { href: "/families", label: "Ota-onalar uchun", activePath: "/families" },
-    { href: "/about", label: "Imkoniyatlar", activePath: "/about" },
-    { href: "/contacts", label: "Aloqa", activePath: "/contacts" },
+    { href: "/about", label: "About", activePath: "/about" },
+    { href: "/contacts", label: "Contact", activePath: "/contacts" },
   ],
 };
 
@@ -39,117 +43,116 @@ const directionLinksByLocale: Record<
   ru: [
     {
       href: "/program#diagnostic",
-      title: "Диагностика",
-      meta: "2 урока · 2 часа",
+      title: "Diagnostic",
+      meta: "2 lessons · 2 hrs",
     },
     {
       href: "/program#digital-health",
-      title: "Цифровое здоровье",
-      meta: "8 уроков · 8 часов",
+      title: "Digital Health",
+      meta: "8 lessons · 8 hrs",
     },
     {
       href: "/program#digital-home-economics",
-      title: "Цифровая экономика быта",
-      meta: "10 уроков · 10 часов",
+      title: "Home Economics",
+      meta: "10 lessons · 10 hrs",
     },
     {
       href: "/program#digital-transport",
-      title: "Цифровой транспорт",
-      meta: "3 урока · 3 часа",
+      title: "Digital Transport",
+      meta: "3 lessons · 3 hrs",
     },
     {
       href: "/program#digital-communication",
-      title: "Цифровая коммуникация",
-      meta: "3 урока · 3 часа",
+      title: "Digital Communication",
+      meta: "3 lessons · 3 hrs",
     },
     {
       href: "/program#digital-safety",
-      title: "Цифровая безопасность",
-      meta: "1 урок · 1 час",
+      title: "Digital Safety",
+      meta: "1 lesson · 1 hr",
     },
     {
       href: "/program#digital-public-services",
-      title: "Цифровые госуслуги",
-      meta: "3 урока · 3 часа",
+      title: "Digital Public Services",
+      meta: "3 lessons · 3 hrs",
     },
   ],
   uz: [
     {
       href: "/program#diagnostic",
-      title: "Diagnostika",
-      meta: "2 ta dars · 2 soat",
+      title: "Diagnostic",
+      meta: "2 lessons · 2 hrs",
     },
     {
       href: "/program#digital-health",
-      title: "Raqamli salomatlik",
-      meta: "8 ta dars · 8 soat",
+      title: "Digital Health",
+      meta: "8 lessons · 8 hrs",
     },
     {
       href: "/program#digital-home-economics",
-      title: "Raqamli uy iqtisodiyoti",
-      meta: "10 ta dars · 10 soat",
+      title: "Home Economics",
+      meta: "10 lessons · 10 hrs",
     },
     {
       href: "/program#digital-transport",
-      title: "Raqamli transport",
-      meta: "3 ta dars · 3 soat",
+      title: "Digital Transport",
+      meta: "3 lessons · 3 hrs",
     },
     {
       href: "/program#digital-communication",
-      title: "Raqamli muloqot",
-      meta: "3 ta dars · 3 soat",
+      title: "Digital Communication",
+      meta: "3 lessons · 3 hrs",
     },
     {
       href: "/program#digital-safety",
-      title: "Raqamli xavfsizlik",
-      meta: "1 ta dars · 1 soat",
+      title: "Digital Safety",
+      meta: "1 lesson · 1 hr",
     },
     {
       href: "/program#digital-public-services",
-      title: "Raqamli davlat xizmatlari",
-      meta: "3 ta dars · 3 soat",
+      title: "Digital Public Services",
+      meta: "3 lessons · 3 hrs",
     },
   ],
 };
 
 const dict = {
   ru: {
-    openMenu: "Открыть меню",
-    closeMenu: "Закрыть меню",
-    mainNav: "Основная навигация",
-    program: "Программа",
-    programMenuLabel: "Программа обучения",
-    allProgram: "Вся программа",
-    allProgramSub: "Обзор уроков и модулей",
-    directions: "Направления",
-    directionsSub: "Открыть список направлений",
-    languageLabel: "Язык интерфейса",
-    switchLanguage: "Сменить язык",
-    cabinet: "Кабинет",
-    login: "Войти",
-    startLearning: "Начать обучение",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    mainNav: "Main navigation",
+    program: "Program",
+    programMenuLabel: "Learning Program",
+    allProgram: "All Curriculum",
+    allProgramSub: "Overview of lessons and tracks",
+    directions: "Tracks",
+    directionsSub: "Explore life-skill tracks",
+    languageLabel: "Language",
+    switchLanguage: "Switch language",
+    cabinet: "Dashboard",
+    login: "Log in",
+    startLearning: "Get started",
   },
   uz: {
-    openMenu: "Menyuni ochish",
-    closeMenu: "Menyuni yopish",
-    mainNav: "Asosiy navigatsiya",
-    program: "Dastur",
-    programMenuLabel: "Oʻquv dasturi",
-    allProgram: "Butun dastur",
-    allProgramSub: "Darslar va modullar roʻyxati",
-    directions: "Yoʻnalishlar",
-    directionsSub: "Yoʻnalishlar roʻyxatini ochish",
-    languageLabel: "Interfeys tili",
-    switchLanguage: "Tilni almashtirish",
-    cabinet: "Kabinet",
-    login: "Kirish",
-    startLearning: "Oʻqishni boshlash",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    mainNav: "Main navigation",
+    program: "Program",
+    programMenuLabel: "Learning Program",
+    allProgram: "All Curriculum",
+    allProgramSub: "Overview of lessons and tracks",
+    directions: "Tracks",
+    directionsSub: "Explore life-skill tracks",
+    languageLabel: "Language",
+    switchLanguage: "Switch language",
+    cabinet: "Dashboard",
+    login: "Log in",
+    startLearning: "Get started",
   },
 } as const;
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const router = useRouter();
   const { user } = useAuth();
   const locale = useLocale();
   const [isOpen, setIsOpen] = useState(false);
@@ -179,20 +182,6 @@ export function SiteHeader() {
     setIsProgramOpen(false);
   };
 
-  async function switchLocale() {
-    const next: Locale = locale === "ru" ? "uz" : "ru";
-    try {
-      await fetch("/api/locale", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ locale: next }),
-      });
-    } catch {
-      // ignore network errors; cookie just won't be set
-    }
-    router.refresh();
-  }
-
   return (
     <header className="site-header">
       <div className="header-inner">
@@ -202,11 +191,9 @@ export function SiteHeader() {
           onClick={() => {
             closeMenu();
           }}
+          aria-label="Mosaic Home"
         >
-          <NationalEmblem className="header-emblem" />
-          <span className="brand-copy">
-            <strong>UQUVLI.UZ</strong>
-          </span>
+          <MosaicLogo size={36} />
         </Link>
 
         <button
@@ -298,16 +285,14 @@ export function SiteHeader() {
           </nav>
 
           <div className="header-actions">
-            <button
-              type="button"
-              className="language-pill language-pill-button"
-              aria-label={t.switchLanguage}
-              title={t.switchLanguage}
-              onClick={switchLocale}
+            <span
+              className="language-pill"
+              title="Language: English"
+              style={{ display: "inline-flex", alignItems: "center", gap: "6px", cursor: "default" }}
             >
               <GlobeIcon />
-              {locale === "ru" ? "RU" : "UZ"}
-            </button>
+              <span>EN</span>
+            </span>
             {user ? (
               <Link
                 className="button button-primary small"

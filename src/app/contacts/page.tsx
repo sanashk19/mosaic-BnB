@@ -4,40 +4,40 @@ import { getLocale } from "@/lib/i18n";
 
 const dict = {
   ru: {
-    title: "Контакты",
-    eyebrow: "Контакты",
-    heroHeading: "Связь с поддержкой, командой платформы и партнерами.",
+    title: "Contacts",
+    eyebrow: "Contacts",
+    heroHeading: "Communication with support, platform team and partners.",
     heroLead:
-      "Выберите подходящий канал: помощь с доступом, вопросы по кабинету, подключение школы или партнерское предложение.",
-    heroAlt: "Взрослый помогает ребенку пользоваться цифровым сервисом",
+      "Select the appropriate channel: help with access, questions about the office, connecting a school or a partnership offer.",
+    heroAlt: "An adult helps a child use a digital service",
     cards: [
       {
-        title: "Поддержка пользователей",
+        title: "User support",
         value: "support@uquvli.uz",
-        note: "Вопросы по доступу, аккаунтам и работе кабинета.",
+        note: "Questions about access, accounts and account operation.",
       },
       {
-        title: "Телефон",
+        title: "Phone",
         value: "+998 90 000-00-00",
-        note: "Связь по будням для семей, педагогов и центров.",
+        note: "Weekday communications for families, educators and centers.",
       },
       {
-        title: "Партнерства",
+        title: "Partnerships",
         value: "schools@uquvli.uz",
-        note: "Подключение школ, НКО, центров и пилотных площадок.",
+        note: "Connecting schools, NGOs, centers and pilot sites.",
       },
     ],
-    howEyebrow: "Как писать",
+    howEyebrow: "How to write",
     howHeading:
-      "Чтобы быстрее получить ответ, отправьте короткое сообщение по структуре.",
+      "To get a response faster, send a short message using structure.",
     steps: [
-      "Опишите, кто вы: семья, педагог, школа, центр или партнер.",
-      "Коротко укажите задачу: доступ, внедрение, консультация, документы.",
-      "Оставьте удобный канал связи, чтобы команда вернулась с ответом.",
+      "Describe who you are: family, teacher, school, center or partner.",
+      "Briefly indicate the task: access, implementation, consultation, documents.",
+      "Leave a convenient communication channel so that the team will return with an answer.",
     ],
-    docsTitle: "Документы",
-    docsTerms: "Пользовательское соглашение",
-    docsPrivacy: "Политика конфиденциальности",
+    docsTitle: "Documents",
+    docsTerms: "User Agreement",
+    docsPrivacy: "Privacy Policy",
     docsCookies: "Cookies",
   },
   uz: {

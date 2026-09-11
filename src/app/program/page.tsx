@@ -4,63 +4,38 @@ import { ArrowIcon, UiIcon, type UiIconName } from "@/components/ui-icons";
 import { getProgramModules, getPlatformHighlights } from "@/data/program";
 import { getLocale, type Locale } from "@/lib/i18n";
 
+const englishDict = {
+  title: "Program",
+  eyebrow: "Learning Curriculum",
+  heroHeading: "Essential digital skills for real-world independence.",
+  heroLead:
+    "Lessons are built around authentic daily situations: online messaging, e-commerce, wellness, transit, and public services. Explore the curriculum freely or sign in to track progress.",
+  ctaStart: "Start learning",
+  ctaCabinet: "Open dashboard",
+  summaryAriaLabel: "Curriculum overview",
+  summaryLessons: "lessons",
+  summaryDirections: "tracks",
+  summaryLangCode: "EN",
+  summaryLangLabel: "English language",
+
+  directionsEyebrow: "Tracks",
+  directionsHeading: "Each module leads to a clear practical action.",
+  whatLearn: "What you learn",
+  whatPractice: "What you practice",
+  openFirstLesson: "Open sample lesson",
+
+  formatEyebrow: "Format",
+  formatHeading: "Designed to keep learning calm, predictable, and manageable.",
+  afterLogin: "When Signed In",
+  afterLoginCopy:
+    "Your dashboard saves progress, unlocks upcoming lessons, and provides dedicated tools for learners, families, and educators.",
+  loginLink: "Log in",
+  registerLink: "Create account",
+};
+
 const dict = {
-  ru: {
-    title: "Программа",
-    eyebrow: "Программа обучения",
-    heroHeading: "Пять направлений цифровых навыков для жизни в Узбекистане.",
-    heroLead:
-      "Уроки собраны вокруг реальных ситуаций: покупки, связь, здоровье, безопасные действия и работа с государственными сервисами. Можно смотреть программу без входа и затем продолжить обучение в кабинете.",
-    ctaStart: "Начать обучение",
-    ctaCabinet: "Открыть кабинет",
-    summaryAriaLabel: "Кратко о программе",
-    summaryLessons: "уроков",
-    summaryDirections: "направлений",
-    summaryLangCode: "RU",
-    summaryLangLabel: "русский язык",
-
-    directionsEyebrow: "Направления",
-    directionsHeading: "Каждый раздел ведет к понятному практическому действию.",
-    whatLearn: "Что узнаете",
-    whatPractice: "Что потренируете",
-    openFirstLesson: "Открыть первый урок",
-
-    formatEyebrow: "Формат",
-    formatHeading: "Программа устроена так, чтобы не перегружать пользователя.",
-    afterLogin: "После входа",
-    afterLoginCopy:
-      "В кабинете сохраняется прогресс, открывается следующий урок и появляется отдельная рабочая область для семьи, ученика или педагога.",
-    loginLink: "Войти в кабинет",
-    registerLink: "Создать профиль",
-  },
-  uz: {
-    title: "Dastur",
-    eyebrow: "Oʻquv dasturi",
-    heroHeading: "Oʻzbekistondagi hayot uchun raqamli koʻnikmalarning besh yoʻnalishi.",
-    heroLead:
-      "Darslar haqiqiy vaziyatlar atrofida yigʻilgan: xaridlar, aloqa, salomatlik, xavfsiz harakatlar va davlat xizmatlari bilan ishlash. Dasturni kirishsiz koʻrish va keyin shaxsiy kabinetda oʻqishni davom ettirish mumkin.",
-    ctaStart: "Oʻqishni boshlash",
-    ctaCabinet: "Kabinetni ochish",
-    summaryAriaLabel: "Dastur haqida qisqacha",
-    summaryLessons: "ta dars",
-    summaryDirections: "ta yoʻnalish",
-    summaryLangCode: "UZ",
-    summaryLangLabel: "oʻzbek tili",
-
-    directionsEyebrow: "Yoʻnalishlar",
-    directionsHeading: "Har bir boʻlim tushunarli amaliy harakatga olib boradi.",
-    whatLearn: "Nimani bilib olasiz",
-    whatPractice: "Nimani mashq qilasiz",
-    openFirstLesson: "Birinchi darsni ochish",
-
-    formatEyebrow: "Format",
-    formatHeading: "Dastur foydalanuvchini ortiqcha yuklamaslik uchun tuzilgan.",
-    afterLogin: "Kirgandan keyin",
-    afterLoginCopy:
-      "Shaxsiy kabinetda yutuqlar saqlanadi, keyingi dars ochiladi va oila, oʻquvchi yoki pedagog uchun alohida ish maydoni paydo boʻladi.",
-    loginLink: "Kabinetga kirish",
-    registerLink: "Profil yaratish",
-  },
+  ru: englishDict,
+  uz: englishDict,
 } as const;
 
 const moduleIcons: Record<string, UiIconName> = {
@@ -75,27 +50,9 @@ const moduleIcons: Record<string, UiIconName> = {
 
 const moduleTones = ["gold", "teal", "green", "blue", "violet", "teal", "green"] as const;
 
-function formatLessonCount(count: number, locale: Locale) {
-  if (locale === "uz") {
-    return `${count} ta dars`;
-  }
-
-  const mod100 = count % 100;
-  const mod10 = count % 10;
-
-  if (mod100 >= 11 && mod100 <= 14) {
-    return `${count} уроков`;
-  }
-
-  if (mod10 === 1) {
-    return `${count} урок`;
-  }
-
-  if (mod10 >= 2 && mod10 <= 4) {
-    return `${count} урока`;
-  }
-
-  return `${count} уроков`;
+function formatLessonCount(count: number, _locale?: Locale) {
+  void _locale;
+  return `${count} ${count === 1 ? "lesson" : "lessons"}`;
 }
 
 export async function generateMetadata() {

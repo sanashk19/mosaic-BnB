@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { HomepageHeroActions } from "@/components/homepage-hero-actions";
 import { HomeTrainerPreview } from "@/components/home-trainer-preview";
+import { HomepageAdaptationDemo } from "@/components/homepage-adaptation-demo";
 import {
   ArrowIcon,
   UiIcon as ModuleIcon,
@@ -44,44 +44,44 @@ const modulePresentationsByLocale: Record<
     "diagnostic": {
       icon: "services",
       tone: "ink",
-      heroLabel: "Диагностика ФЦГ",
-      shortLabel: "до и после",
+      heroLabel: "Functional Diagnostic",
+      shortLabel: "pre and post assessment",
     },
     "digital-health": {
       icon: "health",
       tone: "green",
-      heroLabel: "Цифровое здоровье",
-      shortLabel: "гигиена и здоровье",
+      heroLabel: "Digital Health",
+      shortLabel: "hygiene and wellness",
     },
     "digital-home-economics": {
       icon: "shopping",
       tone: "gold",
-      heroLabel: "Цифровая экономика быта",
-      shortLabel: "одежда, питание, бюджет",
+      heroLabel: "Home Economics",
+      shortLabel: "clothing, nutrition, budget",
     },
     "digital-transport": {
       icon: "nature",
       tone: "blue",
-      heroLabel: "Цифровой транспорт",
-      shortLabel: "справочник и билеты",
+      heroLabel: "Digital Transport",
+      shortLabel: "transit, routes and tickets",
     },
     "digital-communication": {
       icon: "communication",
       tone: "teal",
-      heroLabel: "Цифровая коммуникация",
-      shortLabel: "телефон и мессенджеры",
+      heroLabel: "Digital Communication",
+      shortLabel: "calls and messaging",
     },
     "digital-safety": {
       icon: "services",
       tone: "violet",
-      heroLabel: "Цифровая безопасность",
-      shortLabel: "правила и риски",
+      heroLabel: "Digital Safety",
+      shortLabel: "habits and privacy",
     },
     "digital-public-services": {
       icon: "services",
       tone: "violet",
-      heroLabel: "Цифровые госуслуги",
-      shortLabel: "портал, банк, договор",
+      heroLabel: "Digital Public Services",
+      shortLabel: "citizen portal, banking, forms",
     },
   },
   uz: {
@@ -137,31 +137,31 @@ const moduleVisualsByLocale: Record<
   ru: {
     "diagnostic": {
       src: "/lesson-services.svg",
-      alt: "Иллюстрация диагностики ФЦГ",
+      alt: "Diagnostic assessment illustration",
     },
     "digital-health": {
       src: "/lesson-health.svg",
-      alt: "Иллюстрация цифрового здоровья",
+      alt: "Digital health module illustration",
     },
     "digital-home-economics": {
       src: "/lesson-shopping.svg",
-      alt: "Иллюстрация цифровой экономики быта",
+      alt: "Digital life skills and budgeting illustration",
     },
     "digital-transport": {
       src: "/lesson-nature.svg",
-      alt: "Иллюстрация цифрового транспорта",
+      alt: "Digital transport and navigation illustration",
     },
     "digital-communication": {
       src: "/lesson-communication.svg",
-      alt: "Иллюстрация цифровой коммуникации",
+      alt: "Digital communication and messaging illustration",
     },
     "digital-safety": {
       src: "/lesson-services.svg",
-      alt: "Иллюстрация цифровой безопасности",
+      alt: "Digital safety and cybersecurity illustration",
     },
     "digital-public-services": {
       src: "/lesson-services.svg",
-      alt: "Иллюстрация цифровых госуслуг",
+      alt: "Digital public services illustration",
     },
   },
   uz: {
@@ -198,31 +198,14 @@ const moduleVisualsByLocale: Record<
 
 const fallbackPresentationsByLocale: Record<Locale, Presentation[]> = {
   ru: [
-    { icon: "services", tone: "blue", heroLabel: "Практический навык", shortLabel: "короткий урок" },
-    { icon: "communication", tone: "teal", heroLabel: "Цифровой сервис", shortLabel: "пошаговая тема" },
-    { icon: "health", tone: "green", heroLabel: "Жизненная ситуация", shortLabel: "понятная практика" },
+    { icon: "services", tone: "blue", heroLabel: "Practical Skill", shortLabel: "bite-sized lesson" },
+    { icon: "communication", tone: "teal", heroLabel: "Digital Service", shortLabel: "step-by-step topic" },
+    { icon: "health", tone: "green", heroLabel: "Life Situation", shortLabel: "interactive practice" },
   ],
   uz: [
-    { icon: "services", tone: "blue", heroLabel: "Amaliy koʻnikma", shortLabel: "qisqa dars" },
-    { icon: "communication", tone: "teal", heroLabel: "Raqamli xizmat", shortLabel: "bosqichma-bosqich mavzu" },
-    { icon: "health", tone: "green", heroLabel: "Hayotiy vaziyat", shortLabel: "tushunarli amaliyot" },
-  ],
-};
-
-const heroStatsByLocale: Record<Locale, Array<{ value: string; label: string }>> = {
-  ru: [
-    { value: "14", label: "уроков" },
-    { value: "5", label: "направлений" },
-    { value: "F70", label: "целевая аудитория" },
-    { value: "RU", label: "язык обучения" },
-    { value: "СБО", label: "встроен в уроки" },
-  ],
-  uz: [
-    { value: "14", label: "ta dars" },
-    { value: "5", label: "ta yoʻnalish" },
-    { value: "F70", label: "kim uchun" },
-    { value: "RU", label: "oʻquv tili" },
-    { value: "IMM", label: "darslarga moslangan" },
+    { icon: "services", tone: "blue", heroLabel: "Practical Skill", shortLabel: "bite-sized lesson" },
+    { icon: "communication", tone: "teal", heroLabel: "Digital Service", shortLabel: "step-by-step topic" },
+    { icon: "health", tone: "green", heroLabel: "Life Situation", shortLabel: "interactive practice" },
   ],
 };
 
@@ -239,33 +222,33 @@ type AudienceCard = {
 const audienceCardsByLocale: Record<Locale, AudienceCard[]> = {
   ru: [
     {
-      title: "Ученикам",
+      title: "For Students",
       description:
-        "Тренажёры реальных цифровых ситуаций, адаптированные под детей с F70: крупные элементы, один шаг на экране.",
+        "Real-life digital simulators adapted for diverse needs: clear bite-sized steps, large controls, and calm pacing.",
       icon: "kids",
       tone: "blue",
       image: "/generated-images/audience-children.jpg",
-      imageAlt: "Ребенок изучает цифровые навыки на планшете",
+      imageAlt: "Student learning digital skills on a tablet",
       href: "/program",
     },
     {
-      title: "Родителям",
+      title: "For Families",
       description:
-        "Пройдите тот же тренажёр дома вместе с ребёнком и помогите закрепить навык в реальной ситуации.",
+        "Practice the exact same simulator at home together and reinforce independence in everyday situations.",
       icon: "parent",
       tone: "violet",
       image: "/generated-images/audience-family.jpg",
-      imageAlt: "Семья изучает цифровые сервисы за ноутбуком",
+      imageAlt: "Family learning digital services together on a laptop",
       href: "/families",
     },
     {
-      title: "Школам",
+      title: "For Educators",
       description:
-        "Готовая структура уроков СБО для учителей коррекционных школ — без долгой подготовки материалов.",
+        "Turn one lesson into multiple personalized experiences instantly with the Mosaic Adaptive Engine.",
       icon: "school",
       tone: "gold",
       image: "/generated-images/audience-school.jpg",
-      imageAlt: "Педагог проводит занятие по цифровой грамотности",
+      imageAlt: "Educator teaching digital skills in an inclusive classroom",
       href: "/educators",
     },
   ],
@@ -309,20 +292,20 @@ const accessibilityItemsByLocale: Record<
 > = {
   ru: [
     {
-      title: "Один шаг на экране",
-      copy: "Каждое действие — отдельно. Ребёнок не теряется в интерфейсе.",
+      title: "One step on screen",
+      copy: "Each action is isolated so learners never feel overwhelmed by cluttered multi-step interfaces.",
       icon: "route",
       tone: "green",
     },
     {
-      title: "Крупно и понятно",
-      copy: "Кнопки, текст и иконки хорошо видны на телефоне и планшете.",
+      title: "High contrast and large text",
+      copy: "Touch targets, fonts, and controls are optimized for tablets and mobile accessibility.",
       icon: "text",
       tone: "blue",
     },
     {
-      title: "Подсказки учителю",
-      copy: "В уроках есть заметки для учителя СБО и сопровождающего взрослого.",
+      title: "Guidance for adults",
+      copy: "Lessons include helpful facilitator prompts for educators, parents, and support staff.",
       icon: "users",
       tone: "violet",
     },
@@ -354,11 +337,11 @@ const advantagesByLocale: Record<
   Array<{ title: string; copy: string; icon: ModuleIconName; tone: ModuleTone }>
 > = {
   ru: [
-    { title: "Практические знания", copy: "Уроки построены вокруг реальных задач, а не сухой теории.", icon: "route", tone: "blue" },
-    { title: "Понятный язык", copy: "Тексты написаны спокойно, коротко и без сложных терминов.", icon: "text", tone: "green" },
-    { title: "Национальный контекст", copy: "Темы связаны с сервисами и повседневной жизнью в Узбекистане.", icon: "services", tone: "gold" },
-    { title: "Для разных пользователей", copy: "Материалы подходят детям, семьям, школам и центрам.", icon: "users", tone: "teal" },
-    { title: "Безопасность", copy: "Отдельное внимание уделено надежным действиям в цифровой среде.", icon: "shield", tone: "violet" },
+    { title: "Practical Knowledge", copy: "Lessons are centered on authentic tasks rather than dry theory.", icon: "route", tone: "blue" },
+    { title: "Clear Language", copy: "Instructions are written in calm, short sentences without complex jargon.", icon: "text", tone: "green" },
+    { title: "Adaptive Engine", copy: "One original lesson transforms into multiple accessible profiles.", icon: "services", tone: "gold" },
+    { title: "Universal Access", copy: "Materials are designed for students, families, schools, and care centers.", icon: "users", tone: "teal" },
+    { title: "Digital Safety", copy: "Dedicated emphasis on safe online behavior, scam recognition, and privacy.", icon: "shield", tone: "violet" },
   ],
   uz: [
     { title: "Amaliy bilimlar", copy: "Darslar quruq nazariya emas, haqiqiy hayotiy vazifalar atrofida tuzilgan.", icon: "route", tone: "blue" },
@@ -371,27 +354,20 @@ const advantagesByLocale: Record<
 
 const uiByLocale = {
   ru: {
-    factsLabel: "Коротко о платформе",
-    chooseDirection: "Выбор направления обучения",
-    chooseDirectionHead: "Выберите направление обучения",
-    chooseDirectionSub: "Начните с темы, которая нужна сейчас.",
-    keyFacts: "Главные факты",
-    openDirection: (title: string) => `Открыть направление ${title}`,
-    trainerEyebrow: "Тренажёр",
-    trainerHead: "Попробуй прямо сейчас",
-    trainerLead: "Это копия Telegram. Прочитай сообщение мамы и выбери ответ.",
-    seeAllDirections: "Смотреть все направления",
-    open: "Открыть",
-    whyEyebrow: "Почему UQUVLI.UZ",
-    whyTitle: "Сервисный формат без лишней сложности",
-    fmtLessonCount: (count: number) => {
-      const mod100 = count % 100;
-      const mod10 = count % 10;
-      if (mod100 >= 11 && mod100 <= 14) return `${count} уроков`;
-      if (mod10 === 1) return `${count} урок`;
-      if (mod10 >= 2 && mod10 <= 4) return `${count} урока`;
-      return `${count} уроков`;
-    },
+    factsLabel: "Platform at a glance",
+    chooseDirection: "Choose learning track",
+    chooseDirectionHead: "Explore Curriculum Tracks",
+    chooseDirectionSub: "Start with the life skill that matters most right now.",
+    keyFacts: "Key Facts",
+    openDirection: (title: string) => `Open ${title} track`,
+    trainerEyebrow: "Interactive Simulator",
+    trainerHead: "Try it right now",
+    trainerLead: "A realistic chat simulation. Read the message and select the safest response.",
+    seeAllDirections: "View all curriculum tracks",
+    open: "Open",
+    whyEyebrow: "Why Mosaic",
+    whyTitle: "Practical learning without overwhelming complexity",
+    fmtLessonCount: (count: number) => `${count} lessons`,
   },
   uz: {
     factsLabel: "Platforma haqida qisqacha",
@@ -428,7 +404,6 @@ export function HomepageContent({
   locale,
 }: HomepageContentProps) {
   const ui = uiByLocale[locale];
-  const heroStats = heroStatsByLocale[locale];
   const audienceCards = audienceCardsByLocale[locale];
   const accessibilityItems = accessibilityItemsByLocale[locale];
   const advantages = advantagesByLocale[locale];
@@ -440,89 +415,111 @@ export function HomepageContent({
         <div className="home-wrap">
           <div className="home-hero-layout">
             <div className="home-hero-copy">
-              <span className="home-eyebrow">{draft.hero.eyebrow}</span>
-              <h1>{draft.hero.title}</h1>
-              <p className="home-lead">{draft.hero.lead}</p>
+              <span className="mosaic-hero-pill-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 22v-7" />
+                  <path d="M12 15c-3-1-5-3-5-7a7 7 0 0 1 10-5c0 4-2 6-5 7z" />
+                </svg>
+                Adaptive learning for brighter futures
+              </span>
 
-              <HomepageHeroActions
-                primaryAction={draft.hero.primaryAction}
-                secondaryAction={draft.hero.secondaryAction}
-              />
+              <h1 className="mosaic-hero-title">
+                One lesson shouldn&apos;t mean{" "}
+                <span className="mosaic-hero-accent-orange">one way of learning.</span>
+              </h1>
 
-              <div className="home-facts" aria-label={ui.factsLabel}>
-                {draft.hero.facts.slice(0, 5).map((fact) => (
-                  <span key={fact}>{fact}</span>
-                ))}
+              <p className="mosaic-hero-lead">
+                Mosaic adapts the same lesson into personalized learning experiences for different learner needs &mdash; from simpler language and read-aloud support to captions and visual descriptions.
+              </p>
+
+              <div className="mosaic-hero-actions">
+                <Link
+                  className="mosaic-btn-primary"
+                  href="/lesson/messenger-message"
+                >
+                  Try a sample lesson &rarr;
+                </Link>
+                <a
+                  className="mosaic-btn-secondary"
+                  href="#how-it-works"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                  See how it works
+                </a>
+              </div>
+
+              <div className="mosaic-hero-stats" aria-label="Platform facts">
+                <div className="mosaic-stat-item">
+                  <strong>7</strong>
+                  <span>learning areas</span>
+                </div>
+                <div className="mosaic-stat-divider" />
+                <div className="mosaic-stat-item">
+                  <strong>32</strong>
+                  <span>interactive lessons</span>
+                </div>
+                <div className="mosaic-stat-divider" />
+                <div className="mosaic-stat-item">
+                  <strong>3</strong>
+                  <span>accessibility profiles (to start)</span>
+                </div>
+                <div className="mosaic-stat-divider" />
+                <div className="mosaic-stat-item">
+                  <strong>100%</strong>
+                  <span>free to use</span>
+                </div>
               </div>
             </div>
 
             <div className="home-hero-showcase">
-              <div className="home-photo-card">
+              <div className="mosaic-hero-photo-wrap">
+                <div className="mosaic-hero-speech-bubble">
+                  <div className="mosaic-bubble-rays" aria-hidden="true">
+                    <span /><span /><span />
+                  </div>
+                  <p>Learning in a way that works for me</p>
+                </div>
+
                 <Image
-                  src="/generated-images/home-hero-learning.jpg"
-                  alt={
-                    locale === "uz"
-                      ? "Bolalar noutbuk orqali raqamli xizmatlarni oʻrganmoqda"
-                      : "Дети изучают цифровые сервисы за ноутбуком"
-                  }
-                  width={1800}
-                  height={1013}
-                  loading="eager"
-                  fetchPriority="high"
+                  src="/generated-images/audience-children.jpg"
+                  alt="Student learning with adaptive support on laptop"
+                  width={1200}
+                  height={800}
+                  priority
+                  className="mosaic-hero-student-img"
                   sizes="(max-width: 900px) 100vw, 620px"
                 />
-                <div className="home-device-card" aria-hidden="true">
-                  <span className="home-device-logo">UQUVLI.UZ</span>
-                  <span className="home-device-line" />
-                  <span className="home-device-line short" />
+
+                <div className="mosaic-hero-floating-pills">
+                  <div className="mosaic-hero-pill-item mosaic-pill-cream">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/></svg>
+                    <strong>Simpler language</strong>
+                  </div>
+                  <div className="mosaic-hero-pill-item mosaic-pill-mint">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                    <strong>Read aloud</strong>
+                  </div>
+                  <div className="mosaic-hero-pill-item mosaic-pill-peach">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="4"/><path d="M10 9a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2"/><path d="M16 9a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2"/></svg>
+                    <strong>Captions</strong>
+                  </div>
+                  <div className="mosaic-hero-pill-item mosaic-pill-mint">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    <strong>Visual descriptions</strong>
+                  </div>
+                  <div className="mosaic-hero-pill-item mosaic-pill-lavender">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22v-7"/><path d="M12 15c-3-1-5-3-5-7a7 7 0 0 1 10-5c0 4-2 6-5 7z"/></svg>
+                    <strong>Less distractions</strong>
+                  </div>
                 </div>
-              </div>
 
-              <div className="home-direction-panel" aria-label={ui.chooseDirection}>
-                <div className="home-direction-head">
-                  <span>{ui.chooseDirectionHead}</span>
-                  <strong>{ui.chooseDirectionSub}</strong>
-                </div>
-
-                <div className="home-direction-list">
-                  {homeModules.map((module, index) => {
-                    const presentation = getModulePresentation(locale, module, index);
-
-                    return (
-                      <Link
-                        aria-label={ui.openDirection(module.title)}
-                        className={`home-direction-card home-tone-${presentation.tone}`}
-                        href="/program"
-                        key={module.slug}
-                      >
-                        <span className="home-icon" aria-hidden="true">
-                          <ModuleIcon name={presentation.icon} />
-                        </span>
-                        <span className="home-direction-copy">
-                          <strong>{presentation.heroLabel}</strong>
-                          <span>
-                            {ui.fmtLessonCount(module.lessonCount)} ·{" "}
-                            {presentation.shortLabel}
-                          </span>
-                        </span>
-                        <span className="home-card-arrow" aria-hidden="true">
-                          <ArrowIcon />
-                        </span>
-                      </Link>
-                    );
-                  })}
+                <div className="mosaic-hero-script-tag">
+                  Different learners. A brighter tomorrow.
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="home-stat-strip" aria-label={ui.keyFacts}>
-            {heroStats.map((stat) => (
-              <div className="home-stat-card" key={`${stat.value}-${stat.label}`}>
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -769,7 +766,7 @@ export function HomepageContent({
           </div>
           <div className="home-final-device" aria-hidden="true">
             <div className="home-laptop-screen">
-              <span>UQUVLI.UZ</span>
+              <span>Mosaic</span>
             </div>
             <div className="home-phone-screen">
               <span />
@@ -784,9 +781,18 @@ export function HomepageContent({
 
   return (
     <main className="home-page home-reference-page">
-      {draft.sectionOrder.map((sectionId) =>
-        draft.hiddenSections.includes(sectionId) ? null : sections[sectionId],
-      )}
+      {draft.sectionOrder.map((sectionId) => {
+        if (draft.hiddenSections.includes(sectionId)) return null;
+        if (sectionId === "hero") {
+          return (
+            <div key="mosaic-hero-and-demo">
+              {sections.hero}
+              <HomepageAdaptationDemo />
+            </div>
+          );
+        }
+        return sections[sectionId];
+      })}
     </main>
   );
 }

@@ -1,6 +1,4 @@
-/**
- * SVG-иконки для уроков — замена эмодзи на чистый современный дизайн.
- */
+/* UI Module */
 
 type IconProps = { size?: number; color?: string; className?: string };
 
@@ -19,11 +17,10 @@ const I = ({ size = 24, color = "currentColor", className = "", children }: Icon
     aria-hidden="true"
   >
     {children}
-  </svg>
-);
+  </svg>);
 
-// Утилитарные иконки
-export const IconCheck = (p: IconProps) => <I {...p}><path d="M20 6L9 17l-5-5" /></I>;
+// Utilitarian icons
+export const IconCheck = (p: IconProps) =><I {...p}><path d="M20 6L9 17l-5-5" /></I>;
 export const IconClose = (p: IconProps) => <I {...p}><path d="M18 6L6 18M6 6l12 12" /></I>;
 export const IconArrow = (p: IconProps) => <I {...p}><path d="M5 12h14M12 5l7 7-7 7" /></I>;
 export const IconBack = (p: IconProps) => <I {...p}><path d="M19 12H5M12 19l-7-7 7-7" /></I>;
@@ -39,8 +36,8 @@ export const IconEye = (p: IconProps) => <I {...p}><path d="M1 12s4-8 11-8 11 8 
 export const IconLock = (p: IconProps) => <I {...p}><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0110 0v4" /></I>;
 export const IconHome = (p: IconProps) => <I {...p}><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></I>;
 
-// Тематические иконки
-export const IconTshirt = (p: IconProps) => <I {...p}><path d="M6 4l3 1c1 2 5 2 6 0l3-1 3 4-3 2v10a2 2 0 01-2 2H8a2 2 0 01-2-2V10L3 8z" /></I>;
+// Thematic icons
+export const IconTshirt = (p: IconProps) =><I {...p}><path d="M6 4l3 1c1 2 5 2 6 0l3-1 3 4-3 2v10a2 2 0 01-2 2H8a2 2 0 01-2-2V10L3 8z" /></I>;
 export const IconShirt = (p: IconProps) => <I {...p}><path d="M16 3l4 2-2 5h-2v11a2 2 0 01-2 2H10a2 2 0 01-2-2V10H6L4 5l4-2 2 2c1 1 3 1 4 0z" /></I>;
 export const IconShoe = (p: IconProps) => <I {...p}><path d="M3 13v4a2 2 0 002 2h14a2 2 0 002-2v-2c0-1-1-2-3-2l-4-1-3-4-4-1c-2 0-4 2-4 6z" /></I>;
 export const IconBottle = (p: IconProps) => <I {...p}><path d="M10 2v3M14 2v3M9 5h6v3l1 2v9a2 2 0 01-2 2h-4a2 2 0 01-2-2V10l1-2z" /></I>;
@@ -79,8 +76,8 @@ export const IconPin = (p: IconProps) => <I {...p}><path d="M21 10c0 7-9 13-9 13
 export const IconSparkle = (p: IconProps) => <I {...p}><path d="M12 3v3M12 18v3M21 12h-3M6 12H3M18.36 5.64l-2.12 2.12M7.76 16.24l-2.12 2.12M18.36 18.36l-2.12-2.12M7.76 7.76L5.64 5.64" /></I>;
 export const IconSoap = (p: IconProps) => <I {...p}><rect x="4" y="10" width="16" height="11" rx="2" /><path d="M8 10V7a4 4 0 018 0v3M9 6c1-1 4-1 5 0" /></I>;
 
-// Предметы гигиены
-export const IconToothbrush = (p: IconProps) => <I {...p}><path d="M3 21l8-8" /><rect x="13" y="1" width="6" height="11" rx="1" transform="rotate(45 16 6.5)" /><path d="M16 4l-1 1M17.5 5.5l-1 1M19 7l-1 1" /></I>;
+// Hygiene items
+export const IconToothbrush = (p: IconProps) =><I {...p}><path d="M3 21l8-8" /><rect x="13" y="1" width="6" height="11" rx="1" transform="rotate(45 16 6.5)" /><path d="M16 4l-1 1M17.5 5.5l-1 1M19 7l-1 1" /></I>;
 export const IconToothpaste = (p: IconProps) => <I {...p}><rect x="4" y="7" width="13" height="10" rx="2" /><path d="M17 9l3-2v8l-3-2" /><path d="M7 11h6" /></I>;
 export const IconComb = (p: IconProps) => <I {...p}><rect x="2" y="9" width="20" height="6" rx="1" /><path d="M5 15v3M8 15v4M11 15v3M14 15v4M17 15v3M20 15v4" /></I>;
 export const IconTowel = (p: IconProps) => <I {...p}><path d="M4 4h16v16H4z" /><path d="M4 4l4 4M8 4l4 4M12 4l4 4M16 4l4 4" /></I>;
@@ -91,7 +88,7 @@ export const IconBall = (p: IconProps) => <I {...p}><circle cx="12" cy="12" r="1
 export const IconLipstick = (p: IconProps) => <I {...p}><path d="M9 2l6 0v8l-3 1-3-1z" /><rect x="7" y="10" width="10" height="12" rx="1" /></I>;
 export const IconMug = (p: IconProps) => <I {...p}><path d="M4 8h12v10a3 3 0 01-3 3H7a3 3 0 01-3-3z" /><path d="M16 10h2a3 3 0 010 6h-2" /></I>;
 
-// Эмодзи-замена через данные (мапит старое emoji-имя на компонент)
+// Emoji replacement via data (maps the old emoji name to the component)
 export const ICON_MAP: Record<string, React.ComponentType<IconProps>> = {
   shirt: IconShirt,
   tshirt: IconTshirt,

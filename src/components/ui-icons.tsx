@@ -59,13 +59,11 @@ export function UiIcon({ name, className }: { name: UiIconName } & IconBaseProps
       return (
         <IconSvg className={className}>
           <path className="icon-line" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z" />
-        </IconSvg>
-      );
+        </IconSvg>);
 
-    /* Heart-pulse — медицина / здоровье */
+    /* Heart-pulse - medicine / health */
     case "health":
-      return (
-        <IconSvg className={className}>
+      return (<IconSvg className={className}>
           <path className="icon-line" d="M19 14c1.5-1.5 3-3.5 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2 1.5 4 3 5.5l7 7Z" />
           <path className="icon-line" d="M3.22 12H9.5l.5-1 2 4 1.5-2H20.5" />
         </IconSvg>
@@ -174,14 +172,12 @@ export function UiIcon({ name, className }: { name: UiIconName } & IconBaseProps
         <IconSvg className={className}>
           <path className="icon-line" d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2Z" />
           <path className="icon-line" d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7Z" />
-        </IconSvg>
-      );
+        </IconSvg>);
 
-    /* Building / госуслуги */
+    /* Building / government services */
     case "services":
     default:
-      return (
-        <IconSvg className={className}>
+      return (<IconSvg className={className}>
           <path className="icon-line" d="M3 22V8l9-5 9 5v14" />
           <path className="icon-line" d="M3 22h18" />
           <path className="icon-line" d="M10 22v-7h4v7" />

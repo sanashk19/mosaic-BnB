@@ -2,111 +2,62 @@ import Image from "next/image";
 import Link from "next/link";
 import { getLocale } from "@/lib/i18n";
 
+const englishDict = {
+  title: "For Families",
+  eyebrow: "For Families",
+  heroHeading: "Reinforce at home what your child discovers in the classroom.",
+  heroLead:
+    "Learners work with Mosaic at school alongside their teacher. At home, families can practice the exact same interactive simulator together and build real-world digital independence.",
+  ctaCreate: "Create family account",
+  ctaLessons: "Explore lessons",
+  heroImageAlt: "Family practicing an adaptive digital lesson together at home",
+
+  stepsEyebrow: "Home Practice",
+  stepsHeading: "Three simple steps to support your child's progress.",
+  startSteps: [
+    "Ask the teacher which module was practiced in class — and open it together at home.",
+    "Go through the simulator together: take your time, repeat steps as often as needed, and celebrate small wins.",
+    "Practice the action in real life — sending a message, checking a route, or shopping safely.",
+  ],
+  adultSideTitle: "Family Dashboard",
+  adultSideCopy:
+    "Track your child's learning journey, view personalized accommodations, and access practical home guidance in one simple place.",
+
+  featuresEyebrow: "Why Families Love Mosaic",
+  featuresHeading: "Calm pacing, practical guidance, and real-life transfer.",
+  familyFeatures: [
+    {
+      title: "Clear learning route",
+      copy:
+        "Easily see which lessons have been completed at school, what to practice at home, and what comes next.",
+    },
+    {
+      title: "Calm, self-paced learning",
+      copy:
+        "Bite-sized steps and distraction-free screens mean zero rush or stress. Repeat any step as many times as needed.",
+    },
+    {
+      title: "Real-world independence",
+      copy:
+        "Simulator practice directly bridges to everyday digital habits like messaging relatives and verifying web safety.",
+    },
+  ],
+
+  faqEyebrow: "Frequently Asked Questions",
+  faqHeading: "Everything you need to know before getting started.",
+  faqItems: [
+    "Do I need to be a digital expert? No — the simulator guides every step with simple prompts, you're simply there to encourage.",
+    "What if my child feels stuck? Take a pause, switch to an audio or simplified reading profile, and repeat without rush.",
+    "Where is progress saved? Securely in your dashboard under your child's personalized profile.",
+  ],
+  helpTitle: "Need Assistance?",
+  contactSupport: "Contact support",
+  loginCabinet: "Log in to dashboard",
+};
+
 const dict = {
-  ru: {
-    title: "Семьям",
-    eyebrow: "Семьям",
-    heroHeading: "Дома можно закрепить то, что ребёнок начал на уроке СБО.",
-    heroLead:
-      "Ребёнок работает с платформой на уроке под руководством учителя. Семья может повторить пройденное дома — пройти тот же тренажёр вместе и помочь закрепить навык в реальной ситуации.",
-    ctaCreate: "Создать профиль",
-    ctaLessons: "Посмотреть уроки",
-    heroImageAlt: "Семья помогает ребенку проходить цифровой урок за ноутбуком",
-
-    stepsEyebrow: "Как закреплять дома",
-    stepsHeading: "Три шага, чтобы поддержать то, что начал учитель.",
-    startSteps: [
-      "Спросите у учителя СБО, какой модуль проходили на уроке — и откройте его дома вместе с ребёнком.",
-      "Пройдите тренажёр вместе: не спешите, повторяйте шаги столько раз, сколько нужно.",
-      "Попробуйте повторить действие в реальной ситуации — в магазине, с телефоном, на сайте.",
-    ],
-    adultSideTitle: "Что видно взрослому",
-    adultSideCopy:
-      "Следующий урок, общий прогресс, профиль ребенка и советы по прохождению материала собраны в кабинете и не требуют отдельного поиска по сайту.",
-
-    featuresEyebrow: "Что дает раздел",
-    featuresHeading: "Для семьи важны практические ответы и спокойный темп.",
-    familyFeatures: [
-      {
-        title: "Кабинет показывает маршрут",
-        copy:
-          "Видно, что пройдено на уроке, что повторить дома и какой следующий модуль по программе.",
-      },
-      {
-        title: "Темп можно держать спокойным",
-        copy:
-          "Тренажёр разбит на короткие шаги, экран не перегружен, можно повторить любой шаг столько раз, сколько нужно.",
-      },
-      {
-        title: "Навык переносится в жизнь",
-        copy:
-          "После совместного повторения в тренажёре проще попробовать то же самое в реальной ситуации рядом с ребёнком.",
-      },
-    ],
-
-    faqEyebrow: "Частые вопросы",
-    faqHeading: "Базовые вопросы закрываются до первого входа в кабинет.",
-    faqItems: [
-      "Нужно ли заново объяснять материал дома? Нет — тренажёр сам ведёт по шагам, вы просто рядом.",
-      "Что делать, если ребёнку трудно? Проходите урок вместе, делайте паузы и повторяйте шаги без спешки.",
-      "Где смотреть результаты? В кабинете — там виден прогресс по модулям и пройденные темы.",
-    ],
-    helpTitle: "Нужна помощь",
-    contactSupport: "Связаться с поддержкой",
-    loginCabinet: "Войти в кабинет",
-  },
-  uz: {
-    title: "Oilalar uchun",
-    eyebrow: "Oilalar uchun",
-    heroHeading: "Bola IMM darsida boshlagan narsani uyda mustahkamlash mumkin.",
-    heroLead:
-      "Bola platforma bilan darsda oʻqituvchi rahbarligida ishlaydi. Oila oʻtilgan mavzuni uyda takrorlashi mumkin — xuddi shu mashqni birga bajarib, koʻnikmani haqiqiy vaziyatda mustahkamlashga yordam beradi.",
-    ctaCreate: "Profil yaratish",
-    ctaLessons: "Darslarni koʻrish",
-    heroImageAlt: "Oila bolaga noutbukda raqamli darsni oʻtishga yordam bermoqda",
-
-    stepsEyebrow: "Uyda qanday mustahkamlash kerak",
-    stepsHeading: "Oʻqituvchi boshlagan ishni qoʻllab-quvvatlash uchun uch qadam.",
-    startSteps: [
-      "IMM oʻqituvchisidan darsda qaysi modul oʻtilganini soʻrang — va uni uyda bola bilan birga oching.",
-      "Mashqni birga bajaring: shoshmang, qadamlarni kerakli marta takrorlang.",
-      "Harakatni haqiqiy vaziyatda takrorlashga urinib koʻring — doʻkonda, telefonda, saytda.",
-    ],
-    adultSideTitle: "Kattalar nimani koʻradi",
-    adultSideCopy:
-      "Keyingi dars, umumiy yutuqlar, bola profili va materialni oʻtish boʻyicha maslahatlar shaxsiy kabinetda yigʻilgan va saytdan alohida qidirishni talab qilmaydi.",
-
-    featuresEyebrow: "Boʻlim nima beradi",
-    featuresHeading: "Oila uchun amaliy javoblar va tinch sur’at muhim.",
-    familyFeatures: [
-      {
-        title: "Kabinet yoʻnalishni koʻrsatadi",
-        copy:
-          "Darsda nima oʻtilgani, uyda nimani takrorlash kerakligi va dastur boʻyicha keyingi modul koʻrinib turadi.",
-      },
-      {
-        title: "Sur’atni tinch saqlash mumkin",
-        copy:
-          "Mashq qisqa qadamlarga boʻlingan, ekran ortiqcha emas, har bir qadamni kerakli marta takrorlash mumkin.",
-      },
-      {
-        title: "Koʻnikma hayotga oʻtadi",
-        copy:
-          "Mashqda birga takrorlagandan keyin, bola yonida xuddi shu narsani haqiqiy vaziyatda sinab koʻrish osonroq.",
-      },
-    ],
-
-    faqEyebrow: "Tez-tez beriladigan savollar",
-    faqHeading: "Asosiy savollar kabinetga birinchi kirishdan oldin yopiladi.",
-    faqItems: [
-      "Materialni uyda qaytadan tushuntirish kerakmi? Yoʻq — mashq oʻzi qadam-baqadam yetaklaydi, siz shunchaki yonida boʻlasiz.",
-      "Bolaga qiyin boʻlsa nima qilish kerak? Darsni birga bajaring, tanaffuslar qiling va qadamlarni shoshilmasdan takrorlang.",
-      "Natijalarni qayerda koʻrish mumkin? Shaxsiy kabinetda — u yerda modullar boʻyicha yutuqlar va oʻtilgan mavzular koʻrinadi.",
-    ],
-    helpTitle: "Yordam kerakmi",
-    contactSupport: "Yordam xizmati bilan bogʻlanish",
-    loginCabinet: "Kabinetga kirish",
-  },
+  ru: englishDict,
+  uz: englishDict,
 } as const;
 
 export async function generateMetadata() {

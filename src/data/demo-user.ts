@@ -7,10 +7,10 @@ export const roleLabelsByLocale: Record<Locale, {
   researcher: string;
 }> = {
   ru: {
-    student: "Ученик",
-    parent: "Родитель",
-    teacher: "Педагог",
-    researcher: "Исследователь",
+    student: "Student",
+    parent: "Parent",
+    teacher: "Teacher",
+    researcher: "Researcher",
   },
   uz: {
     student: "Oʻquvchi",
@@ -27,6 +27,8 @@ export function getRoleLabels(locale: Locale) {
 // Legacy export
 export const roleLabels = roleLabelsByLocale.ru;
 
+import type { AccessibilityProfile } from "@/lib/adaptation/adaptation-types";
+
 type DemoSeedShape = {
   name: string;
   email: string;
@@ -38,7 +40,9 @@ type DemoSeedShape = {
     teacherName: string;
     organizationName: string;
     supportNotes: string;
+    accessibilityProfile?: AccessibilityProfile;
   };
+  accessibilityProfile?: AccessibilityProfile;
 };
 
 type DemoSeeds = {
@@ -50,49 +54,73 @@ type DemoSeeds = {
 
 const ruSeeds: DemoSeeds = {
   parent: {
-    name: "Мадина Каримова",
+    name: "Sarah Miller",
     email: "demo@uquvli.local",
     password: "1",
     role: "parent",
     profile: {
-      childName: "Алина Каримова",
-      childClass: "3 класс",
-      teacherName: "Ольга Сергеевна",
-      organizationName: "Школа №12",
+      childName: "Alex Miller",
+      childClass: "Grade 3",
+      teacherName: "Ms. Johnson",
+      organizationName: "Oak Creek Academy",
       supportNotes:
-        "Короткие инструкции, один вопрос на экране, спокойная пауза после ответа.",
+        "Short instructions, one question on screen, calm pause after answering.",
     },
   },
   student: {
-    name: "Алина Каримова",
+    name: "Alex Miller",
     email: "student@uquvli.local",
     password: "2",
     role: "student",
     profile: {
-      childName: "Алина Каримова",
-      childClass: "3 класс",
-      teacherName: "Ольга Сергеевна",
-      organizationName: "Школа №12",
+      childName: "Alex Miller",
+      childClass: "Grade 3",
+      teacherName: "Ms. Johnson",
+      organizationName: "Oak Creek Academy",
       supportNotes:
-        "Большие кнопки, короткий текст, один выбор за раз и понятный сигнал, когда можно остановиться.",
+        "Large buttons, concise text, single selection at a time, clear stopping point.",
+      accessibilityProfile: {
+        supportType: "reading",
+        preferences: {
+          simplifiedLanguage: true,
+          largerText: true,
+          increasedSpacing: true,
+          autoSpeak: true,
+          captions: false,
+          imageDescriptions: false,
+          reducedMotion: false,
+        },
+      },
+    },
+    accessibilityProfile: {
+      supportType: "reading",
+      preferences: {
+        simplifiedLanguage: true,
+        largerText: true,
+        increasedSpacing: true,
+        autoSpeak: true,
+        captions: false,
+        imageDescriptions: false,
+        reducedMotion: false,
+      },
     },
   },
   teacher: {
-    name: "Ольга Сергеевна",
+    name: "Ms. Johnson",
     email: "teacher@uquvli.local",
     password: "3",
     role: "teacher",
     profile: {
-      childName: "Алина Каримова",
-      childClass: "3 класс",
-      teacherName: "Ольга Сергеевна",
-      organizationName: "Школа №12",
+      childName: "Alex Miller",
+      childClass: "Grade 3",
+      teacherName: "Ms. Johnson",
+      organizationName: "Oak Creek Academy",
       supportNotes:
-        "Отмечать самостоятельность, темп ответа и необходимость повторить инструкцию перед следующим уроком.",
+        "Note independence, response pace, and whether step instructions need repeating.",
     },
   },
   researcher: {
-    name: "Олеся Маркова",
+    name: "Dr. Rachel Brooks",
     email: "researcher@uquvli.local",
     password: "4",
     role: "researcher",
@@ -100,7 +128,7 @@ const ruSeeds: DemoSeeds = {
       childName: "",
       childClass: "",
       teacherName: "",
-      organizationName: "Филиал РГПУ им. А.И. Герцена в г. Ташкенте",
+      organizationName: "Education Research Institute",
       supportNotes: "",
     },
   },
@@ -133,6 +161,30 @@ const uzSeeds: DemoSeeds = {
       organizationName: "12-maktab",
       supportNotes:
         "Katta tugmalar, qisqa matn, bir vaqtda bitta tanlov va toʻxtash mumkinligi haqida tushunarli signal.",
+      accessibilityProfile: {
+        supportType: "reading",
+        preferences: {
+          simplifiedLanguage: true,
+          largerText: true,
+          increasedSpacing: true,
+          autoSpeak: true,
+          captions: false,
+          imageDescriptions: false,
+          reducedMotion: false,
+        },
+      },
+    },
+    accessibilityProfile: {
+      supportType: "reading",
+      preferences: {
+        simplifiedLanguage: true,
+        largerText: true,
+        increasedSpacing: true,
+        autoSpeak: true,
+        captions: false,
+        imageDescriptions: false,
+        reducedMotion: false,
+      },
     },
   },
   teacher: {
@@ -189,29 +241,29 @@ const ruLoginProfiles: DemoLoginProfile[] = [
   {
     code: "1",
     password: "1",
-    label: "Родитель",
-    description: "Контроль занятий, семья, прогресс и связь с педагогом.",
+    label: "Parent",
+    description: "Session tracking, home practice, learner progress, and teacher communication.",
     user: ruSeeds.parent,
   },
   {
     code: "2",
     password: "2",
-    label: "Ученик",
-    description: "Простой режим: большая кнопка урока, короткие шаги и помощь.",
+    label: "Student",
+    description: "Learner mode: large lesson buttons, bite-sized steps, and clear visual guidance.",
     user: ruSeeds.student,
   },
   {
     code: "3",
     password: "3",
-    label: "Педагог",
-    description: "Ученики, наблюдения, уроки и динамика по группе.",
+    label: "Teacher",
+    description: "Learners, observations, adaptive lesson studio, and class progress.",
     user: ruSeeds.teacher,
   },
   {
     code: "4",
     password: "4",
-    label: "Исследователь",
-    description: "Все школы, учителя, ученики, аналитика и экспорт данных.",
+    label: "Researcher",
+    description: "Schools, teachers, learners, analytics, and research data export.",
     user: ruSeeds.researcher,
   },
 ];

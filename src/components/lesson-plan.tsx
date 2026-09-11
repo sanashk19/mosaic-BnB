@@ -6,26 +6,26 @@ import type { LessonMethodology } from "@/data/program";
 
 type Props = {
   methodology: LessonMethodology;
-  /** Total duration label (e.g. "30 мин") */
+  /* UI Module */
   totalDuration?: string;
 };
 
 const dict = {
   ru: {
-    objective: "Цель урока",
-    duration: "Длительность",
-    minutesShort: "мин",
-    stagesCount: "Этапов",
-    tasksTitle: "Задачи урока",
-    materialsTitle: "Что подготовить",
-    flowTitle: "Ход урока",
-    teacherSays: "Учитель говорит",
-    teacherDoes: "Учитель делает",
-    students: "Ученики",
-    tip: "Совет",
-    differentiation: "Адаптация по уровню",
-    homework: "Домашнее задание",
-    safety: "Безопасность и поведение",
+    objective: "Purpose of the lesson",
+    duration: "Duration",
+    minutesShort: "i",
+    stagesCount: "Stages",
+    tasksTitle: "Lesson Objectives",
+    materialsTitle: "What to prepare",
+    flowTitle: "Lesson progress",
+    teacherSays: "The teacher says",
+    teacherDoes: "The teacher does",
+    students: "Students",
+    tip: "Council",
+    differentiation: "Adaptation by level",
+    homework: "Homework",
+    safety: "Safety and Behavior",
   },
   uz: {
     objective: "Dars maqsadi",

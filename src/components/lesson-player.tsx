@@ -1,10 +1,6 @@
 "use client";
 
-/**
- * LessonPlayer — единый «10-экранный» проигрыватель урока.
- * Реализует структуру PhD-карты (Урок_06 эталон): этап повторения + 6 этапов
- * формирования цифрового действия по П.Я. Гальперину + физкультминутка.
- */
+/* UI Component */
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocale } from "@/components/locale-provider";
@@ -41,10 +37,7 @@ import {
 } from "@/components/lesson-mockups";
 import { ICON_MAP } from "@/components/lesson-icons";
 
-/**
- * Рендер иконки или эмодзи. Если illustration — ключ из ICON_MAP (типа "shirt"),
- * рендерим SVG; иначе показываем как текст (с обратной совместимостью).
- */
+/* UI Component */
 function Illustration({ name }: { name?: string }) {
   if (!name) return null;
   const Comp = ICON_MAP[name];
@@ -67,72 +60,49 @@ type LessonPlayerProps = {
   lessonTitle: string;
 };
 
+const englishPlayerDict = {
+  screen: "Screen",
+  of: "of",
+  next: "Next",
+  back: "Back",
+  listen: "Listen",
+  help: "Help",
+  correct: "Correct!",
+  tryAgain: "Try again",
+  finish: "Complete Lesson",
+  completed: "Well done! Lesson completed",
+  showHint: "How to find out?",
+  repeatAll: "Review all",
+  canUse: "Allowed to use",
+  cannotUse: "Do not use",
+  sortTask: "Sort into groups",
+  moodTitle: "How was the lesson?",
+  homeTask: "Home activity",
+  breakTitle: "Movement break",
+  diagPoint1: "Diagnostic Check 1",
+  diagPoint2: "Diagnostic Check 2",
+  diagPoint3: "Diagnostic Check 3 - Key skill",
+  yourGoal: "Our goal",
+  objectName: "Lesson topic",
+  item: "Item",
+  trial: "Attempt",
+};
+
 const dict = {
-  ru: {
-    screen: "Экран",
-    of: "из",
-    next: "Дальше",
-    back: "Назад",
-    listen: "🔊 Послушать",
-    help: "Помощь",
-    correct: "Верно!",
-    tryAgain: "Попробуй ещё раз",
-    finish: "Завершить урок",
-    completed: "Молодец! Урок завершён",
-    showHint: "Как это узнать?",
-    repeatAll: "Повторить всё",
-    canUse: "Можно использовать",
-    cannotUse: "Нельзя использовать",
-    sortTask: "Разложи по группам",
-    moodTitle: "Как тебе урок?",
-    homeTask: "Задание на дом",
-    breakTitle: "Физкультминутка",
-    diagPoint1: "Диагностическая точка 1",
-    diagPoint2: "Диагностическая точка 2",
-    diagPoint3: "Диагностическая точка 3 — ключевая",
-    yourGoal: "Наша цель",
-    objectName: "Объект урока",
-    item: "Объект",
-    trial: "Попытка",
-  },
-  uz: {
-    screen: "Ekran",
-    of: "/",
-    next: "Keyingisi",
-    back: "Orqaga",
-    listen: "🔊 Tinglash",
-    help: "Yordam",
-    correct: "Toʻgʻri!",
-    tryAgain: "Yana urinib koʻr",
-    finish: "Darsni yakunlash",
-    completed: "Aʼlo! Dars yakunlandi",
-    showHint: "Buni qanday bilish mumkin?",
-    repeatAll: "Hammasini takrorlash",
-    canUse: "Ishlatish mumkin",
-    cannotUse: "Ishlatib boʻlmaydi",
-    sortTask: "Guruhlarga ajrat",
-    moodTitle: "Dars qanday boʻldi?",
-    homeTask: "Uy vazifasi",
-    breakTitle: "Jismoniy daqiqa",
-    diagPoint1: "Diagnostika nuqtasi 1",
-    diagPoint2: "Diagnostika nuqtasi 2",
-    diagPoint3: "Diagnostika nuqtasi 3 — kalit",
-    yourGoal: "Maqsadimiz",
-    objectName: "Dars obyekti",
-    item: "Obyekt",
-    trial: "Urinish",
-  },
+  ru: englishPlayerDict,
+  uz: englishPlayerDict,
 } as const;
 
 // ── Helpers ───────────────────────────────────────────────────────────────
 
-function speak(text: string, locale: "ru" | "uz") {
+function speak(text: string, _locale?: "ru" | "uz") {
+  void _locale;
   if (typeof window === "undefined") return;
   const synth = window.speechSynthesis;
   if (!synth) return;
   synth.cancel();
   const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = locale === "ru" ? "ru-RU" : "uz-UZ";
+  utter.lang = "en-US";
   utter.rate = 0.9;
   utter.pitch = 1;
   synth.speak(utter);
@@ -264,11 +234,11 @@ function MotivationScreen({
 
         {!hintOpen ? (
           <button type="button" className="lp-hint-btn" onClick={() => setHintOpen(true)}>
-            💡 {t.showHint}
+            {t.showHint}
           </button>
         ) : (
           <div className="lp-hint-box">
-            <strong>💡</strong>
+            <strong>Hint:</strong>
             <p>{screen.hint}</p>
           </div>
         )}
@@ -329,11 +299,7 @@ function InfoCardsScreen({
   );
 }
 
-/**
- * Рендер «showcase» — реалистичный мокап устройства, который виден на экранах
- * object-explorer и mark-zones, не только на practice. Возвращает либо
- * настоящий мокап (когда есть config), либо null (тогда используется эмодзи).
- */
+/* UI Component */
 function renderShowcaseMockup(
   mockup: PracticeMockup | undefined,
   onInteraction?: (correct: boolean, msg: string) => void,
@@ -346,7 +312,7 @@ function renderShowcaseMockup(
       return (
         <ThermometerMockup
           value={mockup.value}
-          onClassify={(choice) => noop(choice === mockup.correctZone, `Зона: ${choice}`)}
+          onClassify={(choice) => noop(choice === mockup.correctZone, `Zone: ${choice}`)}
         />
       );
     case "atm":
@@ -628,7 +594,7 @@ function ObjectExplorerScreen({
   const [activeId, setActiveId] = useState<string | null>(null);
   const active = screen.zones.find((z) => z.id === activeId);
 
-  // Если есть реальный мокап устройства — показываем его вместо абстрактной канвы
+  // UI Helper
   const showcase = renderShowcaseMockup(screen.mockup);
 
   if (showcase) {
@@ -636,14 +602,14 @@ function ObjectExplorerScreen({
       <div className="lp-screen lp-explorer">
         <header className="lp-screen-head">
           <h2>{screen.title}</h2>
-          <p className="lp-muted">Вот как это выглядит. Внимательно рассмотри.</p>
-          <ListenButton text={`${screen.title}. Внимательно рассмотри устройство.`} />
+          <p className="lp-muted">Here is how it looks. Examine it carefully.</p>
+          <ListenButton text={`${screen.title}. Examine the device carefully.`} />
         </header>
 
         <div className="lp-explorer-showcase">
           <div className="lp-showcase-device">{showcase}</div>
           <aside className="lp-explorer-aside">
-            <p className="lp-muted">Главные части:</p>
+            <p className="lp-muted">Main components:</p>
             <ul className="lp-parts-list">
               {screen.zones.map((z) => (
                 <li
@@ -669,7 +635,7 @@ function ObjectExplorerScreen({
     );
   }
 
-  // Fallback: старая «канва с эмодзи и хотспотами»
+  // UI Helper
   return (
     <div className="lp-screen lp-explorer">
       <header className="lp-screen-head">
@@ -696,7 +662,7 @@ function ObjectExplorerScreen({
                 className={`lp-zone-btn ${activeId === z.id ? "is-active" : ""}`}
                 onClick={() => setActiveId(z.id)}
               >
-                Покажи: {z.label}
+                Show: {z.label}
               </button>
             ))}
           </div>
@@ -756,7 +722,7 @@ function MarkZonesScreen({
 
   const handlePartClick = (id: string) => handleZone(id);
 
-  // Если есть реальный мокап — показываем его + список частей справа
+  // UI Helper
   const showcase = renderShowcaseMockup(screen.mockup);
 
   if (showcase) {
@@ -775,7 +741,7 @@ function MarkZonesScreen({
                 <p className="lp-task-hint">
                   {t.trial} {taskIdx + 1} / {screen.zones.length}
                 </p>
-                <p className="lp-task">{screen.tasks[taskIdx] ?? `Найди: ${correctZone.label}`}</p>
+                <p className="lp-task">{screen.tasks[taskIdx] ?? `Find: ${correctZone.label}`}</p>
                 <ListenButton text={screen.tasks[taskIdx] ?? correctZone.label} />
                 <div className="lp-parts-tap">
                   {screen.zones.map((z) => {
@@ -788,7 +754,7 @@ function MarkZonesScreen({
                         disabled={isMarked}
                         onClick={() => handlePartClick(z.id)}
                       >
-                        {isMarked ? "✓ " : ""}{z.label}
+                        {isMarked ? "[Done] " : ""}{z.label}
                       </button>
                     );
                   })}
@@ -800,14 +766,14 @@ function MarkZonesScreen({
                 ) : null}
                 {wrongStreak >= 3 ? (
                   <div className="lp-feedback soft">
-                    Подсказка: нужная часть подсвечена.
+                    Hint: The required part is highlighted.
                   </div>
                 ) : null}
               </>
             ) : (
               <div className="lp-feedback good">
-                <strong>Отлично!</strong>
-                <p>Все части найдены верно.</p>
+                <strong>Great job!</strong>
+                <p>All components found successfully.</p>
                 <button type="button" className="lp-next" onClick={onComplete}>
                   {t.next} →
                 </button>
@@ -819,7 +785,7 @@ function MarkZonesScreen({
     );
   }
 
-  // Fallback — старый mock с эмодзи и хотспотами
+  // UI Helper
   return (
     <div className="lp-screen lp-mark-zones">
       <header className="lp-screen-head">
@@ -843,7 +809,7 @@ function MarkZonesScreen({
               <p className="lp-task-hint">
                 {t.trial} {taskIdx + 1} / {screen.zones.length}
               </p>
-              <p className="lp-task">{screen.tasks[taskIdx] ?? `Найди: ${correctZone.label}`}</p>
+              <p className="lp-task">{screen.tasks[taskIdx] ?? `Find: ${correctZone.label}`}</p>
               <ListenButton text={screen.tasks[taskIdx] ?? correctZone.label} />
               {feedback ? (
                 <div className={`lp-feedback ${feedback}`}>
@@ -852,14 +818,14 @@ function MarkZonesScreen({
               ) : null}
               {wrongStreak >= 3 ? (
                 <div className="lp-feedback soft">
-                  Подсказка: нужное место мигает.
+                  Hint: The target location is blinking.
                 </div>
               ) : null}
             </>
           ) : (
             <div className="lp-feedback good">
-              <strong>Отлично!</strong>
-              <p>Все места отмечены верно.</p>
+              <strong>Great job!</strong>
+              <p>All locations marked correctly.</p>
               <button type="button" className="lp-next" onClick={onComplete}>
                 {t.next} →
               </button>
@@ -899,7 +865,7 @@ function BreakScreen({
         <h2>{t.breakTitle}</h2>
       </header>
       <div className="lp-break-body">
-        <div className="lp-break-emoji" aria-hidden="true">🤸‍♀️</div>
+        <div className="lp-break-label" style={{ fontWeight: 700, color: "#2563eb", marginBottom: "8px" }}>Rest Break</div>
         <p className="lp-break-theme">{screen.themeText}</p>
         <div className="lp-break-timer">
           <svg viewBox="0 0 100 100" className="lp-break-ring">
@@ -947,11 +913,11 @@ function InstructionScreen({
       </header>
 
       <div className="lp-step-card">
-        <div className="lp-step-num">Шаг {stepIdx + 1} / {screen.steps.length}</div>
+        <div className="lp-step-num">Step {stepIdx + 1} / {screen.steps.length}</div>
         <div className="lp-step-num-badge">{stepIdx + 1}</div>
         <h3>{step.title}</h3>
         <p>{step.body}</p>
-        <ListenButton text={`Шаг ${stepIdx + 1}. ${step.title}. ${step.body}`} />
+        <ListenButton text={`Step ${stepIdx + 1}. ${step.title}. ${step.body}`} />
       </div>
 
       <div className="lp-step-controls">
@@ -968,7 +934,7 @@ function InstructionScreen({
           className="lp-step-repeat"
           onClick={() => speak(screen.steps.map((s) => s.body).join(". "), locale)}
         >
-          🔁 {screen.repeatAllLabel ?? t.repeatAll}
+          {screen.repeatAllLabel ?? t.repeatAll}
         </button>
         {stepIdx < screen.steps.length - 1 ? (
           <button
@@ -1020,7 +986,7 @@ function PracticeScreen({
     }
   };
 
-  // ── Mockup-режим: показываем визуальный имитатор устройства ─────────────
+  // UI Helper
   if (screen.mockup) {
     const m = screen.mockup;
     let mockupNode: React.ReactNode = null;
@@ -1037,8 +1003,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: ok,
                 msg: ok
-                  ? `Программа «${label}» подходит — стирка запущена.`
-                  : `Программа «${label}» не подходит для этой вещи.`,
+                  ? `Program "${label}" is suitable — wash cycle started.`
+                  : `Program "${label}" is not suitable for this item.`,
               })
             }
           />
@@ -1052,7 +1018,7 @@ function PracticeScreen({
             onResult={(ok, action) =>
               setMockupResult({
                 correct: ok,
-                msg: ok ? `Хорошо! ${action}.` : `Опасно! ${action}.`,
+                msg: ok ? `Good! ${action}.` : `Caution! ${action}.`,
               })
             }
           />
@@ -1067,8 +1033,8 @@ function PracticeScreen({
                 correct: choice === m.correctZone,
                 msg:
                   choice === m.correctZone
-                    ? "Верно — ты правильно определил температуру."
-                    : "Посмотри на шкалу: указатель показывает другую зону.",
+                    ? "Correct — you accurately determined the temperature."
+                    : "Check the scale: the pointer indicates a different zone.",
               })
             }
           />
@@ -1081,8 +1047,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: safe,
                 msg: safe
-                  ? `Громкость ${value}% — это безопасный уровень для слуха.`
-                  : `Громкость ${value}% — это слишком громко. Сделай тише до ${m.safeMax}%.`,
+                  ? `Volume ${value}% is a safe listening level.`
+                  : `Volume ${value}% is too loud. Turn it down to ${m.safeMax}%.`,
               })
             }
           />
@@ -1099,8 +1065,8 @@ function PracticeScreen({
                 correct: adv === m.correctAdvice,
                 msg:
                   adv === m.correctAdvice
-                    ? "Верно — ты правильно прочитал прогноз и выбрал защиту."
-                    : "Посмотри на УФ-индекс ещё раз и подумай, нужна ли защита.",
+                    ? "Correct — you checked the forecast and selected appropriate protection."
+                    : "Review the UV index again and consider if sun protection is needed.",
               })
             }
           />
@@ -1121,11 +1087,11 @@ function PracticeScreen({
                 msg:
                   expired
                     ? use
-                      ? "Это просроченное средство — пользоваться нельзя."
-                      : "Верно — средство просрочено, пользоваться нельзя."
+                      ? "This product is expired — do not use it."
+                      : "Correct — product is expired and unsafe to use."
                     : use
-                      ? "Верно — срок годности ещё не истёк."
-                      : "На самом деле срок годности ещё не истёк — можно пользоваться.",
+                      ? "Correct — expiration date has not passed."
+                      : "The product is still within its expiration date — safe to use.",
               })
             }
           />
@@ -1158,8 +1124,8 @@ function PracticeScreen({
                 correct: i === m.correctIndex,
                 msg:
                   i === m.correctIndex
-                    ? `Верно — это ${m.targetTrain} на ${m.targetTime}.`
-                    : "Это другой поезд. Проверь номер и время.",
+                    ? `Correct — that is train ${m.targetTrain} at ${m.targetTime}.`
+                    : "That is a different train. Check the number and departure time.",
               })
             }
           />
@@ -1175,8 +1141,8 @@ function PracticeScreen({
                 correct: entered === m.trackNumber,
                 msg:
                   entered === m.trackNumber
-                    ? `Посылка найдена: ${m.expectedStatus}.`
-                    : "Номер не совпадает. Проверь, что ввёл правильно.",
+                    ? `Package found: ${m.expectedStatus}.`
+                    : "Tracking number does not match. Please verify your input.",
               })
             }
           />
@@ -1191,8 +1157,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: ok,
                 msg: ok
-                  ? "Опросник пройден правильно — рекомендация по уходу получена."
-                  : "Часть ответов не совпала — посмотри подсказки в карточках выше.",
+                  ? "Assessment complete — care recommendations generated."
+                  : "Some answers did not match — review the guide cards above.",
               })
             }
           />
@@ -1206,7 +1172,7 @@ function PracticeScreen({
             onComplete={() =>
               setMockupResult({
                 correct: true,
-                msg: "Все шаги отмечены — чек-лист выполнен правильно.",
+                msg: "All steps completed — checklist successfully verified.",
               })
             }
           />
@@ -1221,8 +1187,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: ok,
                 msg: ok
-                  ? `«${name}» — это полезный выбор.`
-                  : `«${name}» — не лучший выбор для ужина. Подумай ещё раз.`,
+                  ? `"${name}" is a healthy, nutritious choice.`
+                  : `"${name}" is not ideal for dinner. Consider another option.`,
               })
             }
           />
@@ -1240,8 +1206,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: ok,
                 msg: ok
-                  ? "Верно! Ты правильно прочитал рецепт."
-                  : "Посмотри список продуктов ещё раз.",
+                  ? "Correct! You followed the recipe accurately."
+                  : "Review the ingredients list once more.",
               })
             }
           />
@@ -1258,8 +1224,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: ok,
                 msg: ok
-                  ? `Итог посчитан верно: ${total.toLocaleString("ru-RU")} сум.`
-                  : `Проверь введённые суммы. Ожидалось ${m.expectedTotal.toLocaleString("ru-RU")} сум.`,
+                  ? `Total calculated correctly: $${total.toLocaleString("en-US")}.`
+                  : `Check your calculated figures. Expected total was $${m.expectedTotal.toLocaleString("en-US")}.`,
               })
             }
           />
@@ -1275,8 +1241,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: ok,
                 msg: ok
-                  ? "Заявление принято. Готово через 5 рабочих дней."
-                  : "Проверь, всё ли заполнено правильно.",
+                  ? "Application submitted successfully. Ready in 5 business days."
+                  : "Please verify that all fields are filled out accurately.",
               })
             }
           />
@@ -1291,8 +1257,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: ok,
                 msg: ok
-                  ? `Верно — это ключевое условие.`
-                  : `Это второстепенный пункт. Ищи главное условие договора.`,
+                  ? "Correct — this is a key contract term."
+                  : "This is a secondary clause. Look for the primary agreement condition.",
               })
             }
           />
@@ -1308,8 +1274,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: ok,
                 msg: ok
-                  ? `Правильно — «${name}» подходит.`
-                  : `«${name}» — не то. Прочитай задание ещё раз.`,
+                  ? `Correct — "${name}" is appropriate.`
+                  : `"${name}" is incorrect. Please re-read the prompt.`,
               })
             }
           />
@@ -1324,8 +1290,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: ok,
                 msg: ok
-                  ? `Верно — «${name}» подходит ${m.occasion}.`
-                  : `«${name}» не подходит для случая «${m.occasion}».`,
+                  ? `Correct — "${name}" is suitable for ${m.occasion}.`
+                  : `"${name}" is not suitable for ${m.occasion}.`,
               })
             }
           />
@@ -1338,8 +1304,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: ok,
                 msg: ok
-                  ? "Стол сервирован по правилам — молодец!"
-                  : "Проверь: вилка слева, нож/ложка справа, стакан сверху.",
+                  ? "Table set correctly according to dining etiquette — great job!"
+                  : "Check layout: fork on the left, knife/spoon on the right, glass at the top.",
               })
             }
           />
@@ -1354,7 +1320,7 @@ function PracticeScreen({
             onPick={(ok, name) =>
               setMockupResult({
                 correct: ok,
-                msg: ok ? `«${name}» — правильный выбор.` : `«${name}» не подходит — посмотри пометки на упаковке.`,
+                msg: ok ? `"${name}" is the right choice.` : `"${name}" is not suitable — check the packaging labels.`,
               })
             }
           />
@@ -1369,7 +1335,7 @@ function PracticeScreen({
             onPick={(ok, name) =>
               setMockupResult({
                 correct: ok,
-                msg: ok ? `«${name}» — одежда по погоде!` : `«${name}» не подходит для такой погоды.`,
+                msg: ok ? `"${name}" matches the weather forecast!` : `"${name}" is not suitable for these weather conditions.`,
               })
             }
           />
@@ -1385,7 +1351,7 @@ function PracticeScreen({
             onAnswer={(ok) =>
               setMockupResult({
                 correct: ok,
-                msg: ok ? "Правильно прочитал значки!" : "Посмотри на значки ещё раз.",
+                msg: ok ? "Care symbols read correctly!" : "Review the care symbols again.",
               })
             }
           />
@@ -1400,7 +1366,7 @@ function PracticeScreen({
             onPick={(ok) =>
               setMockupResult({
                 correct: ok,
-                msg: ok ? "Верно — это правильная дозировка." : "Посмотри на строку таблицы для этого веса.",
+                msg: ok ? "Correct — this is the recommended dosage." : "Check the dosage table row for this load weight.",
               })
             }
           />
@@ -1415,8 +1381,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: minutes === m.recipeMinutes,
                 msg: minutes === m.recipeMinutes
-                  ? `Правильно — таймер на ${minutes} минут, как в рецепте.`
-                  : `В рецепте написано ${m.recipeMinutes} минут, а ты поставил ${minutes}.`,
+                  ? `Correct — timer set for ${minutes} minutes as specified in recipe.`
+                  : `Recipe calls for ${m.recipeMinutes} minutes, but timer was set to ${minutes}.`,
               })
             }
           />
@@ -1429,8 +1395,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: ok,
                 msg: ok
-                  ? "Билет куплен правильно: направление, дата и место подтверждены."
-                  : "Проверь направление и дату перед оплатой.",
+                  ? "Ticket booked successfully: route, date, and seat confirmed."
+                  : "Verify route and travel date before confirming payment.",
               })
             }
           />
@@ -1445,7 +1411,7 @@ function PracticeScreen({
             onAction={(ok, num) =>
               setMockupResult({
                 correct: ok,
-                msg: ok ? `Правильный номер: ${num}` : `${num} — не тот номер. Перечитай задание.`,
+                msg: ok ? `Correct number: ${num}` : `${num} is not the right number. Re-read the task.`,
               })
             }
           />
@@ -1459,8 +1425,8 @@ function PracticeScreen({
               setMockupResult({
                 correct: ok,
                 msg: ok
-                  ? `Все ${m.situations.length} ситуаций определены верно!`
-                  : `Правильно: ${score} из ${m.situations.length}. Безопасности учиться важно — попробуй ещё раз.`,
+                  ? `All ${m.situations.length} situations identified correctly!`
+                  : `Correct: ${score} of ${m.situations.length}. Safety is essential — try again.`,
               })
             }
           />
@@ -1508,7 +1474,7 @@ function PracticeScreen({
     );
   }
 
-  // ── Текстовый fallback (для уроков без мокапа) ─────────────────────────
+  // UI Helper
   return (
     <div className="lp-screen lp-practice">
       <header className="lp-screen-head">
@@ -1684,7 +1650,7 @@ function ReflectionScreen({
           disabled={!allPlaced || !mood}
           onClick={onComplete}
         >
-          ✅ {t.finish}
+          {t.finish}
         </button>
       </div>
     </div>
@@ -1708,7 +1674,7 @@ export function LessonPlayer({ screens, lessonTitle }: LessonPlayerProps) {
     }
   };
 
-  // Найти индекс экрана practice (где тренажёр), для кнопки «Запустить тренажёр»
+  // UI Helper
   const practiceIdx = screens.findIndex((s) => s.type === "practice");
   const onPracticeScreen = idx === practiceIdx;
 
@@ -1716,7 +1682,7 @@ export function LessonPlayer({ screens, lessonTitle }: LessonPlayerProps) {
     return (
       <div className="lp-root lp-finished">
         <div className="lp-finished-card">
-          <div className="lp-finished-emoji">🎉</div>
+          <div className="lp-finished-badge" style={{ fontWeight: 800, color: "#16a34a", fontSize: "1.2rem", marginBottom: "12px" }}>Completed</div>
           <h2>{t.completed}</h2>
           <p>{lessonTitle}</p>
         </div>
@@ -1770,7 +1736,7 @@ export function LessonPlayer({ screens, lessonTitle }: LessonPlayerProps) {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            ▶ Запустить тренажёр
+            Jump to simulator &rarr;
           </button>
         ) : null}
       </div>

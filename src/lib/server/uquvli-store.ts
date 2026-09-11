@@ -23,6 +23,7 @@ import type {
   UserProfile,
   UserRole,
 } from "@/lib/uquvli-types";
+import type { AccessibilityProfile } from "@/lib/adaptation/adaptation-types";
 import { HttpError } from "@/lib/server/api";
 
 type StoredUser = CurrentUser & {
@@ -53,7 +54,7 @@ const EMPTY_DB: UquvliDatabase = {
 let dbCache: UquvliDatabase | null = null;
 let writeQueue: Promise<unknown> = Promise.resolve();
 
-function isRecord(value: unknown): value is Record<string, unknown> {
+function isRecord(value: unknown): value is Record<string, unknown>{
   return Boolean(value) && typeof value === "object";
 }
 
@@ -91,7 +92,7 @@ function requireGroup(value: unknown): StudentGroup {
 }
 
 function normalizeProfile(
-  profile: Partial<UserProfile> | undefined,
+  profile: Partial<UserProfile>| undefined,
   fallbackName: string,
   demoSeed?: DemoUserSeed,
 ): UserProfile {
@@ -146,6 +147,7 @@ function toPublicUser(user: StoredUser): CurrentUser {
     studentCode: user.studentCode,
     teacherId: user.teacherId,
     group: user.group,
+    accessibilityProfile: user.accessibilityProfile ?? user.profile.accessibilityProfile,
   };
 }
 
@@ -157,6 +159,12 @@ function normalizeStoredUser(entry: unknown): StoredUser | null {
   const name = sanitizeText(entry.name) || "Пользователь";
 
   if (!email || !passwordHash) return null;
+
+  const rawAccessibility = isRecord(entry.accessibilityProfile)
+    ? (entry.accessibilityProfile as unknown as AccessibilityProfile)
+    : isRecord(entry.profile) && isRecord(entry.profile.accessibilityProfile)
+      ? (entry.profile.accessibilityProfile as unknown as AccessibilityProfile)
+      : undefined;
 
   return {
     id: sanitizeText(entry.id) || randomUUID(),
@@ -181,6 +189,7 @@ function normalizeStoredUser(entry: unknown): StoredUser | null {
     studentCode: sanitizeText(entry.studentCode) || undefined,
     teacherId: sanitizeText(entry.teacherId) || undefined,
     group: normalizeGroup(entry.group),
+    accessibilityProfile: rawAccessibility,
   };
 }
 
@@ -302,7 +311,7 @@ async function loadDb(): Promise<UquvliDatabase> {
 
 async function saveDb(db: UquvliDatabase) {
   await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
-  const tmpFile = `${DATA_FILE}.${process.pid}.${Date.now()}.tmp`;
+  const tmpFile =`${DATA_FILE}.${process.pid}.${Date.now()}.tmp`;
   await fs.writeFile(tmpFile, `${JSON.stringify(db, null, 2)}\n`, "utf8");
   await fs.rename(tmpFile, DATA_FILE);
   dbCache = db;
@@ -341,8 +350,7 @@ function getDemoProfileByCredentials(
       compactDemoCode === `${profile.code} ${profile.password}`
       && (password === "" || password === profile.password);
     const shortCodeMatch =
-      compactDemoDigits === `${profile.code}${profile.password}`
-      && (password === "" || password === profile.password || password === compactDemoDigits);
+      compactDemoDigits === `${profile.code}${profile.password}`&& (password === "" || password === profile.password || password === compactDemoDigits);
 
     return exactCodeMatch || compactCodeMatch || shortCodeMatch;
   });
@@ -436,7 +444,7 @@ export async function findUserById(userId: string): Promise<CurrentUser | null> 
   return user ? toPublicUser(user) : null;
 }
 
-export async function registerUser(input: RegisterInput): Promise<CurrentUser> {
+export async function registerUser(input: RegisterInput): Promise<CurrentUser>{
   return withWrite((db) => {
     const name = sanitizeText(input.name);
     const email = normalizeEmail(sanitizeText(input.email));
@@ -462,7 +470,7 @@ export async function registerUser(input: RegisterInput): Promise<CurrentUser> {
         uz: "Toʻgʻri e-pochtani kiriting.",
       });
     }
-    if (password.length < 6) {
+    if (password.length< 6) {
       throw new HttpError(400, {
         ru: "Пароль должен быть не короче 6 символов.",
         uz: "Parol kamida 6 ta belgidan iborat boʻlishi kerak.",
@@ -484,7 +492,7 @@ export async function registerUser(input: RegisterInput): Promise<CurrentUser> {
       }
     }
 
-    if (db.users.some((entry) => entry.email === email)) {
+    if (db.users.some((entry) =>entry.email === email)) {
       throw new HttpError(409, {
         ru: "Пользователь с таким email уже зарегистрирован.",
         uz: "Bunday e-pochta bilan foydalanuvchi roʻyxatdan oʻtgan.",
@@ -509,7 +517,7 @@ export async function registerUser(input: RegisterInput): Promise<CurrentUser> {
 
 export async function createUserByResearcher(
   input: ResearcherCreateUserInput,
-): Promise<CurrentUser> {
+): Promise<CurrentUser>{
   if (input.role === "student") {
     return addStudentToClass({
       name: input.name,
@@ -541,14 +549,14 @@ export async function createUserByResearcher(
         uz: "Toʻgʻri e-pochtani kiriting.",
       });
     }
-    if (password.length < 6) {
+    if (password.length< 6) {
       throw new HttpError(400, {
         ru: "Пароль должен быть не короче 6 символов.",
         uz: "Parol kamida 6 ta belgidan iborat boʻlishi kerak.",
       });
     }
 
-    if (db.users.some((entry) => entry.email === email)) {
+    if (db.users.some((entry) =>entry.email === email)) {
       throw new HttpError(409, {
         ru: "Пользователь с таким email уже зарегистрирован.",
         uz: "Bunday e-pochta bilan foydalanuvchi roʻyxatdan oʻtgan.",
@@ -589,7 +597,7 @@ export async function createUserByResearcher(
   });
 }
 
-export async function loginUser(input: LoginInput): Promise<CurrentUser> {
+export async function loginUser(input: LoginInput): Promise<CurrentUser>{
   return withWrite((db) => {
     const rawIdentifier = sanitizeText(input.identifier);
     const identifier = normalizeEmail(rawIdentifier);
@@ -628,7 +636,7 @@ export async function completeLessonForUser(
   userId: string,
   lessonSlug: string,
   score?: number,
-): Promise<CurrentUser> {
+): Promise<CurrentUser>{
   return withWrite((db) => {
     const user = db.users.find((entry) => entry.id === userId);
     if (!user) {
@@ -682,7 +690,7 @@ export async function getClassState(teacherId: string): Promise<ClassState> {
 export async function openLessonForClass(
   teacherId: string,
   lessonSlug: string,
-): Promise<ClassState> {
+): Promise<ClassState>{
   return withWrite((db) => {
     const teacher = db.users.find(
       (user) => user.id === teacherId && user.role === "teacher",
@@ -708,7 +716,7 @@ export async function openLessonForClass(
   });
 }
 
-export async function closeLessonForClass(teacherId: string): Promise<ClassState> {
+export async function closeLessonForClass(teacherId: string): Promise<ClassState>{
   return withWrite((db) => {
     const teacher = db.users.find(
       (user) => user.id === teacherId && user.role === "teacher",
@@ -735,7 +743,7 @@ export async function getStudentsByTeacher(teacherId: string): Promise<CurrentUs
 
 export async function addStudentToClass(
   input: AddStudentInput,
-): Promise<CurrentUser> {
+): Promise<CurrentUser>{
   return withWrite((db) => {
     const name = sanitizeText(input.name);
     const teacherId = sanitizeText(input.teacherId);
@@ -758,7 +766,7 @@ export async function addStudentToClass(
 
     const group = requireGroup(input.group);
     const studentCode = generateStudentCode(db);
-    const email = `student-${studentCode}@uquvli.local`;
+    const email =`student-${studentCode}@uquvli.local`;
 
     const newStudent: StoredUser = {
       id: randomUUID(),
@@ -788,7 +796,7 @@ export async function addStudentToClass(
 export async function updateStudentGroup(
   studentId: string,
   group: StudentGroup,
-): Promise<CurrentUser> {
+): Promise<CurrentUser>{
   return withWrite((db) => {
     const student = db.users.find(
       (user) => user.id === studentId && user.role === "student",
@@ -833,7 +841,7 @@ export async function logAction(
     action: ActionType;
     metadata?: Record<string, unknown>;
   },
-): Promise<ActionEvent> {
+): Promise<ActionEvent>{
   return withWrite((db) => {
     const user = db.users.find((entry) => entry.id === userId);
     if (!user) {
@@ -876,7 +884,7 @@ export async function submitQuestionnaire(
   userId: string,
   type: QuestionnaireType,
   answers: QuestionnaireAnswer[],
-): Promise<QuestionnaireSubmission> {
+): Promise<QuestionnaireSubmission>{
   return withWrite((db) => {
     const user = db.users.find((entry) => entry.id === userId);
     if (!user) {

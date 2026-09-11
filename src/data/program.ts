@@ -1,7 +1,5 @@
-// AUTO-GENERATED from _dissertation/scripts/generate_program_ts.py
-// Структура — 30 экспериментальных уроков диссертационного исследования
-// (Главa II), сгруппированные по 6 цифровым жизненным сценариям +
-// диагностический модуль. Источник — Анализ_уроков_цифровая_грамотность_3.docx.
+// Mosaic Structured Curriculum: 30 practical life-skills and digital capability lessons
+// grouped across 6 digital life scenarios plus diagnostic foundations.
 
 export type LessonScenario = {
   title: string;
@@ -451,396 +449,392 @@ export type ProgramModule = {
 };
 
 export const platformHighlights = [
-  "30 экспериментальных уроков формирующего эксперимента диссертационного исследования",
-  "6 цифровых жизненных сценариев + констатирующая и контрольная диагностика",
-  "Все 5 компонентов функциональной цифровой грамотности (ФЦГ) — для учеников 7 класса с F70",
+  "30 structured life-skills and digital capability lessons",
+  "6 digital life scenarios with diagnostic and progress checkpoints",
+  "All core components of functional digital literacy tailored for all learners",
 ];
 
-export const platformHighlightsUz = [
-  "Tadqiqotning shakllantiruvchi eksperimentidagi 30 ta tajriba darsi",
-  "6 ta raqamli hayotiy senariy + boshlangʻich va yakuniy diagnostika",
-  "Funksional raqamli savodxonlikning barcha 5 ta tarkibiy qismi (F70, 7-sinf)",
-];
+export const platformHighlightsUz = platformHighlights;
 
 export const programModules: ProgramModule[] = [
   {
     slug: "diagnostic",
-    title: "Диагностика",
-    hours: "2 часа",
+    title: "Diagnostic Life Skills",
+    hours: "2 hours",
     lessonCount: 2,
-    description: "Два диагностических урока — констатирующий и контрольный замеры функциональной цифровой грамотности (ФЦГ).",
+    description: "Two diagnostic lessons - ascertaining and control measurements of functional digital literacy (FDL).",
     image: "/uzbek-images/health-clinic.jpg",
-    imageAlt: "Диагностика цифровой грамотности",
-    imageCredit: "Документ диссертационного исследования",
+    imageAlt: "Digital Literacy Diagnostic",
+    imageCredit: "Dissertation Research Document",
     imageSourceUrl: "",
     knowledge: [
-      "Что такое функциональная цифровая грамотность",
-      "Из каких 5 компонентов состоит ФЦГ",
-      "Зачем нужны входная и итоговая диагностика"
+      "What is functional digital literacy",
+      "What are the 5 components of the FCG?",
+      "Why are input and final diagnostics needed?"
     ],
     skills: [
-      "Спокойно работать с цифровыми заданиями",
-      "Пользоваться кнопками «Послушать» и «Помощь»",
-      "Доводить задание до конца"
+      "Work comfortably with digital tasks",
+      "Use the “Listen” and “Help” buttons",
+      "Bring the task to completion"
     ],
     lessons: [
       {
         slug: "diagnostic-entry",
-        title: "Личная гигиена подростков",
-        duration: "1 час",
-        summary: "Вводный урок — диагностика. Платформа смотрит, как ребёнок справляется с цифровыми заданиями до начала курса.",
-        intro: "Это первый урок-знакомство. Ребёнок проходит короткие задания: читает текст на экране, нажимает на значки, выбирает ответы. Здесь нет оценок — мы просто смотрим стартовый уровень, чтобы потом увидеть, чему он научился за учебный год.",
+        title: "Personal hygiene for teenagers",
+        duration: "1 hour",
+        summary: "Introductory lesson - diagnostics. The platform looks at how the child copes with digital tasks before the start of the course.",
+        intro: "This is the first introduction lesson. The child goes through short tasks: reads the text on the screen, clicks on icons, selects answers. There are no grades here - we just look at the starting level so we can then see what he has learned during the school year.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Личная гигиена подростков»",
+        imageAlt: "Illustration for the lesson “Personal hygiene for teenagers”",
         goals: [
-          "Понять, что такое личная гигиена и зачем это нужно в жизни.",
-          "Освоить цифровое действие — пройти входную диагностику цифровых умений.",
-          "Запомнить правило безопасности: правила безопасной работы за экраном (расстояние до глаз, осанка)."
+          "Understand what personal hygiene is and why it is needed in life.",
+          "Master digital action - pass the entrance diagnostics of digital skills.",
+          "Remember the safety rule: rules for safe work behind the screen (distance to the eyes, posture)."
         ],
         rules: [
-          "Спокойно прочитай задание.",
-          "Не торопись — оценок нет.",
-          "Если непонятно — нажми «Послушать».",
-          "Если не знаешь — спроси у учителя."
+          "Read the assignment calmly.",
+          "Take your time - there are no grades.",
+          "If it’s not clear, click “Listen.”",
+          "If you don't know, ask your teacher."
         ],
         scenarios: [
           {
-            title: "Утренние гигиенические процедуры",
-            text: "Утром ты только проснулся. Что нужно сделать в первую очередь?",
+            title: "Morning hygiene procedures",
+            text: "This morning you just woke up. What should you do first?",
             options: [
-              "Умыться, почистить зубы, причесаться.",
-              "Сразу выйти на улицу.",
-              "Посидеть в телефоне до обеда."
+              "Wash, brush your teeth, comb your hair.",
+              "Go outside immediately.",
+              "Stay on the phone until lunch."
             ],
             correctIndex: 0,
-            feedback: "Верно. Утром — гигиенические процедуры: умывание, зубы, причёска.",
-            support: "Это базовая гигиена — ежедневная привычка с детства."
+            feedback: "Right. In the morning - hygiene procedures: washing, teeth, hair.",
+            support: "This is basic hygiene - a daily habit since childhood."
           },
           {
-            title: "Когда нужно мыть руки",
-            text: "Ты пришёл домой с улицы и хочешь поесть.",
+            title: "When to wash your hands",
+            text: "You came home from the street and want to eat.",
             options: [
-              "Сначала помыть руки с мылом.",
-              "Не мыть, грязь полезна.",
-              "Сразу за стол — потом помою."
+              "First, wash your hands with soap.",
+              "Do not wash, dirt is useful.",
+              "Go straight to the table - then I’ll wash it."
             ],
             correctIndex: 0,
-            feedback: "Правильно. Руки моют перед едой и после улицы.",
-            support: "На грязных руках микробы, поэтому моют их с мылом."
+            feedback: "Right. Hands are washed before eating and after going outside.",
+            support: "Dirty hands carry germs, so wash them with soap."
           }
         ],
         quiz: [
           {
-            question: "Что относится к личной гигиене?",
+            question: "What about personal hygiene?",
             options: [
-              "Бег и прыжки.",
-              "Умывание, чистка зубов, мытьё рук.",
-              "Только мытьё посуды."
+              "Running and jumping.",
+              "Washing, brushing teeth, washing hands.",
+              "Only washing dishes."
             ],
             correctIndex: 1
           },
           {
-            question: "Зубы нужно чистить:",
+            question: "Teeth need to be brushed:",
             options: [
-              "Только в выходные.",
-              "Раз в месяц.",
-              "Утром и вечером, каждый день."
+              "Only on weekends.",
+              "Once a month.",
+              "Morning and evening, every day."
             ],
             correctIndex: 2
           },
           {
-            question: "Зачем эта диагностика на платформе?",
+            question: "Why are these diagnostics on the platform?",
             options: [
-              "Посмотреть стартовый уровень — оценок не будет.",
-              "Чтобы исключить из школы.",
-              "Чтобы поставить двойку."
+              "View the starting level - there will be no ratings.",
+              "To be expelled from school.",
+              "To give a two."
             ],
             correctIndex: 0
           }
         ],
-        adultNote: "Объясните ребёнку: сегодня просто знакомство с компьютерными заданиями на тему гигиены. Оценок не будет — по итогам года сравним прогресс.",
+        adultNote: "Explain to your child: today is just an introduction to computer tasks on the topic of hygiene. There will be no assessments - we will compare progress at the end of the year.",
         tags: [
-          "личная гигиена",
-          "Диагностический урок (вне сценариев)",
-          "Урок 1"
+          "personal hygiene",
+          "Diagnostic lesson (outside scenarios)",
+          "Lesson 1"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — пройти входную диагностику цифровых умений — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital activity - undergo an input diagnostic of digital skills - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: правила личной гигиены",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: правила безопасной работы за экраном (расстояние до глаз, осанка)",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: rules of personal hygiene",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: rules for safe work behind a screen (distance to eyes, posture)",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Диагностический модуль»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Diagnostic module”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "3 мин",
-              title: "Организационный момент",
-              teacherSays: "Сегодня — особый день, мы пройдём цифровые задания. Спокойно, по очереди, без оценок.",
+              duration: "3 min",
+              title: "Organizational moment",
+              teacherSays: "Today is a special day, we will go through digital tasks. Calmly, take turns, without judgment.",
               teacherDoes: [
-                "Приветствует группу",
-                "Объясняет правила работы"
+                "Greets the group",
+                "Explains the rules of work"
               ],
-              studentActivity: "Слушают; настраиваются на работу"
+              studentActivity: "Listen; getting ready to work"
             },
             {
-              duration: "5 мин",
-              title: "Инструктаж и знакомство с интерфейсом",
+              duration: "5 min",
+              title: "Instruction and familiarization with the interface",
               teacherDoes: [
-                "Показывает кнопки «Дальше», «Послушать», «Помощь»",
-                "Демонстрирует пробное задание"
+                "Shows buttons “Next”, “Listen”, “Help”",
+                "Demonstrates a trial task"
               ],
-              studentActivity: "Пробуют пробное задание под руководством учителя"
+              studentActivity: "Try a trial task under the guidance of a teacher"
             },
             {
-              duration: "7 мин",
-              title: "Блок 1 — читательский компонент",
+              duration: "7 min",
+              title: "Block 1 - Reader Component",
               teacherDoes: [
-                "Запускает 3 цифровые карточки",
-                "Фиксирует ответы"
+                "Launches 3 digital cards",
+                "Captures answers"
               ],
-              studentActivity: "Самостоятельно читают и отвечают",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Read and answer independently",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "7 мин",
-              title: "Блок 2 — цифровой и знаково-символический компоненты",
+              duration: "7 min",
+              title: "Block 2 - digital and symbolic components",
               teacherDoes: [
-                "Запускает задания на распознавание значков"
+                "Runs icon recognition tasks"
               ],
-              studentActivity: "Распознают значки, нажимают на элементы",
-              hint: "Диагностическая точка 2"
+              studentActivity: "Recognize icons, click on elements",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает спокойную физкультминутку"
+                "Includes a quiet exercise session"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "5 мин",
-              title: "Блок 3 — безопасностный компонент",
+              duration: "5 min",
+              title: "Block 3 - safety component",
               teacherDoes: [
-                "Запускает 3 ситуации «безопасно / опасно»"
+                "Triggers 3 \"safe/dangerous\" situations"
               ],
-              studentActivity: "Оценивают ситуации",
-              hint: "Диагностическая точка 3"
+              studentActivity: "Assess situations",
+              hint: "Diagnostic point 3"
             },
             {
-              duration: "7 мин",
-              title: "Блок 4 — социально-бытовой компонент",
+              duration: "7 min",
+              title: "Block 4 - social and living component",
               teacherDoes: [
-                "Запускает простую бытовую цифровую ситуацию"
+                "Launches a simple household digital situation"
               ],
-              studentActivity: "Принимают решение",
-              hint: "Диагностическая точка 4"
+              studentActivity: "Make a decision",
+              hint: "Diagnostic point 4"
             },
             {
-              duration: "4 мин",
-              title: "Рефлексия",
+              duration: "4 min",
+              title: "Reflection",
               teacherDoes: [
-                "Хвалит за пройденную диагностику",
-                "Объясняет: оценок нет"
+                "Praises for completed diagnostics",
+                "Explains: no ratings"
               ],
-              studentActivity: "Выбирают смайлик настроения"
+              studentActivity: "Choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на личная гигиена и рассказать на следующем уроке.",
-          safetyNote: "правила безопасной работы за экраном (расстояние до глаз, осанка)"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to personal hygiene and tell it in the next lesson.",
+          safetyNote: "rules for safe work behind a screen (distance to eyes, posture)"
         },
         trainer: {
           type: "morning-quest",
-          task: "Пройди утренний квест Алишера: 6 коротких заданий на телефоне. Здесь без оценок — мы смотрим, что ты уже умеешь.",
-          feedbackCorrect: "Молодец! Ты прошёл все 6 заданий.",
-          feedbackWrong: "Ничего страшного — это диагностика, оценок нет."
+          task: "Complete Alisher's morning quest: 6 short tasks on your phone. There are no grades here - we look at what you can already do.",
+          feedbackCorrect: "Well done! You completed all 6 tasks.",
+          feedbackWrong: "It's okay - this is a diagnosis, there are no assessments."
         },
       },
       {
         slug: "diagnostic-final",
-        title: "Правила и приёмы сохранения чистоты и здоровья тела",
-        duration: "1 час",
-        summary: "Контрольный урок — итоговая диагностика. Платформа смотрит, чему ребёнок научился за год.",
-        intro: "Завершающая диагностика того же типа, что и в самом первом уроке. Сравнение результатов «до» и «после» показывает, насколько выросла цифровая грамотность ребёнка за учебный год.",
+        title: "Rules and techniques for maintaining cleanliness and health of the body",
+        duration: "1 hour",
+        summary: "Test lesson - final diagnostics. The platform looks at what the child has learned over the year.",
+        intro: "The final diagnostic is the same type as in the very first lesson. Comparing the results “before” and “after” shows how much the child’s digital literacy has grown over the school year.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Правила и приёмы сохранения чистоты и здоровья тела»",
+        imageAlt: "Illustration for the lesson “Rules and techniques for keeping the body clean and healthy”",
         goals: [
-          "Понять, что такое чистота и здоровье тела и зачем это нужно в жизни.",
-          "Освоить цифровое действие — пройти итоговую диагностику цифровых умений.",
-          "Запомнить правило безопасности: обобщение правил безопасной работы за экраном и в быту."
+          "Understand what cleanliness and health of the body is and why it is needed in life.",
+          "Master digital action - pass the final diagnostics of digital skills.",
+          "Remember the safety rule: a generalization of the rules for safe work behind the screen and at home."
         ],
         rules: [
-          "Спокойно прочитай задание.",
-          "Не торопись — оценок нет.",
-          "Если непонятно — нажми «Послушать».",
-          "Если не знаешь — спроси у учителя."
+          "Read the assignment calmly.",
+          "Take your time - there are no grades.",
+          "If it’s not clear, click “Listen.”",
+          "If you don't know, ask your teacher."
         ],
         scenarios: [
           {
-            title: "Гигиена тела — итог",
-            text: "За год мы прошли много тем про чистоту и здоровье. Что главное?",
+            title: "Body hygiene - the result",
+            text: "Over the year we covered a lot of topics about cleanliness and health. What's important?",
             options: [
-              "Мыться только когда сильно грязный.",
-              "Чистота тела, рук и зубов — каждый день.",
-              "Гигиена не важна."
+              "Wash only when very dirty.",
+              "Clean body, hands and teeth - every day.",
+              "Hygiene is not important."
             ],
             correctIndex: 1,
-            feedback: "Верно. Ежедневная гигиена — основа здоровья.",
-            support: "Это закрепление знаний за учебный год по гигиене."
+            feedback: "Right. Daily hygiene is the basis of health.",
+            support: "This is a consolidation of hygiene knowledge for the academic year."
           },
           {
-            title: "Куда обратиться при болезни",
-            text: "У тебя поднялась температура и болит голова.",
+            title: "Where to go if you are sick",
+            text: "You have a fever and a headache.",
             options: [
-              "Промолчать и идти гулять.",
-              "Самому пить лекарства.",
-              "Сказать взрослому, измерить температуру термометром."
+              "Keep quiet and go for a walk.",
+              "Take your own medicine.",
+              "Tell an adult to take your temperature with a thermometer."
             ],
             correctIndex: 2,
-            feedback: "Хорошо. При болезни всегда зовём взрослого.",
-            support: "Самолечение в твоём возрасте опасно."
+            feedback: "Fine. When you are sick, we always call an adult.",
+            support: "Self-medication at your age is dangerous."
           }
         ],
         quiz: [
           {
-            question: "Что нужно делать для чистоты тела каждый день?",
+            question: "What should you do to clean your body every day?",
             options: [
-              "Умываться, чистить зубы, мыть руки.",
-              "Ничего не делать.",
-              "Только в субботу."
+              "Wash your face, brush your teeth, wash your hands.",
+              "Do nothing.",
+              "Only on Saturday."
             ],
             correctIndex: 0
           },
           {
-            question: "Когда меняют одежду на чистую?",
+            question: "When do they change clothes for clean ones?",
             options: [
-              "Никогда.",
-              "Каждый день — нижнее бельё, носки. И всю — после спорта.",
-              "Раз в месяц."
+              "Never.",
+              "Every day - underwear, socks. And all of it after sports.",
+              "Once a month."
             ],
             correctIndex: 1
           },
           {
-            question: "Зачем итоговая диагностика?",
+            question: "Why final diagnostics?",
             options: [
-              "Это просто экзамен.",
-              "Поставить двойку.",
-              "Сравнить, как я мог в начале и как могу сейчас."
+              "It's just an exam.",
+              "Give it a two.",
+              "Compare how I could at the beginning and how I can now."
             ],
             correctIndex: 2
           }
         ],
-        adultNote: "Поддержите ребёнка перед итоговой диагностикой по гигиене. Скажите: «Просто покажи, чему научился».",
+        adultNote: "Support your child before the final hygiene examination. Say, “Just show me what you learned.”",
         tags: [
-          "чистота и здоровье тела",
-          "Диагностический урок (вне сценариев)",
-          "Урок 32"
+          "cleanliness and health of the body",
+          "Diagnostic lesson (outside scenarios)",
+          "Lesson 32"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — пройти итоговую диагностику цифровых умений — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital activity - undergo a final diagnosis of digital skills - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: правила чистоты и здоровья тела",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: обобщение правил безопасной работы за экраном и в быту",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: rules of cleanliness and health of the body",
+            "create a step-by-step digital action algorithm",
+            "consolidate the safety rule: generalization of the rules for safe work behind the screen and at home",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Диагностический модуль»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Diagnostic module”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "3 мин",
-              title: "Организационный момент",
-              teacherSays: "Сегодня — особый день, мы пройдём цифровые задания. Спокойно, по очереди, без оценок.",
+              duration: "3 min",
+              title: "Organizational moment",
+              teacherSays: "Today is a special day, we will go through digital tasks. Calmly, take turns, without judgment.",
               teacherDoes: [
-                "Приветствует группу",
-                "Объясняет правила работы"
+                "Greets the group",
+                "Explains the rules of work"
               ],
-              studentActivity: "Слушают; настраиваются на работу"
+              studentActivity: "Listen; getting ready to work"
             },
             {
-              duration: "5 мин",
-              title: "Инструктаж и знакомство с интерфейсом",
+              duration: "5 min",
+              title: "Instruction and familiarization with the interface",
               teacherDoes: [
-                "Показывает кнопки «Дальше», «Послушать», «Помощь»",
-                "Демонстрирует пробное задание"
+                "Shows buttons “Next”, “Listen”, “Help”",
+                "Demonstrates a trial task"
               ],
-              studentActivity: "Пробуют пробное задание под руководством учителя"
+              studentActivity: "Try a trial task under the guidance of a teacher"
             },
             {
-              duration: "7 мин",
-              title: "Блок 1 — читательский компонент",
+              duration: "7 min",
+              title: "Block 1 - Reader Component",
               teacherDoes: [
-                "Запускает 3 цифровые карточки",
-                "Фиксирует ответы"
+                "Launches 3 digital cards",
+                "Captures answers"
               ],
-              studentActivity: "Самостоятельно читают и отвечают",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Read and answer independently",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "7 мин",
-              title: "Блок 2 — цифровой и знаково-символический компоненты",
+              duration: "7 min",
+              title: "Block 2 - digital and symbolic components",
               teacherDoes: [
-                "Запускает задания на распознавание значков"
+                "Runs icon recognition tasks"
               ],
-              studentActivity: "Распознают значки, нажимают на элементы",
-              hint: "Диагностическая точка 2"
+              studentActivity: "Recognize icons, click on elements",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает спокойную физкультминутку"
+                "Includes a quiet exercise session"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "5 мин",
-              title: "Блок 3 — безопасностный компонент",
+              duration: "5 min",
+              title: "Block 3 - safety component",
               teacherDoes: [
-                "Запускает 3 ситуации «безопасно / опасно»"
+                "Triggers 3 \"safe/dangerous\" situations"
               ],
-              studentActivity: "Оценивают ситуации",
-              hint: "Диагностическая точка 3"
+              studentActivity: "Assess situations",
+              hint: "Diagnostic point 3"
             },
             {
-              duration: "7 мин",
-              title: "Блок 4 — социально-бытовой компонент",
+              duration: "7 min",
+              title: "Block 4 - social and living component",
               teacherDoes: [
-                "Запускает простую бытовую цифровую ситуацию"
+                "Launches a simple household digital situation"
               ],
-              studentActivity: "Принимают решение",
-              hint: "Диагностическая точка 4"
+              studentActivity: "Make a decision",
+              hint: "Diagnostic point 4"
             },
             {
-              duration: "4 мин",
-              title: "Рефлексия",
+              duration: "4 min",
+              title: "Reflection",
               teacherDoes: [
-                "Хвалит за пройденную диагностику",
-                "Объясняет: оценок нет"
+                "Praises for completed diagnostics",
+                "Explains: no ratings"
               ],
-              studentActivity: "Выбирают смайлик настроения"
+              studentActivity: "Choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на чистота и здоровье тела и рассказать на следующем уроке.",
-          safetyNote: "обобщение правил безопасной работы за экраном и в быту"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to the cleanliness and health of the body and tell it in the next lesson.",
+          safetyNote: "generalization of rules for safe work behind the screen and at home"
         },        trainer: {
           type: "final-quest",
-          task: "Это контрольный замер — 6 заданий по разным умениям.",
-          feedbackCorrect: "Спасибо! Контрольный замер пройден.",
-          feedbackWrong: "Ничего страшного — это диагностика, без оценок."
+          task: "This is a control test - 6 tasks on different skills.",
+          feedbackCorrect: "Thank you! The control measurement has been passed.",
+          feedbackWrong: "It's okay - this is a diagnosis, no assessments."
         }
 
       }
@@ -848,3869 +842,3869 @@ export const programModules: ProgramModule[] = [
   },
   {
     slug: "digital-health",
-    title: "Цифровое здоровье",
-    hours: "8 часов",
+    title: "Digital Health & Hygiene",
+    hours: "8 hours",
     lessonCount: 8,
-    description: "Восемь уроков, где обучающийся работает с цифровыми объектами здоровья: гардеробом, шампунем, опросником кожи, прогнозом погоды, этикеткой, регулятором громкости и цифровым термометром.",
+    description: "Eight lessons where the student works with digital health objects: wardrobe, shampoo, skin questionnaire, weather forecast, label, volume control and digital thermometer.",
     image: "/uzbek-images/health-clinic.jpg",
-    imageAlt: "Цифровое здоровье — личная гигиена и медицинские приборы",
+    imageAlt: "Digital Health - Personal Care and Medical Devices",
     imageCredit: "UQUVLI.UZ",
     imageSourceUrl: "",
     knowledge: [
-      "Как выглядит цифровая этикетка и какие на ней главные места",
-      "Как читать значки погоды и УФ-индекс",
-      "Какие цифровые приборы помогают в гигиене и здоровье"
+      "What does a digital label look like and what are the main places on it?",
+      "How to Read Weather Icons and UV Index",
+      "What digital devices help with hygiene and health?"
     ],
     skills: [
-      "Подбирать средство и одежду по цифровой подсказке",
-      "Читать цифровую этикетку и принимать решение",
-      "Считывать показания цифровых приборов"
+      "Select products and clothes based on digital hints",
+      "Read the digital label and make a decision",
+      "Read digital meters"
     ],
     lessons: [
       {
         slug: "appearance-young-people",
-        title: "Внешний вид молодых людей",
-        duration: "1 час",
-        summary: "Учимся подбирать одежду под ситуацию: в школу — одно, в гости — другое.",
-        intro: "На экране — гардероб с разными вещами. Ребёнок собирает образ: что надеть в школу, что в гости. Платформа подсказывает, если что-то не подходит по случаю. Так формируется привычка одеваться к месту.",
+        title: "Appearance of young people",
+        duration: "1 hour",
+        summary: "We learn to choose clothes for the situation: going to school is one thing, going on a visit is another.",
+        intro: "On the screen is a wardrobe with different things. The child puts together an outfit: what to wear to school, what to wear on a visit. The platform tells you if something is not suitable for the occasion. This is how the habit of dressing appropriately is formed.",
         image: "/uzbek-images/health-clinic.jpg",
-        imageAlt: "Иллюстрация к уроку «Внешний вид молодых людей»",
+        imageAlt: "Illustration for the lesson “Appearance of young people”",
         goals: [
-          "Понять, что такое внешний вид и зачем это нужно в жизни.",
-          "Освоить цифровое действие — собрать цифровой образ под ситуацию.",
-          "Запомнить правило безопасности: уместность одежды для разных мест и встреч."
+          "Understand what appearance is and why it is needed in life.",
+          "Master digital action - assemble a digital image for the situation.",
+          "Remember the safety rule: appropriate clothing for different places and meetings."
         ],
         rules: [
-          "Сначала открой гардероб.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: уместность одежды для разных мест и встреч.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the wardrobe.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision based on the rule: the appropriateness of clothing for different places and meetings.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Сбор в школу",
-            text: "Тебе нужно одеться в школу. Что наденешь?",
+            title: "Getting ready for school",
+            text: "You need to get dressed for school. What will you wear?",
             options: [
-              "Аккуратную рубашку и брюки.",
-              "Праздничный костюм с галстуком.",
-              "Спортивный костюм и кроссовки."
+              "A neat shirt and trousers.",
+              "Festive suit with tie.",
+              "Tracksuit and sneakers."
             ],
             correctIndex: 0,
-            feedback: "Верно — в школу одеваются аккуратно и сдержанно.",
-            support: "В школе важна опрятность, а не яркость."
+            feedback: "That’s right—they dress neatly and modestly for school.",
+            support: "At school, neatness is important, not brightness."
           },
           {
-            title: "В гости к бабушке",
-            text: "Идёшь в гости к бабушке на день рождения.",
+            title: "Visiting grandma",
+            text: "You are going to visit your grandmother for her birthday.",
             options: [
-              "Грязную футболку — никто не заметит.",
-              "Чистую нарядную одежду — рубашка/блузка и брюки/юбка.",
-              "Спортивные шорты."
+              "No one will notice a dirty T-shirt.",
+              "Clean smart clothes - shirt/blouse and trousers/skirt.",
+              "Sports shorts."
             ],
             correctIndex: 1,
-            feedback: "Хорошо — на праздник одеваются опрятно и нарядно.",
-            support: "Аккуратный вид — это уважение к хозяевам."
+            feedback: "It’s good - they dress neatly and smartly for the holiday.",
+            support: "A neat appearance is respect for the owners."
           }
         ],
         quiz: [
           {
-            question: "Что главное в школьной одежде?",
+            question: "What is the most important thing in school clothes?",
             options: [
-              "Совсем не важно.",
-              "Чистая и аккуратная.",
-              "Самая яркая."
+              "It doesn't matter at all.",
+              "Clean and tidy.",
+              "The brightest."
             ],
             correctIndex: 1
           },
           {
-            question: "Перед выходом из дома нужно:",
+            question: "Before leaving home you need:",
             options: [
-              "Ничего не делать.",
-              "Посмотреть в зеркало и проверить себя.",
-              "Сразу выбежать."
+              "Do nothing.",
+              "Look in the mirror and check yourself.",
+              "Run out immediately."
             ],
             correctIndex: 1
           },
           {
-            question: "Какая одежда подойдёт на тренировку?",
+            question: "What clothes are suitable for training?",
             options: [
-              "Школьная форма.",
-              "Праздничное платье.",
-              "Спортивный костюм и кроссовки."
+              "School uniform.",
+              "Festive dress.",
+              "Tracksuit and sneakers."
             ],
             correctIndex: 2
           }
         ],
-        adultNote: "Помогите ребёнку перед выходом проверить: чистая ли одежда, опрятный ли вид. Хвалите за самостоятельность.",
+        adultNote: "Help your child check before going out to see if their clothes are clean and if they look neat. Praise for independence.",
         tags: [
-          "внешний вид",
-          "Цифровое здоровье",
-          "Урок 2"
+          "appearance",
+          "Digital Health & Hygiene",
+          "Lesson 2"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — собрать цифровой образ под ситуацию — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - collect a digital image for the situation - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: гардероб",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: уместность одежды для разных мест и встреч",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: wardrobe",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: the appropriateness of clothing for different places and meetings",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровое здоровье»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (первый формирующий урок; повторение опирается на диагностику)"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short tasks (first formative lesson; repetition based on diagnostics)"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся собрать цифровой образ под ситуацию.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to assemble a digital image for the situation.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «внешний вид»"
+                "Shows a problematic situation on the topic “appearance”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «внешний вид»",
-                "Показывает гардероб"
+                "Opens informational text on the topic \"appearance\"",
+                "Shows wardrobe"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «гардеробе»",
-                "Контролирует, помогает индивидуально"
+                "Triggers the task: find key places on the “wardrobe”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как собрать цифровой образ под ситуацию» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to assemble a digital image for the situation” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает гардероб",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the wardrobe",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с гардеробом; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with the wardrobe; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на внешний вид и рассказать на следующем уроке.",
-          safetyNote: "уместность одежды для разных мест и встреч"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to the appearance and tell it at the next lesson.",
+          safetyNote: "appropriateness of clothing for different places and meetings"
         },
         trainer: {
           type: "outfit",
-          task: "Подбери одежду под ситуацию: в школу — одно, на физкультуру — другое, на день рождения — третье.",
-          feedbackCorrect: "Отлично! Образ подходит под ситуацию.",
-          feedbackWrong: "Эта одежда не подходит к случаю. Попробуй другой набор."
+          task: "Choose clothes to suit the situation: for school - one thing, for physical education - another, for a birthday - another.",
+          feedbackCorrect: "Great! The image suits the situation.",
+          feedbackWrong: "These clothes are not suitable for the occasion. Try another set."
         }
       },
       {
         slug: "hair-types-care",
-        title: "Основные типы волос: характеристики и особенности ухода",
-        duration: "1 час",
-        summary: "Учимся определять тип волос и выбирать подходящий шампунь по пометке на упаковке.",
-        intro: "Ребёнок определяет по картинкам, какой у него тип волос: сухие, жирные или нормальные. Потом на экране-витрине выбирает шампунь с подходящей пометкой и читает этикетку. Это типичное потребительское умение — подобрать средство «под себя».",
+        title: "Main hair types: characteristics and care features",
+        duration: "1 hour",
+        summary: "We learn to determine your hair type and choose the right shampoo according to the mark on the package.",
+        intro: "The child determines from the pictures what type of hair he has: dry, oily or normal. Then, on the display screen, he selects a shampoo with a suitable mark and reads the label. This is a typical consumer skill - to choose a product “for yourself”.",
         image: "/uzbek-images/health-clinic.jpg",
-        imageAlt: "Иллюстрация к уроку «Основные типы волос: характеристики и особенности ухода»",
+        imageAlt: "Illustration for the lesson “Main hair types: characteristics and care features”",
         goals: [
-          "Понять, что такое типы волос и зачем это нужно в жизни.",
-          "Освоить цифровое действие — подобрать средство по типу волос на цифровой витрине.",
-          "Запомнить правило безопасности: правило: пользоваться только подходящим средством."
+          "Understand what hair types are and why they are needed in life.",
+          "Master the digital action - select a product based on your hair type on the digital storefront.",
+          "Remember the safety rule: rule: use only suitable means."
         ],
         rules: [
-          "Сначала открой витрину шампуней.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: правило: пользоваться только подходящим средством.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the shampoo display.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: rule: use only the appropriate product.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "У тебя жирные волосы",
-            text: "Утром волосы быстро становятся жирными у корней.",
+            title: "Your hair is oily",
+            text: "In the morning, your hair quickly becomes oily at the roots.",
             options: [
-              "Купить шампунь с пометкой «для жирных волос».",
-              "Любой шампунь — без разницы.",
-              "Мыть голову мылом."
+              "Buy shampoo labeled “for oily hair.”",
+              "Any shampoo doesn't matter.",
+              "Wash your hair with soap."
             ],
             correctIndex: 0,
-            feedback: "Верно — на упаковке всегда написано, для каких волос.",
-            support: "Подбирать средство по типу волос — основа правильного ухода."
+            feedback: "That’s right - it’s always written on the packaging what kind of hair it’s for.",
+            support: "Selecting a product based on your hair type is the basis of proper care."
           },
           {
-            title: "Сухие волосы",
-            text: "Волосы сухие и пушатся после мытья.",
+            title: "Dry hair",
+            text: "Hair is dry and frizzy after washing.",
             options: [
-              "Шампунь «для сухих волос» с увлажнением.",
-              "Шампунь «для жирных» — он сильнее моет.",
-              "Совсем без шампуня."
+              "Shampoo “for dry hair” with moisturizing.",
+              "Shampoo “for oily people” - it cleanses more strongly.",
+              "No shampoo at all."
             ],
             correctIndex: 0,
-            feedback: "Правильно. Сухим волосам нужно увлажнение.",
-            support: "Шампунь не по типу волос только ухудшает их состояние."
+            feedback: "Right. Dry hair needs moisture.",
+            support: "Shampoo that is not suitable for your hair type only worsens its condition."
           }
         ],
         quiz: [
           {
-            question: "Какие бывают типы волос?",
+            question: "What are the different types of hair?",
             options: [
-              "Только длинные и короткие.",
-              "Только тёмные и светлые.",
-              "Сухие, жирные, нормальные, смешанные."
+              "Only long and short.",
+              "Only dark and light.",
+              "Dry, oily, normal, mixed."
             ],
             correctIndex: 2
           },
           {
-            question: "Где смотреть, для каких волос шампунь?",
+            question: "Where to look, what kind of hair is shampoo for?",
             options: [
-              "Спросить у соседа.",
-              "На упаковке — есть пометка.",
-              "Угадать по запаху."
+              "Ask your neighbor.",
+              "There is a mark on the package.",
+              "Guess by smell."
             ],
             correctIndex: 1
           },
           {
-            question: "Что делать, если шампунь не подходит?",
+            question: "What to do if the shampoo is not suitable?",
             options: [
-              "Поменять на другой по типу волос.",
-              "Перестать мыть голову.",
-              "Использовать до конца."
+              "Change to another one according to your hair type.",
+              "Stop washing your hair.",
+              "Use to the end."
             ],
             correctIndex: 0
           }
         ],
-        adultNote: "Покажите ребёнку дома пометку на шампуне — для каких волос. Вместе подберите подходящий.",
+        adultNote: "Show your child at home the label on the shampoo - for which hair. Find the right one together.",
         tags: [
-          "типы волос",
-          "Цифровое здоровье",
-          "Урок 3"
+          "hair types",
+          "Digital Health & Hygiene",
+          "Lesson 3"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — подобрать средство по типу волос на цифровой витрине — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Create a digital action - select a product based on hair type on a digital showcase - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: витрина шампуней",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: правило: пользоваться только подходящим средством",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: a display of shampoos",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: rule: use only suitable means",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровое здоровье»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 2 (внешний вид))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short assignments (revision builds on Lesson #2 (Appearance))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся подобрать средство по типу волос на цифровой витрине.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to choose a product based on your hair type on a digital storefront.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «типы волос»"
+                "Shows a problematic situation on the topic “hair types”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «типы волос»",
-                "Показывает витрину шампуней"
+                "Opens informational text on the topic “hair types”",
+                "Shows a display of shampoos"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «витрине шампуней»",
-                "Контролирует, помогает индивидуально"
+                "Triggers the task: find key places on the “shampoo display”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как подобрать средство по типу волос на цифровой витрине» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to choose a product based on your hair type on a digital storefront” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает витрину шампуней",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens a display of shampoos",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с витриной шампуней; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with a display of shampoos; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на типы волос и рассказать на следующем уроке.",
-          safetyNote: "правило: пользоваться только подходящим средством"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to hair types and tell them in the next lesson.",
+          safetyNote: "rule: use only suitable means"
         },
         trainer: {
           type: "hair-care",
-          task: "Подбери шампунь под тип волос: жирные, сухие или нормальные.",
-          feedbackCorrect: "Молодец! Этот шампунь подходит к типу волос.",
-          feedbackWrong: "Этот шампунь не подойдёт. Прочитай этикетку и попробуй другой."
+          task: "Choose a shampoo for your hair type: oily, dry or normal.",
+          feedbackCorrect: "Well done! This shampoo suits your hair type.",
+          feedbackWrong: "This shampoo will not work. Read the label and try another one."
         }
       },
       {
         slug: "skin-types-care",
-        title: "Типы кожи лица и особенности ухода за ними",
-        duration: "1 час",
-        summary: "Проходим цифровой опросник «Какой у тебя тип кожи» и читаем инструкцию по уходу.",
-        intro: "Ребёнок отвечает на простые вопросы о коже. Платформа сама определяет тип и показывает короткие шаги ухода. Это знакомит с тем, как работают опросники в приложениях здоровья.",
+        title: "Facial skin types and care features",
+        duration: "1 hour",
+        summary: "We go through the digital questionnaire “What is your skin type” and read the care instructions.",
+        intro: "The child answers simple questions about the skin. The platform itself determines the type and shows short care steps. This introduces how questionnaires work in health apps.",
         image: "/uzbek-images/health-clinic.jpg",
-        imageAlt: "Иллюстрация к уроку «Типы кожи лица и особенности ухода за ними»",
+        imageAlt: "Illustration for the lesson “Types of facial skin and features of their care”",
         goals: [
-          "Понять, что такое типы кожи и зачем это нужно в жизни.",
-          "Освоить цифровое действие — пройти цифровой опросник и получить рекомендацию.",
-          "Запомнить правило безопасности: критическое отношение к рекомендациям из интернета."
+          "Understand what skin types are and why they are needed in life.",
+          "Master digital action - take a digital questionnaire and get a recommendation.",
+          "Remember the safety rule: be critical of recommendations from the Internet."
         ],
         rules: [
-          "Сначала открой опросник кожи.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: критическое отношение к рекомендациям из интернета.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the skin questionnaire.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: a critical attitude towards recommendations from the Internet.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Кожа блестит на лбу",
-            text: "К обеду на лбу и носу появляется блеск.",
+            title: "The skin shines on the forehead",
+            text: "By lunchtime, a shine appears on the forehead and nose.",
             options: [
-              "Это нормально, ничего делать не надо.",
-              "Это болезнь.",
-              "Это жирная или комбинированная кожа — нужен подходящий уход."
+              "This is normal, you don't need to do anything.",
+              "This is a disease.",
+              "If you have oily or combination skin, you need proper care."
             ],
             correctIndex: 2,
-            feedback: "Правильно — лоб и нос часто блестят при жирной коже.",
-            support: "Тип кожи определяет, как за ней ухаживать."
+            feedback: "That's right - the forehead and nose often shine with oily skin.",
+            support: "Your skin type determines how to care for it."
           },
           {
-            title: "Стянутость после умывания",
-            text: "После умывания кожа на щеках стягивается.",
+            title: "Tightness after washing",
+            text: "After washing, the skin on the cheeks tightens.",
             options: [
-              "Это сухая кожа — нужен мягкий уход и крем.",
-              "Это нормальная кожа.",
-              "Нужно мыть жёстким мылом."
+              "This is dry skin - you need gentle care and cream.",
+              "This is normal skin.",
+              "Must be washed with harsh soap."
             ],
             correctIndex: 0,
-            feedback: "Верно — стянутость это признак сухой кожи.",
-            support: "Сухой коже нужно увлажнение."
+            feedback: "That's right - tightness is a sign of dry skin.",
+            support: "Dry skin needs hydration."
           }
         ],
         quiz: [
           {
-            question: "Какие бывают типы кожи?",
+            question: "What are the different skin types?",
             options: [
-              "Сухая, жирная, нормальная, комбинированная.",
-              "Только белая и тёмная.",
-              "Только чистая."
+              "Dry, oily, normal, combination.",
+              "Only white and dark.",
+              "Only clean."
             ],
             correctIndex: 0
           },
           {
-            question: "Зачем нужен опросник в приложении?",
+            question: "Why do you need a questionnaire in the application?",
             options: [
-              "Чтобы заработать деньги.",
-              "Это игра.",
-              "Чтобы определить тип кожи и подобрать уход."
+              "To make money.",
+              "This is a game.",
+              "To determine your skin type and choose care."
             ],
             correctIndex: 2
           },
           {
-            question: "Можно ли доверять рекомендациям сразу?",
+            question: "Can you trust the recommendations right away?",
             options: [
-              "Конечно — приложение всегда право.",
-              "Никогда никому не верить.",
-              "Лучше посоветоваться со взрослым."
+              "Of course - the application is always right.",
+              "Never trust anyone.",
+              "It is better to consult an adult."
             ],
             correctIndex: 2
           }
         ],
-        adultNote: "Помогите ребёнку определить тип его кожи. Подберите вместе мягкое средство для умывания.",
+        adultNote: "Help your child determine his skin type. Choose a gentle cleanser together.",
         tags: [
-          "типы кожи",
-          "Цифровое здоровье",
-          "Урок 4"
+          "skin types",
+          "Digital Health & Hygiene",
+          "Lesson 4"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — пройти цифровой опросник и получить рекомендацию — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - take a digital questionnaire and get a recommendation - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: опросник кожи",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: критическое отношение к рекомендациям из интернета",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: skin questionnaire",
+            "create a step-by-step digital action algorithm",
+            "consolidate the safety rule: a critical attitude towards recommendations from the Internet",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровое здоровье»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 3 (типы волос))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short assignments (repetition based on Lesson #3 (Hair Types))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся пройти цифровой опросник и получить рекомендацию.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to take a digital questionnaire and get a recommendation.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «типы кожи»"
+                "Shows a problematic situation on the topic “skin types”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «типы кожи»",
-                "Показывает опросник кожи"
+                "Opens informational text on the topic “skin types”",
+                "Shows skin questionnaire"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «опроснике кожи»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “skin questionnaire”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как пройти цифровой опросник и получить рекомендацию» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to complete the digital questionnaire and get a recommendation” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает опросник кожи",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the skin questionnaire",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с опросником кожи; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with a skin questionnaire; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на типы кожи и рассказать на следующем уроке.",
-          safetyNote: "критическое отношение к рекомендациям из интернета"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to skin types and tell them in the next lesson.",
+          safetyNote: "critical attitude towards recommendations from the Internet"
         },
         trainer: {
           type: "skin-type",
-          task: "Посмотри на лицо и определи тип кожи: жирная, сухая или нормальная.",
-          feedbackCorrect: "Правильно. Ты узнал тип кожи.",
-          feedbackWrong: "Посмотри внимательнее на лицо — на признаки типа кожи."
+          task: "Look at your face and determine your skin type: oily, dry or normal.",
+          feedbackCorrect: "Right. You found out your skin type.",
+          feedbackWrong: "Take a closer look at your face for signs of your skin type."
         }
       },
       {
         slug: "sun-exposure-skin",
-        title: "Влияние солнца на кожу",
-        duration: "1 час",
-        summary: "Читаем прогноз погоды и решаем, нужны ли сегодня головной убор и солнцезащитный крем.",
-        intro: "На экране — простой прогноз: температура, значок солнца или облаков, УФ-индекс. По правилу «солнечно → защита нужна» ребёнок решает, что взять с собой. Прогноз в телефоне — массовое умение, которым пользуется каждый.",
+        title: "The effect of the sun on the skin",
+        duration: "1 hour",
+        summary: "We read the weather forecast and decide whether a hat and sunscreen are needed today.",
+        intro: "On the screen there is a simple forecast: temperature, sun or cloud icon, UV index. According to the rule “sunny → protection needed,” the child decides what to take with him. Phone forecasting is a massive skill that everyone uses.",
         image: "/uzbek-images/health-clinic.jpg",
-        imageAlt: "Иллюстрация к уроку «Влияние солнца на кожу»",
+        imageAlt: "Illustration for the lesson “The effect of the sun on the skin”",
         goals: [
-          "Понять, что такое солнце и кожа и зачем это нужно в жизни.",
-          "Освоить цифровое действие — прочитать цифровой прогноз и решить про защиту от солнца.",
-          "Запомнить правило безопасности: защита кожи от ожогов и теплового удара."
+          "Understand what the sun and skin are and why they are needed in life.",
+          "Master the digital action - read the digital forecast and decide about sun protection.",
+          "Remember the safety rule: protect your skin from burns and heat stroke."
         ],
         rules: [
-          "Сначала открой прогноз погоды.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: защита кожи от ожогов и теплового удара.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the weather forecast.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: protect your skin from burns and heat stroke.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Прогноз: солнечно, +30°C",
-            text: "На улице яркое солнце. Что взять с собой?",
+            title: "Forecast: sunny, +30°C",
+            text: "It's bright sunshine outside. What to take with you?",
             options: [
-              "Ничего, и так нормально.",
-              "Тёплую куртку.",
-              "Головной убор и солнцезащитный крем."
+              "Nothing, that's fine.",
+              "A warm jacket.",
+              "Hat and sunscreen."
             ],
             correctIndex: 2,
-            feedback: "Верно — защита от солнца обязательна.",
-            support: "Сильное солнце вызывает ожог и тепловой удар."
+            feedback: "That's right - sun protection is a must.",
+            support: "Strong sun causes burns and heatstroke."
           },
           {
-            title: "Прогноз: пасмурно, +18°C",
-            text: "На улице облачно. Защита нужна?",
+            title: "Forecast: cloudy, +18°C",
+            text: "It's cloudy outside. Need protection?",
             options: [
-              "Обязательно панама, как в жару.",
-              "Крем не обязательно, но УФ-индекс лучше проверить.",
-              "Совсем не выйти."
+              "A Panama hat is a must, as in the heat.",
+              "Cream is not necessary, but it is better to check the UV index.",
+              "Don't go out at all."
             ],
             correctIndex: 1,
-            feedback: "Хорошо — облака не всегда защищают от УФ.",
-            support: "УФ-индекс показывает реальную силу солнца."
+            feedback: "Okay—clouds don't always protect from UV.",
+            support: "The UV index shows the real strength of the sun."
           }
         ],
         quiz: [
           {
-            question: "Где смотреть силу солнца?",
+            question: "Where can you see the power of the sun?",
             options: [
-              "На небе на глаз.",
-              "Это нельзя узнать.",
-              "В прогнозе — там УФ-индекс."
+              "In the sky by eye.",
+              "There is no way to know.",
+              "In the forecast there is a UV index."
             ],
             correctIndex: 2
           },
           {
-            question: "Что вреднее всего от сильного солнца?",
+            question: "What is the most harmful thing from strong sun?",
             options: [
-              "Промокнуть.",
-              "Ожог кожи и тепловой удар.",
-              "Замёрзнуть."
+              "Get wet.",
+              "Skin burn and heatstroke.",
+              "Freeze."
             ],
             correctIndex: 1
           },
           {
-            question: "Что делать в очень жаркий день?",
+            question: "What to do on a very hot day?",
             options: [
-              "Носить шапку, пить воду, прятаться в тень.",
-              "Бегать без головного убора.",
-              "Сидеть дома без воды."
+              "Wear a hat, drink water, hide in the shade.",
+              "Run without a hat.",
+              "Sitting at home without water."
             ],
             correctIndex: 0
           }
         ],
-        adultNote: "Перед прогулкой летом — посмотрите вместе прогноз и УФ-индекс. Возьмите крем и панаму.",
+        adultNote: "Before going for a walk in summer, check the forecast and UV index together. Take cream and a Panama hat.",
         tags: [
-          "солнце и кожа",
-          "Цифровое здоровье",
-          "Урок 5"
+          "sun and skin",
+          "Digital Health & Hygiene",
+          "Lesson 5"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — прочитать цифровой прогноз и решить про защиту от солнца — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - read the digital forecast and decide about sun protection - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: прогноз погоды",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: защита кожи от ожогов и теплового удара",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: weather forecast",
+            "create a step-by-step digital action algorithm",
+            "reinforce the safety rule: protecting the skin from burns and heat stroke",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровое здоровье»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 4 (типы кожи))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short assignments (revision based on Lesson #4 (Skin Types))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся прочитать цифровой прогноз и решить про защиту от солнца.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to read the digital forecast and decide about sun protection.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «солнце и кожа»"
+                "Shows a problematic situation on the topic “sun and skin”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «солнце и кожа»",
-                "Показывает прогноз погоды"
+                "Opens informational text on the topic “sun and skin”",
+                "Shows weather forecast"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «прогнозе погоды»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “weather forecast”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как прочитать цифровой прогноз и решить про защиту от солнца» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to read a digital forecast and decide about sun protection” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает прогноз погоды",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the weather forecast",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с прогнозом погоды; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with the weather forecast; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на солнце и кожа и рассказать на следующем уроке.",
-          safetyNote: "защита кожи от ожогов и теплового удара"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to the sun and skin and tell it at the next lesson.",
+          safetyNote: "protecting skin from burns and heat stroke"
         },
         trainer: {
           type: "sun-care",
-          task: "Посмотри на прогноз погоды и реши, как защититься от солнца.",
-          feedbackCorrect: "Верно! Так ты защитишь кожу от солнца.",
-          feedbackWrong: "Это не безопасно. Прочитай прогноз и выбери защиту."
+          task: "Look at the weather forecast and decide how to protect yourself from the sun.",
+          feedbackCorrect: "Right! This will protect your skin from the sun.",
+          feedbackWrong: "It's not safe. Read the forecast and choose protection."
         }
       },
       {
         slug: "cosmetics-basics",
-        title: "Косметические средства и их применение",
-        duration: "1 час",
-        summary: "Учимся читать этикетку средства: где название, где срок годности, где способ применения.",
-        intro: "На экране — упаковка крема или шампуня. Ребёнок находит три ключевые места этикетки и решает: можно пользоваться средством или оно просрочено. Главное правило — всегда проверять срок годности.",
+        title: "Cosmetics and their use",
+        duration: "1 hour",
+        summary: "We learn to read the product label: where is the name, where is the expiration date, where is the method of use.",
+        intro: "On the screen is a package of cream or shampoo. The child finds three key places on the label and decides: the product can be used or it has expired. The main rule is to always check the expiration date.",
         image: "/uzbek-images/health-clinic.jpg",
-        imageAlt: "Иллюстрация к уроку «Косметические средства и их применение»",
+        imageAlt: "Illustration for the lesson “Cosmetics and their use”",
         goals: [
-          "Понять, что такое косметические средства и зачем это нужно в жизни.",
-          "Освоить цифровое действие — прочитать цифровую этикетку средства.",
-          "Запомнить правило безопасности: просроченным средством и средством не по назначению пользоваться нельзя."
+          "Understand what cosmetics are and why they are needed in life.",
+          "Master the digital action - read the digital label of the product.",
+          "Remember the safety rule: you cannot use expired products or products for other purposes."
         ],
         rules: [
-          "Сначала открой этикетку средства.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: просроченным средством и средством не по назначению пользоваться нельзя.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the product label.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: you cannot use an expired product or a product for other purposes.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Старая баночка крема",
-            text: "Нашёл в шкафу баночку крема. Срок годности — 2023 год.",
+            title: "Old jar of cream",
+            text: "I found a jar of cream in the closet. Expiration date: 2023.",
             options: [
-              "Подарить кому-нибудь.",
-              "Использовать, ведь крем дорогой.",
-              "Выбросить — пользоваться нельзя."
+              "Give it to someone.",
+              "Use it, because the cream is expensive.",
+              "Throw it away - you can't use it."
             ],
             correctIndex: 2,
-            feedback: "Правильно. Просроченным средством можно навредить коже.",
-            support: "Срок годности — это безопасность."
+            feedback: "Right. Expired product can harm your skin.",
+            support: "Expiration date is safety."
           },
           {
-            title: "Этикетка без даты",
-            text: "На баночке нет даты срока годности.",
+            title: "Label without date",
+            text: "There is no expiration date on the jar.",
             options: [
-              "Подумать неделю.",
-              "Не пользоваться — неизвестно, можно ли.",
-              "Использовать, раз дата стёрлась."
+              "Think about it for a week.",
+              "It is not known whether it is possible not to use it.",
+              "Use it once the date has been erased."
             ],
             correctIndex: 1,
-            feedback: "Хорошо. Если срока не видно — лучше не использовать.",
-            support: "Любое средство без срока — потенциально опасно."
+            feedback: "Fine. If the deadline is not visible, it is better not to use it.",
+            support: "Any remedy without a deadline is potentially dangerous."
           }
         ],
         quiz: [
           {
-            question: "Что главное на этикетке косметики?",
+            question: "What is the most important thing on a cosmetics label?",
             options: [
-              "Только цена.",
-              "Срок годности, название, способ применения.",
-              "Только цвет упаковки."
+              "Only the price.",
+              "Expiration date, name, method of use.",
+              "Only the color of the packaging."
             ],
             correctIndex: 1
           },
           {
-            question: "Что значит «срок годности — 2023»?",
+            question: "What does “expiration date 2023” mean?",
             options: [
-              "Скидка 23%.",
-              "Произведено в 2023 году.",
-              "Можно пользоваться до конца 2023 года."
+              "23% discount.",
+              "Produced in 2023.",
+              "Can be used until the end of 2023."
             ],
             correctIndex: 2
           },
           {
-            question: "Можно ли использовать просроченный крем?",
+            question: "Is it possible to use expired cream?",
             options: [
-              "Да, если жалко выбрасывать.",
-              "Нет, можно навредить коже.",
-              "Только зимой."
+              "Yes, if you hate to throw it away.",
+              "No, it can harm your skin.",
+              "Only in winter."
             ],
             correctIndex: 1
           }
         ],
-        adultNote: "Дома вместе с ребёнком проверьте косметику в ванной на срок годности. Просроченное — выбросите.",
+        adultNote: "At home, together with your child, check cosmetics in the bathroom for expiration dates. If it's expired, throw it away.",
         tags: [
-          "косметические средства",
-          "Цифровое здоровье",
-          "Урок 6"
+          "cosmetics",
+          "Digital Health & Hygiene",
+          "Lesson 6"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — прочитать цифровую этикетку средства — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - read the digital label of the product - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: этикетка средства",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: просроченным средством и средством не по назначению пользоваться нельзя",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: product label",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: expired products and products for other purposes must not be used",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровое здоровье»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 5 (влияние солнца))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision based on lesson #5 (the influence of the sun))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся прочитать цифровую этикетку средства.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to read the digital product label.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «косметические средства»"
+                "Shows a problematic situation on the topic “cosmetics”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «косметические средства»",
-                "Показывает этикетку средства"
+                "Opens informational text on the topic “cosmetics”",
+                "Shows product label"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «этикетке средства»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “label of the product”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как прочитать цифровую этикетку средства» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to read the digital product label” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает этикетку средства",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the product label",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с этикеткой средства; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with the product label; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на косметические средства и рассказать на следующем уроке.",
-          safetyNote: "просроченным средством и средством не по назначению пользоваться нельзя"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: pay attention to cosmetics at home and tell them in the next lesson.",
+          safetyNote: "Expired product and product should not be used for other purposes"
         },
         trainer: {
           type: "label-reader",
-          task: "Прочитай этикетку крема — найди 4 важных места: срок годности, состав, способ применения и предупреждение.",
-          feedbackCorrect: "Молодец! Ты нашёл всё, что нужно прочитать на этикетке.",
-          feedbackWrong: "Эту часть этикетки можно пропустить — ищи дальше."
+          task: "Read the cream label - look for 4 important points: expiration date, composition, method of use and warning.",
+          feedbackCorrect: "Well done! You found everything you need to read on the label.",
+          feedbackWrong: "You can skip this part of the label - look further."
         }
       },
       {
         slug: "skincare-checklist",
-        title: "Использование косметических средств по уходу за кожей",
-        duration: "1 час",
-        summary: "Проходим утренний уход за кожей по шагам — как чек-лист на платформе.",
-        intro: "Простой чек-лист из трёх шагов: умыться, нанести тоник, нанести крем. Ребёнок отмечает каждый выполненный шаг. Так формируется умение работать с пошаговой цифровой инструкцией.",
+        title: "Using skin care products",
+        duration: "1 hour",
+        summary: "We go through morning skin care step by step - like a checklist on a platform.",
+        intro: "A simple three-step checklist: wash, apply toner, apply cream. The child marks each step completed. This is how the ability to work with step-by-step digital instructions is formed.",
         image: "/uzbek-images/health-clinic.jpg",
-        imageAlt: "Иллюстрация к уроку «Использование косметических средств по уходу за кожей»",
+        imageAlt: "Illustration for the lesson “Using cosmetic skin care products”",
         goals: [
-          "Понять, что такое уход за кожей и зачем это нужно в жизни.",
-          "Освоить цифровое действие — пройти цифровой чек-лист ухода по шагам.",
-          "Запомнить правило безопасности: выполнять шаги в правильном порядке; не пропускать."
+          "Understand what skin care is and why it is needed in life.",
+          "Master digital action - go through the digital care checklist step by step.",
+          "Remember the safety rule: perform the steps in the correct order; don't miss."
         ],
         rules: [
-          "Сначала открой чек-лист ухода.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: выполнять шаги в правильном порядке; не пропускать.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the care checklist.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: perform the steps in the correct order; don't miss.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Утренний уход",
-            text: "Утром собираешься в школу. Что сделать с кожей?",
+            title: "Morning care",
+            text: "In the morning you are getting ready for school. What to do with the skin?",
             options: [
-              "Только лицо помыть.",
-              "Сразу одеваться без умывания.",
-              "Умыться, нанести тоник, нанести лёгкий крем."
+              "Just wash your face.",
+              "Get dressed immediately without washing.",
+              "Wash, apply tonic, apply light cream."
             ],
             correctIndex: 2,
-            feedback: "Верно. Утром — три шага: умыться, тоник, крем.",
-            support: "Регулярный уход поддерживает чистоту кожи."
+            feedback: "Right. In the morning - three steps: wash, toner, cream.",
+            support: "Regular care keeps your skin clear."
           },
           {
-            title: "Пропустил шаг",
-            text: "Забыл нанести крем после умывания.",
+            title: "Missed a step",
+            text: "I forgot to apply cream after washing my face.",
             options: [
-              "Помыть лицо снова.",
-              "Уже не важно — пройдёт.",
-              "Нанести крем — ещё не поздно."
+              "Wash your face again.",
+              "It doesn’t matter anymore - it will pass.",
+              "It's not too late to apply cream."
             ],
             correctIndex: 2,
-            feedback: "Хорошо. Крем можно нанести и попозже.",
-            support: "Чек-лист помогает не забыть шаги."
+            feedback: "Fine. The cream can be applied later.",
+            support: "A checklist helps you remember steps."
           }
         ],
         quiz: [
           {
-            question: "Из скольких шагов состоит утренний уход?",
+            question: "How many steps does morning care consist of?",
             options: [
-              "Из одного.",
-              "Из трёх: умывание, тоник, крем.",
-              "Из десяти."
+              "From one.",
+              "Of the three: wash, toner, cream.",
+              "Out of ten."
             ],
             correctIndex: 1
           },
           {
-            question: "Зачем чек-лист в приложении?",
+            question: "Why is there a checklist in the application?",
             options: [
-              "Чтобы запутать.",
-              "Чтобы не забыть шаги и отметить выполненное.",
-              "Это просто игра."
+              "To confuse.",
+              "So as not to forget the steps and mark what is completed.",
+              "It's just a game."
             ],
             correctIndex: 1
           },
           {
-            question: "В каком порядке делать шаги?",
+            question: "In what order should I take the steps?",
             options: [
-              "По порядку, как написано в чек-листе.",
-              "Только последний шаг.",
-              "В любом — без разницы."
+              "In order, as written in the checklist.",
+              "Just the last step.",
+              "In any case, it doesn’t matter."
             ],
             correctIndex: 0
           }
         ],
-        adultNote: "Распечатайте простой чек-лист утреннего ухода и повесьте в ванной. Помогите ребёнку освоить регулярность.",
+        adultNote: "Print out a simple morning care checklist and hang it in your bathroom. Help your child learn regularity.",
         tags: [
-          "уход за кожей",
-          "Цифровое здоровье",
-          "Урок 7"
+          "skin care",
+          "Digital Health & Hygiene",
+          "Lesson 7"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — пройти цифровой чек-лист ухода по шагам — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - go through a digital care checklist step by step - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: чек-лист ухода",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: выполнять шаги в правильном порядке; не пропускать",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: care checklist",
+            "create a step-by-step digital action algorithm",
+            "reinforce the safety rule: perform steps in the correct order; don't miss",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровое здоровье»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 6 (этикетка средства))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision based on lesson #6 (product label))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся пройти цифровой чек-лист ухода по шагам.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to go through the digital care checklist step by step.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «уход за кожей»"
+                "Shows a problematic situation on the topic “skin care”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «уход за кожей»",
-                "Показывает чек-лист ухода"
+                "Opens informational text on the topic “skin care”",
+                "Shows care checklist"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «чек-листе ухода»",
-                "Контролирует, помогает индивидуально"
+                "Triggers the task: find key places on the “care checklist”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как пройти цифровой чек-лист ухода по шагам» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to go through the digital care checklist step by step” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает чек-лист ухода",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens a care checklist",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с чек-листом ухода; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with a care checklist; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на уход за кожей и рассказать на следующем уроке.",
-          safetyNote: "выполнять шаги в правильном порядке; не пропускать"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: pay attention to skin care at home and talk about it in the next lesson.",
+          safetyNote: "follow the steps in the correct order; don't miss"
         },
         trainer: {
           type: "step-sequence",
-          task: "Разложи карточки в правильном порядке — как правильно умыться и нанести крем.",
-          feedbackCorrect: "Верно! Так и нужно делать по порядку.",
-          feedbackWrong: "Это не следующий шаг. Подумай: что идёт после?"
+          task: "Place the cards in the correct order - how to wash your face and apply cream correctly.",
+          feedbackCorrect: "Right! This is what needs to be done in order.",
+          feedbackWrong: "This is not the next step. Think: what comes after?"
         }
       },
       {
         slug: "ear-hygiene-volume",
-        title: "Гигиена слуха",
-        duration: "1 час",
-        summary: "Настраиваем громкость на безопасный уровень — чтобы не вредить слуху.",
-        intro: "Ползунок громкости с тремя зонами: зелёная (безопасно), жёлтая (внимательно), красная (вредно). Ребёнок ставит звук в безопасную зону. Это правило защиты слуха при пользовании наушниками и плеером.",
+        title: "Hearing hygiene",
+        duration: "1 hour",
+        summary: "We adjust the volume to a safe level so as not to harm your hearing.",
+        intro: "Volume slider with three zones: green (safe), yellow (careful), red (harmful). The child puts the sound in a safe zone. This is a rule for protecting your hearing when using headphones and a player.",
         image: "/uzbek-images/health-clinic.jpg",
-        imageAlt: "Иллюстрация к уроку «Гигиена слуха»",
+        imageAlt: "Illustration for the lesson “Hearing Hygiene”",
         goals: [
-          "Понять, что такое гигиена слуха и зачем это нужно в жизни.",
-          "Освоить цифровое действие — настроить безопасную громкость на цифровом устройстве.",
-          "Запомнить правило безопасности: громкая музыка в наушниках вредит слуху."
+          "Understand what hearing hygiene is and why it is needed in life.",
+          "Master digital action - set a safe volume on a digital device.",
+          "Remember the safety rule: loud music on headphones is harmful to your hearing."
         ],
         rules: [
-          "Сначала открой регулятор громкости.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: громкая музыка в наушниках вредит слуху.",
-          "Если не уверен — спроси у взрослого."
+          "First open the volume control.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: loud music in headphones harms your hearing.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Громкость наушников",
-            text: "Слушаешь музыку в наушниках. Сосед слышит твою музыку.",
+            title: "Headphone volume",
+            text: "You listen to music on headphones. The neighbor hears your music.",
             options: [
-              "Снять наушники, чтобы все слышали.",
-              "Сделать тише — это слишком громко.",
-              "Сделать ещё громче."
+              "Take off your headphones so everyone can hear.",
+              "Turn it down - it's too loud.",
+              "Make it even louder."
             ],
             correctIndex: 1,
-            feedback: "Правильно. Если слышно соседу — громко для слуха.",
-            support: "Безопасная громкость — не выше 60%."
+            feedback: "Right. If a neighbor can hear it, it is loud for hearing.",
+            support: "Safe volume is no higher than 60%."
           },
           {
-            title: "После долгого слушания",
-            text: "Слушал музыку 2 часа подряд. В ушах звенит.",
+            title: "After a long listen",
+            text: "I listened to music for 2 hours straight. My ears are ringing.",
             options: [
-              "Продолжать слушать.",
-              "Сделать ещё громче.",
-              "Снять наушники и дать ушам отдохнуть."
+              "Keep listening.",
+              "Make it even louder.",
+              "Remove the headphones and give your ears a rest."
             ],
             correctIndex: 2,
-            feedback: "Верно. Звон в ушах — сигнал «отдохни».",
-            support: "Слух нужно беречь, иначе он ухудшится."
+            feedback: "Right. Ringing in the ears is a signal to “rest.”",
+            support: "Hearing must be protected, otherwise it will deteriorate."
           }
         ],
         quiz: [
           {
-            question: "Безопасный уровень громкости — это:",
+            question: "A safe volume level is:",
             options: [
               "100%.",
-              "Чем громче, тем лучше.",
-              "До 60%."
+              "The louder the better.",
+              "Up to 60%."
             ],
             correctIndex: 2
           },
           {
-            question: "Сколько подряд можно слушать музыку в наушниках?",
+            question: "How long can you listen to music on headphones in a row?",
             options: [
-              "Хоть весь день.",
-              "Не больше часа, потом перерыв.",
-              "Только 5 минут."
+              "At least all day.",
+              "No more than an hour, then a break.",
+              "Only 5 minutes."
             ],
             correctIndex: 1
           },
           {
-            question: "Что делать, если в ушах звенит?",
+            question: "What to do if your ears are ringing?",
             options: [
-              "Слушать дальше.",
-              "Промыть водой.",
-              "Снять наушники и отдохнуть."
+              "Listen further.",
+              "Rinse with water.",
+              "Take off your headphones and relax."
             ],
             correctIndex: 2
           }
         ],
-        adultNote: "Объясните ребёнку: громкая музыка вредит слуху на всю жизнь. Договоритесь о правиле «до 60%».",
+        adultNote: "Explain to your child: loud music damages hearing for life. Agree on the “up to 60%” rule.",
         tags: [
-          "гигиена слуха",
-          "Цифровое здоровье",
-          "Урок 8"
+          "hearing hygiene",
+          "Digital Health & Hygiene",
+          "Lesson 8"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — настроить безопасную громкость на цифровом устройстве — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - set a safe volume on a digital device - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: регулятор громкости",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: громкая музыка в наушниках вредит слуху",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: volume control",
+            "create a step-by-step digital action algorithm",
+            "reinforce the safety rule: loud music on headphones harms your hearing",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровое здоровье»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 7 (уход за кожей))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision based on lesson #7 (skin care))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся настроить безопасную громкость на цифровом устройстве.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to set a safe volume on a digital device.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «гигиена слуха»"
+                "Shows a problematic situation on the topic “hearing hygiene”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «гигиена слуха»",
-                "Показывает регулятор громкости"
+                "Opens informational text on the topic “hearing hygiene”",
+                "Shows volume control"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «регуляторе громкости»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “volume control”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как настроить безопасную громкость на цифровом устройстве» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to set a safe volume on a digital device” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает регулятор громкости",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the volume control",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с регулятором громкости; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Independently operate the volume control; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на гигиена слуха и рассказать на следующем уроке.",
-          safetyNote: "громкая музыка в наушниках вредит слуху"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: pay attention to hearing hygiene at home and talk about it in the next lesson.",
+          safetyNote: "Loud music on headphones damages your hearing"
         },
         trainer: {
           type: "volume-safe",
-          task: "Поставь громкость наушников на безопасный уровень — чтобы не повредить слух.",
-          feedbackCorrect: "Верно. Такая громкость не повредит уши.",
-          feedbackWrong: "Слишком громко — может повредить слух. Сделай тише."
+          task: "Set the volume of your headphones to a safe level to avoid damaging your hearing.",
+          feedbackCorrect: "Right. This volume won't hurt your ears.",
+          feedbackWrong: "Too loud and may damage your hearing. Make it quieter."
         }
       },
       {
         slug: "digital-thermometer",
-        title: "Виды термометров. Правила измерения температуры тела",
-        duration: "1 час",
-        summary: "Считываем показания цифрового термометра и решаем — норма или нужно сказать взрослому.",
-        intro: "Цифровой термометр показывает число на экране. Ребёнок сравнивает показания со шкалой: пониженная, норма, повышенная. При высокой температуре — звонок взрослым. Прибор реальный и востребованный в каждой семье.",
+        title: "Types of thermometers. Rules for measuring body temperature",
+        duration: "1 hour",
+        summary: "We read the readings of a digital thermometer and decide whether it’s normal or if we need to tell an adult.",
+        intro: "A digital thermometer shows a number on the screen. The child compares the readings with the scale: decreased, normal, increased. If the temperature is high, call an adult. The device is real and in demand in every family.",
         image: "/uzbek-images/health-clinic.jpg",
-        imageAlt: "Иллюстрация к уроку «Виды термометров. Правила измерения температуры тела»",
+        imageAlt: "Illustration for the lesson “Types of thermometers. Rules for measuring body temperature\"",
         goals: [
-          "Понять, что такое термометр и зачем это нужно в жизни.",
-          "Освоить цифровое действие — считать показания цифрового термометра и оценить.",
-          "Запомнить правило безопасности: при температуре выше 38 °C — звонить взрослым и в скорую."
+          "Understand what a thermometer is and why it is needed in life.",
+          "Master the digital action - read the readings of a digital thermometer and evaluate.",
+          "Remember the safety rule: at temperatures above 38 °C, call an adult and an ambulance."
         ],
         rules: [
-          "Сначала открой цифровой термометр.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: при температуре выше 38 °C — звонить взрослым и в скорую.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the digital thermometer.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: at a temperature above 38 °C, call an adult and an ambulance.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Термометр показал 38,5°C",
-            text: "Измерил температуру — 38,5°C.",
+            title: "The thermometer showed 38.5°C",
+            text: "I measured the temperature - 38.5°C.",
             options: [
-              "Молчать и пойти играть.",
-              "Принять холодный душ.",
-              "Сразу сказать взрослому — нужна помощь."
+              "Be quiet and go play.",
+              "Take a cold shower.",
+              "Tell an adult right away that you need help."
             ],
             correctIndex: 2,
-            feedback: "Правильно. Высокая температура — это сигнал.",
-            support: "При температуре выше 38°C нужно сказать взрослому."
+            feedback: "Right. High temperature is a signal.",
+            support: "If the temperature is above 38°C, you need to tell an adult."
           },
           {
-            title: "Термометр показал 36,7°C",
-            text: "Измерил температуру — 36,7°C.",
+            title: "The thermometer showed 36.7°C",
+            text: "I measured the temperature - 36.7°C.",
             options: [
-              "Это очень низкая.",
-              "Это высокая температура, надо в больницу.",
-              "Это норма — можно идти в школу."
+              "This is very low.",
+              "This is a high temperature, you need to go to the hospital.",
+              "This is the norm - you can go to school."
             ],
             correctIndex: 2,
-            feedback: "Верно. 36,7 — нормальная температура.",
-            support: "Норма — около 36,6°C, плюс-минус полградуса."
+            feedback: "Right. 36.7 is normal temperature.",
+            support: "The norm is about 36.6°C, plus or minus half a degree."
           }
         ],
         quiz: [
           {
-            question: "Какая нормальная температура тела?",
+            question: "What is normal body temperature?",
             options: [
               "40°C.",
-              "Около 36,6°C.",
+              "About 36.6°C.",
               "30°C."
             ],
             correctIndex: 1
           },
           {
-            question: "При какой температуре звать взрослого?",
+            question: "At what temperature should you call an adult?",
             options: [
-              "При любой.",
-              "Выше 38°C.",
-              "Никогда."
+              "For any.",
+              "Above 38°C.",
+              "Never."
             ],
             correctIndex: 1
           },
           {
-            question: "Цифровой термометр — это:",
+            question: "A digital thermometer is:",
             options: [
-              "Прибор с экраном, показывает число.",
-              "Часы.",
-              "Стеклянная палочка."
+              "A device with a screen that shows a number.",
+              "Watch.",
+              "Glass rod."
             ],
             correctIndex: 0
           }
         ],
-        adultNote: "Покажите ребёнку, как пользоваться вашим домашним термометром. Объясните, при каких показаниях звать вас.",
+        adultNote: "Show your child how to use your home thermometer. Explain under what indications to call you.",
         tags: [
-          "термометр",
-          "Цифровое здоровье",
-          "Урок 26"
+          "thermometer",
+          "Digital Health & Hygiene",
+          "Lesson 26"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — считать показания цифрового термометра и оценить — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - read the readings of a digital thermometer and evaluate - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: цифровой термометр",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: при температуре выше 38 °C — звонить взрослым и в скорую",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: digital thermometer",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: at temperatures above 38 °C - call adults and an ambulance",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровое здоровье»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 25 (безопасность))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision based on Lesson #25 (Safety))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся считать показания цифрового термометра и оценить.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to read a digital thermometer and evaluate it.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «термометр»"
+                "Shows a problematic situation on the topic “thermometer”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «термометр»",
-                "Показывает цифровой термометр"
+                "Opens informational text on the topic \"thermometer\"",
+                "Shows digital thermometer"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «цифровом термометре»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “digital thermometer”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как считать показания цифрового термометра и оценить» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to read and evaluate a digital thermometer” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает цифровой термометр",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens a digital thermometer",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с цифровым термометром; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with a digital thermometer; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на термометр и рассказать на следующем уроке.",
-          safetyNote: "при температуре выше 38 °C — звонить взрослым и в скорую"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: pay attention to the thermometer at home and tell it at the next lesson.",
+          safetyNote: "at temperatures above 38 °C - call adults and an ambulance"
         },
         trainer: {
           type: "thermometer",
-          task: "Измерь температуру и выбери правильное действие.",
-          feedbackCorrect: "Верно. Это правильное действие при такой температуре.",
-          feedbackWrong: "Это небезопасно. Прочитай число и подумай ещё раз."
+          task: "Measure the temperature and choose the right action.",
+          feedbackCorrect: "Right. This is the correct action at this temperature.",
+          feedbackWrong: "It's not safe. Read the number and think again."
         }
       }
     ]
   },
   {
     slug: "digital-home-economics",
-    title: "Цифровая экономика быта",
-    hours: "10 часов",
+    title: "Digital Household & Daily Economics",
+    hours: "10 hours",
     lessonCount: 10,
-    description: "Десять уроков о том, как цифровые инструменты помогают вести домашнее хозяйство: одежда по прогнозу, ярлык одежды, стиральная машина, дозировка средства, рецепт, таймер, сервировка, доходы и расходы семьи.",
+    description: "Ten lessons on how digital tools can help you manage your household: forecasted clothing, clothing label, washing machine, product dosage, recipe, timer, serving, family income and expenses.",
     image: "/uzbek-images/shopping-market.jpg",
-    imageAlt: "Цифровая экономика быта — одежда, питание, бюджет",
+    imageAlt: "Digital economy of everyday life - clothing, food, budget",
     imageCredit: "UQUVLI.UZ",
     imageSourceUrl: "",
     knowledge: [
-      "Как читать цифровые ярлыки одежды и инструкции",
-      "Как устроена цифровая панель стиральной машины",
-      "Как ведётся цифровой семейный бюджет"
+      "How to Read Digital Clothing Tags and Instructions",
+      "How does the digital panel of a washing machine work?",
+      "How a digital family budget is maintained"
     ],
     skills: [
-      "Распознавать пиктограммы ухода и значки на технике",
-      "Пользоваться цифровым рецептом и таймером",
-      "Заполнять цифровую форму бюджета и таблицу расходов"
+      "Recognize care pictograms and icons on equipment",
+      "Use a digital recipe and timer",
+      "Fill out a digital budget form and expense table"
     ],
     lessons: [
       {
         slug: "seasonal-clothing",
-        title: "Сезонная одежда и её характеристики",
-        duration: "1 час",
-        summary: "Читаем прогноз на неделю и собираем комплект одежды на каждый день.",
-        intro: "На экране — погода на 5–7 дней. Ребёнок смотрит температуру и осадки и собирает на каждый день подходящий комплект из гардероба. Умение «одеться по погоде» — базовое для самостоятельности.",
+        title: "Seasonal clothing and its characteristics",
+        duration: "1 hour",
+        summary: "We read the forecast for the week and collect a set of clothes for every day.",
+        intro: "On the screen is the weather for 5–7 days. The child watches the temperature and precipitation and collects a suitable set from his wardrobe for each day. The ability to “dress according to the weather” is basic for independence.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Сезонная одежда и её характеристики»",
+        imageAlt: "Illustration for the lesson “Seasonal clothing and its characteristics”",
         goals: [
-          "Понять, что такое сезонная одежда и зачем это нужно в жизни.",
-          "Освоить цифровое действие — собрать комплект одежды по цифровому прогнозу на неделю.",
-          "Запомнить правило безопасности: одеваться по погоде — не замёрзнуть и не перегреться."
+          "Understand what seasonal clothing is and why it is needed in life.",
+          "Master the digital action - put together a set of clothes according to the digital forecast for the week.",
+          "Remember the safety rule: dress according to the weather - do not freeze or overheat."
         ],
         rules: [
-          "Сначала открой прогноз на неделю.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: одеваться по погоде — не замёрзнуть и не перегреться.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the forecast for the week.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: dress according to the weather - do not freeze and do not overheat.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Завтра −5°C, снег",
-            text: "В прогнозе на завтра −5°C и снег.",
+            title: "Tomorrow −5°C, snow",
+            text: "The forecast for tomorrow is −5°C and snow.",
             options: [
-              "Лёгкая ветровка и кеды.",
-              "Тёплая куртка, шапка, варежки, тёплая обувь.",
-              "Шорты и футболка."
+              "Light windbreaker and sneakers.",
+              "Warm jacket, hat, mittens, warm shoes.",
+              "Shorts and T-shirt."
             ],
             correctIndex: 1,
-            feedback: "Верно — в мороз нужна тёплая одежда.",
-            support: "Одеваемся по температуре."
+            feedback: "That's right - in cold weather you need warm clothes.",
+            support: "We dress according to the temperature."
           },
           {
-            title: "Прогноз: +25°C, ясно",
-            text: "Жаркий летний день.",
+            title: "Forecast: +25°C, clear",
+            text: "Hot summer day.",
             options: [
-              "Зимняя куртка.",
-              "Дождевик.",
-              "Лёгкая футболка, шорты, головной убор."
+              "Winter jacket.",
+              "Raincoat.",
+              "Light T-shirt, shorts, hat."
             ],
             correctIndex: 2,
-            feedback: "Хорошо — в жару одеваются легко.",
-            support: "В жару важно не перегреться."
+            feedback: "Good - dress lightly in hot weather.",
+            support: "In hot weather it is important not to overheat."
           }
         ],
         quiz: [
           {
-            question: "Где смотреть, как одеваться завтра?",
+            question: "Where to see how to dress tomorrow?",
             options: [
-              "В прогнозе погоды на телефоне.",
-              "Никуда не смотреть.",
-              "На небо в окно."
+              "In the weather forecast on your phone.",
+              "Don't look anywhere.",
+              "To the sky through the window."
             ],
             correctIndex: 0
           },
           {
-            question: "При +5°C и дожде нужно:",
+            question: "At +5°C and rain you need:",
             options: [
-              "Шубу.",
-              "Куртку с капюшоном или зонт.",
-              "Шорты."
+              "Fur coat.",
+              "A jacket with a hood or an umbrella.",
+              "Shorts."
             ],
             correctIndex: 1
           },
           {
-            question: "Зачем смотреть прогноз на несколько дней?",
+            question: "Why look at the forecast for several days?",
             options: [
-              "Чтобы запомнить картинки.",
-              "Чтобы спланировать одежду на неделю.",
-              "Это не нужно."
+              "To remember pictures.",
+              "To plan your outfit for the week.",
+              "It's not necessary."
             ],
             correctIndex: 1
           }
         ],
-        adultNote: "Вечером смотрите вместе прогноз на завтра. Пусть ребёнок сам предложит, что надеть.",
+        adultNote: "In the evening, watch the forecast for tomorrow together. Let the child suggest what to wear.",
         tags: [
-          "сезонная одежда",
-          "Цифровая экономика быта",
-          "Урок 9"
+          "seasonal clothing",
+          "Digital Household & Daily Economics",
+          "Lesson 9"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — собрать комплект одежды по цифровому прогнозу на неделю — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - collect a set of clothes according to the digital forecast for the week - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: прогноз на неделю",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: одеваться по погоде — не замёрзнуть и не перегреться",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: weekly forecast",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: dress according to the weather - do not freeze or overheat",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая экономика быта»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 8 (гигиена слуха) и урок № 2 (внешний вид))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision builds on lesson #8 (hearing hygiene) and lesson #2 (appearance))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся собрать комплект одежды по цифровому прогнозу на неделю.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to assemble a set of clothes according to the digital forecast for the week.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «сезонная одежда»"
+                "Shows a problematic situation on the topic “seasonal clothing”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «сезонная одежда»",
-                "Показывает прогноз на неделю"
+                "Opens informational text on the topic “seasonal clothing”",
+                "Shows the forecast for the week"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «прогнозе на неделю»",
-                "Контролирует, помогает индивидуально"
+                "Launches the task: find key places in the “weekly forecast”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как собрать комплект одежды по цифровому прогнозу на неделю» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to assemble a set of clothes according to a digital forecast for a week” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает прогноз на неделю",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the forecast for the week",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с прогнозом на неделю; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with a weekly forecast; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на сезонная одежда и рассказать на следующем уроке.",
-          safetyNote: "одеваться по погоде — не замёрзнуть и не перегреться"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to seasonal clothing and tell it in the next lesson.",
+          safetyNote: "dress according to the weather - do not freeze or overheat"
         },
         trainer: {
           type: "seasonal-clothing",
-          task: "Посмотри прогноз погоды и подбери подходящую одежду на улицу.",
-          feedbackCorrect: "Верно! Эта одежда подходит к погоде.",
-          feedbackWrong: "На улице будет неудобно. Подбери другую одежду."
+          task: "Check the weather forecast and choose the right clothes for the outdoors.",
+          feedbackCorrect: "Right! These clothes are suitable for the weather.",
+          feedbackWrong: "It will be uncomfortable on the street. Choose different clothes."
         }
       },
       {
         slug: "silk-handwash",
-        title: "Стирка изделий из шёлка вручную",
-        duration: "1 час",
-        summary: "Учимся читать значки ухода на ярлыке одежды — где можно стирать, а где нельзя.",
-        intro: "На ярлыке — пиктограммы: тазик с водой, утюг, треугольник. Ребёнок узнаёт значки и определяет, можно ли стирать вещь в машине или только руками. Это убережёт одежду от порчи.",
+        title: "Washing silk items by hand",
+        duration: "1 hour",
+        summary: "We learn to read the care symbols on a clothing label—where you can wash it and where you can’t.",
+        intro: "On the label there are pictograms: a bowl of water, an iron, a triangle. The child recognizes the icons and determines whether the item can be washed in a machine or only by hand. This will protect clothes from damage.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Стирка изделий из шёлка вручную»",
+        imageAlt: "Illustration for the lesson “Washing silk items by hand”",
         goals: [
-          "Понять, что такое стирка шёлка и зачем это нужно в жизни.",
-          "Освоить цифровое действие — прочитать пиктограммы на цифровом ярлыке одежды.",
-          "Запомнить правило безопасности: неправильная стирка портит одежду."
+          "Understand what washing silk is and why it is needed in life.",
+          "Master the digital action - read the pictograms on the digital clothing label.",
+          "Remember the safety rule: improper washing ruins clothes."
         ],
         rules: [
-          "Сначала открой ярлык одежды.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: неправильная стирка портит одежду.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the clothing label.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision based on the rule: improper washing ruins clothes.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Значок «не стирать в машине»",
-            text: "На ярлыке значок: тазик с водой и рукой.",
+            title: "\"Do not machine wash\" icon",
+            text: "On the label there is an icon: a basin with water and a hand.",
             options: [
-              "Стирать только руками.",
-              "Не стирать совсем.",
-              "Стирать в машине на горячем режиме."
+              "Hand wash only.",
+              "Do not wash at all.",
+              "Machine wash on hot cycle."
             ],
             correctIndex: 0,
-            feedback: "Верно — рука в воде значит «ручная стирка».",
-            support: "Значки на ярлыке — это инструкция для безопасной стирки."
+            feedback: "That’s right—hand in water means “hand wash.”",
+            support: "The icons on the label are instructions for safe washing."
           },
           {
-            title: "Значок «перечёркнут»",
-            text: "На ярлыке тазик с водой перечёркнут.",
+            title: "Crossed out icon",
+            text: "On the label, the basin with water is crossed out.",
             options: [
-              "Стирать в очень горячей воде.",
-              "Можно стирать как угодно.",
-              "Стирать нельзя — только химчистка."
+              "Wash in very hot water.",
+              "You can wash it however you like.",
+              "Cannot be washed - dry clean only."
             ],
             correctIndex: 2,
-            feedback: "Правильно. Перечёркнутый значок = запрет.",
-            support: "Перечёркнутые значки нужно знать наизусть."
+            feedback: "Right. Crossed out icon = prohibited.",
+            support: "You need to know the crossed out icons by heart."
           }
         ],
         quiz: [
           {
-            question: "Где найти значки ухода за одеждой?",
+            question: "Where can I find clothing care icons?",
             options: [
-              "На ярлыке внутри одежды.",
-              "Только в магазине.",
-              "Это не написано нигде."
+              "On a label inside the garment.",
+              "Only in the store.",
+              "This is not written anywhere."
             ],
             correctIndex: 0
           },
           {
-            question: "Если значок перечёркнут — это значит:",
+            question: "If the icon is crossed out, this means:",
             options: [
-              "Можно делать иногда.",
-              "Так делать обязательно.",
-              "Так делать нельзя."
+              "You can do it sometimes.",
+              "This is a must.",
+              "You can't do that."
             ],
             correctIndex: 2
           },
           {
-            question: "Зачем читать ярлык перед стиркой?",
+            question: "Why read the label before washing?",
             options: [
-              "Чтобы не испортить вещь.",
-              "Чтобы потренировать чтение.",
-              "Это не важно."
+              "So as not to spoil the thing.",
+              "To practice reading.",
+              "It doesn't matter."
             ],
             correctIndex: 0
           }
         ],
-        adultNote: "Дома покажите ребёнку ярлык на одежде. Объясните 2-3 главных значка: стирка, утюг, химчистка.",
+        adultNote: "At home, show your child the label on his clothing. Explain 2-3 main icons: washing, iron, dry cleaning.",
         tags: [
-          "стирка шёлка",
-          "Цифровая экономика быта",
-          "Урок 10"
+          "washing silk",
+          "Digital Household & Daily Economics",
+          "Lesson 10"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — прочитать пиктограммы на цифровом ярлыке одежды — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - read pictograms on a digital clothing label - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: ярлык одежды",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: неправильная стирка портит одежду",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: clothing label",
+            "create a step-by-step digital action algorithm",
+            "reinforce the safety rule: improper washing ruins clothes",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая экономика быта»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 9 (сезонная одежда))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision based on lesson #9 (seasonal clothing))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся прочитать пиктограммы на цифровом ярлыке одежды.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to read the pictograms on a digital clothing label.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «стирка шёлка»"
+                "Shows a problematic situation on the topic “washing silk”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «стирка шёлка»",
-                "Показывает ярлык одежды"
+                "Opens informational text on the topic “washing silk”",
+                "Shows clothing label"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «ярлыке одежды»",
-                "Контролирует, помогает индивидуально"
+                "Triggers the task: find key places on the “clothing label”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как прочитать пиктограммы на цифровом ярлыке одежды» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to read pictograms on a digital clothing label” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает ярлык одежды",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens clothing shortcut",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с ярлыком одежды; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with clothing labels; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на стирка шёлка и рассказать на следующем уроке.",
-          safetyNote: "неправильная стирка портит одежду"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to washing silk and tell it in the next lesson.",
+          safetyNote: "Wrong washing ruins clothes"
         },
         trainer: {
           type: "care-label",
-          task: "Прочитай значки на ярлыке одежды и выбери правильный режим стирки.",
-          feedbackCorrect: "Верно! Так одежда не испортится.",
-          feedbackWrong: "Этот режим испортит вещь. Посмотри ещё раз на ярлык."
+          task: "Read the symbols on the clothing label and select the correct wash cycle.",
+          feedbackCorrect: "Right! This way the clothes won't get ruined.",
+          feedbackWrong: "This mode will ruin the thing. Look at the label again."
         }
       },
       {
         slug: "washing-machine-panel",
-        title: "Виды стиральных машин и их использование",
-        duration: "1 час",
-        summary: "Запускаем стирку на стиральной машине: выбираем программу и нажимаем «Пуск».",
-        intro: "На экране — настоящая панель стиральной машины с программами (шерсть, хлопок, синтетика). Ребёнок выбирает программу под вещь и нажимает «Пуск». Этот урок — образцовый: здесь работают все 5 компонентов цифровой грамотности.",
+        title: "Types of washing machines and their uses",
+        duration: "1 hour",
+        summary: "We start the wash on the washing machine: select the program and press “Start”.",
+        intro: "On the screen is a real washing machine panel with programs (wool, cotton, synthetics). The child selects a program for the item and presses “Start”. This lesson is exemplary: all 5 components of digital literacy work here.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Виды стиральных машин и их использование»",
+        imageAlt: "Illustration for the lesson “Types of washing machines and their use”",
         goals: [
-          "Понять, что такое стиральная машина и зачем это нужно в жизни.",
-          "Освоить цифровое действие — запустить стирку на цифровой панели стиральной машины.",
-          "Запомнить правило безопасности: не открывать машину во время работы; не превышать загрузку."
+          "Understand what a washing machine is and why it is needed in life.",
+          "Master the digital action - start the wash on the digital panel of the washing machine.",
+          "Remember the safety rule: do not open the machine during operation; do not exceed the load."
         ],
         rules: [
-          "Сначала открой панель стиральной машины.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: не открывать машину во время работы; не превышать загрузку.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the washing machine panel.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: do not open the machine while working; do not exceed the load.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Стираем шерстяной свитер",
-            text: "Бабушкин шерстяной свитер. Какую программу выбрать?",
+            title: "Washing a wool sweater",
+            text: "Grandma's wool sweater. Which program should I choose?",
             options: [
-              "«Шерсть» — 30°C, бережная.",
-              "«Быстрая» — 60°C.",
-              "«Хлопок» — 90°C, горячая."
+              "“Wool” - 30°C, gentle.",
+              "“Fast” – 60°C.",
+              "“Cotton” - 90°C, hot."
             ],
             correctIndex: 0,
-            feedback: "Верно — шерсть требует бережной стирки.",
-            support: "Высокая температура портит шерсть."
+            feedback: "That's right - wool requires careful washing.",
+            support: "High temperatures damage wool."
           },
           {
-            title: "Машина гудит после старта",
-            text: "Включил машину, она шумит и дрожит.",
+            title: "The car hums after starting",
+            text: "I turned on the car, it makes noise and shakes.",
             options: [
-              "Срочно выдернуть из розетки.",
-              "Это нормально — она работает; проверим, ровно ли стоит.",
-              "Открыть дверь и достать вещи."
+              "Unplug it immediately.",
+              "This is normal - it works; Let's check if it's level.",
+              "Open the door and get things out."
             ],
             correctIndex: 1,
-            feedback: "Хорошо — шум это работа машины.",
-            support: "Машина не должна сильно прыгать — это значит белья слишком много."
+            feedback: "Okay - the noise is the machine running.",
+            support: "The machine should not jump much - this means there is too much laundry."
           }
         ],
         quiz: [
           {
-            question: "Где выбирают программу стирки?",
+            question: "Where do you select the washing program?",
             options: [
-              "На самой одежде.",
-              "На панели машины — там значки.",
-              "Это не выбирают."
+              "On the clothes themselves.",
+              "There are icons on the car panel.",
+              "This is not chosen."
             ],
             correctIndex: 1
           },
           {
-            question: "Можно ли открыть дверь во время стирки?",
+            question: "Is it possible to open the door while washing?",
             options: [
-              "Только в начале.",
-              "Нет — пока вода внутри, дверь заблокирована.",
-              "Да, в любое время."
+              "Only at the beginning.",
+              "No - as long as the water is inside, the door is locked.",
+              "Yes, any time."
             ],
             correctIndex: 1
           },
           {
-            question: "Что значит значок «30°C»?",
+            question: "What does the 30°C icon mean?",
             options: [
-              "Стирать 30 минут.",
-              "Загрузка 30 кг.",
-              "Температура воды — 30 градусов."
+              "Wash for 30 minutes.",
+              "Loading 30 kg.",
+              "Water temperature - 30 degrees."
             ],
             correctIndex: 2
           }
         ],
-        adultNote: "Покажите ребёнку панель вашей стиральной машины. Объясните значки программ и температуры.",
+        adultNote: "Show your child the panel of your washing machine. Explain program and temperature icons.",
         tags: [
-          "стиральная машина",
-          "Цифровая экономика быта",
-          "Урок 11"
+          "washing machine",
+          "Digital Household & Daily Economics",
+          "Lesson 11"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — запустить стирку на цифровой панели стиральной машины — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Create a digital action - start washing on the digital panel of the washing machine - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: панель стиральной машины",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: не открывать машину во время работы; не превышать загрузку",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: washing machine panel",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: do not open the machine during operation; do not exceed the load",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая экономика быта»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 10 (значки ухода))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision builds on Lesson #10 (Grooming Icons))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся запустить стирку на цифровой панели стиральной машины.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to start washing on the digital panel of a washing machine.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «стиральная машина»"
+                "Shows a problematic situation on the topic “washing machine”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «стиральная машина»",
-                "Показывает панель стиральной машины"
+                "Opens information text on the topic “washing machine”",
+                "Shows the washing machine panel"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «панели стиральной машины»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “washing machine panel”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как запустить стирку на цифровой панели стиральной машины» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to start washing on the digital panel of a washing machine” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает панель стиральной машины",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the washing machine panel",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с панелью стиральной машины; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "They work independently with the washing machine panel; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на стиральная машина и рассказать на следующем уроке.",
-          safetyNote: "не открывать машину во время работы; не превышать загрузку"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: pay attention to the washing machine at home and tell it in the next lesson.",
+          safetyNote: "do not open the machine during operation; do not exceed the load"
         },        trainer: {
           type: "washing-machine-v2",
-          task: "Загрузи бельё в машину, выбери режим и температуру, запусти стирку.",
-          feedbackCorrect: "Молодец! Стирка началась.",
-          feedbackWrong: "Этот режим испортит бельё. Посмотри на ярлык."
+          task: "Load the laundry into the machine, select the mode and temperature, and start the wash.",
+          feedbackCorrect: "Well done! The washing has started.",
+          feedbackWrong: "This mode will ruin your laundry. Look at the label."
         }
 
       },
       {
         slug: "detergent-dosage",
-        title: "Стиральные порошки и средства для стирки и их применение",
-        duration: "1 час",
-        summary: "Находим на упаковке порошка нужную дозировку для конкретной стирки.",
-        intro: "На упаковке — таблица: сколько порошка нужно на 3 кг, на 5 кг, на 8 кг белья. Ребёнок находит свою строку и определяет количество ложек. Это типичное умение читать инструкцию-таблицу.",
+        title: "Washing powders and detergents and their use",
+        duration: "1 hour",
+        summary: "We find on the powder packaging the required dosage for a specific wash.",
+        intro: "There is a table on the package: how much powder is needed for 3 kg, 5 kg, 8 kg of laundry. The child finds his line and determines the number of spoons. This is a typical ability to read a table of instructions.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Стиральные порошки и средства для стирки и их применение»",
+        imageAlt: "Illustration for the lesson “Washing powders and detergents and their use”",
         goals: [
-          "Понять, что такое стиральные средства и зачем это нужно в жизни.",
-          "Освоить цифровое действие — найти нужную дозировку средства на цифровой упаковке.",
-          "Запомнить правило безопасности: слишком много средства вредит и одежде, и машине."
+          "Understand what detergents are and why you need them in life.",
+          "Master the digital action - find the desired dosage of the product on the digital packaging.",
+          "Remember the safety rule: too much product harms both clothes and the car."
         ],
         rules: [
-          "Сначала открой упаковку стирального порошка.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: слишком много средства вредит и одежде, и машине.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the package of washing powder.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision based on the rule: too much product harms both your clothes and your car.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Стираешь 5 кг белья",
-            text: "На упаковке таблица: на 5 кг — 80 граммов.",
+            title: "Washing 5 kg of laundry",
+            text: "There is a table on the package: for 5 kg - 80 grams.",
             options: [
-              "Отмерить 80 граммов мерной ложкой.",
-              "Высыпать всю пачку.",
-              "Сыпать «на глаз»."
+              "Measure 80 grams with a measuring spoon.",
+              "Empty the entire pack.",
+              "Pour by eye."
             ],
             correctIndex: 0,
-            feedback: "Правильно — точная дозировка нужна.",
-            support: "Слишком много порошка вредит и одежде, и машине."
+            feedback: "That's right - precise dosage is needed.",
+            support: "Too much powder is harmful to both your clothes and your car."
           },
           {
-            title: "Жидкое средство",
-            text: "Используешь жидкий концентрат.",
+            title: "Liquid product",
+            text: "You use liquid concentrate.",
             options: [
-              "Не использовать.",
-              "Отмерить колпачком — он мерный.",
-              "Налить сколько хочется."
+              "Do not use.",
+              "Measure with a cap - it measures.",
+              "Pour as much as you want."
             ],
             correctIndex: 1,
-            feedback: "Верно. Колпачок жидкого средства — это мерка.",
-            support: "Все средства имеют дозировку — её надо соблюдать."
+            feedback: "Right. A capful of liquid is a measuring stick.",
+            support: "All products have a dosage - it must be followed."
           }
         ],
         quiz: [
           {
-            question: "Где смотреть, сколько порошка сыпать?",
+            question: "Where can I see how much powder to pour?",
             options: [
-              "Угадать.",
-              "Спросить у соседа.",
-              "На упаковке — там таблица."
+              "Guess.",
+              "Ask your neighbor.",
+              "There is a table on the package."
             ],
             correctIndex: 2
           },
           {
-            question: "Если сыпать много порошка:",
+            question: "If you pour a lot of powder:",
             options: [
-              "Одежда плохо прополощется и порошок осядет на ткани.",
-              "Будет лучше отстирывать.",
-              "Ничего не изменится."
+              "The clothes will not rinse well and the powder will settle on the fabric.",
+              "It will be better to wash it.",
+              "Nothing will change."
             ],
             correctIndex: 0
           },
           {
-            question: "Чем измерять порошок?",
+            question: "How to measure powder?",
             options: [
-              "Горстью.",
-              "Мерной ложкой из упаковки.",
-              "Кружкой."
+              "A handful.",
+              "Measuring spoon from the package.",
+              "A mug."
             ],
             correctIndex: 1
           }
         ],
-        adultNote: "Покажите ребёнку упаковку порошка и таблицу дозировки. Дайте отмерить нужное количество для следующей стирки.",
+        adultNote: "Show your child the packaging of the powder and the dosage table. Let me measure out the required amount for the next wash.",
         tags: [
-          "стиральные средства",
-          "Цифровая экономика быта",
-          "Урок 12"
+          "detergents",
+          "Digital Household & Daily Economics",
+          "Lesson 12"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — найти нужную дозировку средства на цифровой упаковке — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - find the right dosage of the product on the digital packaging - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: упаковка стирального порошка",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: слишком много средства вредит и одежде, и машине",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: packaging of washing powder",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: too much product harms both clothes and the car",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая экономика быта»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 11 (стиральная машина))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision based on lesson #11 (washing machine))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся найти нужную дозировку средства на цифровой упаковке.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to find the right dosage of the product on digital packaging.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «стиральные средства»"
+                "Shows a problematic situation on the topic “washing detergents”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «стиральные средства»",
-                "Показывает упаковку стирального порошка"
+                "Opens information text on the topic “washing detergents”",
+                "Shows packaging of washing powder"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «упаковке стирального порошка»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “packaging of washing powder”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как найти нужную дозировку средства на цифровой упаковке» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to find the right dosage of the product on the digital packaging” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает упаковку стирального порошка",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opening a package of washing powder",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с упаковкой стирального порошка; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with washing powder packaging; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на стиральные средства и рассказать на следующем уроке.",
-          safetyNote: "слишком много средства вредит и одежде, и машине"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to detergents and tell them in the next lesson.",
+          safetyNote: "too much product harms both clothes and car"
         },        trainer: {
           type: "detergent-dosage",
-          task: "Прочитай таблицу на бутылке порошка и отмерь правильную дозу под вес белья.",
-          feedbackCorrect: "Верно! Это правильная мерка.",
-          feedbackWrong: "Это не та доза. Посмотри в таблицу ещё раз."
+          task: "Read the chart on the bottle of powder and measure the correct dose based on the weight of the laundry.",
+          feedbackCorrect: "Right! This is the correct measurement.",
+          feedbackWrong: "This is the wrong dose. Look at the table again."
         }
 
       },
       {
         slug: "healthy-dinner-menu",
-        title: "Здоровый ужин для всей семьи",
-        duration: "1 час",
-        summary: "Собираем меню ужина из карточек блюд с цифровыми подсказками.",
-        intro: "На экране — карточки блюд. У каждой подсказка: полезное, тяжёлое, сладкое. Ребёнок собирает меню ужина для семьи, выбирая подходящие блюда. Учится принимать решения по подсказкам.",
+        title: "Healthy dinner for the whole family",
+        duration: "1 hour",
+        summary: "We assemble a dinner menu from dish cards with digital clues.",
+        intro: "There are dish cards on the screen. Each one has a hint: healthy, heavy, sweet. The child collects a dinner menu for the family, choosing suitable dishes. Learns to make decisions based on prompts.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Здоровый ужин для всей семьи»",
+        imageAlt: "Illustration for the lesson “Healthy dinner for the whole family”",
         goals: [
-          "Понять, что такое здоровый ужин и зачем это нужно в жизни.",
-          "Освоить цифровое действие — собрать цифровое меню ужина из карточек блюд.",
-          "Запомнить правило безопасности: правильное питание — основа здоровья."
+          "Understand what a healthy dinner is and why it is needed in life.",
+          "Master the digital action - assemble a digital dinner menu from dish cards.",
+          "Remember the safety rule: proper nutrition is the basis of health."
         ],
         rules: [
-          "Сначала открой карточки блюд.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: правильное питание — основа здоровья.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the dish cards.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: proper nutrition is the basis of health.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Собираем ужин дома",
-            text: "Что приготовим на ужин для семьи?",
+            title: "Making dinner at home",
+            text: "What should we cook for dinner for the family?",
             options: [
-              "Шурпу с овощами и хлеб — лёгкий полезный ужин.",
-              "Чипсы и газировку.",
-              "Большой торт со сливками."
+              "Shurpa with vegetables and bread is a light, healthy dinner.",
+              "Chips and soda.",
+              "Large cake with cream."
             ],
             correctIndex: 0,
-            feedback: "Верно — суп с овощами и мясом на ужин полезно.",
-            support: "Узбекская шурпа — традиционное лёгкое блюдо на ужин."
+            feedback: "That's right - soup with vegetables and meat for dinner is healthy.",
+            support: "Uzbek shurpa is a traditional light dinner dish."
           },
           {
-            title: "Поздно вечером хочется кушать",
-            text: "Уже 22:00, хочется есть. Бабушка предлагает плов.",
+            title: "Late in the evening I want to eat",
+            text: "It’s already 22:00, I’m hungry. Grandmother offers pilaf.",
             options: [
-              "Конфеты и торт.",
-              "Большую порцию плова с мясом.",
-              "Лёгкий перекус: лепёшка с чаем, фрукт."
+              "Candy and cake.",
+              "A large portion of pilaf with meat.",
+              "Light snack: flatbread with tea, fruit."
             ],
             correctIndex: 2,
-            feedback: "Хорошо. На ночь — что-то лёгкое.",
-            support: "Плов лучше есть на обед, а на ночь — лёгкое."
+            feedback: "Fine. At night - something light.",
+            support: "It is better to eat pilaf for lunch, and light food at night."
           }
         ],
         quiz: [
           {
-            question: "Что лучше на ужин?",
+            question: "What's best for dinner?",
             options: [
-              "Только конфеты.",
-              "Овощи, белок (курица, рыба, яйца) и лепёшка.",
-              "Много сладкого и жирного."
+              "Only sweets.",
+              "Vegetables, protein (chicken, fish, eggs) and tortilla.",
+              "Lots of sweet and fatty foods."
             ],
             correctIndex: 1
           },
           {
-            question: "Какое узбекское блюдо лёгкое и подходит на ужин?",
+            question: "What Uzbek dish is light and suitable for dinner?",
             options: [
-              "Жирные чебуреки.",
-              "Шурпа — суп с овощами и мясом.",
-              "Большой торт."
+              "Fat pasties.",
+              "Shurpa is a soup with vegetables and meat.",
+              "Big cake."
             ],
             correctIndex: 1
           },
           {
-            question: "Овощи на ужин — это:",
+            question: "Vegetables for dinner are:",
             options: [
-              "Только картошка фри.",
-              "Помидор, огурец, морковь, лук — свежие.",
-              "Конфеты."
+              "Only fries.",
+              "Tomato, cucumber, carrot, onion - fresh.",
+              "Candies."
             ],
             correctIndex: 1
           }
         ],
-        adultNote: "Соберите вместе с ребёнком меню ужина на неделю. Используйте знакомые блюда: шурпа, манты на обед, лёгкая каша или салат на ужин.",
+        adultNote: "Together with your child, collect a dinner menu for the week. Use familiar dishes: shurpa, manti for lunch, light porridge or salad for dinner.",
         tags: [
-          "здоровый ужин",
-          "Цифровая экономика быта",
-          "Урок 13"
+          "healthy dinner",
+          "Digital Household & Daily Economics",
+          "Lesson 13"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — собрать цифровое меню ужина из карточек блюд — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - collect a digital dinner menu from dish cards - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: карточки блюд",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: правильное питание — основа здоровья",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: dish cards",
+            "create a step-by-step digital action algorithm",
+            "reinforce the safety rule: proper nutrition is the basis of health",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая экономика быта»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 12 (дозировка средств))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short tasks (repetition based on lesson No. 12 (dosage of funds))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся собрать цифровое меню ужина из карточек блюд.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to assemble a digital dinner menu from dish cards.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «здоровый ужин»"
+                "Shows a problematic situation on the topic “healthy dinner”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «здоровый ужин»",
-                "Показывает карточки блюд"
+                "Opens informational text on the topic “healthy dinner”",
+                "Shows dish cards"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «карточках блюд»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “dish cards”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как собрать цифровое меню ужина из карточек блюд» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to create a digital dinner menu from dish cards” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает карточки блюд",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens dish cards",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с карточками блюд; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with dish cards; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на здоровый ужин и рассказать на следующем уроке.",
-          safetyNote: "правильное питание — основа здоровья"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to a healthy dinner and tell it at the next lesson.",
+          safetyNote: "proper nutrition is the basis of health"
         },        trainer: {
           type: "menu-builder",
-          task: "Собери здоровый ужин: горячее, гарнир и напиток.",
-          feedbackCorrect: "Молодец! Это сбалансированный ужин.",
-          feedbackWrong: "Этот набор не подходит для ужина. Попробуй другой."
+          task: "Pack a healthy dinner: main course, side dish and drink.",
+          feedbackCorrect: "Well done! This is a balanced dinner.",
+          feedbackWrong: "This set is not suitable for dinner. Try another one."
         }
 
       },
       {
         slug: "cutlets-recipe",
-        title: "Котлеты",
-        duration: "1 час",
-        summary: "Читаем цифровой рецепт котлет: продукты, количество, шаги приготовления.",
-        intro: "На экране — рецепт котлет. Ребёнок ищет в нём три блока: список продуктов, граммы и штуки, последовательность шагов. Это умение читать структурированный текст с числами — основа для любого рецепта.",
+        title: "Cutlets",
+        duration: "1 hour",
+        summary: "Reading the digital recipe for cutlets: ingredients, quantities, cooking steps.",
+        intro: "On the screen is a recipe for cutlets. The child looks for three blocks in it: a list of products, grams and pieces, a sequence of steps. This ability to read structured text with numbers is the basis for any recipe.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Котлеты»",
+        imageAlt: "Illustration for the lesson “Cutlets”",
         goals: [
-          "Понять, что такое котлеты и зачем это нужно в жизни.",
-          "Освоить цифровое действие — прочитать цифровой рецепт и найти продукты и количество.",
-          "Запомнить правило безопасности: перед готовкой проверить срок годности продуктов."
+          "Understand what cutlets are and why you need them in life.",
+          "Master the digital action - read a digital recipe and find products and quantities.",
+          "Remember the safety rule: check the expiration date of food before cooking."
         ],
         rules: [
-          "Сначала открой цифровой рецепт.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: перед готовкой проверить срок годности продуктов.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the digital recipe.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: check the expiration date of food before cooking.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "В рецепте «500 г фарша»",
-            text: "Мама готовит котлеты на ужин. В рецепте 500 г фарша, а у тебя дома 300 г.",
+            title: "In the recipe “500 g minced meat”",
+            text: "Mom is preparing cutlets for dinner. The recipe calls for 500 g of minced meat, but you have 300 g at home.",
             options: [
-              "Заменить на 500 г картошки.",
-              "Готовить из того что есть и не думать.",
-              "Купить ещё 200 г в магазине или сделать порцию меньше."
+              "Replace with 500 g potatoes.",
+              "Cook with what you have and don’t think about it.",
+              "Buy another 200 g in the store or make a smaller portion."
             ],
             correctIndex: 2,
-            feedback: "Правильно. Количество в рецепте важно.",
-            support: "Если меньше фарша — будет меньше котлет."
+            feedback: "Right. The quantity in the recipe is important.",
+            support: "If there is less minced meat, there will be fewer cutlets."
           },
           {
-            title: "Не знаешь, что такое «фарш»",
-            text: "В рецепте слово «фарш» непонятное.",
+            title: "Don't know what \"minced meat\" is",
+            text: "The word “minced meat” in the recipe is unclear.",
             options: [
-              "Использовать первое, что попалось.",
-              "Пропустить.",
-              "Спросить маму или бабушку — что это."
+              "Use the first thing you come across.",
+              "Skip.",
+              "Ask your mother or grandmother what it is."
             ],
             correctIndex: 2,
-            feedback: "Хорошо — лучше спросить у близких.",
-            support: "Непонятные слова в рецепте лучше уточнить."
+            feedback: "Well, it’s better to ask your loved ones.",
+            support: "It is better to clarify any unclear words in the recipe."
           }
         ],
         quiz: [
           {
-            question: "Из чего состоит рецепт?",
+            question: "What does the recipe consist of?",
             options: [
-              "Только из картинки.",
-              "Только из шагов.",
-              "Из списка продуктов, количеств и шагов."
+              "Just from the picture.",
+              "Only from steps.",
+              "From a list of products, quantities and steps."
             ],
             correctIndex: 2
           },
           {
-            question: "Что значит «500 г»?",
+            question: "What does \"500 g\" mean?",
             options: [
-              "500 граммов — это полкило.",
-              "5 граммов.",
-              "500 штук."
+              "500 grams is half a kilo.",
+              "5 grams.",
+              "500 pieces."
             ],
             correctIndex: 0
           },
           {
-            question: "Зачем нужны шаги в рецепте?",
+            question: "Why are the steps in a recipe necessary?",
             options: [
-              "Чтобы запутать.",
-              "Чтобы знать, что делать сначала, что потом.",
-              "Это просто текст."
+              "To confuse.",
+              "To know what to do first, what to do next.",
+              "It's just text."
             ],
             correctIndex: 1
           }
         ],
-        adultNote: "Прочитайте вместе с ребёнком простой рецепт. Покажите, где список продуктов, где количество, где шаги.",
+        adultNote: "Read a simple recipe with your child. Show where the list of products is, where the quantities are, where the steps are.",
         tags: [
-          "котлеты",
-          "Цифровая экономика быта",
-          "Урок 14"
+          "cutlets",
+          "Digital Household & Daily Economics",
+          "Lesson 14"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — прочитать цифровой рецепт и найти продукты и количество — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - read a digital recipe and find products and quantities - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: цифровой рецепт",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: перед готовкой проверить срок годности продуктов",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: digital recipe",
+            "create a step-by-step digital action algorithm",
+            "reinforce the safety rule: check the expiration date of food before cooking",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая экономика быта»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 13 (меню ужина))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision based on Lesson #13 (Dinner Menu))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся прочитать цифровой рецепт и найти продукты и количество.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to read a digital recipe and find products and quantities.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «котлеты»"
+                "Shows a problematic situation on the topic “cutlets”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «котлеты»",
-                "Показывает цифровой рецепт"
+                "Opens informational text on the topic “cutlets”",
+                "Shows digital recipe"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «цифровом рецепте»",
-                "Контролирует, помогает индивидуально"
+                "Launches a task: find key places on the “digital recipe”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как прочитать цифровой рецепт и найти продукты и количество» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to read a digital recipe and find products and quantities” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает цифровой рецепт",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens a digital recipe",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с цифровым рецептом; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with a digital recipe; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на котлеты и рассказать на следующем уроке.",
-          safetyNote: "перед готовкой проверить срок годности продуктов"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: pay attention to the cutlets at home and tell them at the next lesson.",
+          safetyNote: "Before cooking, check the expiration date of products"
         },        trainer: {
           type: "recipe-reader",
-          task: "Прочитай рецепт котлет и выбери нужные продукты из холодильника.",
-          feedbackCorrect: "Верно! Эти продукты нужны для котлет.",
-          feedbackWrong: "Это лишний продукт. Посмотри в рецепт."
+          task: "Read the cutlet recipe and select the desired ingredients from the refrigerator.",
+          feedbackCorrect: "Right! These products are needed for cutlets.",
+          feedbackWrong: "This is a redundant product. Look at the recipe."
         }
 
       },
       {
         slug: "apple-pie-timer",
-        title: "Приготовление яблочного пирога",
-        duration: "1 час",
-        summary: "Готовим пирог по шагам и пользуемся цифровым таймером.",
-        intro: "Каждый шаг рецепта — отдельный экран. На этапах ожидания (тесто, выпечка) запускается цифровой таймер. Когда зазвонит — пора переходить дальше. Так осваивается умение работать с таймером в готовке.",
+        title: "Making apple pie",
+        duration: "1 hour",
+        summary: "Prepare the pie step by step and use a digital timer.",
+        intro: "Each recipe step is a separate screen. During the waiting stages (dough, baking), a digital timer starts. When it rings, it’s time to move on. This is how you master the ability to work with a timer in cooking.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Приготовление яблочного пирога»",
+        imageAlt: "Illustration for the lesson “Cooking apple pie”",
         goals: [
-          "Понять, что такое яблочный пирог и зачем это нужно в жизни.",
-          "Освоить цифровое действие — выполнить рецепт по шагам с цифровым таймером.",
-          "Запомнить правило безопасности: горячая духовка — не открывать без взрослого."
+          "Understand what apple pie is and why it is needed in life.",
+          "Master the digital action - follow the recipe step by step with a digital timer.",
+          "Remember the safety rule: do not open a hot oven without an adult."
         ],
         rules: [
-          "Сначала открой пошаговый рецепт с таймером.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: горячая духовка — не открывать без взрослого.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the step-by-step recipe with a timer.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: do not open a hot oven without an adult.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Тесто должно постоять 30 минут",
-            text: "Рецепт говорит: тесто должно полежать 30 минут.",
+            title: "The dough should rest for 30 minutes",
+            text: "The recipe says: the dough should rest for 30 minutes.",
             options: [
-              "Сразу ставить в духовку.",
-              "Запустить таймер на 30 минут и заняться чем-то.",
-              "Полежать самому 30 минут."
+              "Place in the oven immediately.",
+              "Set a timer for 30 minutes and do something.",
+              "Lie down on your own for 30 minutes."
             ],
             correctIndex: 1,
-            feedback: "Верно. Таймер сообщит, когда пройдёт время.",
-            support: "Таймер — помощник в любом приготовлении."
+            feedback: "Right. The timer will tell you when the time has passed.",
+            support: "A timer is an assistant in any preparation."
           },
           {
-            title: "Зазвонил таймер",
-            text: "Прозвучал сигнал таймера — 30 минут прошло.",
+            title: "The timer rang",
+            text: "The timer sounded - 30 minutes had passed.",
             options: [
-              "Подождать ещё час.",
-              "Не реагировать.",
-              "Перейти к следующему шагу рецепта."
+              "Wait another hour.",
+              "Don't react.",
+              "Continue to next recipe step."
             ],
             correctIndex: 2,
-            feedback: "Правильно — сигнал значит «время вышло».",
-            support: "Таймер помогает соблюдать время."
+            feedback: "That's right - the signal means “time is up.”",
+            support: "A timer helps you keep track of time."
           }
         ],
         quiz: [
           {
-            question: "Что такое таймер?",
+            question: "What is a timer?",
             options: [
-              "Часы, которые показывают только текущее время.",
-              "Будильник на утро.",
-              "Часы, которые отсчитывают время и звонят."
+              "A clock that only shows the current time.",
+              "Alarm clock for the morning.",
+              "A clock that keeps time and rings."
             ],
             correctIndex: 2
           },
           {
-            question: "Зачем таймер в готовке?",
+            question: "Why a timer in cooking?",
             options: [
-              "Без него нельзя готовить.",
-              "Чтобы было красиво.",
-              "Чтобы не передержать или не пропустить шаг."
+              "You can't cook without it.",
+              "To make it beautiful.",
+              "So as not to overdo it or skip a step."
             ],
             correctIndex: 2
           },
           {
-            question: "30 минут — это сколько секунд?",
+            question: "30 minutes is how many seconds?",
             options: [
-              "30 секунд.",
-              "1800 секунд (полчаса).",
-              "3000 секунд."
+              "30 seconds.",
+              "1800 seconds (half an hour).",
+              "3000 seconds."
             ],
             correctIndex: 1
           }
         ],
-        adultNote: "Приготовьте вместе с ребёнком простое блюдо с таймером (яйцо, тесто). Покажите, как ставить время.",
+        adultNote: "Together with your child, prepare a simple dish with a timer (egg, dough). Show how to set the time.",
         tags: [
-          "яблочный пирог",
-          "Цифровая экономика быта",
-          "Урок 15"
+          "apple pie",
+          "Digital Household & Daily Economics",
+          "Lesson 15"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — выполнить рецепт по шагам с цифровым таймером — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Create a digital action - complete a recipe step by step with a digital timer - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: пошаговый рецепт с таймером",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: горячая духовка — не открывать без взрослого",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: a step-by-step recipe with a timer",
+            "create a step-by-step digital action algorithm",
+            "reinforce the safety rule: hot oven - do not open without an adult",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая экономика быта»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 14 (чтение рецепта))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision builds on Lesson #14 (Reading a Recipe))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся выполнить рецепт по шагам с цифровым таймером.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to follow the recipe step by step with a digital timer.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «яблочный пирог»"
+                "Shows a problem situation on the topic “apple pie”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «яблочный пирог»",
-                "Показывает пошаговый рецепт с таймером"
+                "Opens informational text on the topic \"apple pie\"",
+                "Shows step-by-step recipe with timer"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «пошаговом рецепте с таймером»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key points on the “step-by-step recipe with timer”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как выполнить рецепт по шагам с цифровым таймером» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to make a recipe step by step with a digital timer” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает пошаговый рецепт с таймером",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens a step-by-step recipe with a timer",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с пошаговым рецептом и таймером; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with a step-by-step recipe and timer; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на яблочный пирог и рассказать на следующем уроке.",
-          safetyNote: "горячая духовка — не открывать без взрослого"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: pay attention to the apple pie at home and tell it at the next lesson.",
+          safetyNote: "hot oven - do not open without an adult"
         },        trainer: {
           type: "recipe-timer",
-          task: "Готовь яблочный пирог по шагам. На выпечке запусти таймер.",
-          feedbackCorrect: "Верно! Шаг выполнен.",
-          feedbackWrong: "Ещё рано. Посмотри на шаг и таймер."
+          task: "Prepare apple pie step by step. When baking, start the timer.",
+          feedbackCorrect: "Right! Step completed.",
+          feedbackWrong: "It's still early. Look at the step and timer."
         }
 
       },
       {
         slug: "table-setting-scheme",
-        title: "Сервировка стола к ужину",
-        duration: "1 час",
-        summary: "Расставляем приборы на цифровой схеме сервировки стола.",
-        intro: "На схеме показано, где должны стоять тарелка, вилка, нож, ложка, стакан. Ребёнок расставляет приборы по образцу. Это работа со знаково-символическим планом — переносится на любые схемы в быту.",
+        title: "Table setting for dinner",
+        duration: "1 hour",
+        summary: "We arrange the cutlery on a digital table setting chart.",
+        intro: "The diagram shows where the plate, fork, knife, spoon, and glass should be. The child arranges the cutlery according to the pattern. This is work with a sign-symbolic plan - it can be transferred to any schemes in everyday life.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Сервировка стола к ужину»",
+        imageAlt: "Illustration for the lesson “Setting the table for dinner”",
         goals: [
-          "Понять, что такое сервировка и зачем это нужно в жизни.",
-          "Освоить цифровое действие — расставить приборы на цифровой схеме сервировки.",
-          "Запомнить правило безопасности: острые приборы (нож) брать аккуратно."
+          "Understand what serving is and why it is needed in life.",
+          "Master digital action - arrange cutlery on a digital serving chart.",
+          "Remember the safety rule: handle sharp instruments (knives) carefully."
         ],
         rules: [
-          "Сначала открой схему сервировки.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: острые приборы (нож) брать аккуратно.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the serving diagram.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: handle sharp utensils (knives) carefully.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Куда положить вилку?",
-            text: "Сервируешь стол к ужину. Куда положить вилку?",
+            title: "Where to put the fork?",
+            text: "Setting the table for dinner. Where to put the fork?",
             options: [
-              "Справа от тарелки.",
-              "Слева от тарелки.",
-              "Сверху на тарелке."
+              "To the right of the plate.",
+              "To the left of the plate.",
+              "On top of the plate."
             ],
             correctIndex: 1,
-            feedback: "Верно — вилка всегда слева.",
-            support: "Это правило сервировки во многих странах."
+            feedback: "That's right - the fork is always on the left.",
+            support: "This is a serving rule in many countries."
           },
           {
-            title: "Дастархан и пиала",
-            text: "Узбекский ужин: на столе лепёшка, пиала с чаем. Куда поставить пиалу?",
+            title: "Dastarkhan and bowl",
+            text: "Uzbek dinner: flatbread on the table, bowl with tea. Where to put the bowl?",
             options: [
-              "Сверху-справа от тарелки — удобно брать правой рукой.",
-              "В центр тарелки.",
-              "На пол."
+              "Top-right of the plate - convenient to take with your right hand.",
+              "In the center of the plate.",
+              "On the floor."
             ],
             correctIndex: 0,
-            feedback: "Хорошо. Пиала справа сверху.",
-            support: "Дастархан — традиционный узбекский накрытый стол."
+            feedback: "Fine. Bowl on the top right.",
+            support: "Dastarkhan is a traditional Uzbek set table."
           }
         ],
         quiz: [
           {
-            question: "Что главное в сервировке?",
+            question: "What is most important in serving?",
             options: [
-              "Порядок: каждый прибор на своём месте.",
-              "Чем красивее — тем больше беспорядка.",
-              "Не имеет значения."
+              "Order: each device is in its place.",
+              "The more beautiful, the more chaos.",
+              "Doesn't matter."
             ],
             correctIndex: 0
           },
           {
-            question: "Зачем салфетка на столе?",
+            question: "Why is there a napkin on the table?",
             options: [
-              "Вытирать рот и руки.",
-              "Накрыть еду.",
-              "Это просто украшение."
+              "Wipe your mouth and hands.",
+              "Cover the food.",
+              "It's just decoration."
             ],
             correctIndex: 0
           },
           {
-            question: "Куда нож при сервировке?",
+            question: "Where does the knife go when serving?",
             options: [
-              "В тарелку.",
-              "Слева вместе с вилкой.",
-              "Справа от тарелки, лезвием к тарелке."
+              "On a plate.",
+              "On the left with the fork.",
+              "To the right of the plate, blade towards the plate."
             ],
             correctIndex: 2
           }
         ],
-        adultNote: "Поручите ребёнку накрыть дастархан — стол к семейному ужину. Похвалите за аккуратно расставленные пиалы и приборы.",
+        adultNote: "Instruct the child to set the dastarkhan - the table for the family dinner. Praise for neatly arranged bowls and cutlery.",
         tags: [
-          "сервировка",
-          "Цифровая экономика быта",
-          "Урок 16"
+          "serving",
+          "Digital Household & Daily Economics",
+          "Lesson 16"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — расставить приборы на цифровой схеме сервировки — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action—arrange cutlery on a digital serving chart—for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: схема сервировки",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: острые приборы (нож) брать аккуратно",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: serving scheme",
+            "create a step-by-step digital action algorithm",
+            "reinforce the safety rule: handle sharp utensils (knives) carefully",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая экономика быта»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 15 (таймер и пирог))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision based on lesson #15 (timer and pie))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся расставить приборы на цифровой схеме сервировки.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to arrange cutlery on a digital serving chart.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «сервировка»"
+                "Shows a problematic situation on the topic “serving”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «сервировка»",
-                "Показывает схему сервировки"
+                "Opens informational text on the topic “serving”",
+                "Shows serving diagram"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «схеме сервировки»",
-                "Контролирует, помогает индивидуально"
+                "Triggers the task: find key places on the “serving diagram”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как расставить приборы на цифровой схеме сервировки» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to arrange cutlery on a digital serving chart” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает схему сервировки",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the serving plan",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с схемой сервировки; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with the serving scheme; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на сервировка и рассказать на следующем уроке.",
-          safetyNote: "острые приборы (нож) брать аккуратно"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to the table setting and tell it at the next lesson.",
+          safetyNote: "Handle sharp utensils (knives) carefully"
         },
         trainer: {
           type: "table-setting",
-          task: "Расставь приборы на столе по схеме: тарелка, вилка, нож, ложка, стакан, салфетка.",
-          feedbackCorrect: "Молодец! Сервировка правильная.",
-          feedbackWrong: "Это не то место. Посмотри на схему ещё раз."
+          task: "Arrange the cutlery on the table according to the following pattern: plate, fork, knife, spoon, glass, napkin.",
+          feedbackCorrect: "Well done! The serving is correct.",
+          feedbackWrong: "This is not the place. Look at the diagram again."
         }
       },
       {
         slug: "family-income",
-        title: "Бюджет семьи. Источники дохода",
-        duration: "1 час",
-        summary: "Вводим источники дохода семьи в цифровую форму бюджета и видим итог.",
-        intro: "Простая форма с полями: зарплата мамы, зарплата папы, другие доходы. Ребёнок вводит суммы — платформа сама считает итог. Это знакомство с тем, как работают онлайн-калькуляторы и формы.",
+        title: "Family budget. Sources of income",
+        duration: "1 hour",
+        summary: "We enter the sources of family income into the digital form of the budget and see the result.",
+        intro: "A simple form with fields: mom’s salary, dad’s salary, other income. The child enters the amounts and the platform itself calculates the total. This is an introduction to how online calculators and forms work.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Бюджет семьи. Источники дохода»",
+        imageAlt: "Illustration for the lesson “Family budget. Sources of income\"",
         goals: [
-          "Понять, что такое семейный бюджет и зачем это нужно в жизни.",
-          "Освоить цифровое действие — ввести доходы в цифровую форму и получить итог.",
-          "Запомнить правило безопасности: не делиться суммой доходов с чужими людьми в интернете."
+          "Understand what a family budget is and why it is needed in life.",
+          "Master digital action - enter income in digital form and get the result.",
+          "Remember the safety rule: do not share your income with strangers on the Internet."
         ],
         rules: [
-          "Сначала открой форму доходов.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: не делиться суммой доходов с чужими людьми в интернете.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the income form.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: do not share the amount of income with strangers on the Internet.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Что такое доход семьи?",
-            text: "Папа получил зарплату 6 000 000 сум, мама — 5 000 000.",
+            title: "What is family income?",
+            text: "Dad received a salary of 6,000,000 sum, mother - 5,000,000.",
             options: [
-              "Зарплат не существует.",
-              "Общий доход — 11 000 000 сум.",
-              "6 000 000 — это всё."
+              "There are no salaries.",
+              "Total income - 11,000,000 sum.",
+              "6,000,000 is all."
             ],
             correctIndex: 1,
-            feedback: "Правильно. Доходы складываются.",
-            support: "Доход семьи — это все деньги, которые она получает."
+            feedback: "Right. Incomes add up.",
+            support: "A family's income is all the money it receives."
           },
           {
-            title: "Бабушка получила пенсию",
-            text: "Бабушка получила пенсию 2 000 000 сум.",
+            title: "Grandmother received a pension",
+            text: "Grandmother received a pension of 2,000,000 sum.",
             options: [
-              "Пенсия не считается.",
-              "Пенсия — тоже доход семьи, добавляется к общему.",
-              "Это только бабушкины деньги, к семье отношения не имеет."
+              "Pension does not count.",
+              "Pension is also family income and is added to the total.",
+              "This is only grandma’s money, it has nothing to do with the family."
             ],
             correctIndex: 1,
-            feedback: "Верно. Пенсия — часть семейного дохода.",
-            support: "Любые регулярные деньги в семью — доход."
+            feedback: "Right. Pension is part of family income.",
+            support: "Any regular money to the family is income."
           }
         ],
         quiz: [
           {
-            question: "Что входит в доходы семьи?",
+            question: "What is included in family income?",
             options: [
-              "Только зарплата папы.",
-              "Только подарки.",
-              "Зарплаты, пенсии, пособия, другие поступления."
+              "Only dad's salary.",
+              "Gifts only.",
+              "Salaries, pensions, benefits, other income."
             ],
             correctIndex: 2
           },
           {
-            question: "Зачем считать общий доход?",
+            question: "Why calculate total income?",
             options: [
-              "Чтобы понять, на что хватит денег в месяц.",
-              "Это не нужно.",
-              "Чтобы похвастаться."
+              "To understand how much money is enough per month.",
+              "It's not necessary.",
+              "To brag."
             ],
             correctIndex: 0
           },
           {
-            question: "Цифровая форма дохода — это:",
+            question: "Digital form of income is:",
             options: [
-              "Бумажный конверт.",
-              "Поля на экране, куда вводят суммы.",
-              "Картинка."
+              "Paper envelope.",
+              "Fields on the screen where amounts are entered.",
+              "Picture."
             ],
             correctIndex: 1
           }
         ],
-        adultNote: "Расскажите ребёнку (без точных цифр), что доход семьи — это все деньги. Покажите принцип сложения.",
+        adultNote: "Tell your child (without exact numbers) that family income is all money. Show the principle of addition.",
         tags: [
-          "семейный бюджет",
-          "Цифровая экономика быта",
-          "Урок 17"
+          "family budget",
+          "Digital Household & Daily Economics",
+          "Lesson 17"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — ввести доходы в цифровую форму и получить итог — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - enter income in digital form and get the result - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: форма доходов",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: не делиться суммой доходов с чужими людьми в интернете",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: a form of income",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: do not share the amount of income with strangers on the Internet",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая экономика быта»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 16 (сервировка))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short tasks (revision based on lesson #16 (serving))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся ввести доходы в цифровую форму и получить итог.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to enter income in digital form and get the result.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «семейный бюджет»"
+                "Shows a problematic situation on the topic “family budget”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «семейный бюджет»",
-                "Показывает форму доходов"
+                "Opens informational text on the topic “family budget”",
+                "Shows income form"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «форме доходов»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “income form”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как ввести доходы в цифровую форму и получить итог» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to enter income in digital form and get the total” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает форму доходов",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the income form",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с формой доходов; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with the form of income; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на семейный бюджет и рассказать на следующем уроке.",
-          safetyNote: "не делиться суммой доходов с чужими людьми в интернете"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to the family budget and tell it at the next lesson.",
+          safetyNote: "do not share the amount of income with strangers on the Internet"
         },
         trainer: {
           type: "family-income",
-          task: "Сложи все доходы семьи и узнай общий доход за месяц.",
-          feedbackCorrect: "Верно! Это правильная сумма.",
-          feedbackWrong: "Это не та сумма. Посчитай ещё раз."
+          task: "Add up all the family income and find out the total income for the month.",
+          feedbackCorrect: "Right! This is the correct amount.",
+          feedbackWrong: "This is not the same amount. Count again."
         }
       },
       {
         slug: "family-expenses",
-        title: "Расходы семьи",
-        duration: "1 час",
-        summary: "Заполняем таблицу расходов и сравниваем их с доходом.",
-        intro: "Таблица: еда, коммунальные, транспорт, одежда. Ребёнок заносит суммы расходов и видит, уложилась ли семья в бюджет. Так формируется представление о домашнем планировании.",
+        title: "Family expenses",
+        duration: "1 hour",
+        summary: "We fill out the table of expenses and compare them with income.",
+        intro: "Table: food, utilities, transport, clothing. The child enters the amount of expenses and sees whether the family is within the budget. This is how the idea of ​​home planning is formed.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Расходы семьи»",
+        imageAlt: "Illustration for the lesson “Family Expenses”",
         goals: [
-          "Понять, что такое расходы и зачем это нужно в жизни.",
-          "Освоить цифровое действие — заполнить цифровую таблицу расходов и сравнить с доходом.",
-          "Запомнить правило безопасности: тратить меньше, чем получено — иначе будет долг."
+          "Understand what expenses are and why they are needed in life.",
+          "Master the digital action - fill out a digital table of expenses and compare with income.",
+          "Remember the safety rule: spend less than you receive - otherwise there will be debt."
         ],
         rules: [
-          "Сначала открой таблицу расходов.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: тратить меньше, чем получено — иначе будет долг.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the expenses table.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: spend less than you receive - otherwise there will be debt.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Доход 11, потратили 12",
-            text: "Семья получила 11 000 000 сум, а потратила 12 000 000.",
+            title: "Income 11, spent 12",
+            text: "The family received 11,000,000 soums and spent 12,000,000.",
             options: [
-              "Всё хорошо, это норма.",
-              "Можно потратить ещё больше.",
-              "Не уложились в бюджет — надо урезать расходы."
+              "Everything is fine, this is the norm.",
+              "You can spend even more.",
+              "If you don't meet your budget, you need to cut costs."
             ],
             correctIndex: 2,
-            feedback: "Правильно. Расход больше дохода — это проблема.",
-            support: "Уметь укладываться в бюджет — основа экономии."
+            feedback: "Right. Spending more than income is a problem.",
+            support: "Knowing how to stick to a budget is the basis of saving."
           },
           {
-            title: "Лишние деньги в месяце",
-            text: "В этом месяце получили 11, потратили 9 миллионов.",
+            title: "Extra money in a month",
+            text: "This month we received 11 and spent 9 million.",
             options: [
-              "Срочно потратить всё.",
-              "Можно отложить 2 миллиона на будущее.",
-              "Спрятать и забыть."
+              "Urgently spend everything.",
+              "You can save 2 million for the future.",
+              "Hide and forget."
             ],
             correctIndex: 1,
-            feedback: "Верно. Лишние деньги — это сбережения.",
-            support: "Откладывать — полезная привычка."
+            feedback: "Right. Extra money is savings.",
+            support: "Procrastinating is a good habit."
           }
         ],
         quiz: [
           {
-            question: "Что такое расходы семьи?",
+            question: "What are family expenses?",
             options: [
-              "Только продукты.",
-              "Все деньги, которые семья тратит.",
-              "Только подарки."
+              "Only products.",
+              "All the money the family spends.",
+              "Gifts only."
             ],
             correctIndex: 1
           },
           {
-            question: "Зачем заполнять таблицу расходов?",
+            question: "Why fill out the expense table?",
             options: [
-              "Чтобы похвастаться.",
-              "Это просто тренировка.",
-              "Чтобы видеть, на что уходят деньги."
+              "To brag.",
+              "It's just training.",
+              "To see where the money is going."
             ],
             correctIndex: 2
           },
           {
-            question: "Как сравнить доход и расход?",
+            question: "How to compare income and expenses?",
             options: [
-              "Никак.",
-              "Доход минус расход = остаток.",
-              "Доход плюс расход."
+              "No way.",
+              "Income minus expenses = balance.",
+              "Income plus expenses."
             ],
             correctIndex: 1
           }
         ],
-        adultNote: "Покажите ребёнку упрощённый семейный бюджет (без сумм). Объясните: тратим не больше, чем получаем.",
+        adultNote: "Show your child a simplified family budget (without amounts). Explain: we spend no more than we receive.",
         tags: [
-          "расходы",
-          "Цифровая экономика быта",
-          "Урок 18"
+          "expenses",
+          "Digital Household & Daily Economics",
+          "Lesson 18"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — заполнить цифровую таблицу расходов и сравнить с доходом — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Create a digital action - fill out a digital table of expenses and compare with income - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: таблица расходов",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: тратить меньше, чем получено — иначе будет долг",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: expense table",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: spend less than you receive - otherwise there will be debt",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая экономика быта»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 17 (доходы))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short assignments (revision based on lesson #17 (income))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся заполнить цифровую таблицу расходов и сравнить с доходом.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to fill out a digital table of expenses and compare them with income.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «расходы»"
+                "Shows a problematic situation on the topic “expenses”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «расходы»",
-                "Показывает таблицу расходов"
+                "Opens informational text on the topic \"expenses\"",
+                "Shows expense table"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «таблице расходов»",
-                "Контролирует, помогает индивидуально"
+                "Launches the task: find key places on the “expenses table”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как заполнить цифровую таблицу расходов и сравнить с доходом» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to fill out a digital table of expenses and compare with income” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает таблицу расходов",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the expenses table",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с таблицей расходов; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with the expense table; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на расходы и рассказать на следующем уроке.",
-          safetyNote: "тратить меньше, чем получено — иначе будет долг"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to the expenses and tell them in the next lesson.",
+          safetyNote: "spend less than received - otherwise there will be debt"
         },
         trainer: {
           type: "family-expenses",
-          task: "Раздели покупки по категориям: еда, транспорт, коммуналка, развлечения.",
-          feedbackCorrect: "Молодец! Покупка отнесена правильно.",
-          feedbackWrong: "Эта покупка из другой категории. Подумай ещё раз."
+          task: "Divide purchases into categories: food, transport, utilities, entertainment.",
+          feedbackCorrect: "Well done! The purchase was accounted for correctly.",
+          feedbackWrong: "This purchase is from a different category. Think again."
         }
       }
     ]
   },
   {
     slug: "digital-transport",
-    title: "Цифровой транспорт",
-    hours: "3 часа",
+    title: "Digital Mobility & Transport",
+    hours: "3 hours",
     lessonCount: 3,
-    description: "Три урока: цифровой справочник видов транспорта, чтение вокзального табло и многошаговый сценарий онлайн-покупки билета.",
+    description: "Three lessons: a digital guide to modes of transport, reading a station board, and a multi-step scenario for buying a ticket online.",
     image: "/uzbek-images/shopping-market.jpg",
-    imageAlt: "Цифровой транспорт — справочник, табло, билеты",
+    imageAlt: "Digital transport - directory, scoreboard, tickets",
     imageCredit: "UQUVLI.UZ",
     imageSourceUrl: "",
     knowledge: [
-      "Какие бывают виды транспорта",
-      "Как устроено цифровое табло вокзала",
-      "Из каких шагов состоит онлайн-покупка билета"
+      "What types of transport are there?",
+      "How does a station's digital display work?",
+      "What are the steps to purchasing a ticket online?"
     ],
     skills: [
-      "Искать информацию в цифровом справочнике",
-      "Читать цифровое табло и находить нужный поезд",
-      "Проходить многошаговую онлайн-покупку"
+      "Search information in a digital directory",
+      "Read the digital display and find the desired train",
+      "Go through a multi-step online purchase"
     ],
     lessons: [
       {
         slug: "transport-types",
-        title: "Виды транспорта",
-        duration: "1 час",
-        summary: "Ищем нужный вид транспорта в цифровом справочнике и читаем информационную карточку.",
-        intro: "Справочник видов транспорта: автобус, поезд, метро, такси, самолёт. Ребёнок ищет нужный пункт и читает короткую карточку. Это умение пользоваться поиском в справочниках и приложениях.",
+        title: "Types of transport",
+        duration: "1 hour",
+        summary: "We look for the desired type of transport in the digital directory and read the information card.",
+        intro: "Directory of types of transport: bus, train, metro, taxi, plane. The child looks for the desired item and reads a short card. This is the ability to use search in reference books and applications.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Виды транспорта»",
+        imageAlt: "Illustration for the lesson “Types of transport”",
         goals: [
-          "Понять, что такое виды транспорта и зачем это нужно в жизни.",
-          "Освоить цифровое действие — найти вид транспорта в цифровом справочнике.",
-          "Запомнить правило безопасности: правила безопасности в каждом виде транспорта."
+          "Understand what types of transport are and why they are needed in life.",
+          "Master the digital action - find the mode of transport in a digital directory.",
+          "Remember the safety rule: safety rules in each type of transport."
         ],
         rules: [
-          "Сначала открой справочник транспорта.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: правила безопасности в каждом виде транспорта.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the transport directory.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision based on the rule: safety rules in each type of transport.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Нужно ехать в другой город",
-            text: "Ехать из Ташкента в Самарканд. Какой транспорт?",
+            title: "Need to go to another city",
+            text: "Travel from Tashkent to Samarkand. What transport?",
             options: [
-              "Поезд или автобус — это междугородний транспорт.",
-              "Самокат.",
-              "Велосипед."
+              "A train or bus is intercity transport.",
+              "Scooter.",
+              "Bike."
             ],
             correctIndex: 0,
-            feedback: "Верно — поездом и автобусом ездят между городами.",
-            support: "В справочнике видно, какой транспорт куда ходит."
+            feedback: "That's right - they travel between cities by train and bus.",
+            support: "The directory shows which transport goes where."
           },
           {
-            title: "Куда нужно ехать в школу?",
-            text: "Школа в 5 километрах от дома.",
+            title: "Where should you go to school?",
+            text: "The school is 5 kilometers from home.",
             options: [
-              "Поезд.",
-              "Самолёт.",
-              "Автобус, маршрутка или такси."
+              "Train.",
+              "Airplane.",
+              "Bus, minibus or taxi."
             ],
             correctIndex: 2,
-            feedback: "Правильно — в городе ездят автобусом.",
-            support: "Городской транспорт — для коротких поездок."
+            feedback: "That's right - in the city they travel by bus.",
+            support: "City transport - for short trips."
           }
         ],
         quiz: [
           {
-            question: "Какой транспорт есть в городе?",
+            question: "What kind of transport is there in the city?",
             options: [
-              "Только самолёт.",
-              "Только поезд.",
-              "Автобус, такси, метро, маршрутка."
+              "Only the plane.",
+              "Only the train.",
+              "Bus, taxi, metro, minibus."
             ],
             correctIndex: 2
           },
           {
-            question: "Зачем нужен справочник транспорта?",
+            question: "Why do you need a transport directory?",
             options: [
-              "Чтобы найти подходящий маршрут.",
-              "Чтобы учить наизусть.",
-              "Без него ничего нельзя."
+              "To find a suitable route.",
+              "To learn by heart.",
+              "Nothing is possible without him."
             ],
             correctIndex: 0
           },
           {
-            question: "Если ехать далеко (в другую страну):",
+            question: "If you go far (to another country):",
             options: [
-              "Маршрутка.",
-              "Самолёт или поезд дальнего следования.",
-              "Велосипед."
+              "Minibus.",
+              "Airplane or long-distance train.",
+              "Bike."
             ],
             correctIndex: 1
           }
         ],
-        adultNote: "Расскажите ребёнку, какой транспорт вы обычно используете. Покажите, как найти автобус по приложению.",
+        adultNote: "Tell your child what kind of transport you usually use. Show how to find a bus using the app.",
         tags: [
-          "виды транспорта",
-          "Цифровой транспорт",
-          "Урок 19"
+          "types of transport",
+          "Digital Mobility & Transport",
+          "Lesson 19"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — найти вид транспорта в цифровом справочнике — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - find a mode of transport in a digital directory - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: справочник транспорта",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: правила безопасности в каждом виде транспорта",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: transport directory",
+            "create a step-by-step digital action algorithm",
+            "consolidate the safety rule: safety rules in each type of transport",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровой транспорт»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Transport”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 18 (таблица расходов))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short assignments (revision based on Lesson #18 (Cost Chart))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся найти вид транспорта в цифровом справочнике.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to find a mode of transport in a digital directory.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «виды транспорта»"
+                "Shows a problematic situation on the topic “modes of transport”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «виды транспорта»",
-                "Показывает справочник транспорта"
+                "Opens informational text on the topic “modes of transport”",
+                "Shows transport directory"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «справочнике транспорта»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “transport directory”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как найти вид транспорта в цифровом справочнике» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to find a mode of transport in a digital directory” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает справочник транспорта",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the transport directory",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с справочником транспорта; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with the transport directory; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на виды транспорта и рассказать на следующем уроке.",
-          safetyNote: "правила безопасности в каждом виде транспорта"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to the types of transport and tell them at the next lesson.",
+          safetyNote: "safety rules for each type of transport"
         },
         trainer: {
           type: "transport-types",
-          task: "Куда нужно поехать? Выбери подходящий транспорт.",
-          feedbackCorrect: "Верно! Этот транспорт подходит.",
-          feedbackWrong: "Этот транспорт не подойдёт. Подумай о расстоянии."
+          task: "Where should you go? Choose suitable transport.",
+          feedbackCorrect: "Right! This transport is suitable.",
+          feedbackWrong: "This transport will not work. Think about the distance."
         }
       },
       {
         slug: "train-schedule-board",
-        title: "Справочная служба ж/д вокзала, расписание поездов",
-        duration: "1 час",
-        summary: "Читаем цифровое табло вокзала и находим нужный поезд, время и платформу.",
-        intro: "Имитация настоящего вокзального табло. Ребёнок ищет в списке поезд по направлению и времени и определяет платформу. Табло на вокзале — это цифровой объект, с которым обязательно сталкиваются в жизни.",
+        title: "Railway station information service, train schedule",
+        duration: "1 hour",
+        summary: "We read the digital display of the station and find the desired train, time and platform.",
+        intro: "Imitation of a real station board. The child looks for a train in the list by direction and time and determines the platform. A train station display board is a digital object that you will definitely encounter in life.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Справочная служба ж/д вокзала, расписание поездов»",
+        imageAlt: "Illustration for the lesson “Railway station help desk, train schedule”",
         goals: [
-          "Понять, что такое табло вокзала и зачем это нужно в жизни.",
-          "Освоить цифровое действие — прочитать цифровое табло расписания поездов.",
-          "Запомнить правило безопасности: переходить пути только по разрешённым местам."
+          "Understand what a station board is and why it is needed in life.",
+          "Master the digital action - read the digital train schedule board.",
+          "Remember the safety rule: cross paths only in permitted places."
         ],
         rules: [
-          "Сначала открой табло вокзала.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: переходить пути только по разрешённым местам.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the station board.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: cross paths only in permitted places.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "На табло много поездов",
-            text: "Тебе нужен поезд в Самарканд на 14:30. Как найти?",
+            title: "There are a lot of trains on the board",
+            text: "You need a train to Samarkand at 14:30. How to find?",
             options: [
-              "Уйти с вокзала.",
-              "Прочитать каждую строку, найти «Самарканд» и «14:30».",
-              "Сесть на первый попавшийся."
+              "Leave the station.",
+              "Read each line, find “Samarkand” and “14:30”.",
+              "Sit on the first one you come across."
             ],
             correctIndex: 1,
-            feedback: "Правильно — нужный поезд по направлению и времени.",
-            support: "На табло слева — поезд, время, платформа."
+            feedback: "That's right - the right train in direction and time.",
+            support: "On the board on the left there is a train, time, platform."
           },
           {
-            title: "Платформа в табло — 3",
-            text: "В строке твоего поезда написано «Платформа 3».",
+            title: "Platform in the scoreboard - 3",
+            text: "Your train line says \"Platform 3\".",
             options: [
-              "Идти к платформе 1.",
-              "Идти к платформе номер 3.",
-              "Сесть где попало."
+              "Go to platform 1.",
+              "Go to platform number 3.",
+              "Sit anywhere."
             ],
             correctIndex: 1,
-            feedback: "Верно. Платформа — это место, откуда отправляется поезд.",
-            support: "Платформа на табло — это указание, куда идти."
+            feedback: "Right. The platform is the place from where the train departs.",
+            support: "The platform on the scoreboard is an indication of where to go."
           }
         ],
         quiz: [
           {
-            question: "Что показано на табло?",
+            question: "What is shown on the scoreboard?",
             options: [
-              "Номер поезда, направление, время и платформа.",
-              "Только время.",
-              "Только цена."
+              "Train number, direction, time and platform.",
+              "Only time.",
+              "Only the price."
             ],
             correctIndex: 0
           },
           {
-            question: "Если не успеваешь к своему времени:",
+            question: "If you don't make it on time:",
             options: [
-              "Уйти с вокзала.",
-              "Идти к справочной службе.",
-              "Сесть на любой поезд."
+              "Leave the station.",
+              "Go to the help desk.",
+              "Take any train."
             ],
             correctIndex: 1
           },
           {
-            question: "Сколько платформ обычно на вокзале?",
+            question: "How many platforms are there usually at the station?",
             options: [
-              "Несколько — нужно искать свою.",
-              "Сто.",
-              "Всегда одна."
+              "Several - you need to look for yours.",
+              "One hundred.",
+              "Always alone."
             ],
             correctIndex: 0
           }
         ],
-        adultNote: "Когда будете на вокзале — покажите ребёнку, как читать табло. Найдите вместе нужный поезд.",
+        adultNote: "When you are at the station, show your child how to read the board. Find the right train together.",
         tags: [
-          "табло вокзала",
-          "Цифровой транспорт",
-          "Урок 20"
+          "station board",
+          "Digital Mobility & Transport",
+          "Lesson 20"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — прочитать цифровое табло расписания поездов — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Create a digital action - read the digital train schedule board - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: табло вокзала",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: переходить пути только по разрешённым местам",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: a station board",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: cross paths only in permitted places",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровой транспорт»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Transport”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 19 (виды транспорта))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short tasks (repetition based on lesson No. 19 (types of transport))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся прочитать цифровое табло расписания поездов.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to read the digital train schedule board.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «табло вокзала»"
+                "Shows a problematic situation on the topic “station display board”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «табло вокзала»",
-                "Показывает табло вокзала"
+                "Opens informational text on the topic “station display board”",
+                "Shows the station board"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «табло вокзала»",
-                "Контролирует, помогает индивидуально"
+                "Triggers the task: find key places on the “station board”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как прочитать цифровое табло расписания поездов» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to read a digital train timetable” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает табло вокзала",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the station board",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с табло вокзала; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with the station display board; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на табло вокзала и рассказать на следующем уроке.",
-          safetyNote: "переходить пути только по разрешённым местам"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to the station display and tell it at the next lesson.",
+          safetyNote: "cross paths only in permitted places"
         },
         trainer: {
           type: "schedule-board",
-          task: "Найди свой поезд на табло вокзала по городу и времени.",
-          feedbackCorrect: "Верно! Это твой поезд.",
-          feedbackWrong: "Это не твой поезд. Посмотри на город и время."
+          task: "Find your train on the station board by city and time.",
+          feedbackCorrect: "Right! This is your train.",
+          feedbackWrong: "This is not your train. Look at the city and the time."
         }
       },
       {
         slug: "online-ticket-purchase",
-        title: "Порядок приобретения билетов и их возврата",
-        duration: "1 час",
-        summary: "Покупаем билет онлайн: выбираем направление, дату, место и подтверждаем покупку.",
-        intro: "Многошаговый сценарий покупки билета: выбор маршрута, даты, места, оплата. Ребёнок проходит все этапы под наблюдением учителя. Это самостоятельное и значимое цифровое умение — купить билет.",
+        title: "Procedure for purchasing tickets and returning them",
+        duration: "1 hour",
+        summary: "We buy a ticket online: select the direction, date, place and confirm the purchase.",
+        intro: "Multi-step scenario for buying a ticket: choosing a route, date, place, payment. The child goes through all stages under the supervision of the teacher. It is an independent and meaningful digital skill to buy a ticket.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Порядок приобретения билетов и их возврата»",
+        imageAlt: "Illustration for the lesson “Procedure for purchasing tickets and returning them”",
         goals: [
-          "Понять, что такое покупка билета и зачем это нужно в жизни.",
-          "Освоить цифровое действие — купить билет онлайн (безопасный учебный сценарий).",
-          "Запомнить правило безопасности: проверять сайт; не вводить данные на чужих устройствах."
+          "Understand what buying a ticket is and why you need it in life.",
+          "Master the digital action - buy a ticket online (safe training scenario).",
+          "Remember the safety rule: check the site; Do not enter data on other people's devices."
         ],
         rules: [
-          "Сначала открой сервис покупки билетов.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: проверять сайт; не вводить данные на чужих устройствах.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the ticket purchasing service.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: check the site; Do not enter data on other people's devices.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Подтвердить покупку",
-            text: "На экране: «Купить билет за 120 000 сум?»",
+            title: "Confirm purchase",
+            text: "On the screen: “Buy a ticket for 120,000 soum?”",
             options: [
-              "Нажать «Подтвердить» не глядя.",
-              "Проверить направление и дату, потом подтвердить.",
-              "Закрыть страницу."
+              "Click “Confirm” without looking.",
+              "Check the direction and date, then confirm.",
+              "Close page."
             ],
             correctIndex: 1,
-            feedback: "Правильно. Перед оплатой — всегда проверка.",
-            support: "Невнимательность приводит к ошибочным покупкам."
+            feedback: "Right. Always check before paying.",
+            support: "Inattention leads to mistaken purchases."
           },
           {
-            title: "Не открывается сайт",
-            text: "Сайт продажи билетов не работает.",
+            title: "The site does not open",
+            text: "The ticket sales site is not working.",
             options: [
-              "Бросить идею ехать.",
-              "Купить на подозрительном сайте.",
-              "Зайти позже или пойти в кассу."
+              "Give up the idea of ​​going.",
+              "Buy from a suspicious site.",
+              "Come back later or go to the cashier."
             ],
             correctIndex: 2,
-            feedback: "Хорошо — лучше касса, чем подозрительный сайт.",
-            support: "Никогда не покупать на сомнительных сайтах."
+            feedback: "Good - better a cash register than a suspicious site.",
+            support: "Never buy from dubious sites."
           }
         ],
         quiz: [
           {
-            question: "Из каких шагов состоит онлайн-покупка билета?",
+            question: "What are the steps involved in purchasing a ticket online?",
             options: [
-              "Один шаг — «купить».",
-              "Выбор направления → дата → место → оплата → подтверждение.",
-              "Только оплата."
+              "One step is “buy”.",
+              "Select destination → date → place → payment → confirmation.",
+              "Payment only."
             ],
             correctIndex: 1
           },
           {
-            question: "Перед оплатой нужно:",
+            question: "Before payment you need:",
             options: [
-              "Перезагрузить страницу.",
-              "Сразу нажать «Оплатить».",
-              "Проверить направление, дату и сумму."
+              "Reload the page.",
+              "Immediately click “Pay”.",
+              "Check direction, date and amount."
             ],
             correctIndex: 2
           },
           {
-            question: "Если ошибся в дате:",
+            question: "If you made a mistake in the date:",
             options: [
-              "Сделать возврат и купить заново.",
-              "Молчать.",
-              "Ехать в любом случае."
+              "Return and buy again.",
+              "Be silent.",
+              "Go anyway."
             ],
             correctIndex: 0
           }
         ],
-        adultNote: "При следующей поездке покажите ребёнку, как вы покупаете билет онлайн. Объясните, что проверять.",
+        adultNote: "The next time you travel, show your child how you buy a ticket online. Explain what to check.",
         tags: [
-          "покупка билета",
-          "Цифровой транспорт",
-          "Урок 21"
+          "buying a ticket",
+          "Digital Mobility & Transport",
+          "Lesson 21"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — купить билет онлайн (безопасный учебный сценарий) — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - buy a ticket online (safe educational scenario) - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: сервис покупки билетов",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: проверять сайт; не вводить данные на чужих устройствах",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: ticket purchasing service",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: check the site; do not enter data on other people's devices",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровой транспорт»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Transport”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 20 (табло))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short tasks (repetition based on lesson No. 20 (scoreboard))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся купить билет онлайн (безопасный учебный сценарий).",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to buy a ticket online (safe training scenario).",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «покупка билета»"
+                "Shows a problematic situation on the topic “buying a ticket”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «покупка билета»",
-                "Показывает сервис покупки билетов"
+                "Opens informational text on the topic “buying a ticket”",
+                "Shows ticket purchasing service"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «сервисе покупки билетов»",
-                "Контролирует, помогает индивидуально"
+                "Launches a task: find key places on the “ticket purchasing service”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как купить билет онлайн (безопасный учебный сценарий)» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to buy a ticket online (safe training scenario)” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает сервис покупки билетов",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens a ticket purchasing service",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с сервисом покупки билетов; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with the ticket purchasing service; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на покупка билета и рассказать на следующем уроке.",
-          safetyNote: "проверять сайт; не вводить данные на чужих устройствах"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to the purchase of a ticket and tell it in the next lesson.",
+          safetyNote: "check the site; do not enter data on other people's devices"
         },        trainer: {
           type: "ticket-purchase",
-          task: "Купи билет онлайн: выбери маршрут, дату, место и оплати.",
-          feedbackCorrect: "Молодец! Билет куплен.",
-          feedbackWrong: "Это не тот шаг. Попробуй снова."
+          task: "Buy a ticket online: select the route, date, place and pay.",
+          feedbackCorrect: "Well done! Ticket purchased.",
+          feedbackWrong: "This is not the right step. Try again."
         }
 
       }
@@ -4718,565 +4712,565 @@ export const programModules: ProgramModule[] = [
   },
   {
     slug: "digital-communication",
-    title: "Цифровая коммуникация",
-    hours: "3 часа",
+    title: "Digital Communication & Messaging",
+    hours: "3 hours",
     lessonCount: 3,
-    description: "Три урока: отслеживание посылки по трек-номеру, работа с телефоном (звонок и SMS) и ключевой урок исследования — отправка сообщения в мессенджере.",
+    description: "Three lessons: tracking a package by track number, working with the phone (call and SMS) and a key lesson in the study - sending a message in the messenger.",
     image: "/uzbek-images/shopping-market.jpg",
-    imageAlt: "Цифровая коммуникация — посылки, телефон, мессенджер",
+    imageAlt: "Digital communication - parcels, telephone, messenger",
     imageCredit: "UQUVLI.UZ",
     imageSourceUrl: "",
     knowledge: [
-      "Что такое трек-номер и как он работает",
-      "Как пользоваться телефоном — звонок и SMS",
-      "Что такое мессенджер и как отправить сообщение"
+      "What is a track number and how does it work?",
+      "How to use the phone - call and SMS",
+      "What is messenger and how to send a message"
     ],
     skills: [
-      "Вводить данные и читать статус посылки",
-      "Совершать звонок и отправлять SMS",
-      "Выбирать контакт и отправлять сообщение в мессенджере"
+      "Enter data and read parcel status",
+      "Make calls and send SMS",
+      "Select a contact and send a message in messenger"
     ],
     lessons: [
       {
         slug: "package-tracking",
-        title: "Почтовые отправления: письма, посылки, денежные переводы",
-        duration: "1 час",
-        summary: "Отслеживаем посылку по трек-номеру и узнаём, где она сейчас.",
-        intro: "На странице отслеживания нужно ввести номер посылки. После проверки появляются статусы: отправлена, в пути, доставлена. Современная семья получает посылки регулярно — это нужно уметь.",
+        title: "Postal items: letters, parcels, money orders",
+        duration: "1 hour",
+        summary: "We track the parcel using the track number and find out where it is now.",
+        intro: "On the tracking page you need to enter the parcel number. After checking, the following statuses appear: shipped, on the way, delivered. A modern family receives parcels regularly - this is something you need to be able to do.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Почтовые отправления: письма, посылки, денежные переводы»",
+        imageAlt: "Illustration for the lesson “Postage: letters, parcels, money orders”",
         goals: [
-          "Понять, что такое посылки и зачем это нужно в жизни.",
-          "Освоить цифровое действие — отследить посылку по трек-номеру.",
-          "Запомнить правило безопасности: забирать посылку только в проверенных местах; беречь трек-номер."
+          "Understand what parcels are and why they are needed in life.",
+          "Master the digital action - track the parcel using the track number.",
+          "Remember the safety rule: pick up the parcel only in verified places; take care of the track number."
         ],
         rules: [
-          "Сначала открой страницу отслеживания.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: забирать посылку только в проверенных местах; беречь трек-номер.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the tracking page.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: pick up the parcel only in verified places; take care of the track number.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Где найти трек-номер?",
-            text: "Мама заказала посылку и попросила отследить.",
+            title: "Where can I find the tracking number?",
+            text: "Mom ordered a parcel and asked for tracking.",
             options: [
-              "В сообщении или чеке от магазина — там номер.",
-              "Спросить у соседа.",
-              "Угадать наугад."
+              "In the message or receipt from the store - there is a number.",
+              "Ask your neighbor.",
+              "Guess at random."
             ],
             correctIndex: 0,
-            feedback: "Правильно. Трек-номер всегда сообщает магазин.",
-            support: "Без трек-номера отследить нельзя."
+            feedback: "Right. The track number is always provided by the store.",
+            support: "You can't track it without a track number."
           },
           {
-            title: "Статус «доставлена», но посылки нет",
-            text: "На сайте написано «доставлена», а посылку не получили.",
+            title: "The status is “delivered”, but there is no parcel",
+            text: "The website says “delivered”, but the parcel was not received.",
             options: [
-              "Подождать ещё месяц.",
-              "Позвонить в службу доставки и узнать, куда отдали.",
-              "Забыть."
+              "Wait another month.",
+              "Call the delivery service and find out where they delivered it.",
+              "Forget."
             ],
             correctIndex: 1,
-            feedback: "Верно. Сразу выяснить — где посылка.",
-            support: "Иногда «доставлена» означает, что отдали соседу."
+            feedback: "Right. Find out immediately where the package is.",
+            support: "Sometimes “delivered” means given to a neighbor."
           }
         ],
         quiz: [
           {
-            question: "Что такое трек-номер?",
+            question: "What is a tracking number?",
             options: [
-              "Номер квартиры.",
-              "Уникальный номер посылки для отслеживания.",
-              "Номер машины."
+              "Apartment number.",
+              "Unique parcel tracking number.",
+              "Car number."
             ],
             correctIndex: 1
           },
           {
-            question: "Какие бывают статусы посылки?",
+            question: "What are the parcel statuses?",
             options: [
-              "Никаких статусов нет.",
-              "Отправлена → в пути → доставлена.",
-              "Только «отправлена»."
+              "There are no statuses.",
+              "Dispatched → on the way → delivered.",
+              "Only \"sent\"."
             ],
             correctIndex: 1
           },
           {
-            question: "Если посылка долго в пути:",
+            question: "If the package is on the way for a long time:",
             options: [
-              "Позвонить в службу доставки и узнать причину.",
-              "Ничего не делать.",
-              "Заказать новую."
+              "Call the delivery service and find out the reason.",
+              "Do nothing.",
+              "Order a new one."
             ],
             correctIndex: 0
           }
         ],
-        adultNote: "Когда получите следующую посылку — покажите ребёнку, как отследить её по номеру.",
+        adultNote: "When you receive your next parcel, show your child how to track it by number.",
         tags: [
-          "посылки",
-          "Цифровая коммуникация",
-          "Урок 22"
+          "parcels",
+          "Digital Communication & Messaging",
+          "Lesson 22"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — отследить посылку по трек-номеру — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Create a digital action - track a parcel by track number - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: страница отслеживания",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: забирать посылку только в проверенных местах; беречь трек-номер",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: tracking page",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: pick up parcels only in verified places; take care of the track number",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая коммуникация»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Communication”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 21 (покупка билета))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short tasks (revision based on lesson #21 (buying a ticket))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся отследить посылку по трек-номеру.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to track a parcel using the track number.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «посылки»"
+                "Shows a problematic situation on the topic “parcels”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «посылки»",
-                "Показывает страницу отслеживания"
+                "Opens informational text on the topic “parcels”",
+                "Shows tracking page"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «странице отслеживания»",
-                "Контролирует, помогает индивидуально"
+                "Runs a task: find key places on the “tracking page”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как отследить посылку по трек-номеру» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to track a parcel by track number” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает страницу отслеживания",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the tracking page",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с страницей отслеживания; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with the tracking page; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на посылки и рассказать на следующем уроке.",
-          safetyNote: "забирать посылку только в проверенных местах; беречь трек-номер"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to the messages and tell them at the next lesson.",
+          safetyNote: "pick up parcels only from verified places; take care of the track number"
         },        trainer: {
           type: "package-tracking",
-          task: "Введи трек-номер и узнай, где сейчас твоя посылка.",
-          feedbackCorrect: "Верно! Это правильный статус.",
-          feedbackWrong: "Это не тот статус. Посмотри в список посылок."
+          task: "Enter the track number and find out where your package is now.",
+          feedbackCorrect: "Right! This is the correct status.",
+          feedbackWrong: "This is not the same status. Look at the parcel list."
         }
 
       },
       {
         slug: "phone-calls-sms",
-        title: "Правила использования современных средств связи",
-        duration: "1 час",
-        summary: "Учимся пользоваться телефоном: звонок, SMS, список контактов.",
-        intro: "На экране — телефон. Ребёнок выбирает контакт, совершает звонок или отправляет короткое сообщение. Также учится номеру 103 — на случай вызова скорой помощи.",
+        title: "Rules for using modern means of communication",
+        duration: "1 hour",
+        summary: "Learning to use the phone: call, SMS, contact list.",
+        intro: "There is a phone on the screen. The child selects a contact, makes a call or sends a short message. He also learns number 103 - in case of calling an ambulance.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Правила использования современных средств связи»",
+        imageAlt: "Illustration for the lesson “Rules for using modern means of communication”",
         goals: [
-          "Понять, что такое звонок и SMS и зачем это нужно в жизни.",
-          "Освоить цифровое действие — совершить звонок и отправить sms на телефоне.",
-          "Запомнить правило безопасности: не отвечать на звонки с незнакомых номеров; знать 103 и 112."
+          "Understand what a call and SMS are and why they are needed in life.",
+          "Master the digital action - make a call and send an SMS on your phone.",
+          "Remember the safety rule: do not answer calls from unfamiliar numbers; know 103 and 112."
         ],
         rules: [
-          "Сначала открой телефон с контактами.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: не отвечать на звонки с незнакомых номеров; знать 103 и 112.",
-          "Если не уверен — спроси у взрослого."
+          "First, open your phone with contacts.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: do not answer calls from unfamiliar numbers; know 103 and 112.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Кто-то поранился",
-            text: "На улице человек сильно поранился, нужна срочная помощь.",
+            title: "Someone got hurt",
+            text: "A man was seriously injured on the street and needs urgent help.",
             options: [
-              "Написать SMS другу.",
-              "Молчать.",
-              "Позвонить по номеру 103 — скорая."
+              "Write an SMS to a friend.",
+              "Be silent.",
+              "Call 103 - ambulance."
             ],
             correctIndex: 2,
-            feedback: "Правильно. 103 — скорая помощь.",
-            support: "Также 112 — единый экстренный номер."
+            feedback: "Right. 103 - ambulance.",
+            support: "Also 112 is a single emergency number."
           },
           {
-            title: "Незнакомый номер звонит",
-            text: "Звонит номер, которого нет в контактах.",
+            title: "An unknown number is calling",
+            text: "A number is calling that is not in my contacts.",
             options: [
-              "Можно не отвечать; если важно — перезвонят родители.",
-              "Обязательно ответить.",
-              "Дать незнакомцу свой адрес."
+              "You don't have to answer; if it’s important, your parents will call you back.",
+              "Be sure to answer.",
+              "Give a stranger your address."
             ],
             correctIndex: 0,
-            feedback: "Хорошо. Незнакомым отвечать не обязательно.",
-            support: "Мошенники часто звонят с чужих номеров."
+            feedback: "Fine. It is not necessary to answer strangers.",
+            support: "Fraudsters often call from other people's numbers."
           }
         ],
         quiz: [
           {
-            question: "Какой номер у скорой помощи?",
+            question: "What is the number for the ambulance?",
             options: [
-              "Никакого.",
+              "None.",
               "01.",
               "103."
             ],
             correctIndex: 2
           },
           {
-            question: "SMS — это:",
+            question: "SMS is:",
             options: [
-              "Фотография.",
-              "Звонок.",
-              "Короткое текстовое сообщение."
+              "Photography.",
+              "Call.",
+              "Short text message."
             ],
             correctIndex: 2
           },
           {
-            question: "Что в списке контактов?",
+            question: "What's in your contact list?",
             options: [
-              "Только мой номер.",
-              "Все номера в мире.",
-              "Имена и номера знакомых."
+              "Just my number.",
+              "All numbers in the world.",
+              "Names and numbers of acquaintances."
             ],
             correctIndex: 2
           }
         ],
-        adultNote: "Запишите в телефон ребёнка номера: мамы, папы, скорой (103), полиции (102). Проверьте, что он их узнаёт.",
+        adultNote: "Write down the numbers in your child’s phone: mom, dad, ambulance (103), police (102). Make sure he recognizes them.",
         tags: [
-          "звонок и SMS",
-          "Цифровая коммуникация",
-          "Урок 23"
+          "call and SMS",
+          "Digital Communication & Messaging",
+          "Lesson 23"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — совершить звонок и отправить sms на телефоне — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Create a digital action - make a call and send an SMS on the phone - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: телефон с контактами",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: не отвечать на звонки с незнакомых номеров; знать 103 и 112",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: a phone with contacts",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: do not answer calls from unfamiliar numbers; know 103 and 112",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая коммуникация»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Communication”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 22 (трек-номер))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short tasks (repetition based on lesson No. 22 (track number))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся совершить звонок и отправить sms на телефоне.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to make a call and send an SMS on your phone.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «звонок и SMS»"
+                "Shows a problematic situation on the topic “call and SMS”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «звонок и SMS»",
-                "Показывает телефон с контактами"
+                "Opens information text on the topic “call and SMS”",
+                "Shows phone number with contacts"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «телефоне с контактами»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “phone with contacts”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как совершить звонок и отправить sms на телефоне» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to make a call and send SMS on your phone” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает телефон с контактами",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens the phone with contacts",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с телефоном с контактами; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with a phone with contacts; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на звонок и SMS и рассказать на следующем уроке.",
-          safetyNote: "не отвечать на звонки с незнакомых номеров; знать 103 и 112"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to the call and SMS and tell it at the next lesson.",
+          safetyNote: "do not answer calls from unknown numbers; know 103 and 112"
         },        trainer: {
           type: "phone-call-flow",
-          task: "Сделай правильное действие с телефонным звонком.",
-          feedbackCorrect: "Верно!",
-          feedbackWrong: "Это небезопасно. Попробуй другое действие."
+          task: "Do the right thing with the phone call.",
+          feedbackCorrect: "Right!",
+          feedbackWrong: "It's not safe. Try a different action."
         }
 
       },
       {
         slug: "messenger-message",
-        title: "Интернет-сайты и приложения (email, Telegram, WhatsApp)",
-        duration: "1 час",
-        summary: "Отправляем сообщение в мессенджере: выбираем контакт и пишем вежливо.",
-        intro: "На экране — чат в мессенджере, как Telegram или WhatsApp. Ребёнок выбирает, что ответить маме или учителю, и отправляет сообщение. Это ключевое умение исследования — переписка в мессенджере как современная форма общения.",
+        title: "Internet sites and applications (email, Telegram, WhatsApp)",
+        duration: "1 hour",
+        summary: "We send a message in the messenger: select a contact and write politely.",
+        intro: "On the screen is a chat in a messenger like Telegram or WhatsApp. The child chooses what to answer to mom or teacher and sends a message. This is a key research skill - correspondence in the messenger as a modern form of communication.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Интернет-сайты и приложения (email, Telegram, WhatsApp)»",
+        imageAlt: "Illustration for the lesson “Internet sites and applications (email, Telegram, WhatsApp)”",
         goals: [
-          "Понять, что такое мессенджеры и зачем это нужно в жизни.",
-          "Освоить цифровое действие — отправить сообщение в мессенджере.",
-          "Запомнить правило безопасности: не общаться с незнакомцами; не отправлять личные данные."
+          "Understand what messengers are and why they are needed in life.",
+          "Master the digital action - send a message in the messenger.",
+          "Remember the safety rule: do not communicate with strangers; do not send personal information."
         ],
         rules: [
-          "Сначала открой мессенджер.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: не общаться с незнакомцами; не отправлять личные данные.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the messenger.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: do not communicate with strangers; do not send personal information.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Мама написала «Ты где?»",
-            text: "Мама прислала сообщение «Ты где?».",
+            title: "Mom wrote “Where are you?”",
+            text: "Mom sent a message “Where are you?”",
             options: [
-              "Ответить вежливо: «Привет, мама! Я в школе, всё хорошо».",
-              "Написать «отстань».",
-              "Не отвечать."
+              "Answer politely: “Hi, mom! I’m at school, everything’s fine.”",
+              "Write “leave me alone.”",
+              "Don't answer."
             ],
             correctIndex: 0,
-            feedback: "Хорошо. Вежливый ответ — основа общения.",
-            support: "Маме всегда нужно отвечать на сообщения."
+            feedback: "Fine. A polite response is the basis of communication.",
+            support: "Mom always needs to answer messages."
           },
           {
-            title: "Незнакомец пишет в чат",
-            text: "Пишет человек, которого ты не знаешь.",
+            title: "A stranger writes in chat",
+            text: "Writes from a person you don't know.",
             options: [
-              "Не отвечать и показать сообщение взрослому.",
-              "Сразу ответить и подружиться.",
-              "Дать свой адрес."
+              "Do not respond and show the message to an adult.",
+              "Reply immediately and make friends.",
+              "Give your address."
             ],
             correctIndex: 0,
-            feedback: "Верно. Незнакомцам в сети не отвечаем.",
-            support: "Это правило безопасности в интернете."
+            feedback: "Right. We do not respond to strangers online.",
+            support: "This is an internet safety rule."
           }
         ],
         quiz: [
           {
-            question: "Что такое мессенджер?",
+            question: "What is a messenger?",
             options: [
-              "Приложение для обмена сообщениями.",
-              "Игра.",
-              "Калькулятор."
+              "Messaging app.",
+              "Game.",
+              "Calculator."
             ],
             correctIndex: 0
           },
           {
-            question: "Как начать сообщение маме?",
+            question: "How to start a message to mom?",
             options: [
-              "Без приветствия.",
-              "«Привет, мама!» или просто «Мам».",
-              "Большими буквами «КРИК»."
+              "No greeting.",
+              "“Hello, mom!” or just “Mom.”",
+              "In capital letters \"SCREAM\"."
             ],
             correctIndex: 1
           },
           {
-            question: "Если незнакомец просит фото:",
+            question: "If a stranger asks for a photo:",
             options: [
-              "Отправить сразу.",
-              "Спросить, зачем нужно.",
-              "Не отправлять, рассказать взрослому."
+              "Send immediately.",
+              "Ask why it is necessary.",
+              "Don't send it, tell an adult."
             ],
             correctIndex: 2
           }
         ],
-        adultNote: "Договоритесь с ребёнком: с незнакомцами в сети не общаемся. Любое подозрительное сообщение — показываем взрослому.",
+        adultNote: "Make an agreement with your child: we don’t communicate with strangers online. We show any suspicious message to an adult.",
         tags: [
-          "мессенджеры",
-          "Цифровая коммуникация",
-          "Урок 24"
+          "messengers",
+          "Digital Communication & Messaging",
+          "Lesson 24"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — отправить сообщение в мессенджере — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Create a digital action - send a message in the messenger - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: мессенджер",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: не общаться с незнакомцами; не отправлять личные данные",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: messenger",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: do not communicate with strangers; do not send personal data",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая коммуникация»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Communication”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 23 (звонок и SMS))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short tasks (repetition based on lesson No. 23 (call and SMS))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся отправить сообщение в мессенджере.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to send a message in messenger.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «мессенджеры»"
+                "Shows a problematic situation on the topic “messengers”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «мессенджеры»",
-                "Показывает мессенджер"
+                "Opens informational text on the topic “messengers”",
+                "Shows messenger"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «мессенджере»",
-                "Контролирует, помогает индивидуально"
+                "Launches the task: find key places on the “messenger”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как отправить сообщение в мессенджере» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to send a message in messenger” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает мессенджер",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens messenger",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с мессенджером; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with the messenger; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на мессенджеры и рассказать на следующем уроке.",
-          safetyNote: "не общаться с незнакомцами; не отправлять личные данные"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: pay attention to messengers at home and tell them in the next lesson.",
+          safetyNote: "do not communicate with strangers; do not send personal data"
         },        trainer: {
           type: "messenger-flow",
-          task: "Прочитай сообщение и выбери правильный ответ.",
-          feedbackCorrect: "Верно! Это хороший ответ.",
-          feedbackWrong: "Этот ответ не подходит. Подумай ещё раз."
+          task: "Read the message and choose the correct answer.",
+          feedbackCorrect: "Right! This is a good answer.",
+          feedbackWrong: "This answer is not suitable. Think again."
         }
 
       }
@@ -5284,203 +5278,203 @@ export const programModules: ProgramModule[] = [
   },
   {
     slug: "digital-safety",
-    title: "Цифровая безопасность",
-    hours: "1 час",
+    title: "Online Safety & Security",
+    hours: "1 hour",
     lessonCount: 1,
-    description: "Урок, целенаправленно формирующий безопасностный компонент ФЦГ — этикет и безопасность в Интернете.",
+    description: "A lesson that purposefully forms the security component of the FCG - etiquette and safety on the Internet.",
     image: "/uzbek-images/shopping-market.jpg",
-    imageAlt: "Цифровая безопасность — поведение в Интернете",
+    imageAlt: "Digital Security - Online Behavior",
     imageCredit: "UQUVLI.UZ",
     imageSourceUrl: "",
     knowledge: [
-      "Что такое личные данные и почему их нельзя раскрывать",
-      "Как отличить безопасную ситуацию от опасной",
-      "Что делать, если общение в сети стало неприятным"
+      "What is personal data and why it should not be disclosed",
+      "How to distinguish a safe situation from a dangerous one",
+      "What to do if online communication becomes unpleasant"
     ],
     skills: [
-      "Распознавать опасные цифровые ситуации",
-      "Выбирать безопасное поведение",
-      "Обращаться за помощью к взрослому"
+      "Recognize dangerous digital situations",
+      "Choose safe behavior",
+      "Seek help from an adult"
     ],
     lessons: [
       {
         slug: "internet-safety-etiquette",
-        title: "Правила поведения и этикет общения в Интернете",
-        duration: "1 час",
-        summary: "Учимся отличать безопасные ситуации в интернете от опасных и правильно реагировать.",
-        intro: "На экране — карточки с ситуациями: незнакомец просит адрес, друг зовёт играть, кто-то прислал странную ссылку. Ребёнок выбирает безопасное поведение в каждой ситуации. Это защитный навык для жизни в сети.",
+        title: "Rules of conduct and etiquette for communicating on the Internet",
+        duration: "1 hour",
+        summary: "We learn to distinguish safe situations on the Internet from dangerous ones and react correctly.",
+        intro: "On the screen there are cards with situations: a stranger asks for an address, a friend invites you to play, someone sent a strange link. The child chooses safe behavior in every situation. This is a defensive skill for life online.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Правила поведения и этикет общения в Интернете»",
+        imageAlt: "Illustration for the lesson “Rules of behavior and etiquette for communicating on the Internet”",
         goals: [
-          "Понять, что такое безопасность в сети и зачем это нужно в жизни.",
-          "Освоить цифровое действие — отличить безопасные и опасные цифровые ситуации.",
-          "Запомнить правило безопасности: не открывать ссылки от незнакомцев; не пересылать чужие фото."
+          "Understand what online security is and why it is needed in life.",
+          "Master digital action - distinguish between safe and dangerous digital situations.",
+          "Remember the safety rule: do not open links from strangers; Do not forward other people's photos."
         ],
         rules: [
-          "Сначала открой карточки ситуаций.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: не открывать ссылки от незнакомцев; не пересылать чужие фото.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the situation cards.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: do not open links from strangers; Do not forward other people's photos.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "«Пришли свой адрес — выслю подарок»",
-            text: "Незнакомец в чате обещает прислать подарок за домашний адрес.",
+            title: "“Send me your address and I’ll send you a gift.”",
+            text: "A stranger in a chat promises to send a gift for your home address.",
             options: [
-              "Отправить адрес — ведь обещают подарок.",
-              "Спросить, что за подарок.",
-              "Закрыть чат и рассказать взрослому."
+              "Send the address - after all, they promise a gift.",
+              "Ask what kind of gift it is.",
+              "Close the chat and tell an adult."
             ],
             correctIndex: 2,
-            feedback: "Правильно. Подарков от незнакомцев не бывает.",
-            support: "Личные данные — это всегда секрет."
+            feedback: "Right. There are no gifts from strangers.",
+            support: "Personal data is always a secret."
           },
           {
-            title: "Друг прислал ссылку",
-            text: "Друг прислал «Смотри, классная игра» с подозрительной ссылкой.",
+            title: "A friend sent me a link",
+            text: "A friend sent “Look, cool game” with a suspicious link.",
             options: [
-              "Переслать всему классу.",
-              "Сначала спросить у друга вживую, что это.",
-              "Сразу нажать."
+              "Forward to the whole class.",
+              "First, ask a friend in person what it is.",
+              "Press immediately."
             ],
             correctIndex: 1,
-            feedback: "Хорошо. Аккаунт друга мог быть взломан.",
-            support: "Подозрительные ссылки — не нажимать."
+            feedback: "Fine. A friend's account may have been hacked.",
+            support: "Suspicious links - do not click."
           }
         ],
         quiz: [
           {
-            question: "Что такое личные данные?",
+            question: "What is personal data?",
             options: [
-              "Никаких личных данных.",
-              "Адрес, номер телефона, имя родителей.",
-              "Только имя."
+              "No personal information.",
+              "Address, phone number, parents' name.",
+              "Only the name."
             ],
             correctIndex: 1
           },
           {
-            question: "Кому можно дать свой адрес?",
+            question: "Who can I give my address to?",
             options: [
-              "Всем подряд.",
-              "Только семье и близким — никому в сети.",
-              "Незнакомцу с обещанием подарка."
+              "Everyone.",
+              "Only family and loved ones - no one online.",
+              "To a stranger with the promise of a gift."
             ],
             correctIndex: 1
           },
           {
-            question: "Если стало неприятно в чате:",
+            question: "If you feel uncomfortable in the chat:",
             options: [
-              "Закрыть чат и рассказать взрослому.",
-              "Терпеть.",
-              "Ответить грубо."
+              "Close the chat and tell an adult.",
+              "Endure.",
+              "It's rude to answer."
             ],
             correctIndex: 0
           }
         ],
-        adultNote: "Объясните ребёнку: в сети много мошенников. Любые «подарки», «выигрыши» — обман. Личное — никому.",
+        adultNote: "Explain to your child: there are a lot of scammers on the Internet. Any “gifts” or “winnings” are a scam. Personal - no one.",
         tags: [
-          "безопасность в сети",
-          "Цифровая безопасность",
-          "Урок 25"
+          "online security",
+          "Online Safety & Security",
+          "Lesson 25"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — отличить безопасные и опасные цифровые ситуации — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form digital action - distinguish between safe and dangerous digital situations - among 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: карточки ситуаций",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: не открывать ссылки от незнакомцев; не пересылать чужие фото",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: situation cards",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: do not open links from strangers; do not forward other people's photos",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровая безопасность»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital Security”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 24 (мессенджер))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short tasks (repetition based on lesson No. 24 (messenger))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся отличить безопасные и опасные цифровые ситуации.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn to distinguish between safe and dangerous digital situations.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «безопасность в сети»"
+                "Shows a problematic situation on the topic “network security”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «безопасность в сети»",
-                "Показывает карточки ситуаций"
+                "Opens informational text on the topic “online safety”",
+                "Shows situation cards"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «карточках ситуаций»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “situation cards”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как отличить безопасные и опасные цифровые ситуации» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to distinguish between safe and dangerous digital situations” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает карточки ситуаций",
-                "Даёт задание выполнить действие самостоятельно"
+                "Reveals situation cards",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с карточками ситуаций; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with situation cards; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на безопасность в сети и рассказать на следующем уроке.",
-          safetyNote: "не открывать ссылки от незнакомцев; не пересылать чужие фото"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to online safety and talk about it in the next lesson.",
+          safetyNote: "do not open links from strangers; do not forward other people's photos"
         },        trainer: {
           type: "safety-etiquette",
-          task: "Реши, какая ситуация безопасна, а какая опасна.",
-          feedbackCorrect: "Верно! Так и нужно поступать.",
-          feedbackWrong: "Это другая ситуация. Подумай о безопасности."
+          task: "Decide which situation is safe and which is dangerous.",
+          feedbackCorrect: "Right! This is what you need to do.",
+          feedbackWrong: "This is a different situation. Think about safety."
         }
 
       }
@@ -5488,565 +5482,565 @@ export const programModules: ProgramModule[] = [
   },
   {
     slug: "digital-public-services",
-    title: "Цифровые госуслуги",
-    hours: "3 часа",
+    title: "Digital Public Services & Banking",
+    hours: "3 hours",
     lessonCount: 3,
-    description: "Три урока: заполнение электронного заявления на портале госуслуг, безопасная работа с банкоматом и защитой PIN-кода, критическое чтение цифрового кредитного договора.",
+    description: "Three lessons: filling out an electronic application on the government services portal, safe operation of an ATM and PIN code protection, critical reading of a digital loan agreement.",
     image: "/uzbek-images/shopping-market.jpg",
-    imageAlt: "Цифровые госуслуги — портал, банкомат, договор",
+    imageAlt: "Digital government services - portal, ATM, contract",
     imageCredit: "UQUVLI.UZ",
     imageSourceUrl: "",
     knowledge: [
-      "Что такое портал госуслуг и зачем он нужен",
-      "Как устроен банкомат и зачем нужен PIN-код",
-      "Что такое кредит и почему важно читать договор"
+      "What is a public services portal and why is it needed?",
+      "How does an ATM work and why do you need a PIN code?",
+      "What is a loan and why is it important to read the agreement?"
     ],
     skills: [
-      "Заполнять электронную форму заявления",
-      "Снимать деньги в банкомате, защищая PIN-код",
-      "Читать цифровой договор и находить ключевые условия"
+      "Fill out the electronic application form",
+      "Withdraw money from an ATM while protecting your PIN code",
+      "Read the digital contract and find key terms"
     ],
     lessons: [
       {
         slug: "public-appeals-portal",
-        title: "Правила обращения граждан в государственные органы",
-        duration: "1 час",
-        summary: "Подаём электронное заявление на портале госуслуг по шагам.",
-        intro: "Портал государственных услуг: ребёнок выбирает услугу (например, справку о составе семьи) и заполняет электронную форму. Так знакомится с порталом, где сегодня решается большинство дел с государством.",
+        title: "Rules for citizens to contact government bodies",
+        duration: "1 hour",
+        summary: "We submit an electronic application on the government services portal step by step.",
+        intro: "Public services portal: the child selects a service (for example, a certificate of family composition) and fills out an electronic form. This is how he gets acquainted with the portal where most matters with the state are resolved today.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Правила обращения граждан в государственные органы»",
+        imageAlt: "Illustration for the lesson “Rules for citizens to apply to government bodies”",
         goals: [
-          "Понять, что такое госуслуги и зачем это нужно в жизни.",
-          "Освоить цифровое действие — заполнить электронное заявление на портале госуслуг.",
-          "Запомнить правило безопасности: не вводить личные данные на подозрительных сайтах."
+          "Understand what public services are and why they are needed in life.",
+          "Master digital action - fill out an electronic application on the government services portal.",
+          "Remember the security rule: do not enter personal data on suspicious sites."
         ],
         rules: [
-          "Сначала открой портал госуслуг.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: не вводить личные данные на подозрительных сайтах.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the government services portal.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: do not enter personal data on suspicious sites.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Нужна справка о составе семьи",
-            text: "Маме нужна справка о составе семьи.",
+            title: "We need a certificate of family composition",
+            text: "Mom needs a certificate of family composition.",
             options: [
-              "Спросить у соседа.",
-              "Можно подать заявление онлайн через портал госуслуг.",
-              "Только идти в очередь."
+              "Ask your neighbor.",
+              "You can submit an application online through the government services portal.",
+              "Just go in line."
             ],
             correctIndex: 1,
-            feedback: "Правильно. Портал — это удобно и быстро.",
-            support: "Многие документы получают через интернет."
+            feedback: "Right. The portal is convenient and fast.",
+            support: "Many documents are received via the Internet."
           },
           {
-            title: "Не заполнил все поля анкеты",
-            text: "Заполнил половину анкеты и нажал «Отправить».",
+            title: "Didn't fill out all fields of the form",
+            text: "I filled out half of the form and clicked “Submit.”",
             options: [
-              "Закрыть страницу.",
-              "Заявление улетит без половины данных.",
-              "Появится сообщение — что заполнить ещё. Заполнить и отправить заново."
+              "Close page.",
+              "The application will fly away without half the data.",
+              "A message will appear asking what else to fill out. Fill out and resubmit."
             ],
             correctIndex: 2,
-            feedback: "Верно. Портал проверяет, всё ли заполнено.",
-            support: "Незаполненные поля обычно подсвечиваются."
+            feedback: "Right. The portal checks if everything is filled out.",
+            support: "Empty fields are usually highlighted."
           }
         ],
         quiz: [
           {
-            question: "Что такое портал госуслуг?",
+            question: "What is a public services portal?",
             options: [
-              "Социальная сеть.",
-              "Сайт государства для получения услуг онлайн.",
-              "Развлекательное приложение."
+              "Social network.",
+              "State website for receiving services online.",
+              "Entertainment application."
             ],
             correctIndex: 1
           },
           {
-            question: "Что заполняют в электронном заявлении?",
+            question: "What do you fill out in the electronic application?",
             options: [
-              "Только имя.",
-              "ФИО, дату рождения, адрес и другие данные.",
-              "Ничего."
+              "Only the name.",
+              "Full name, date of birth, address and other data.",
+              "Nothing."
             ],
             correctIndex: 1
           },
           {
-            question: "Зачем подтверждение от госорганов?",
+            question: "Why confirmation from government agencies?",
             options: [
-              "Чтобы запутать.",
-              "Это не нужно.",
-              "Чтобы знать, что заявление принято."
+              "To confuse.",
+              "It's not necessary.",
+              "To know that the application has been accepted."
             ],
             correctIndex: 2
           }
         ],
-        adultNote: "Покажите ребёнку портал my.gov.uz. Объясните, что это официальный сайт государства — там получают документы.",
+        adultNote: "Show your child the my.gov.uz portal. Explain that this is the official website of the state - they receive documents there.",
         tags: [
-          "госуслуги",
-          "Цифровые госуслуги",
-          "Урок 27"
+          "public services",
+          "Digital Public Services & Banking",
+          "Lesson 27"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — заполнить электронное заявление на портале госуслуг — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - fill out an electronic application on the government services portal - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: портал госуслуг",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: не вводить личные данные на подозрительных сайтах",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: public services portal",
+            "create a step-by-step digital action algorithm",
+            "establish a security rule: do not enter personal data on suspicious sites",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровые госуслуги»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital public services”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 26 (термометр))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision based on lesson #26 (thermometer))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся заполнить электронное заявление на портале госуслуг.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to fill out an electronic application on the government services portal.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «госуслуги»"
+                "Shows a problematic situation on the topic of “public services”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «госуслуги»",
-                "Показывает портал госуслуг"
+                "Opens informational text on the topic “public services”",
+                "Shows the government services portal"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «портале госуслуг»",
-                "Контролирует, помогает индивидуально"
+                "Launches a task: find key places on the “public services portal”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как заполнить электронное заявление на портале госуслуг» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to fill out an electronic application on the government services portal” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает портал госуслуг",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens a government services portal",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с порталом госуслуг; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with the government services portal; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на госуслуги и рассказать на следующем уроке.",
-          safetyNote: "не вводить личные данные на подозрительных сайтах"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to government services and talk about them in the next lesson.",
+          safetyNote: "do not enter personal data on suspicious sites"
         },        trainer: {
           type: "mygov-portal",
-          task: "Подай заявление на портале my.gov: выбери услугу, заполни форму, подтверди SMS.",
-          feedbackCorrect: "Молодец! Заявление принято.",
-          feedbackWrong: "Это не тот шаг. Попробуй ещё раз."
+          task: "Submit an application on the my.gov portal: select a service, fill out the form, confirm by SMS.",
+          feedbackCorrect: "Well done! The application has been accepted.",
+          feedbackWrong: "This is not the right step. Try again."
         }
 
       },
       {
         slug: "atm-cash-withdrawal",
-        title: "Сбербанк. Основные функции банка",
-        duration: "1 час",
-        summary: "Снимаем деньги в банкомате: вставляем карту, вводим PIN-код, выбираем сумму, забираем карту и деньги.",
-        intro: "На экране — банкомат. Ребёнок проходит все пять шагов снятия денег и обязательно учится прикрывать клавиатуру рукой при вводе PIN-кода. Это безопасная тренировка для реальной операции, с которой выпускнику предстоит столкнуться самостоятельно.",
+        title: "Sberbank. Main functions of the bank",
+        duration: "1 hour",
+        summary: "We withdraw money from an ATM: insert the card, enter the PIN code, select the amount, take the card and money.",
+        intro: "There is an ATM on the screen. The child goes through all five steps of withdrawing money and always learns to cover the keyboard with his hand when entering the PIN code. This is safe training for a real operation that the graduate will have to face on their own.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Сбербанк. Основные функции банка»",
+        imageAlt: "Illustration for the lesson “Sberbank. Main functions of the bank\"",
         goals: [
-          "Понять, что такое банкомат и зачем это нужно в жизни.",
-          "Освоить цифровое действие — снять деньги в банкомате.",
-          "Запомнить правило безопасности: PIN никому не говорить; прикрывать рукой при вводе."
+          "Understand what an ATM is and why it is needed in life.",
+          "Master the digital action - withdraw money from an ATM.",
+          "Remember the safety rule: don’t tell anyone your PIN; cover with your hand when entering."
         ],
         rules: [
-          "Сначала открой банкомат.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: PIN никому не говорить; прикрывать рукой при вводе.",
-          "Если не уверен — спроси у взрослого."
+          "First open the ATM.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: don’t tell anyone your PIN; cover with your hand when entering.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Сосед просит показать PIN",
-            text: "Стоишь у банкомата. Незнакомец рядом просит «Помоги ввести код».",
+            title: "Neighbor asks to see PIN",
+            text: "You are standing at an ATM. A stranger nearby asks “Help enter the code.”",
             options: [
-              "Назвать ему свой PIN.",
-              "Показать карту.",
-              "Отказаться и прикрыть клавиатуру рукой."
+              "Tell him your PIN.",
+              "Show map.",
+              "Refuse and cover the keyboard with your hand."
             ],
             correctIndex: 2,
-            feedback: "Правильно. PIN — это секрет, который знаешь только ты.",
-            support: "Мошенники часто притворяются «помощниками» у банкомата."
+            feedback: "Right. PIN is a secret that only you know.",
+            support: "Fraudsters often pretend to be “assistants” at the ATM."
           },
           {
-            title: "Забыл забрать карту",
-            text: "Снял деньги и пошёл, забыл карту в банкомате.",
+            title: "Forgot to pick up the card",
+            text: "I withdrew the money and went, forgot the card in the ATM.",
             options: [
-              "Срочно вернуться и забрать; если уже забрали — позвонить в банк.",
-              "Купить новую карту.",
-              "Ничего страшного, не возвращаться."
+              "Urgently return and pick up; If they have already taken it, call the bank.",
+              "Buy a new card.",
+              "It's okay, don't come back."
             ],
             correctIndex: 0,
-            feedback: "Верно. Карту нужно сразу забирать.",
-            support: "Без карты деньги уйдут к тому, кто её найдёт."
+            feedback: "Right. You must pick up the card immediately.",
+            support: "Without a card, the money will go to whoever finds it."
           }
         ],
         quiz: [
           {
-            question: "Что такое PIN-код?",
+            question: "What is a PIN code?",
             options: [
-              "Секретный код из 4 цифр от карты.",
-              "Номер карты.",
-              "Номер телефона."
+              "Secret 4-digit code from the card.",
+              "Card number.",
+              "Phone number."
             ],
             correctIndex: 0
           },
           {
-            question: "Кому можно сказать PIN?",
+            question: "Who can I tell my PIN to?",
             options: [
-              "Маме и папе.",
-              "Любому, кто попросит.",
-              "Никому."
+              "To mom and dad.",
+              "Anyone who asks.",
+              "No one."
             ],
             correctIndex: 2
           },
           {
-            question: "При вводе PIN нужно:",
+            question: "When entering your PIN you need to:",
             options: [
-              "Показать всем.",
-              "Прикрыть клавиатуру рукой.",
-              "Громко произнести цифры."
+              "Show everyone.",
+              "Cover the keyboard with your hand.",
+              "Say the numbers loudly."
             ],
             correctIndex: 1
           }
         ],
-        adultNote: "Подойдите вместе с ребёнком к банкомату (без снятия). Покажите шаги: вставить карту → ввести PIN скрытно → забрать.",
+        adultNote: "Go to the ATM with your child (without withdrawing). Show the steps: insert card → enter PIN secretly → pick up.",
         tags: [
-          "банкомат",
-          "Цифровые госуслуги",
-          "Урок 28"
+          "ATM",
+          "Digital Public Services & Banking",
+          "Lesson 28"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — снять деньги в банкомате — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Create a digital action - withdraw money from an ATM - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: банкомат",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: PIN никому не говорить; прикрывать рукой при вводе",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: ATM",
+            "create a step-by-step digital action algorithm",
+            "establish a security rule: don’t tell anyone your PIN; cover with your hand when typing",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровые госуслуги»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital public services”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 27 (госуслуги))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short tasks (repetition based on lesson No. 27 (public services))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся снять деньги в банкомате.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to withdraw money from an ATM.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «банкомат»"
+                "Shows a problematic situation on the topic “ATM”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «банкомат»",
-                "Показывает банкомат"
+                "Opens informational text on the topic \"ATM\"",
+                "Shows ATM"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «банкомате»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “ATM”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как снять деньги в банкомате» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to withdraw money from an ATM” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает банкомат",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens an ATM",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с банкоматом; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Operate an ATM independently; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на банкомат и рассказать на следующем уроке.",
-          safetyNote: "PIN никому не говорить; прикрывать рукой при вводе"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: pay attention to the ATM at home and tell it at the next lesson.",
+          safetyNote: "Do not tell your PIN to anyone; cover with your hand when typing"
         },        trainer: {
           type: "atm",
-          task: "Сними деньги в банкомате: вставь карту, введи PIN, выбери сумму.",
-          feedbackCorrect: "Верно! Деньги получены.",
-          feedbackWrong: "Это небезопасно. Подумай ещё раз."
+          task: "Withdraw money from an ATM: insert the card, enter the PIN, select the amount.",
+          feedbackCorrect: "Right! The money has been received.",
+          feedbackWrong: "It's not safe. Think again."
         }
 
       },
       {
         slug: "credit-contract-reading",
-        title: "Кредит. Основные виды кредитов",
-        duration: "1 час",
-        summary: "Читаем кредитный договор и находим в нём ключевые условия — ставку и срок.",
-        intro: "Упрощённый текст договора. Ребёнок ищет три важных пункта: сумма кредита, процентная ставка, срок. Учится находить ключевую информацию в длинном документе — типичное защитное умение.",
+        title: "Credit. Main types of loans",
+        duration: "1 hour",
+        summary: "We read the loan agreement and find key terms in it - rate and term.",
+        intro: "Simplified text of the contract. The child is looking for three important points: loan amount, interest rate, term. Learning to find key information in a long document is a typical defensive skill.",
         image: "/uzbek-images/shopping-market.jpg",
-        imageAlt: "Иллюстрация к уроку «Кредит. Основные виды кредитов»",
+        imageAlt: "Illustration for the lesson “Credit. Main types of loans\"",
         goals: [
-          "Понять, что такое кредит и зачем это нужно в жизни.",
-          "Освоить цифровое действие — прочитать цифровой договор и найти ключевые условия.",
-          "Запомнить правило безопасности: не подписывать договор, не прочитав; всегда советоваться со взрослым."
+          "Understand what a loan is and why it is needed in life.",
+          "Master digital action - read the digital contract and find the key terms.",
+          "Remember the safety rule: do not sign the contract without reading it; Always consult an adult."
         ],
         rules: [
-          "Сначала открой цифровой договор.",
-          "Найди ключевые места — они отмечены пиктограммой.",
-          "Прими решение по правилу: не подписывать договор, не прочитав; всегда советоваться со взрослым.",
-          "Если не уверен — спроси у взрослого."
+          "First, open the digital contract.",
+          "Find key places - they are marked with a pictogram.",
+          "Make a decision according to the rule: do not sign an agreement without reading it; Always consult an adult.",
+          "If you're not sure, ask an adult."
         ],
         scenarios: [
           {
-            title: "Банк предлагает кредит «без процентов»",
-            text: "На рекламе написано «Кредит без процентов!».",
+            title: "The bank offers a loan “without interest”",
+            text: "The advertisement says “Credit without interest!”",
             options: [
-              "Прочитать договор мелким шрифтом — там могут быть условия.",
-              "Срочно брать.",
-              "Поверить и отдать паспорт."
+              "Read the fine print of the contract - there may be conditions.",
+              "Take it urgently.",
+              "Verify and hand over your passport."
             ],
             correctIndex: 0,
-            feedback: "Правильно. «Без процентов» часто хитрая реклама.",
-            support: "Невыгодные условия прячут мелким шрифтом."
+            feedback: "Right. “No interest” is often a clever advertisement.",
+            support: "Unfavorable conditions are hidden in small print."
           },
           {
-            title: "Не понимаешь договор",
-            text: "В договоре много непонятных слов.",
+            title: "You don't understand the contract",
+            text: "There are many unclear words in the contract.",
             options: [
-              "Подписать и думать потом.",
-              "Подписать любой документ.",
-              "Не подписывать и попросить помощи у взрослого или юриста."
+              "Sign and think later.",
+              "Sign any document.",
+              "Do not sign and ask for help from an adult or lawyer."
             ],
             correctIndex: 2,
-            feedback: "Верно. Непонятный договор — не подписываем.",
-            support: "Любые подписи — только после понимания."
+            feedback: "Right. We don’t sign an unclear contract.",
+            support: "Any signatures are only after understanding."
           }
         ],
         quiz: [
           {
-            question: "Что такое кредит?",
+            question: "What is a loan?",
             options: [
-              "Деньги в долг от банка с процентами.",
-              "Бесплатно.",
-              "Подарок от банка."
+              "Borrowed money from a bank with interest.",
+              "For free.",
+              "Gift from the bank."
             ],
             correctIndex: 0
           },
           {
-            question: "Где в договоре важные условия?",
+            question: "Where are the important terms in the contract?",
             options: [
-              "Часто мелким шрифтом — нужно читать внимательно.",
-              "Их нет.",
-              "Только в заголовке."
+              "Often in small print - you need to read carefully.",
+              "There are none.",
+              "Only in the title."
             ],
             correctIndex: 0
           },
           {
-            question: "Если не уверен в договоре:",
+            question: "If you are not sure about the contract:",
             options: [
-              "Не подписывать, советоваться со взрослым.",
-              "Игнорировать.",
-              "Подписать любой."
+              "Do not sign, consult with an adult.",
+              "Ignore.",
+              "Sign anyone."
             ],
             correctIndex: 0
           }
         ],
-        adultNote: "Покажите ребёнку, как выглядит настоящий договор (любой). Объясните, почему важно его читать перед подписью.",
+        adultNote: "Show your child what a real contract (any contract) looks like. Explain why it is important to read it before signing.",
         tags: [
-          "кредит",
-          "Цифровые госуслуги",
-          "Урок 29"
+          "loan",
+          "Digital Public Services & Banking",
+          "Lesson 29"
         ],
         methodology: {
-          objective: "Сформировать цифровое действие — прочитать цифровой договор и найти ключевые условия — у обучающихся 7 класса с интеллектуальными нарушениями (F70).",
+          objective: "Form a digital action - read the digital contract and find key terms - for 7th grade students with intellectual disabilities (F70).",
           tasks: [
-            "познакомить с цифровым объектом: цифровой договор",
-            "сформировать пошаговый алгоритм цифрового действия",
-            "закрепить правило безопасности: не подписывать договор, не прочитав; всегда советоваться со взрослым",
-            "обеспечить перенос цифрового действия в бытовую ситуацию"
+            "introduce a digital object: digital contract",
+            "create a step-by-step digital action algorithm",
+            "establish a safety rule: do not sign an agreement without reading it; always consult an adult",
+            "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Платформа UQUVLI.UZ (раздел «Цифровые госуслуги»)",
-            "Планшеты / ноутбуки по числу обучающихся или 1 на 2",
-            "Интерактивная доска / проектор",
-            "2–3 реальных предмета, связанных с темой урока (для демонстрации)"
+            "Platform UQUVLI.UZ (section “Digital public services”)",
+            "Tablets/laptops by number of students or 1 to 2",
+            "Interactive whiteboard/projector",
+            "2-3 real objects related to the lesson topic (for demonstration)"
           ],
           stages: [
             {
-              duration: "5 мин",
-              title: "Повторение («цифровая разминка»)",
+              duration: "5 min",
+              title: "Repetition (“digital warm-up”)",
               teacherDoes: [
-                "Открывает раздел «Цифровая разминка»",
-                "Предлагает 3 коротких задания (повторение опирается на урок № 28 (банкомат))"
+                "Opens the “Digital Warm-up” section",
+                "Offers 3 short activities (revision based on lesson #28 (ATM))"
               ],
-              studentActivity: "Выполняют короткие задания с прошлого урока"
+              studentActivity: "Do short tasks from the last lesson"
             },
             {
-              duration: "3 мин",
-              title: "Мотивационно-целевой этап",
-              teacherSays: "Сегодня научимся прочитать цифровой договор и найти ключевые условия.",
+              duration: "3 min",
+              title: "Motivational-target stage",
+              teacherSays: "Today we will learn how to read a digital contract and find key terms.",
               teacherDoes: [
-                "Показывает проблемную ситуацию по теме «кредит»"
+                "Shows a problematic situation on the topic “credit”"
               ],
-              studentActivity: "Рассматривают ситуацию; формулируют цель"
+              studentActivity: "Consider the situation; formulate a goal"
             },
             {
-              duration: "10 мин",
-              title: "Ориентировочная основа действия (ООД)",
+              duration: "10 min",
+              title: "Indicative Framework for Action (IBA)",
               teacherDoes: [
-                "Открывает информационный текст по теме «кредит»",
-                "Показывает цифровой договор"
+                "Opens informational text on the topic “credit”",
+                "Shows digital contract"
               ],
-              studentActivity: "Слушают озвучку; рассматривают экран"
+              studentActivity: "Listen to the voiceover; look at the screen"
             },
             {
-              duration: "7 мин",
-              title: "Материализованное действие",
+              duration: "7 min",
+              title: "Materialized action",
               teacherDoes: [
-                "Запускает задание: найти ключевые места на «цифровом договоре»",
-                "Контролирует, помогает индивидуально"
+                "Starts the task: find key places on the “digital agreement”",
+                "Monitors and helps individually"
               ],
-              studentActivity: "Отмечают ключевые места; получают обратную связь",
-              hint: "Диагностическая точка 1"
+              studentActivity: "Mark key places; receive feedback",
+              hint: "Diagnostic point 1"
             },
             {
-              duration: "2 мин",
-              title: "Физкультминутка",
+              duration: "2 min",
+              title: "Physical education minute",
               teacherDoes: [
-                "Включает анимированную физкультминутку"
+                "Includes animated physical education lesson"
               ],
-              studentActivity: "Повторяют простые движения"
+              studentActivity: "Repeat simple movements"
             },
             {
-              duration: "7 мин",
-              title: "Громкоречевое действие",
+              duration: "7 min",
+              title: "Loud action",
               teacherDoes: [
-                "Открывает инструктивный текст «Как прочитать цифровой договор и найти ключевые условия» — 3 шага",
-                "Организует работу в парах"
+                "Opens the instructional text “How to read a digital contract and find key terms” - 3 steps",
+                "Organizes work in pairs"
               ],
-              studentActivity: "Проговаривают шаги вслух; работают в парах",
-              hint: "Диагностическая точка 2"
+              studentActivity: "They say the steps out loud; work in pairs",
+              hint: "Diagnostic point 2"
             },
             {
-              duration: "7 мин",
-              title: "Действие во внешней речи про себя",
+              duration: "7 min",
+              title: "Action in external speech to oneself",
               teacherDoes: [
-                "Открывает цифровой договор",
-                "Даёт задание выполнить действие самостоятельно"
+                "Opens a digital contract",
+                "Gives you the task to perform the action yourself"
               ],
-              studentActivity: "Самостоятельно работают с цифровым договором; повторяют 3 раза",
-              hint: "Диагностическая точка 3 — ключевая"
+              studentActivity: "Work independently with a digital contract; repeat 3 times",
+              hint: "Diagnostic point 3 is key"
             },
             {
-              duration: "5 мин",
-              title: "Умственное действие. Рефлексия",
+              duration: "5 min",
+              title: "Mental action. Reflection",
               teacherDoes: [
-                "Открывает задание-сортировку",
-                "Даёт устное задание-наблюдение"
+                "Opens a sorting task",
+                "Gives an oral observation task"
               ],
-              studentActivity: "Выполняют сортировку; выбирают смайлик настроения"
+              studentActivity: "Perform sorting; choose a mood emoticon"
             }
           ],
-          differentiation: "Для сильных — 4-й пример самостоятельно. Для тех, кто справляется труднее — работа в паре с педагогом и дополнительные обращения «Послушать».",
-          homework: "Устное задание-наблюдение: дома обратить внимание на кредит и рассказать на следующем уроке.",
-          safetyNote: "не подписывать договор, не прочитав; всегда советоваться со взрослым"
+          differentiation: "For the strong - the 4th example on your own. For those who find it more difficult to cope, work in pairs with a teacher and additional “Listen” calls.",
+          homework: "Oral observation task: at home, pay attention to the credit and tell it at the next lesson.",
+          safetyNote: "do not sign an agreement without reading it; always consult an adult"
         },        trainer: {
           type: "credit-contract",
-          task: "Прочитай договор кредита: найди сумму, процент, срок и общий возврат.",
-          feedbackCorrect: "Молодец! Ты прочитал важные пункты.",
-          feedbackWrong: "Это не тот пункт. Посмотри ещё раз."
+          task: "Read the loan agreement: find the amount, interest, term and total repayment.",
+          feedbackCorrect: "Well done! You have read the important points.",
+          feedbackWrong: "This is not the point. Look again."
         }
 
       }

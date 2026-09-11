@@ -40,8 +40,8 @@ export async function readJsonBody<T>(request: Request): Promise<T> {
     return (await request.json()) as T;
   } catch {
     throw new HttpError(400, {
-      ru: "Некорректный JSON в запросе.",
-      uz: "Soʻrovdagi JSON formatida xatolik.",
+      ru: "Invalid JSON in request.",
+      uz: "Invalid JSON in request.",
     });
   }
 }
@@ -49,17 +49,13 @@ export async function readJsonBody<T>(request: Request): Promise<T> {
 export async function handleApiError(error: unknown) {
   if (error instanceof HttpError) {
     const locale = await localeFromCookies();
-    return jsonResponse({ error: error.messages[locale] }, error.status);
+    return jsonResponse({ error: error.messages[locale] ?? error.messages.ru }, error.status);
   }
 
   console.error(error);
-  const locale = await localeFromCookies();
   return jsonResponse(
     {
-      error:
-        locale === "uz"
-          ? "Server ichki xatosi."
-          : "Внутренняя ошибка сервера.",
+      error: "Internal server error.",
     },
     500,
   );
@@ -68,8 +64,8 @@ export async function handleApiError(error: unknown) {
 export function requireUser(user: CurrentUser | null): CurrentUser {
   if (!user) {
     throw new HttpError(401, {
-      ru: "Сначала войдите в кабинет.",
-      uz: "Avval kabinetga kiring.",
+      ru: "Please sign in first.",
+      uz: "Please sign in first.",
     });
   }
 
@@ -81,8 +77,8 @@ export function requireRole(user: CurrentUser | null, roles: UserRole[]) {
 
   if (!roles.includes(currentUser.role)) {
     throw new HttpError(403, {
-      ru: "Недостаточно прав для этого действия.",
-      uz: "Bu amal uchun ruxsat yetarli emas.",
+      ru: "Insufficient permissions for this action.",
+      uz: "Insufficient permissions for this action.",
     });
   }
 

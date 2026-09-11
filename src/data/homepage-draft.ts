@@ -58,11 +58,11 @@ export const HOMEPAGE_SECTION_LABELS_BY_LOCALE: Record<
   Record<HomepageSectionId, string>
 > = {
   ru: {
-    hero: "Первый экран",
-    program: "Для кого",
-    lessonPreview: "Доступная среда",
-    roles: "Направления",
-    finalCta: "Следующий шаг",
+    hero: "First screen",
+    program: "For Whom",
+    lessonPreview: "Accessible Environment",
+    roles: "Curriculum Tracks",
+    finalCta: "Next Step",
   },
   uz: {
     hero: "Birinchi ekran",
@@ -79,74 +79,74 @@ const ru: HomepageDraft = {
   sectionOrder: ["hero", "program", "lessonPreview", "roles", "finalCta"],
   hiddenSections: [],
   hero: {
-    eyebrow: "Цифровая грамотность",
-    title: "Цифровые навыки для жизни в Узбекистане",
+    eyebrow: "Adaptive Digital Learning",
+    title: "Essential digital skills for independent life",
     lead:
-      "Учебная платформа для уроков СБО в коррекционных школах: дети не отвечают на вопросы — они выполняют реальные действия в тренажёрах цифровых сервисов.",
+      "An inclusive adaptive platform: learners don't answer boring multiple-choice tests — they practice real actions in safe, interactive life-skill simulators.",
     facts: [
-      "14 уроков",
-      "5 направлений",
-      "для детей с F70",
-      "на русском языке",
-      "тренажёры реальных ситуаций",
+      "14 core lessons",
+      "5 curriculum tracks",
+      "Adaptive profiles",
+      "English & multilingual",
+      "Real-life simulators",
     ],
-    primaryAction: { label: "Начать обучение бесплатно", href: "/register" },
-    secondaryAction: { label: "Смотреть программу", href: "/program" },
+    primaryAction: { label: "Start learning for free", href: "/register" },
+    secondaryAction: { label: "Explore curriculum", href: "/program" },
   },
   program: {
-    eyebrow: "Для коррекционных школ",
-    title: "Платформа встроена в уроки СБО",
+    eyebrow: "For Inclusive Classrooms",
+    title: "One lesson. Multiple personalized experiences.",
     summary:
-      "Уроки проводятся под руководством учителя СБО в классе. Каждое занятие — тренажёр реального действия: ребёнок не отвечает на вопросы теста, а выполняет задачи.",
-    primaryAction: { label: "Смотреть программу", href: "/program" },
-    secondaryAction: { label: "Посмотреть пример урока", href: "" },
+      "Lessons are guided by educators with the Mosaic Adaptive Engine. Each activity is a realistic action simulator: learners master practical digital tasks step by step without overwhelm.",
+    primaryAction: { label: "Explore curriculum", href: "/program" },
+    secondaryAction: { label: "View sample lesson", href: "/lesson/messenger-message" },
   },
   lessonPreview: {
-    eyebrow: "Доступная среда",
-    title: "Платформа создана с учетом понятного обучения",
+    eyebrow: "Calm & Predictable",
+    title: "Designed for focused, accessible learning",
     summary:
-      "Короткие уроки, крупные элементы, простая навигация и подсказки для взрослого помогают проходить темы без перегруза.",
-    action: { label: "Открыть пример урока", href: "" },
+      "Bite-sized steps, large touch targets, predictable navigation, and embedded facilitator hints ensure confidence without cognitive overload.",
+    action: { label: "Open sample lesson", href: "/lesson/messenger-message" },
   },
   roles: {
-    eyebrow: "Направления",
-    title: "Популярные направления обучения",
+    eyebrow: "Curriculum Tracks",
+    title: "Life-skills tracks built for independence",
     summary:
-      "Каждый раздел связан с реальными ситуациями: как найти услугу, оплатить покупку, написать сообщение, проверить информацию и действовать безопасно.",
+      "Every module connects directly to authentic situations: sending messages, shopping online, transit ticketing, verifying information, and staying secure.",
     cards: [
       {
         id: "01",
-        title: "Подключите платформу для своей школы",
+        title: "Deploy Mosaic in your school or center",
         description:
-          "Готовые уроки помогают провести занятие по цифровой грамотности без сложной подготовки.",
+          "Turn any lesson into multiple personalized formats in seconds with our Educator Adaptive Studio.",
         bullets: [
-          "Единая структура уроков",
-          "Темы разложены по навыкам",
-          "Подходит для групповой работы",
+          "Unified lesson structure",
+          "One-click accessibility profiles",
+          "Ideal for whole-class & individual pacing",
         ],
-        action: { label: "Оставить заявку", href: "/educators" },
+        action: { label: "Open Teacher Studio", href: "/educators" },
       },
       {
         id: "02",
-        title: "Помогите ребенку увереннее пользоваться сервисами",
+        title: "Support your child with home practice",
         description:
-          "Родитель видит темы, может пройти урок вместе с ребенком и закрепить действие на телефоне.",
+          "Parents can review upcoming modules, practice alongside their child, and reinforce real digital tasks.",
         bullets: [
-          "Короткие объяснения без сложных терминов",
-          "Практика на бытовых ситуациях",
-          "Прогресс сохраняется после входа",
+          "Short instructions without confusing jargon",
+          "Hands-on practice in authentic scenarios",
+          "Progress saved securely in dashboard",
         ],
-        action: { label: "Перейти в раздел для родителей", href: "/families" },
+        action: { label: "View Family Guide", href: "/families" },
       },
     ],
   },
   finalCta: {
-    eyebrow: "Подключите школу к платформе",
-    title: "Начните с первого урока СБО",
+    eyebrow: "Get Started Today",
+    title: "Begin with your first adaptive lesson",
     summary:
-      "Просмотрите программу, выберите модуль и проведите первый урок. Платформа готова к работе в классе без дополнительной настройки.",
-    primaryAction: { label: "Начать обучение", href: "/register" },
-    secondaryAction: { label: "Смотреть программу", href: "/program" },
+      "Browse the curriculum, pick a module, and start learning. Mosaic is ready for immediate classroom or home use without complex configuration.",
+    primaryAction: { label: "Start learning", href: "/register" },
+    secondaryAction: { label: "Explore curriculum", href: "/program" },
   },
 };
 

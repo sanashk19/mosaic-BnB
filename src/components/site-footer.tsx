@@ -4,59 +4,59 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/auth-provider";
 import { useLocale } from "@/components/locale-provider";
-import { NationalEmblem } from "@/components/national-emblem";
+import { MosaicLogo } from "@/components/mosaic-logo";
 import { SocialIcon, type SocialIconName } from "@/components/ui-icons";
 import { isCabinetRoute } from "@/lib/is-cabinet-route";
 
 const socialLinks: Array<{ label: string; icon: SocialIconName; href: string }> = [
-  { label: "Telegram", icon: "telegram", href: "https://t.me/uquvliuz" },
-  { label: "YouTube", icon: "youtube", href: "https://youtube.com/@uquvliuz" },
-  { label: "Instagram", icon: "instagram", href: "https://instagram.com/uquvliuz" },
-  { label: "Facebook", icon: "facebook", href: "https://facebook.com/uquvliuz" },
+  { label: "Telegram", icon: "telegram", href: "https://t.me" },
+  { label: "YouTube", icon: "youtube", href: "https://youtube.com" },
+  { label: "Instagram", icon: "instagram", href: "https://instagram.com" },
+  { label: "Facebook", icon: "facebook", href: "https://facebook.com" },
 ];
 
 const dict = {
   ru: {
     aboutCopy:
-      "Учебная платформа для уроков СБО в коррекционных школах Узбекистана. Разработана для детей с лёгкой умственной отсталостью (F70).",
-    socialsLabel: "Социальные сети",
-    platform: "Платформа",
-    program: "Программа",
-    directions: "Направления",
-    aboutPlatform: "О платформе",
-    contacts: "Контакты",
-    users: "Пользователям",
-    forFamilies: "Для родителей",
-    forSchools: "Для школ",
-    cabinet: "Личный кабинет",
-    startLearning: "Начать обучение",
-    questions: "Есть вопросы?",
-    privacy: "Политика конфиденциальности",
-    terms: "Пользовательское соглашение",
-    copyrightSuffix: "Тестовая цифровая образовательная платформа",
-    openCabinet: "Открыть кабинет",
-    loginCabinet: "Войти в кабинет",
+      "Mosaic adapts one lesson into personalized learning experiences for different learner needs — from simplified language and read-aloud support to captions and audio descriptions. One lesson. Every learner.",
+    socialsLabel: "Social networks",
+    platform: "Platform",
+    program: "Curriculum",
+    directions: "Tracks",
+    aboutPlatform: "About Mosaic",
+    contacts: "Contact",
+    users: "For Users",
+    forFamilies: "For Parents",
+    forSchools: "For Schools",
+    cabinet: "Dashboard",
+    startLearning: "Start learning",
+    questions: "Have questions?",
+    privacy: "Privacy Policy",
+    terms: "Terms of Service",
+    copyrightSuffix: "Adaptive Digital Learning Platform",
+    openCabinet: "Open dashboard",
+    loginCabinet: "Log in to dashboard",
   },
   uz: {
     aboutCopy:
-      "Oʻzbekiston maxsus maktablarida ijtimoiy-maishiy moslashuv darslari uchun oʻquv platformasi. Yengil aqliy zaifligi (F70) bolalar uchun ishlab chiqilgan.",
-    socialsLabel: "Ijtimoiy tarmoqlar",
-    platform: "Platforma",
-    program: "Dastur",
-    directions: "Yoʻnalishlar",
-    aboutPlatform: "Platforma haqida",
-    contacts: "Aloqa",
-    users: "Foydalanuvchilar uchun",
-    forFamilies: "Ota-onalar uchun",
-    forSchools: "Maktablar uchun",
-    cabinet: "Shaxsiy kabinet",
-    startLearning: "Oʻqishni boshlash",
-    questions: "Savollaringiz bormi?",
-    privacy: "Maxfiylik siyosati",
-    terms: "Foydalanuvchi shartnomasi",
-    copyrightSuffix: "Sinov raqamli taʼlim platformasi",
-    openCabinet: "Kabinetni ochish",
-    loginCabinet: "Kabinetga kirish",
+      "Mosaic adapts one lesson into personalized learning experiences for different learner needs — from simplified language and read-aloud support to captions and audio descriptions. One lesson. Every learner.",
+    socialsLabel: "Social networks",
+    platform: "Platform",
+    program: "Curriculum",
+    directions: "Tracks",
+    aboutPlatform: "About Mosaic",
+    contacts: "Contact",
+    users: "For Users",
+    forFamilies: "For Parents",
+    forSchools: "For Schools",
+    cabinet: "Dashboard",
+    startLearning: "Start learning",
+    questions: "Have questions?",
+    privacy: "Privacy Policy",
+    terms: "Terms of Service",
+    copyrightSuffix: "Adaptive Digital Learning Platform",
+    openCabinet: "Open dashboard",
+    loginCabinet: "Log in to dashboard",
   },
 } as const;
 
@@ -76,8 +76,9 @@ export function SiteFooter() {
       <div className="flag-line" aria-hidden="true" />
       <div className="footer-grid">
         <div>
-          <NationalEmblem className="footer-emblem" />
-          <p className="footer-title">uquvli.uz</p>
+          <div style={{ marginBottom: "14px" }}>
+            <MosaicLogo size={32} />
+          </div>
           <p className="footer-copy">{t.aboutCopy}</p>
           <div className="footer-socials" aria-label={t.socialsLabel}>
             {socialLinks.map((item) => (
@@ -128,8 +129,7 @@ export function SiteFooter() {
       </div>
 
       <div className="footer-bottom">
-        <span>© 2026 uquvli.uz</span>
-        <span>{t.copyrightSuffix}</span>
+        <span>© 2026 Mosaic · One lesson. Every learner.</span>
         <Link href={user ? "/dashboard" : "/login"}>
           {user ? t.openCabinet : t.loginCabinet}
         </Link>

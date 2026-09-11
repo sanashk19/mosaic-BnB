@@ -1,7 +1,7 @@
-// Типы данных для интерактивного «10-экранного» проигрывателя урока (LessonPlayer).
-// Каждый из 30 одобренных уроков определяется массивом LessonScreen[] длиной 10.
-// Структура соответствует PhD-карте Урок_06 — этап повторения + 6 этапов
-// формирования цифрового действия по П.Я. Гальперину + физкультминутка.
+// UI Logic
+// UI Logic
+// UI Logic
+// UI Logic
 
 export type WarmupQuestion = {
   text: string;
@@ -17,16 +17,16 @@ export type InfoCard = {
 };
 
 export type Hotspot = {
-  /** Уникальный ключ зоны */
+  /* UI Module */
   id: string;
-  /** Что искать */
+  /* UI Module */
   label: string;
-  /** Координаты на «макете объекта» в процентах (0..100) */
+  /* UI Module */
   x: number;
   y: number;
   width: number;
   height: number;
-  /** Подсказка-озвучка */
+  /* UI Module */
   hint?: string;
 };
 
@@ -37,12 +37,12 @@ export type InstructionStep = {
 };
 
 export type PracticeTrial = {
-  /** Картинка/название объекта */
+  /* UI Module */
   itemName: string;
   illustration?: string;
-  /** Что показано на «этикетке/экране» объекта в данной попытке */
+  /* UI Module */
   caption: string;
-  /** Варианты решения; первый с correct=true — правильный */
+  /* UI Module */
   options: Array<{
     text: string;
     correct: boolean;
@@ -58,7 +58,7 @@ export type SortItem = {
 
 export type Mood = { emoji: string; label: string };
 
-// ── Визуальные мокапы устройств для экрана практики ───────────────────────
+// UI Logic
 
 export type PracticeMockup =
   | {
@@ -76,12 +76,12 @@ export type PracticeMockup =
   | {
       kind: "thermometer";
       value: number;
-      /** Какой ответ считается верным */
+      /* UI Module */
       correctZone: "low" | "norm" | "high";
     }
   | {
       kind: "volume-slider";
-      /** Максимально безопасный уровень громкости */
+      /* UI Module */
       safeMax: number;
     }
   | {
@@ -89,14 +89,14 @@ export type PracticeMockup =
       temp: number;
       uv: "low" | "mid" | "high";
       icon: string;
-      /** Какой ответ верный */
+      /* UI Module */
       correctAdvice: "hat-cream" | "hat" | "nothing";
     }
   | {
       kind: "product-label";
       productName: string;
       productEmoji: string;
-      /** null → срок не указан (тоже «нельзя») */
+      /* UI Module */
       expiryYear: number | null;
       currentYear?: number;
     }
@@ -225,7 +225,7 @@ export type PracticeMockup =
       mode: "morning" | "all-hygiene";
     };
 
-// ── Один из 10 экранов урока ──────────────────────────────────────────────
+// UI Logic
 
 export type LessonScreen =
   | {
@@ -238,8 +238,8 @@ export type LessonScreen =
       type: "motivation";
       title: string;
       problemText: string;
-      problemIllustration?: string; // emoji/иконка темы
-      altItems?: [string, string]; // два сравниваемых объекта в проблеме (по умолчанию)
+      problemIllustration?: string; // UI Logic
+      altItems?: [string, string]; // UI Logic
       hint: string;
       goalText: string;
     }
@@ -251,25 +251,25 @@ export type LessonScreen =
   | {
       type: "object-explorer";
       title: string;
-      /** Название объекта (этикетка, табло, экран...) */
+      /* UI Module */
       objectName: string;
       objectIllustration?: string;
-      /** Зоны объекта с описанием — щелчок подсвечивает зону */
+      /* UI Module */
       zones: Hotspot[];
-      /** Если задан — рендерим реальный мокап устройства вместо эмодзи */
+      /* UI Module */
       mockup?: PracticeMockup;
     }
   | {
       type: "mark-zones";
       title: string;
-      /** Диагностическая точка 1 */
+      /* UI Module */
       isDiagnostic: true;
       objectName: string;
       objectIllustration?: string;
       zones: Hotspot[];
-      /** Задание под каждый шаг */
+      /* UI Module */
       tasks: string[];
-      /** Реальный мокап устройства, если есть */
+      /* UI Module */
       mockup?: PracticeMockup;
     }
   | {
@@ -281,7 +281,7 @@ export type LessonScreen =
   | {
       type: "instruction";
       title: string;
-      /** Диагностическая точка 2 */
+      /* UI Module */
       isDiagnostic: true;
       steps: InstructionStep[];
       repeatAllLabel?: string;
@@ -289,12 +289,11 @@ export type LessonScreen =
   | {
       type: "practice";
       title: string;
-      /** Диагностическая точка 3 — ключевая */
+      /* UI Module */
       isDiagnostic: true;
       trials: PracticeTrial[];
       taskPrompt: string;
-      /** Какой визуальный мокап устройства использовать. Если не задан —
-       *  показываются простые текстовые карточки (см. PracticeScreen). */
+      /* UI Module */
       mockup?: PracticeMockup;
     }
   | {
@@ -308,6 +307,6 @@ export type LessonScreen =
       homeTask: string;
     };
 
-// Полный массив 10-экранного урока. Длина обычно 10; диагностические уроки
-// (№ 1 и № 32) могут переопределять — у них немного другая последовательность.
+// UI Logic
+// UI Logic
 export type LessonScreens = LessonScreen[];

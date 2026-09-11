@@ -2,48 +2,48 @@ import { getLocale } from "@/lib/i18n";
 
 const dict = {
   ru: {
-    title: "Политика конфиденциальности",
-    eyebrow: "Документы",
+    title: "Privacy Policy",
+    eyebrow: "Documents",
     paragraphs: [
       [
-        "1. Общие положения.",
-        " Настоящая политика описывает, как тестовая образовательная платформа uquvli.uz собирает, использует, хранит и удаляет данные пользователей при регистрации, входе в кабинет, прохождении уроков и использовании интерфейса.",
+        "1. General provisions.",
+        "This policy describes how the test educational platform uquvli.uz collects, uses, stores and deletes user data when registering, logging into the account, taking lessons and using the interface.",
       ],
       [
-        "2. Согласие пользователя.",
-        " Создавая кабинет, заполняя формы, продолжая использование платформы или передавая данные ребёнка, пользователь подтверждает ознакомление с настоящей политикой и даёт согласие на обработку данных в объёме, необходимом для работы тестовой платформы, её проверки, настройки и улучшения.",
+        "2. User consent.",
+        "By creating an account, filling out forms, continuing to use the platform or transferring child data, the user confirms familiarization with this policy and consents to the processing of data to the extent necessary for the operation of the test platform, its testing, configuration and improvement.",
       ],
       [
-        "3. Какие данные могут обрабатываться.",
-        " Платформа может обрабатывать имя, адрес электронной почты, роль пользователя, сведения профиля ребёнка, данные о прохождении уроков, ответы в учебных сценариях и тестах, настройки интерфейса, а также технические данные, необходимые для стабильной работы сайта.",
+        "3. What data can be processed.",
+        "The platform can process the name, email address, user role, child profile information, lesson completion data, answers to educational scenarios and tests, interface settings, as well as technical data necessary for the stable operation of the site.",
       ],
       [
-        "4. Цели обработки.",
-        " Данные используются для регистрации и входа, сохранения учебного прогресса, персонализации подачи материала, сопровождения пользователей, исправления ошибок, проверки качества интерфейса и анализа того, как работает тестовая платформа. Обезличенные и агрегированные результаты могут использоваться для улучшения содержания, структуры уроков и функциональности сервиса.",
+        "4. Purposes of processing.",
+        "The data is used for registration and login, saving learning progress, personalizing the delivery of material, supporting users, fixing errors, checking the quality of the interface and analyzing how the testing platform works. Anonymized and aggregated results can be used to improve the content, structure of lessons and functionality of the service.",
       ],
       [
-        "5. Текущий способ хранения.",
-        " В текущей версии платформы регистрационные данные, состав классов, прогресс, события уроков и анкеты сохраняются на сервере платформы. Технически необходимые cookies используются для сессии входа, а localStorage — для отдельных настроек интерфейса и решения по баннеру cookies.",
+        "5. Current storage method.",
+        "In the current version of the platform, registration data, class composition, progress, lesson events and questionnaires are saved on the platform server. Technically necessary cookies are used for the login session, and localStorage is used for individual interface settings and cookie banner solutions.",
       ],
       [
-        "6. Передача данных.",
-        " Платформа не предназначена для продажи или публичного раскрытия персональных данных. Доступ к данным может предоставляться только в объёме, необходимом для технической поддержки, исполнения требований закона, защиты прав платформы и пользователя либо при наличии отдельного согласия.",
+        "6. Data transfer.",
+        "The Platform is not intended for the sale or public disclosure of personal information. Access to data may be provided only to the extent necessary for technical support, compliance with legal requirements, protection of the rights of the platform and the user, or with separate consent.",
       ],
       [
-        "7. Данные детей.",
-        " Если на платформу вносятся данные ребёнка, пользователь подтверждает, что действует как родитель, законный представитель либо иное уполномоченное лицо, имеющее право передавать такие сведения и давать согласие на их обработку в интересах ребёнка.",
+        "7. Children's data.",
+        "If a child's data is entered onto the platform, the user confirms that he is acting as a parent, legal representative or other authorized person who has the right to transfer such information and consent to its processing in the interests of the child.",
       ],
       [
-        "8. Срок хранения.",
-        " Данные хранятся столько, сколько это требуется для работы кабинета, сохранения результатов и целей тестирования, либо до удаления локальных данных пользователем, отзыва согласия или прекращения использования платформы.",
+        "8. Shelf life.",
+        "Data is stored for as long as required for the operation of the account, saving results and testing purposes, or until the user deletes local data, revokes consent or stops using the platform.",
       ],
       [
-        "9. Права пользователя.",
-        " Пользователь вправе запросить информацию об обработке данных, уточнение или удаление сведений, отзыв согласия, прекращение участия в тестировании и прекращение использования платформы.",
+        "9. User rights.",
+        "The user has the right to request information about data processing, clarification or deletion of information, withdrawal of consent, termination of participation in testing and termination of use of the platform.",
       ],
       [
-        "10. Связь по вопросам данных.",
-        " Для обращений по вопросам конфиденциальности, удаления профиля или отзыва согласия можно использовать адрес support@uquvli.uz.",
+        "10. Communication on data issues.",
+        "To contact us regarding privacy issues, deleting a profile or revoking consent, you can use the address support@uquvli.uz.",
       ],
     ],
   },

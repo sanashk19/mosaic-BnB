@@ -22,7 +22,7 @@ export async function GET(request: Request) {
 
     if (user.role === "teacher" && requestedTeacherId !== user.id) {
       throw new HttpError(403, {
-        ru: "Учитель может смотреть только свой класс.",
+        ru: "The teacher can only watch his own class.",
         uz: "Oʻqituvchi faqat oʻz sinfini koʻra oladi.",
       });
     }
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
 
     if (input.teacherId !== user.id) {
       throw new HttpError(403, {
-        ru: "Учитель может добавлять учеников только в свой класс.",
+        ru: "A teacher can only add students to his own class.",
         uz: "Oʻqituvchi oʻquvchilarni faqat oʻz sinfiga qoʻsha oladi.",
       });
     }

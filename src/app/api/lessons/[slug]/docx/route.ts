@@ -24,7 +24,7 @@ export async function GET(
     const lesson = getLessonBySlugLocalized(slug, locale);
     if (!lesson) {
       throw new HttpError(404, {
-        ru: "Урок не найден.",
+        ru: "Lesson not found.",
         uz: "Dars topilmadi.",
       });
     }
@@ -32,13 +32,13 @@ export async function GET(
     const docxInfo = getStaticLessonDocxInfo(slug);
     if (!docxInfo) {
       throw new HttpError(404, {
-        ru: "Эталонная PhD-карта для этого урока не найдена.",
+        ru: "No reference PhD card was found for this lesson.",
         uz: "Bu dars uchun namunaviy PhD xarita topilmadi.",
       });
     }
 
-    // PhD-карты хранятся готовыми файлами, чтобы скачивание совпадало
-    // с эталоном Word один в один, без повторной генерации на сервере.
+    // UI Logic
+    // UI Logic
     const phdPath = path.join(
       process.cwd(),
       "public",

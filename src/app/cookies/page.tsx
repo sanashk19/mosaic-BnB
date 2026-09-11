@@ -2,23 +2,23 @@ import { getLocale } from "@/lib/i18n";
 
 const dict = {
   ru: {
-    title: "Политика использования cookies",
-    eyebrow: "Документы",
-    p1Bold: "1. Что используется на платформе.",
+    title: "Cookies Policy",
+    eyebrow: "Documents",
+    p1Bold: "1. What is used on the platform.",
     p1:
-      " Платформа использует cookies и локальное хранилище браузера для работы кабинета, сохранения пользовательского выбора и поддержки основных функций тестовой платформы.",
-    p2Bold: "2. Для чего это нужно.",
+      "The platform uses cookies and local browser storage to operate the account, save user selections and support the main functions of the test platform.",
+    p2Bold: "2. Why is this needed?",
     p2:
-      " Технически необходимые cookies применяются для безопасной сессии кабинета, а localStorage используется для запоминания решения по баннеру cookies и отдельных настроек интерфейса. Учебный прогресс и данные классов сохраняются на сервере платформы.",
-    p3Bold: "3. Что важно понимать.",
+      "Technically necessary cookies are used for a secure account session, and localStorage is used to remember the cookie banner decision and individual interface settings. Academic progress and class data are saved on the platform server.",
+    p3Bold: "3. What is important to understand.",
     p3:
-      " В текущей версии платформы не используются рекламные cookies и не применяется внешний маркетинговый трекинг. Если в будущем на платформе появятся дополнительные аналитические или сервисные инструменты, политика будет обновлена до их подключения.",
-    p4Bold: "4. Управление настройками.",
+      "The current version of the platform does not use advertising cookies and does not use external marketing tracking. If additional analytical or service tools become available on the platform in the future, the policy will be updated before enabling them.",
+    p4Bold: "4. Manage settings.",
     p4:
-      " Пользователь может ограничить хранение данных через настройки браузера или очистить localStorage и cookies. В таком случае сессия входа и часть пользовательских настроек могут быть удалены.",
-    p5Bold: "5. Согласие.",
+      "The user can limit data storage through browser settings or clear localStorage and cookies. In this case, the login session and some user settings may be deleted.",
+    p5Bold: "5. Consent.",
     p5:
-      " Нажатие кнопки в баннере cookies и продолжение работы с платформой после ознакомления с настоящей политикой означает согласие пользователя на использование технически необходимых cookies и локального хранилища в рамках работы тестовой платформы.",
+      "Clicking the button in the cookies banner and continuing to work with the platform after reading this policy means the user agrees to the use of technically necessary cookies and local storage as part of the test platform.",
   },
   uz: {
     title: "Cookie fayllaridan foydalanish siyosati",

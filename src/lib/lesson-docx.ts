@@ -40,9 +40,9 @@ const dict = {
     section7: "7. Лист наблюдения педагога",
     appendix1: "Приложение 1. Ситуационные задания",
     appendix2: "Приложение 2. Контрольные вопросы",
-    course: "Курс",
+    course: "Well",
     courseValue: "Социально-бытовая ориентировка / цифровая грамотность",
-    module: "Модуль",
+    module: "Module",
     lessonTopic: "Тема урока",
     classGroup: "Класс / группа",
     studentCategory: "Категория обучающихся",
@@ -56,7 +56,7 @@ const dict = {
     methodsValue:
       "объяснение, показ образца, практическая работа, вопросы по ситуации, положительное подкрепление",
     equipment: "Оборудование",
-    teacher: "Педагог",
+    teacher: "Teacher",
     date: "Дата",
     objective: "Цель",
     educationalTasks: "Образовательные задачи",
@@ -102,17 +102,16 @@ const dict = {
     observationHelp: "Нужна помощь",
     observationComment: "Комментарий педагога",
     num: "№",
-    situation: "Ситуация",
-    answerOptions: "Варианты ответа",
+    situation: "Situation",
+    answerOptions: "Answer options",
     methodHint: "Методическая подсказка",
     correctAnswer: "Верный ответ",
-    question: "Вопрос",
+    question: "Question",
     options: "Варианты",
     footer: "UQUVLI.UZ. Программа СБО для детей с F70",
     header: "UQUVLI.UZ | Конспект урока",
-    page: "Страница ",
-    plannedSubjectDefault: (title: string) =>
-      `Ученик понимает тему «${title}» и применяет её в простой бытовой ситуации.`,
+    page: "Страница",
+    plannedSubjectDefault: (title: string) =>`Ученик понимает тему «${title}» и применяет её в простой бытовой ситуации.`,
     correctional1:
       "Понимает короткую инструкцию и выполняет действие по шагам.",
     correctional2: "Сохраняет внимание на одном задании без перегрузки экрана.",
@@ -121,8 +120,7 @@ const dict = {
     personal1: "Соблюдает правила безопасного и вежливого поведения.",
     personal2: "Проявляет самостоятельность в учебной бытовой ситуации.",
     personal3: "Принимает исправление ошибки без резкой отрицательной реакции.",
-    formatWithTrainer: (label: string) =>
-      `комбинированный урок с цифровым тренажёром ${label}`,
+    formatWithTrainer: (label: string) =>`комбинированный урок с цифровым тренажёром ${label}`,
     formatWithoutTrainer:
       "комбинированный урок с разбором жизненных ситуаций",
     resultOrg: "Класс готов к работе, правила поведения напомнены.",
@@ -145,7 +143,7 @@ const dict = {
     keywordCheckScenarios: "ситуац",
     keywordCheckSummary: "итог",
     keywordCheckHomework: "домаш",
-    desc: (title: string) => `План урока: ${title}`,
+    desc: (title: string) =>`План урока: ${title}`,
   },
   uz: {
     lessonNotes: "Dars konspekti",
@@ -299,7 +297,7 @@ function buildAutoMethodology(
   const objective =
     lesson.intro
     ?? (isUz
-      ? `«${lesson.title}» mavzusi doirasida yengil aqliy zaiflikka ega bolalarda amaliy koʻnikma shakllantirish.`
+      ?`«${lesson.title}» mavzusi doirasida yengil aqliy zaiflikka ega bolalarda amaliy koʻnikma shakllantirish.`
       : `Сформировать практический навык в рамках темы «${lesson.title}» у детей с лёгкой умственной отсталостью.`);
 
   const tasks = lesson.goals.length
@@ -320,29 +318,27 @@ function buildAutoMethodology(
     ? [
         "Har bir oʻquvchida UQUVLI kabineti ochilgan planshet yoki noutbuk.",
         trainerLabel
-          ? `Internetga ulanish (${trainerLabel} mashqi).`
-          : "Mavzu boʻyicha kalit soʻzlar kartochkalari (har bir partaga bittadan).",
+          ?`Internetga ulanish (${trainerLabel} mashqi).`: "Mavzu boʻyicha kalit soʻzlar kartochkalari (har bir partaga bittadan).",
         "Namoyish uchun doska yoki ekran.",
         "Oʻqituvchining qisqa qaydlari uchun daftar va ruchka.",
       ]
     : [
         "Планшет или ноутбук у каждого ученика с открытым кабинетом UQUVLI.",
         trainerLabel
-          ? `Подключение к интернету (тренажёр ${trainerLabel}).`
-          : "Карточки с ключевыми словами темы (по одной на парту).",
+          ?`Подключение к интернету (тренажёр ${trainerLabel}).`: "Карточки с ключевыми словами темы (по одной на парту).",
         "Доска или экран для демонстрации.",
         "Тетрадь и ручка для коротких заметок учителя.",
       ];
 
-  const minLabel = isUz ? "daqiqa" : "мин";
+  const minLabel = isUz ? "daqiqa" : "i";
   const stages: LessonStageBlock[] = [];
 
-  // 1. Орг момент
+  // UI Logic
   stages.push({
-    duration: `3 ${minLabel}`,
+    duration:`3 ${minLabel}`,
     title: isUz ? "1. Tashkiliy qism" : "1. Организационный момент",
     teacherSays: isUz
-      ? `Assalomu alaykum, bolalar. Bugun «${lesson.title}» mavzusini oʻrganamiz. Sokin va navbat bilan ishlaymiz.`
+      ?`Assalomu alaykum, bolalar. Bugun «${lesson.title}» mavzusini oʻrganamiz. Sokin va navbat bilan ishlaymiz.`
       : `Здравствуйте, ребята. Сегодня мы изучим тему: «${lesson.title}». Будем учиться спокойно и по одному.`,
     teacherDoes: isUz
       ? [
@@ -363,14 +359,14 @@ function buildAutoMethodology(
       : "Если кто-то возбуждён — спокойно повторить имя ребёнка, не повышая голоса.",
   });
 
-  // 2. Введение
+  // UI Logic
   stages.push({
-    duration: `5 ${minLabel}`,
+    duration:`5 ${minLabel}`,
     title: isUz ? "2. Mavzuga kirish" : "2. Введение в тему",
     teacherSays:
       lesson.summary
       ?? (isUz
-        ? `Bugungi mavzu — ${lesson.title}.`
+        ?`Bugungi mavzu — ${lesson.title}.`
         : `Сегодня тема — ${lesson.title}.`),
     teacherDoes: isUz
       ? [
@@ -391,9 +387,9 @@ function buildAutoMethodology(
       : "Главное на этом этапе — связать абстрактное слово с конкретной картинкой или случаем из жизни ребёнка.",
   });
 
-  // 3. Правила
+  // UI Logic
   stages.push({
-    duration: `4 ${minLabel}`,
+    duration:`4 ${minLabel}`,
     title: isUz
       ? "3. Kabinetdagi qoidalarni oʻqish"
       : "3. Чтение правил в кабинете",
@@ -412,17 +408,17 @@ function buildAutoMethodology(
           "Прочитать каждое правило вслух вместе с детьми, по одному.",
         ],
     studentActivity: isUz
-      ? `Oʻquvchilar ${lesson.rules.length} ta qoidani bir-bir oʻqib, «Davom etish →» tugmasini bosadilar. Maskot maslahat aytadi.`
+      ?`Oʻquvchilar ${lesson.rules.length} ta qoidani bir-bir oʻqib, «Davom etish →» tugmasini bosadilar. Maskot maslahat aytadi.`
       : `Ученики читают по одному ${lesson.rules.length} правилам, нажимают «Дальше →». Маскот говорит подсказку.`,
     hint: isUz
       ? "Agar bola qoidada «toʻxtab qolsa» — ovoz chiqarib oʻqishni soʻrang, shoshiltirmang."
       : "Если ребёнок «застрял» на правиле — попросить его прочитать вслух, не торопить.",
   });
 
-  // 4. Тренажёр или практика
+  // UI Logic
   if (trainerLabel) {
     stages.push({
-      duration: `8 ${minLabel}`,
+      duration:`8 ${minLabel}`,
       title: isUz
         ? `4. ${trainerLabel} mashqi (asosiy bosqich)`
         : `4. Тренажёр ${trainerLabel} (главный этап)`,
@@ -444,7 +440,7 @@ function buildAutoMethodology(
           ],
       studentActivity: trainerTask
         ? isUz
-          ? `Har bir oʻquvchi oʻz planshetida topshiriqni bajaradi: «${trainerTask}». Mashq ${trainerLabel} interfeysini takrorlaydi.`
+          ?`Har bir oʻquvchi oʻz planshetida topshiriqni bajaradi: «${trainerTask}». Mashq ${trainerLabel} interfeysini takrorlaydi.`
           : `Каждый ученик в своём планшете выполняет задание: «${trainerTask}». Тренажёр повторяет интерфейс ${trainerLabel}.`
         : isUz
           ? `Har bir oʻquvchi planshetda ${trainerLabel} mashqini oʻtaydi.`
@@ -455,7 +451,7 @@ function buildAutoMethodology(
     });
   } else {
     stages.push({
-      duration: `8 ${minLabel}`,
+      duration:`8 ${minLabel}`,
       title: isUz ? "4. Amaliy topshiriq" : "4. Практическое задание",
       teacherSays: isUz
         ? "Kabinetda topshiriqni oching. Har bir vaziyatda qanday harakat qilishni oʻylab koʻring."
@@ -480,10 +476,10 @@ function buildAutoMethodology(
     });
   }
 
-  // 5. Сцены (scenarios discussion)
+  // UI Logic
   if (lesson.scenarios.length > 0) {
     stages.push({
-      duration: `5 ${minLabel}`,
+      duration:`5 ${minLabel}`,
       title: isUz ? "5. Vaziyatlarni tahlil qilish" : "5. Разбор ситуаций",
       teacherSays: isUz
         ? "Endi bir nechta qisqa vaziyat. Sokin oʻylab koʻring, kim nima deydi."
@@ -500,7 +496,7 @@ function buildAutoMethodology(
             "Если ученик ошибся — не ругать, а попросить прочитать правильный ответ вслух.",
           ],
       studentActivity: isUz
-        ? `Oʻquvchilar turli suhbatdoshlar bilan ${lesson.scenarios.length} ta qisqa sahnani oʻtaydilar. Muloyim va xavfsiz javobni tanlaydilar.`
+        ?`Oʻquvchilar turli suhbatdoshlar bilan ${lesson.scenarios.length} ta qisqa sahnani oʻtaydilar. Muloyim va xavfsiz javobni tanlaydilar.`
         : `Ученики проходят ${lesson.scenarios.length} коротких сцен с разными собеседниками. Выбирают вежливый и безопасный ответ.`,
       hint: isUz
         ? "Sahnalarda vaziyatlarni farqlashga oʻrgatamiz. Boshida oʻqigan qoidalarga tayanamiz."
@@ -508,9 +504,9 @@ function buildAutoMethodology(
     });
   }
 
-  // 6. Итог
+  // UI Logic
   stages.push({
-    duration: `3 ${minLabel}`,
+    duration:`3 ${minLabel}`,
     title: isUz
       ? `${stages.length + 1}. Muhokama va yakun`
       : `${stages.length + 1}. Обсуждение и итог`,
@@ -536,9 +532,9 @@ function buildAutoMethodology(
       : "Похвала должна быть конкретной: «Ты выбрал правильный ответ» — а не общее «молодец».",
   });
 
-  // 7. Домашнее
+  // UI Logic
   stages.push({
-    duration: `2 ${minLabel}`,
+    duration:`2 ${minLabel}`,
     title: isUz
       ? `${stages.length + 1}. Uy vazifasi`
       : `${stages.length + 1}. Домашнее задание`,
@@ -595,7 +591,7 @@ const trainerLabels: Record<string, Record<Locale, string>> = {
 };
 
 export function getLessonDocxFileName(lesson: Pick<ProgramLesson, "slug">) {
-  return `${lesson.slug}.docx`;
+  return`${lesson.slug}.docx`;
 }
 
 function paragraph(

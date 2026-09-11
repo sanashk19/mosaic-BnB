@@ -2,111 +2,62 @@ import Image from "next/image";
 import Link from "next/link";
 import { getLocale } from "@/lib/i18n";
 
+const englishDict = {
+  title: "For Educators & Schools",
+  eyebrow: "For Educators",
+  heroHeading: "One lesson. Every learner. Zero extra lesson prep.",
+  heroLead:
+    "Transform any lesson into multiple personalized accessibility experiences with the Mosaic Adaptive Engine. Built for inclusive classrooms: calm, predictable, and tailored to each student's needs.",
+  ctaContact: "Get in touch with our team",
+  ctaProgram: "Explore curriculum",
+  heroImageAlt: "Educator guiding an inclusive digital literacy lesson",
+
+  formatsEyebrow: "Classroom Formats",
+  formatsHeading: "Designed for guided classroom teaching, small groups, or independent pacing.",
+  usageFormats: [
+    "Inclusive classroom sessions: educator guides while learners use adapted simulators on their own devices.",
+    "Individual 1-on-1 pacing with repetition, read-aloud support, and simplified language.",
+    "Small-group breakout sessions focusing on authentic life-skill practice.",
+  ],
+  adultSideTitle: "Educator Workspace",
+  adultSideCopy:
+    "Review upcoming modules, manage learner support profiles, launch class sessions, and observe progress without navigating complex menus.",
+
+  benefitsEyebrow: "Why Teachers Choose Mosaic",
+  benefitsHeading: "A clear practical framework that saves time and includes every student.",
+  educatorBenefits: [
+    {
+      title: "Curriculum pre-structured into tracks",
+      copy:
+        "No need to design life-skills lessons from scratch: topics, simulated practice, and assessments are pre-built.",
+    },
+    {
+      title: "Instant accessibility adaptation",
+      copy:
+        "One click generates customized versions for dyslexia, visual needs, and hearing accommodations.",
+    },
+    {
+      title: "Built for cognitive calm",
+      copy:
+        "Large elements, bite-sized steps, and distraction-free layouts prevent sensory and cognitive overload.",
+    },
+  ],
+
+  connectEyebrow: "Pilot & Onboarding",
+  connectHeading: "Bring Mosaic to your school, classroom, or center.",
+  connectionSteps: [
+    "Tell us about your school, student age group, and learning goals.",
+    "Let us know if you need pilot classroom access or pedagogical onboarding.",
+    "Choose your preferred implementation: whole class, small group, or home integration.",
+  ],
+  nextStepTitle: "Next Steps",
+  writeTeam: "Contact our team",
+  createDemo: "Create teacher account",
+};
+
 const dict = {
-  ru: {
-    title: "Педагогам и центрам",
-    eyebrow: "Для учителей СБО",
-    heroHeading: "Платформа встраивается в урок СБО без долгой подготовки.",
-    heroLead:
-      "Разработана для коррекционных школ: уроки построены под детей с F70, структура занятий продумана, учителю не нужно собирать материалы с нуля.",
-    ctaContact: "Связаться по подключению",
-    ctaProgram: "Изучить программу",
-    heroImageAlt: "Педагог проводит занятие по цифровой грамотности в классе",
-
-    formatsEyebrow: "Форматы работы",
-    formatsHeading: "Основной формат — урок СБО в классе под руководством учителя.",
-    usageFormats: [
-      "Урок СБО в классе: учитель ведёт, дети работают в тренажёрах на своих устройствах.",
-      "Индивидуальное занятие с ребёнком в спокойном темпе с повторами.",
-      "Небольшая группа с разбором ситуаций и совместным выполнением задач.",
-    ],
-    adultSideTitle: "Что видит взрослый",
-    adultSideCopy:
-      "Модули, уроки, следующий шаг, профиль ребенка и прогресс должны быть доступны без лишней навигации и без длинной адаптации к интерфейсу.",
-
-    benefitsEyebrow: "Практическая польза",
-    benefitsHeading: "Педагогу важен понятный рабочий каркас, а не длинные обещания.",
-    educatorBenefits: [
-      {
-        title: "Программа уже разложена по модулям",
-        copy:
-          "Педагогу не нужно собирать маршрут с нуля: темы, уроки и ожидаемые действия уже сгруппированы.",
-      },
-      {
-        title: "Каждый урок имеет одинаковую логику",
-        copy:
-          "Это упрощает внедрение в занятия и делает структуру предсказуемой для ребенка и взрослого.",
-      },
-      {
-        title: "Разработано для коррекционной школы",
-        copy:
-          "Интерфейс и темп адаптированы под детей с F70: крупные элементы, короткие инструкции, один шаг на экране.",
-      },
-    ],
-
-    connectEyebrow: "Подключение",
-    connectHeading: "Запрос на внедрение можно отправить в структурированном виде.",
-    connectionSteps: [
-      "Опишите тип организации и возраст или контекст группы.",
-      "Уточните, нужен ли пилот, методическая консультация или доступ для команды.",
-      "Согласуйте сценарий использования: индивидуально, в группе или вместе с семьей.",
-    ],
-    nextStepTitle: "Следующий шаг",
-    writeTeam: "Написать команде",
-    createDemo: "Создать тестовый доступ",
-  },
-  uz: {
-    title: "Pedagoglar va markazlar uchun",
-    eyebrow: "IMM oʻqituvchilari uchun",
-    heroHeading: "Platforma uzoq tayyorgarliksiz IMM darsiga qoʻshiladi.",
-    heroLead:
-      "Maxsus maktablar uchun ishlangan: darslar F70 li bolalarga moʻljallangan, mashgʻulot tuzilmasi oʻylab tuzilgan, oʻqituvchi materiallarni noldan yigʻishi shart emas.",
-    ctaContact: "Ulanish boʻyicha bogʻlanish",
-    ctaProgram: "Dasturni oʻrganish",
-    heroImageAlt: "Pedagog sinfda raqamli savodxonlik darsini olib bormoqda",
-
-    formatsEyebrow: "Ish formatlari",
-    formatsHeading: "Asosiy format — oʻqituvchi rahbarligida sinfda IMM darsi.",
-    usageFormats: [
-      "Sinfda IMM darsi: oʻqituvchi yetakchilik qiladi, bolalar oʻz qurilmalarida mashqlar bilan ishlaydi.",
-      "Bola bilan tinch sur’atda, takrorlar bilan yakka mashgʻulot.",
-      "Kichik guruhda vaziyatlarni tahlil qilish va vazifalarni birgalikda bajarish.",
-    ],
-    adultSideTitle: "Kattalar nimani koʻradi",
-    adultSideCopy:
-      "Modullar, darslar, keyingi qadam, bola profili va yutuqlar ortiqcha navigatsiyasiz hamda interfeysga uzoq moslashuvsiz ochiq boʻlishi kerak.",
-
-    benefitsEyebrow: "Amaliy foyda",
-    benefitsHeading: "Pedagogga uzun va’dalar emas, tushunarli ish karkasi muhim.",
-    educatorBenefits: [
-      {
-        title: "Dastur modullar boʻyicha tayyor",
-        copy:
-          "Pedagog yoʻlni noldan tuzmaydi: mavzular, darslar va kutilayotgan harakatlar allaqachon guruhlangan.",
-      },
-      {
-        title: "Har bir dars bir xil mantiqqa ega",
-        copy:
-          "Bu mashgʻulotlarga joriy etishni soddalashtiradi va tuzilmani bola hamda kattalar uchun oldindan aniq qiladi.",
-      },
-      {
-        title: "Maxsus maktab uchun ishlangan",
-        copy:
-          "Interfeys va sur’at F70 li bolalarga moslangan: yirik elementlar, qisqa koʻrsatmalar, ekranda bitta qadam.",
-      },
-    ],
-
-    connectEyebrow: "Ulanish",
-    connectHeading: "Joriy etish boʻyicha soʻrovni tartibli koʻrinishda yuborish mumkin.",
-    connectionSteps: [
-      "Tashkilot turini va guruh yoshi yoki konteksti haqida yozing.",
-      "Pilot, metodik maslahat yoki jamoa uchun kirish kerakmi — aniqlang.",
-      "Foydalanish stsenariysini kelishing: yakka, guruhda yoki oila bilan birga.",
-    ],
-    nextStepTitle: "Keyingi qadam",
-    writeTeam: "Jamoaga yozish",
-    createDemo: "Sinov kirish yaratish",
-  },
+  ru: englishDict,
+  uz: englishDict,
 } as const;
 
 export async function generateMetadata() {

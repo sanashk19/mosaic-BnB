@@ -44,7 +44,7 @@ function dispatchEventIfBrowser(eventName: string) {
   window.dispatchEvent(new Event(eventName));
 }
 
-async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
+async function apiRequest<T>(path: string, init?: RequestInit): Promise<T>{
   const response = await fetch(path, {
     ...init,
     credentials: "same-origin",

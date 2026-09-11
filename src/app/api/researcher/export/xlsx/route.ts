@@ -45,7 +45,7 @@ export async function GET() {
       error:
         locale === "uz"
           ? "Excel eksporti uchun POST dan foydalaning."
-          : "Используйте POST для экспорта Excel.",
+          : "Use POST for Excel export.",
     },
     405,
   );

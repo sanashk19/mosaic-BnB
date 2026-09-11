@@ -22,7 +22,7 @@ export async function POST(request: Request) {
 
     if (input.teacherId !== user.id) {
       throw new HttpError(403, {
-        ru: "Учитель может управлять только своим классом.",
+        ru: "The teacher can only manage his own class.",
         uz: "Oʻqituvchi faqat oʻz sinfini boshqara oladi.",
       });
     }

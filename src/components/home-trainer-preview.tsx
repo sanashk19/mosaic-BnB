@@ -15,21 +15,21 @@ type Option = {
 const optionsByLocale: Record<Locale, Option[]> = {
   ru: [
     {
-      text: "Да, я дома. Всё хорошо.",
+      text: "Yes, I'm home. Everything is fine.",
       correct: true,
-      reply: "Молодец! Помой руки и поешь суп.",
-      feedback: "Спокойно ответил, что ты в безопасности — это главное.",
+      reply: "Well done! Wash your hands and eat the soup.",
+      feedback: "He calmly replied that you are safe - that’s the main thing.",
     },
     {
-      text: "Не знаю.",
+      text: "Don't know.",
       correct: false,
-      reply: "Где ты сейчас?",
-      feedback: "Маме нужен ясный ответ: «Я дома» или «Я в школе».",
+      reply: "Where are you now?",
+      feedback: "Mom needs a clear answer: “I’m at home” or “I’m at school.”",
     },
     {
-      text: "Не хочу разговаривать.",
+      text: "I don't want to talk.",
       correct: false,
-      feedback: "Близким нужно отвечать спокойно. Короткое «Я дома» помогает.",
+      feedback: "Relatives need to respond calmly. A short “I’m home” helps.",
     },
   ],
   uz: [
@@ -55,12 +55,12 @@ const optionsByLocale: Record<Locale, Option[]> = {
 
 const dict = {
   ru: {
-    sender: "Мама",
-    initial: "М",
-    prompt: "Ты вернулся из школы? Я волнуюсь.",
-    correct: "Правильно",
-    soft: "Давай запомним",
-    retry: "Попробовать ещё раз",
+    sender: "Mother",
+    initial: "M",
+    prompt: "Are you back from school? I'm worried.",
+    correct: "Right",
+    soft: "Let's remember",
+    retry: "Try again",
   },
   uz: {
     sender: "Oyim",

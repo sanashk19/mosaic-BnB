@@ -34,7 +34,7 @@ export async function POST(request: Request) {
 
     if (!actionTypes.has(input.action)) {
       throw new HttpError(400, {
-        ru: "Некорректный тип события.",
+        ru: "Invalid event type.",
         uz: "Hodisa turi notoʻgʻri.",
       });
     }

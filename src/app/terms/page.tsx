@@ -2,35 +2,35 @@ import { getLocale } from "@/lib/i18n";
 
 const dict = {
   ru: {
-    title: "Пользовательское соглашение",
-    eyebrow: "Документы",
-    p1Bold: "1. Статус платформы.",
+    title: "User Agreement",
+    eyebrow: "Documents",
+    p1Bold: "1. Platform status.",
     p1:
-      " uquvli.uz предоставляется как тестовая образовательная платформа. Отдельные разделы, сценарии, тексты, кабинет и механика уроков могут изменяться, дополняться, временно ограничиваться или работать в упрощённом режиме.",
-    p2Bold: "2. Принятие условий.",
+      "uquvli.uz is provided as a test educational platform. Individual sections, scenarios, texts, classrooms and lesson mechanics can be changed, supplemented, temporarily limited or operated in a simplified mode.",
+    p2Bold: "2. Acceptance of the terms.",
     p2:
-      " Регистрируясь, входя в кабинет или продолжая использование платформы, пользователь подтверждает, что ознакомился с настоящим соглашением, политикой конфиденциальности и политикой использования cookies, и принимает их условия.",
-    p3Bold: "3. Согласие на тестирование.",
+      "By registering, logging into your account or continuing to use the platform, the user confirms that he has read this agreement, the privacy policy and the cookie policy, and accepts their terms.",
+    p3Bold: "3. Consent to testing.",
     p3:
-      " Пользователь соглашается, что в период апробации платформа может собирать данные об использовании кабинета, прохождении уроков, выборе сценариев, технических ошибках и стабильности интерфейса в целях проверки, настройки и улучшения сервиса.",
-    p4Bold: "4. Использование результатов.",
+      "The user agrees that during the testing period, the platform may collect data on the use of the account, completion of lessons, selection of scenarios, technical errors and interface stability in order to check, configure and improve the service.",
+    p4Bold: "4. Use of the results.",
     p4:
-      " Результаты работы на платформе, включая прогресс, ответы и обезличенные аналитические показатели, могут использоваться для доработки материалов, улучшения пользовательского опыта, оценки качества контента и подготовки внутренних отчётов по работе тестовой платформы.",
-    p5Bold: "5. Данные несовершеннолетних.",
+      "The results of work on the platform, including progress, responses and anonymized analytical indicators, can be used to refine materials, improve user experience, assess the quality of content and prepare internal reports on the work of the test platform.",
+    p5Bold: "5. Data of minors.",
     p5:
-      " Если пользователь передаёт сведения о ребёнке, он подтверждает, что действует как родитель, законный представитель либо иное уполномоченное лицо, имеющее право предоставлять такие данные и принимать условия платформы в интересах ребёнка.",
-    p6Bold: "6. Правила использования.",
+      "If the user submits information about a child, he confirms that he is acting as a parent, legal representative or other authorized person who has the right to provide such data and accept the terms of the platform in the interests of the child.",
+    p6Bold: "6. Terms of use.",
     p6:
-      " Пользователь обязуется предоставлять достоверные сведения, не передавать доступ к кабинету посторонним лицам без необходимости, не использовать платформу для нарушения закона, не вмешиваться в работу сайта и уважительно использовать учебные материалы и результаты других участников.",
-    p7Bold: "7. Ограничение назначения.",
+      "The user undertakes to provide reliable information, not to transfer access to the account to unauthorized persons unless necessary, not to use the platform to violate the law, not to interfere with the operation of the site, and to respectfully use educational materials and the results of other participants.",
+    p7Bold: "7. Restriction of purpose.",
     p7:
-      " Материалы платформы предназначены для образовательной поддержки и тренировки навыков. Они не заменяют медицинскую, психологическую, педагогическую или иную профессиональную диагностику и индивидуальное сопровождение.",
-    p8Bold: "8. Изменения платформы.",
+      "Platform materials are intended to provide educational support and skills training. They do not replace medical, psychological, pedagogical or other professional diagnostics and individual support.",
+    p8Bold: "8. Platform changes.",
     p8:
-      " Администрация может обновлять структуру уроков, интерфейс, механики кабинета и тексты документов по мере развития тестовой платформы. Актуальная версия документов публикуется на сайте.",
-    p9Bold: "9. Прекращение использования.",
+      "The administration can update the lesson structure, interface, cabinet mechanics and document texts as the test platform develops. The current version of the documents is published on the website.",
+    p9Bold: "9. Discontinuation of Use.",
     p9:
-      " Если пользователь не согласен с условиями платформы, он должен прекратить использование сайта и при необходимости обратиться с запросом на удаление данных или отзыв согласия.",
+      "If the user does not agree with the terms of the platform, he must stop using the site and, if necessary, request deletion of data or withdrawal of consent.",
   },
   uz: {
     title: "Foydalanuvchi shartnomasi",
