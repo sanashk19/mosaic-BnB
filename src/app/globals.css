@@ -12080,13 +12080,13 @@ svg {
 }
 
 .mosaic-lesson-container.mosaic-captions-enabled .lesson-instruction-step {
-  border-left: 4px solid var(--blue, #0d50cf);
-  background: rgba(13, 80, 207, 0.03);
+  border-left: 4px solid var(--mosaic-pink, #B84A62);
+  background: rgba(184, 74, 98, 0.03);
 }
 
 .mosaic-lesson-container.mosaic-visual-profile .player-audio-btn,
 .mosaic-lesson-container.mosaic-visual-profile .lesson-action-listen {
-  box-shadow: 0 0 0 3px rgba(13, 80, 207, 0.25);
+  box-shadow: 0 0 0 3px rgba(80, 104, 71, 0.25);
   animation: pulse-audio 1.8s infinite;
 }
 
@@ -12094,6 +12094,267 @@ svg {
   0% { transform: scale(1); }
   50% { transform: scale(1.03); }
   100% { transform: scale(1); }
+}
+
+/* Adaptation Banner Enhanced Layout */
+.mosaic-banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mosaic-banner-rules-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mosaic-banner-rule-item {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--mosaic-ink, #22352E);
+  background: rgba(34, 53, 46, 0.06);
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+
+/* Audio-First Controller (Profile 3) */
+.mosaic-audio-first-controller {
+  background: #EDF4E8;
+  border: 1.5px solid #DFEAD8;
+  border-radius: 16px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 4px 16px rgba(80, 104, 71, 0.08);
+}
+
+.mosaic-audio-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mosaic-audio-pulse-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #506847;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.mosaic-audio-pulse-dot.pulsing {
+  box-shadow: 0 0 0 0 rgba(80, 104, 71, 0.6);
+  animation: audioPulse 1.4s infinite;
+}
+
+@keyframes audioPulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(80, 104, 71, 0.6); }
+  70% { transform: scale(1.15); box-shadow: 0 0 0 10px rgba(80, 104, 71, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(80, 104, 71, 0); }
+}
+
+.mosaic-audio-state-text {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #22352E;
+}
+
+.mosaic-audio-ctrl-btn {
+  padding: 8px 18px;
+  border-radius: 9999px;
+  border: 1px solid #506847;
+  background: #506847;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+
+.mosaic-audio-ctrl-btn:hover {
+  background: #3F5338;
+  border-color: #3F5338;
+}
+
+.mosaic-audio-ctrl-btn.active {
+  background: #D8663F;
+  border-color: #D8663F;
+}
+
+/* Captions & Visual Cues Bar (Profile 4) */
+.mosaic-captions-display-bar {
+  background: #18231E;
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.mosaic-captions-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.mosaic-cc-badge {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.mosaic-cc-badge-tiny {
+  background: #18231E;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.mosaic-captions-label {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+.mosaic-sound-badge-active {
+  margin-left: auto;
+  background: #FAEAEB;
+  color: #B84A62;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  animation: cuePop 0.25s ease-out;
+}
+
+@keyframes cuePop {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.mosaic-captions-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #F8FAF8;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Visual Description Card (Profile 3) */
+.mosaic-visual-description-box {
+  background: #F4F8F1;
+  border: 1px solid #D6E4CD;
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+}
+
+.mosaic-vdesc-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #40583A;
+  font-size: 0.88rem;
+  margin-bottom: 6px;
+}
+
+.mosaic-visual-description-box p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #26382F;
+}
+
+/* Reading Support Safety Warning Card (Profile 2) */
+.mosaic-reading-warning-box {
+  background: #FFF7F2;
+  border: 1.5px solid #F5D3C2;
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+}
+
+.mosaic-warning-tag {
+  display: inline-block;
+  background: #FCEEE8;
+  color: #D8663F;
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  letter-spacing: 0.03em;
+}
+
+.mosaic-reading-warning-box p {
+  margin: 0;
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #2F3E37;
+  line-height: 1.5;
+}
+
+/* Trainer Specific Floating Cue for Hearing */
+.mosaic-trainer-caption-bubble {
+  background: rgba(24, 35, 30, 0.94);
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  margin: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Reading Profile Deep Styles */
+.mosaic-reading-profile .lesson-step-panel {
+  padding: 32px 28px;
+}
+
+.mosaic-reading-profile .lesson-rule-big-text {
+  font-size: 1.35rem;
+  line-height: 1.85;
+  letter-spacing: 0.04em;
+  max-width: 52ch;
+}
+
+.mosaic-reading-profile .step-options .step-option {
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.mosaic-reading-profile .step-options .step-option strong {
+  letter-spacing: 0.03em;
 }
 
 

@@ -1,7 +1,7 @@
 import type { ProgramLesson } from "@/data/program";
 import type { LessonScreen } from "@/lib/lesson-screens-types";
 
-export type AccessibilitySupportType = "reading" | "visual" | "hearing" | "none";
+export type AccessibilitySupportType = "none" | "reading" | "visual" | "hearing";
 
 export type AccessibilityPreferences = {
   simplifiedLanguage: boolean;
@@ -16,6 +16,20 @@ export type AccessibilityPreferences = {
 export type AccessibilityProfile = {
   supportType: AccessibilitySupportType;
   preferences: AccessibilityPreferences;
+};
+
+export type AdaptationExperienceFlags = {
+  autoSpeak: boolean;
+  showCaptions: boolean;
+  audioFirst: boolean;
+  simplifiedText: boolean;
+  increasedSpacing: boolean;
+  largerText: boolean;
+  showImageDescriptions: boolean;
+  reducedDecoration: boolean;
+  enhancedVisualFeedback: boolean;
+  highContrastFocus: boolean;
+  screenReaderAnnouncements: boolean;
 };
 
 export const DEFAULT_ACCESSIBILITY_PROFILE: AccessibilityProfile = {
@@ -39,7 +53,7 @@ export const PRESET_PROFILES: Record<AccessibilitySupportType, AccessibilityProf
       simplifiedLanguage: true,
       largerText: true,
       increasedSpacing: true,
-      autoSpeak: true,
+      autoSpeak: false,
       captions: false,
       imageDescriptions: false,
       reducedMotion: false,
@@ -71,6 +85,14 @@ export const PRESET_PROFILES: Record<AccessibilitySupportType, AccessibilityProf
   },
 };
 
+export type AdaptedTrainerGuidance = {
+  audioOverview: string;
+  imageDescription?: string;
+  visualCaptions?: string[];
+  simplifiedSteps?: string[];
+  highlightKeyword?: string;
+};
+
 export type AdaptedLessonMeta = {
   originalSlug: string;
   supportType: AccessibilitySupportType;
@@ -78,10 +100,15 @@ export type AdaptedLessonMeta = {
   readingAssistanceActive: boolean;
   audioDescriptionsActive: boolean;
   captionsActive: boolean;
+  visualDescriptionsActive?: boolean;
   simplifiedSummary?: string;
 };
 
 export type AdaptedLesson = ProgramLesson & {
+  experience: AdaptationExperienceFlags;
   adaptationMeta: AdaptedLessonMeta;
   adaptedScreens?: LessonScreen[];
+  imageDescription?: string;
+  importantWarning?: string;
+  trainerGuidance?: Record<string, AdaptedTrainerGuidance>;
 };

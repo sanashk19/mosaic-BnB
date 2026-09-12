@@ -8,10 +8,15 @@ import { CabinetIcon } from "@/components/ui-icons";
 import type { MessengerFlowTrainer as MessengerFlowTrainerData } from "@/data/program";
 import type { Locale } from "@/lib/i18n-shared";
 
+import type { AccessibilitySupportType, AdaptationExperienceFlags } from "@/lib/adaptation/adaptation-types";
+import { speakNarration } from "@/lib/adaptation/adaptation-audio";
+
 type Props = {
   trainer: MessengerFlowTrainerData;
   onDone: (chosen: { correct: boolean }) => void;
   studentMode?: boolean;
+  profile?: AccessibilitySupportType;
+  experience?: AdaptationExperienceFlags;
 };
 
 type CaseKey = "friend" | "teacher" | "stranger";
@@ -119,7 +124,7 @@ const dict: Locales<{
   },
 };
 
-export function MessengerFlowTrainer({ trainer, onDone }: Props) {
+export function MessengerFlowTrainer({ trainer, onDone, profile = "none", experience }: Props) {
   const locale = useLocale();
   const t = dict[locale];
 
@@ -132,11 +137,24 @@ export function MessengerFlowTrainer({ trainer, onDone }: Props) {
   const step = isDone ? STEPS : FLOW.indexOf(stage) + 1;
   const c = isDone ? null : CASES[stage as CaseKey];
 
+  function speakCurrentMessage() {
+    if (!c) return;
+    const speech = `Incoming chat from ${c.from}: "${c.message}". Choose a reply: Choice 1: ${c.replies[0].text}. Choice 2: ${c.replies[1].text}. Choice 3: ${c.replies[2].text}.`;
+    speakNarration(speech);
+  }
+
   function tap(reply: Reply) {
     if (feedback) return;
     setPicked(reply.id);
     answers.current[`msg-${stage}`] = { picked: reply.id, correct: reply.ok };
     setFeedback(reply.ok ? "good" : "soft");
+
+    if (experience?.autoSpeak) {
+      const feedbackSpeech = reply.ok
+        ? `Correct choice! ${t.feedbackGood}`
+        : `Not suitable. ${t.feedbackSoft}`;
+      speakNarration(feedbackSpeech);
+    }
   }
 
   function advance() {
@@ -161,6 +179,14 @@ export function MessengerFlowTrainer({ trainer, onDone }: Props) {
     </div>
   ) : c ? (
     <div className="msgflow-app">
+      {/* Hearing Support Visual Sound Cue */}
+      {profile === "hearing" || experience?.showCaptions ? (
+        <div className="mosaic-trainer-caption-bubble" role="status">
+          <span className="mosaic-cc-badge-tiny">CC</span>
+          <span><strong>[💬 Incoming Message Chime]</strong> {c.from}: &ldquo;{c.message}&rdquo;</span>
+        </div>
+      ) : null}
+
       <div className="msgflow-header">
         <span className="msgflow-back" aria-hidden="true">‹</span>
         <span className="msgflow-avatar" aria-hidden="true">
@@ -233,6 +259,32 @@ export function MessengerFlowTrainer({ trainer, onDone }: Props) {
         </div>
 
         <aside className="mq-panel">
+          {/* Adaptation controls for Visual / Hearing / Reading */}
+          {profile === "visual" || experience?.audioFirst ? (
+            <div className="mosaic-trainer-audio-banner">
+              <button
+                type="button"
+                className="button button-secondary small"
+                onClick={speakCurrentMessage}
+                style={{ width: "100%", marginBottom: "10px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px" }}
+              >
+                <span>🔊</span> Listen to Chat &amp; Options
+              </button>
+              {c ? (
+                <p style={{ fontSize: "0.76rem", color: "var(--mosaic-text)", margin: "0 0 10px 0", background: "rgba(34, 53, 46, 0.04)", padding: "6px 10px", borderRadius: "8px" }}>
+                  👁️ <em>Visual description: A smartphone showing a message from {c.from}. Three numbered choices are listed below.</em>
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+
+          {profile === "hearing" || experience?.showCaptions ? (
+            <div style={{ marginBottom: "10px", padding: "6px 10px", background: "rgba(184, 74, 98, 0.08)", border: "1px solid rgba(184, 74, 98, 0.2)", borderRadius: "8px", fontSize: "0.78rem" }}>
+              <span className="mosaic-cc-badge-tiny" style={{ marginRight: "6px" }}>CC</span>
+              <strong>Captioned mode:</strong> All sender messages &amp; choices are displayed in text.
+            </div>
+          ) : null}
+
           <div className="mq-panel-task">
             <span className="mq-eyebrow">{t.taskEyebrow}</span>
             <p className="mq-panel-task-text">{c ? `${c.from}: «${c.message}»` : t.doneHint}</p>

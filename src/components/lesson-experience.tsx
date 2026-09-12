@@ -48,6 +48,16 @@ import { StudentTaskPanel, type StudentTaskPanelAnswer } from "@/components/stud
 import { CabinetIcon } from "@/components/ui-icons";
 import type { LessonQuizQuestion, LessonScenario, LessonTrainer } from "@/data/program";
 import { logAction } from "@/lib/auth-storage";
+import type {
+  AdaptationExperienceFlags,
+  AdaptedLessonMeta,
+  AdaptedTrainerGuidance,
+} from "@/lib/adaptation/adaptation-types";
+import {
+  speakNarration,
+  stopNarration,
+  buildNarrationForStage,
+} from "@/lib/adaptation/adaptation-audio";
 
 const englishLessonDict = {
   trainerLabel: "Trainer",
@@ -219,6 +229,11 @@ type LessonExperienceProps = {
     trainer?: LessonTrainer;
     extraTrainers?: LessonTrainer[];
     moduleSlug?: string;
+    experience?: AdaptationExperienceFlags;
+    adaptationMeta?: AdaptedLessonMeta;
+    imageDescription?: string;
+    importantWarning?: string;
+    trainerGuidance?: Record<string, AdaptedTrainerGuidance>;
   };
   embedded?: boolean;
   onBack?: () => void;
@@ -379,11 +394,22 @@ export function LessonExperience({
   const [showCelebration, setShowCelebration] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
+  // Adaptation experience flags and helpers
+  const experience = lesson.experience;
+  const isAudioFirst = Boolean(experience?.audioFirst);
+  const isCaptions = Boolean(experience?.showCaptions);
+  const isReadingSupport = Boolean(experience?.simplifiedText);
+
+  // Audio-First state
+  const [audioIsSpeaking, setAudioIsSpeaking] = useState(false);
+
+  // Captions state
+  const [feedbackCaption, setFeedbackCaption] = useState<string | null>(null);
+  const [activeSoundCue, setActiveSoundCue] = useState<{ tag: string; label: string } | null>(null);
+
   useEffect(() => {
     return () => {
-      if (typeof window !== "undefined") {
-        window.speechSynthesis.cancel();
-      }
+      stopNarration();
     };
   }, []);
 
@@ -480,6 +506,87 @@ export function LessonExperience({
     return null;
   }
   const mascotHint = isStudent ? mascotForStage() : null;
+
+  // Stage-level structured spoken narration builder
+  function getStageNarration(): string {
+    return buildNarrationForStage(stage, {
+      ruleIndex,
+      totalRules: lesson.rules.length,
+      ruleText: lesson.rules[ruleIndex],
+      scenarioTitle: currentScenario?.title,
+      scenarioText: currentScenario?.text,
+      scenarioOptions: currentScenario?.options,
+      quizIndex,
+      totalQuizzes: lesson.quiz.length,
+      quizQuestion: currentQuiz?.question,
+      quizOptions: currentQuiz?.options,
+      trainerTitle: currentTrainer ? trainerTitle(currentTrainer, t) : undefined,
+      trainerOverview: lesson.trainerGuidance?.[currentTrainer?.type ?? ""]?.audioOverview,
+      imageDescription: lesson.imageDescription,
+    });
+  }
+
+  function playCurrentNarration() {
+    const speech = getStageNarration();
+    if (!speech) return;
+    speakNarration(speech, {
+      onStart: () => setAudioIsSpeaking(true),
+      onEnd: () => setAudioIsSpeaking(false),
+      onError: () => setAudioIsSpeaking(false),
+    });
+  }
+
+  function pauseCurrentNarration() {
+    stopNarration();
+    setAudioIsSpeaking(false);
+  }
+
+  // Automatic spoken announcements for Visual Support (Audio-First)
+  useEffect(() => {
+    if (experience?.autoSpeak) {
+      playCurrentNarration();
+    }
+    return () => {
+      stopNarration();
+      setAudioIsSpeaking(false);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stage, ruleIndex, scenarioIndex, quizIndex, experience?.autoSpeak]);
+
+  // Derived real-time captions for Hearing Support
+  const currentCaptionText =
+    feedbackCaption ||
+    (stage === "rules"
+      ? `[CC Rule ${ruleIndex + 1}/${lesson.rules.length}]: ${lesson.rules[ruleIndex]}`
+      : stage === "scenario" && currentScenario
+        ? `[CC Situation]: ${currentScenario.title} — ${currentScenario.text}`
+        : stage === "quiz" && currentQuiz
+          ? `[CC Question ${quizIndex + 1}/${lesson.quiz.length}]: ${currentQuiz.question}`
+          : stage === "trainer"
+            ? `[CC Practice Trainer]: Follow step-by-step chat prompts below.`
+            : `[CC Complete]: All lesson exercises completed successfully.`);
+
+  function triggerAnswerFeedback(correct: boolean, feedbackText: string) {
+    if (isCaptions) {
+      setActiveSoundCue(
+        correct
+          ? { tag: "✓ SOUND ALERT", label: "Success chime played · Safe choice confirmed" }
+          : { tag: "⚠️ SOUND ALERT", label: "Warning tone · Review safety guidance" },
+      );
+      setFeedbackCaption(`[CC Feedback]: ${correct ? "Correct! " : "Review: "}${feedbackText}`);
+      setTimeout(() => {
+        setActiveSoundCue(null);
+        setFeedbackCaption(null);
+      }, 3500);
+    }
+    if (experience?.autoSpeak) {
+      speakNarration(correct ? `Correct! ${feedbackText}` : `Notice: ${feedbackText}`, {
+        onStart: () => setAudioIsSpeaking(true),
+        onEnd: () => setAudioIsSpeaking(false),
+        onError: () => setAudioIsSpeaking(false),
+      });
+    }
+  }
 
   function readLessonAloud() {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) {
@@ -650,6 +757,8 @@ export function LessonExperience({
       setScenarioAnswers((current) => replaceAnswer(current, scenarioIndex, optionIndex));
       trackAnswer("scenario", optionIndex, currentScenario.correctIndex);
       setNotice("");
+      const isCorrect = optionIndex === currentScenario.correctIndex;
+      triggerAnswerFeedback(isCorrect, isCorrect ? currentScenario.feedback : currentScenario.support);
     },
   });
   const scenarioNextLabel =
@@ -670,6 +779,8 @@ export function LessonExperience({
       setQuizAnswers((current) => replaceAnswer(current, quizIndex, optionIndex));
       trackAnswer("quiz", optionIndex, currentQuiz.correctIndex);
       setNotice("");
+      const isCorrect = optionIndex === currentQuiz.correctIndex;
+      triggerAnswerFeedback(isCorrect, isCorrect ? t.answerCorrectGoNext : t.correctAnswerHighlighted);
     },
   });
 
@@ -930,6 +1041,8 @@ export function LessonExperience({
             trainer={currentTrainer}
             studentMode={isStudent}
             onDone={finishTrainer}
+            profile={lesson.adaptationMeta?.supportType}
+            experience={lesson.experience}
           />
         );
       case "safety-etiquette":
@@ -1105,6 +1218,61 @@ export function LessonExperience({
 
       <div className="lesson-grid">
         <div className="lesson-main">
+          {/* Audio-First Controller for Visual Support Profile */}
+          {isAudioFirst && (
+            <div className="mosaic-audio-first-controller" role="region" aria-label="Audio Guidance Controller">
+              <div className="mosaic-audio-indicator">
+                <span className={`mosaic-audio-pulse-dot ${audioIsSpeaking ? "pulsing" : ""}`} aria-hidden="true" />
+                <span className="mosaic-audio-state-text">
+                  {audioIsSpeaking ? "🔊 Speaking screen guide..." : "Audio-first guide ready"}
+                </span>
+              </div>
+              <button
+                type="button"
+                className={`mosaic-audio-ctrl-btn ${audioIsSpeaking ? "active" : ""}`}
+                onClick={audioIsSpeaking ? pauseCurrentNarration : playCurrentNarration}
+                aria-label={audioIsSpeaking ? "Pause audio narration" : "Replay audio narration"}
+              >
+                {audioIsSpeaking ? "⏸ Pause Audio" : "🔊 Replay Audio"}
+              </button>
+            </div>
+          )}
+
+          {/* Persistent Captions & Visual Cue Panel for Hearing Support Profile */}
+          {isCaptions && (
+            <div className="mosaic-captions-display-bar" role="region" aria-live="polite" aria-label="Live Captions and Visual Cues">
+              <div className="mosaic-captions-top">
+                <span className="mosaic-cc-badge">CC</span>
+                <span className="mosaic-captions-label">Live Captions &amp; Visual Audio Cues</span>
+                {activeSoundCue ? (
+                  <span className="mosaic-sound-badge-active">
+                    {activeSoundCue.tag}: {activeSoundCue.label}
+                  </span>
+                ) : null}
+              </div>
+              <p className="mosaic-captions-text">{currentCaptionText}</p>
+            </div>
+          )}
+
+          {/* Visual Interface Description Box for Visual Support Profile */}
+          {(isAudioFirst || experience?.showImageDescriptions) && lesson.imageDescription && (
+            <div className="mosaic-visual-description-box" role="region" aria-label="Visual Interface Description">
+              <div className="mosaic-vdesc-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                <strong>Visual Interface Description</strong>
+              </div>
+              <p>{lesson.imageDescription}</p>
+            </div>
+          )}
+
+          {/* Important Safety Rule Box for Reading Support Profile */}
+          {isReadingSupport && lesson.importantWarning && (
+            <div className="mosaic-reading-warning-box" role="alert">
+              <span className="mosaic-warning-tag">⚠️ IMPORTANT SAFETY RULE</span>
+              <p>{lesson.importantWarning}</p>
+            </div>
+          )}
+
           {stage === "rules" ? (
             isStudent ? (
               <div className="lesson-panel lesson-step-panel lesson-rule-single">
@@ -1268,6 +1436,8 @@ export function LessonExperience({
                         );
                         trackAnswer("scenario", optionIndex, currentScenario.correctIndex);
                         setNotice("");
+                        const isCorrect = optionIndex === currentScenario.correctIndex;
+                        triggerAnswerFeedback(isCorrect, isCorrect ? currentScenario.feedback : currentScenario.support);
                       }}
                     >
                       <span className="step-option-index">{optionIndex + 1}</span>
@@ -1381,6 +1551,8 @@ export function LessonExperience({
                           );
                           trackAnswer("quiz", optionIndex, currentQuiz.correctIndex);
                           setNotice("");
+                          const isCorrect = optionIndex === currentQuiz.correctIndex;
+                          triggerAnswerFeedback(isCorrect, isCorrect ? t.answerCorrectGoNext : t.correctAnswerHighlighted);
                         }}
                       >
                         <span className="step-option-index">{optionIndex + 1}</span>

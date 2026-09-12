@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { LessonItemArt, type LessonItemArtId } from "@/components/lesson-item-art";
 import { LessonExperience } from "@/components/lesson-experience";
@@ -10,6 +10,7 @@ import type { AccessibilitySupportType } from "@/lib/adaptation/adaptation-types
 import { PRESET_PROFILES } from "@/lib/adaptation/adaptation-types";
 import { adaptLesson } from "@/lib/adaptation/adaptation-engine";
 import { resolveStylingRules } from "@/lib/adaptation/adaptation-rules";
+import { stopNarration } from "@/lib/adaptation/adaptation-audio";
 
 type AdaptiveLessonViewProps = {
   originalLesson: ProgramLesson;
@@ -31,55 +32,71 @@ export function AdaptiveLessonView({
   const [activeProfile, setActiveProfile] =
     useState<AccessibilitySupportType>(initialProfile);
 
+  // Stop any ongoing speech narration when switching profile
+  function handleProfileChange(newProfile: AccessibilitySupportType) {
+    stopNarration();
+    setActiveProfile(newProfile);
+  }
+
+  useEffect(() => {
+    return () => {
+      stopNarration();
+    };
+  }, []);
+
   const profileConfig = PRESET_PROFILES[activeProfile];
   const adaptedLesson = adaptLesson(originalLesson, profileConfig);
-  const stylingRules = resolveStylingRules(profileConfig);
+  const stylingRules = resolveStylingRules(profileConfig, adaptedLesson.experience);
 
   return (
     <div className={`mosaic-lesson-container ${stylingRules.containerClassName}`}>
-      {/* Floating Interactive Adaptation Switcher for Demo / Students */}
-      <div className="mosaic-adaptive-toolbar" role="region" aria-label="Accessibility & Support Profiles">
+      {/* Interactive Adaptation Switcher Toolbar */}
+      <div className="mosaic-adaptive-toolbar" role="region" aria-label="Learning Support Profile Switcher">
         <div className="home-wrap mosaic-toolbar-inner">
           <div className="mosaic-toolbar-brand">
             <span className="mosaic-sparkle-icon" style={{ fontSize: "0.78rem", fontWeight: 850 }}>AI</span>
             <div>
-              <strong style={{ fontSize: "0.86rem", color: "var(--ink)", display: "block" }}>
+              <strong style={{ fontSize: "0.88rem", color: "var(--mosaic-ink)", display: "block" }}>
                 Mosaic Adaptive Engine
               </strong>
-              <span style={{ fontSize: "0.74rem", color: "var(--muted)" }}>
+              <span style={{ fontSize: "0.76rem", color: "var(--mosaic-muted)" }}>
                 {activeProfile === "none"
-                  ? "Standard curriculum"
-                  : `Active profile: ${activeProfile.toUpperCase()} support`}
+                  ? "Standard curriculum (Baseline)"
+                  : `Active profile: ${activeProfile === "reading" ? "Reading support" : activeProfile === "visual" ? "Visual support (Audio-First)" : "Hearing support (Captions)"}`}
               </span>
             </div>
           </div>
 
-          <div className="mosaic-profile-toggle-group">
+          <div className="mosaic-profile-toggle-group" role="group" aria-label="Choose adaptation profile">
             <button
               type="button"
               className={`mosaic-profile-btn ${activeProfile === "none" ? "active" : ""}`}
-              onClick={() => setActiveProfile("none")}
+              onClick={() => handleProfileChange("none")}
+              aria-pressed={activeProfile === "none"}
             >
               Standard
             </button>
             <button
               type="button"
               className={`mosaic-profile-btn ${activeProfile === "reading" ? "active" : ""}`}
-              onClick={() => setActiveProfile("reading")}
+              onClick={() => handleProfileChange("reading")}
+              aria-pressed={activeProfile === "reading"}
             >
-              Reading / Dyslexia
+              Reading Support
             </button>
             <button
               type="button"
               className={`mosaic-profile-btn ${activeProfile === "visual" ? "active" : ""}`}
-              onClick={() => setActiveProfile("visual")}
+              onClick={() => handleProfileChange("visual")}
+              aria-pressed={activeProfile === "visual"}
             >
               Visual (Audio-First)
             </button>
             <button
               type="button"
               className={`mosaic-profile-btn ${activeProfile === "hearing" ? "active" : ""}`}
-              onClick={() => setActiveProfile("hearing")}
+              onClick={() => handleProfileChange("hearing")}
+              aria-pressed={activeProfile === "hearing"}
             >
               Hearing (Captions)
             </button>
@@ -87,15 +104,25 @@ export function AdaptiveLessonView({
         </div>
       </div>
 
-      {/* Applied Adaptations Banner (When an adaptation is active) */}
+      {/* Applied Adaptations Banner with active capabilities */}
       {activeProfile !== "none" && (
-        <div className="mosaic-active-adaptation-banner">
+        <div className="mosaic-active-adaptation-banner" role="status" aria-live="polite">
           <div className="home-wrap mosaic-banner-content">
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <span className="mosaic-badge-pill">Adapted Experience</span>
-              <span style={{ fontSize: "0.88rem", color: "var(--ink)" }}>
-                {adaptedLesson.adaptationMeta.appliedRules.join(" · ")}
+            <div className="mosaic-banner-badge-col">
+              <span className="mosaic-badge-pill">
+                {activeProfile === "reading"
+                  ? "READING SUPPORT ACTIVE"
+                  : activeProfile === "visual"
+                    ? "VISUAL SUPPORT ACTIVE"
+                    : "HEARING SUPPORT ACTIVE"}
               </span>
+            </div>
+            <div className="mosaic-banner-rules-list">
+              {adaptedLesson.adaptationMeta.appliedRules.map((ruleText) => (
+                <span key={ruleText} className="mosaic-banner-rule-item">
+                  ✓ {ruleText}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -133,16 +160,20 @@ export function AdaptiveLessonView({
         </div>
       </section>
 
-      {/* Main 10-Screen Lesson Player Renderer (100% preserved) */}
+      {/* Main Lesson Renderer with active profile and experience flags */}
       <section className="marketing-section">
         <div className="marketing-wrap">
           {adaptedLesson.screens && adaptedLesson.screens.length > 0 ? (
             <LessonPlayer
+              key={activeProfile}
               screens={adaptedLesson.screens}
               lessonTitle={adaptedLesson.title}
             />
           ) : (
-            <LessonExperience lesson={adaptedLesson} />
+            <LessonExperience
+              key={activeProfile}
+              lesson={adaptedLesson}
+            />
           )}
         </div>
       </section>
