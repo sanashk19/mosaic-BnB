@@ -458,6 +458,75 @@ export const platformHighlightsUz = platformHighlights;
 
 export const programModules: ProgramModule[] = [
   {
+    slug: "sign-language-foundations",
+    title: "Indian Sign Language (ISL) Studio",
+    hours: "4 hours",
+    lessonCount: 3,
+    description: "Learn Indian Sign Language (ISL) alphabets, numbers, and common words with real-time AI webcam gesture recognition and two-way speech translation.",
+    image: "/uzbek-images/shopping-market.jpg",
+    imageAlt: "Indian Sign Language Studio",
+    imageCredit: "SanketSetu Inclusive Research",
+    imageSourceUrl: "/sign-language",
+    knowledge: [
+      "ISL Alphabets (A-Z) and Number gestures (0-9)",
+      "Daily conversation gloss words (Hello, Namaste, Water, Help, Thank You)",
+      "Real-time webcam hand tracking & MediaPipe landmark AI"
+    ],
+    skills: [
+      "Perform hand gestures accurately in front of the camera",
+      "Translate signed glosses into formatted English sentences",
+      "Convert spoken audio or text into step-by-step ISL visual signs"
+    ],
+    lessons: [
+      {
+        slug: "isl-alphabets-and-numbers",
+        title: "ISL Alphabets & Numbers Practice",
+        duration: "1 hour",
+        summary: "Master ISL finger-spelling alphabets and number signs with live camera feedback.",
+        intro: "In this interactive lesson, you will practice finger-spelling the alphabets A to Z and numbers 0 to 9 using real-time webcam gesture recognition.",
+        image: "/uzbek-images/shopping-market.jpg",
+        imageAlt: "ISL Alphabets & Numbers Practice",
+        goals: [
+          "Learn finger positions for letters A-Z",
+          "Practice number counting gestures 0-9",
+          "Test gesture accuracy with real-time camera AI"
+        ],
+        rules: [
+          "Hold your hand steady in front of the webcam.",
+          "Ensure good lighting around your hands.",
+          "Check the live confidence meter for instant feedback."
+        ],
+        scenarios: [
+          {
+            title: "Finger-spelling letter A",
+            text: "How do you form the ISL sign for the letter A?",
+            options: [
+              "Hold a closed fist with thumb upright alongside fingers.",
+              "Open all fingers flat.",
+              "Cross arms over chest."
+            ],
+            correctIndex: 0,
+            feedback: "Correct! The thumb sits alongside the closed fist for letter A.",
+            support: "View the ISL Studio for visual guide."
+          }
+        ],
+        quiz: [
+          {
+            question: "Why is Indian Sign Language important for inclusive communication?",
+            options: [
+              "It enables deaf and hard-of-hearing individuals to communicate effortlessly.",
+              "It is only used for music.",
+              "It cannot be recognized by computers."
+            ],
+            correctIndex: 0
+          }
+        ],
+        adultNote: "Guide learners to practice hand movements in front of the webcam with clear lighting.",
+        tags: ["ISL", "Sign Language", "Communication", "Accessibility"]
+      }
+    ]
+  },
+  {
     slug: "diagnostic",
     title: "Diagnostic Life Skills",
     hours: "2 hours",

@@ -15,11 +15,13 @@ type NavItem = { href: string; label: string; activePath: string };
 const navStartByLocale: Record<Locale, NavItem[]> = {
   ru: [
     { href: "/", label: "Home", activePath: "/" },
+    { href: "/sign-language", label: "Sign Language", activePath: "/sign-language" },
     { href: "/educators", label: "For Teachers", activePath: "/educators" },
     { href: "/families", label: "For Families", activePath: "/families" },
   ],
   uz: [
     { href: "/", label: "Home", activePath: "/" },
+    { href: "/sign-language", label: "Sign Language", activePath: "/sign-language" },
     { href: "/educators", label: "For Teachers", activePath: "/educators" },
     { href: "/families", label: "For Families", activePath: "/families" },
   ],
