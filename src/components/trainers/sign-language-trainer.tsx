@@ -2,6 +2,18 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Script from "next/script";
+import {
+  CameraIcon,
+  StopIcon,
+  ResetIcon,
+  SpeakerIcon,
+  SparkleIcon,
+  TargetIcon,
+  CheckIcon,
+  HandIcon,
+  SearchIcon,
+  WandIcon,
+} from "@/components/isl-icons";
 
 interface SignLanguageTrainerProps {
   targetSign?: string;
@@ -15,11 +27,8 @@ interface WindowWithMediaPipe {
     setOptions: (options: Record<string, unknown>) => void;
     onResults: (callback: (results: MediaPipeResults) => void) => void;
     send: (input: { image: HTMLVideoElement }) => Promise<void>;
+    close?: () => Promise<void>;
   };
-  Camera?: new (
-    videoElement: HTMLVideoElement,
-    options: { onFrame: () => Promise<void>; width: number; height: number }
-  ) => { start: () => Promise<void>; stop: () => void };
   drawConnectors?: (
     ctx: CanvasRenderingContext2D,
     landmarks: Array<{ x: number; y: number; z: number }>,
@@ -38,40 +47,116 @@ interface MediaPipeResults {
   multiHandLandmarks?: Array<Array<{ x: number; y: number; z: number }>>;
 }
 
+const ISL_TWO_HANDED_SIGNS = new Set([
+  "HELP",
+  "NAMASTE",
+  "HOME",
+  "STOP",
+  "FAMILY",
+  "THANK YOU",
+  "WANT",
+  "WARNING",
+  "WATER",
+]);
+
 export function SignLanguageTrainer({
   targetSign,
   onSuccess,
-  title = "Real-Time Indian Sign Language Recognizer",
-  subtitle = "Show your hand signs clearly to the camera to see live translation into text & audio.",
+  title = "Live sign recognition",
+  subtitle = "Show a sign to the camera and Mosaic will analyze the gesture.",
 }: SignLanguageTrainerProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
+  // Status & UI states
   const [isCameraActive, setIsCameraActive] = useState<boolean>(false);
+  const [cameraStatus, setCameraStatus] = useState<string>("Webcam is currently off");
   const [cameraError, setCameraError] = useState<string | null>(null);
+  const [mediaPipeReady, setMediaPipeReady] = useState<boolean>(false);
   const [handsDetectedCount, setHandsDetectedCount] = useState<number>(0);
+  const [landmarkCount, setLandmarkCount] = useState<number>(0);
+  const [bufferCount, setBufferCount] = useState<number>(0);
 
-  const [predictionText, setPredictionText] = useState<string>("Waiting for signs...");
+  // Recognition outputs
+  const [predictionText, setPredictionText] = useState<string>("Waiting for a sign...");
   const [confidence, setConfidence] = useState<number>(0);
   const [glossTokens, setGlossTokens] = useState<string[]>([]);
-  const [currentLetters, setCurrentLetters] = useState<string>("");
   const [sentence, setSentence] = useState<string>("");
   const [isPredicting, setIsPredicting] = useState<boolean>(false);
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
   const [practiceSuccess, setPracticeSuccess] = useState<boolean>(false);
+  const [backendStatus, setBackendStatus] = useState<string>("Checking...");
+  const [showDiagnostics, setShowDiagnostics] = useState<boolean>(false);
 
+  // Internal lifecycle and frame refs
+  const isMountedRef = useRef<boolean>(true);
+  const isCameraActiveRef = useRef<boolean>(false);
+  const handsInstanceRef = useRef<{
+    send: (input: { image: HTMLVideoElement }) => Promise<void>;
+    close?: () => Promise<void>;
+  } | null>(null);
+  const animFrameRef = useRef<number | null>(null);
+  const isProcessingFrameRef = useRef<boolean>(false);
   const frameBufferRef = useRef<number[][]>([]);
+  const isPredictingRef = useRef<boolean>(false);
   const lastPredictionRef = useRef<string>("");
-  const repeatCountRef = useRef<number>(0);
-  const lastSignTimeRef = useRef<number>(0);
-  const sentenceGeneratedRef = useRef<boolean>(false);
-  const cameraInstanceRef = useRef<{ stop: () => void } | null>(null);
-  const handsInstanceRef = useRef<{ send: (input: { image: HTMLVideoElement }) => Promise<void> } | null>(null);
+  const consecutiveCountRef = useRef<number>(0);
+  const lastCommittedSignRef = useRef<string>("");
+  const lastCommittedTimeRef = useRef<number>(0);
 
-  // Send collected 30-frame landmark buffer to backend
+  // Stop webcam
+  const stopCamera = useCallback(() => {
+    isCameraActiveRef.current = false;
+    if (animFrameRef.current !== null) {
+      cancelAnimationFrame(animFrameRef.current);
+      animFrameRef.current = null;
+    }
+
+    if (videoRef.current && videoRef.current.srcObject) {
+      const stream = videoRef.current.srcObject as MediaStream;
+      stream.getTracks().forEach((track) => track.stop());
+      videoRef.current.srcObject = null;
+    }
+
+    if (canvasRef.current) {
+      const ctx = canvasRef.current.getContext("2d");
+      if (ctx) ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    }
+
+    setIsCameraActive(false);
+    setCameraStatus("Webcam is currently off");
+    setHandsDetectedCount(0);
+    setLandmarkCount(0);
+    setBufferCount(0);
+    frameBufferRef.current = [];
+    consecutiveCountRef.current = 0;
+  }, []);
+
+  // Check backend health on mount
+  useEffect(() => {
+    isMountedRef.current = true;
+    fetch("/api/isl/predict", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data: [new Array(126).fill(0)] }),
+    })
+      .then((res) => {
+        if (res.ok) setBackendStatus("Connected (Port 8000 / ML Model)");
+        else setBackendStatus("Online (Fallback mode)");
+      })
+      .catch(() => setBackendStatus("Online (Local simulation)"));
+
+    return () => {
+      isMountedRef.current = false;
+      stopCamera();
+    };
+  }, [stopCamera]);
+
+  // Send collected 30-frame landmark buffer to prediction endpoint
   const sendToAPI = useCallback(async () => {
-    if (isPredicting || frameBufferRef.current.length < 30) return;
+    if (isPredictingRef.current || frameBufferRef.current.length < 30) return;
 
+    isPredictingRef.current = true;
     setIsPredicting(true);
     const bufferCopy = [...frameBufferRef.current];
 
@@ -82,60 +167,68 @@ export function SignLanguageTrainer({
         body: JSON.stringify({ data: bufferCopy }),
       });
 
-      if (!res.ok) throw new Error("API response error");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       const data = await res.json();
 
-      if (data.prediction && data.confidence >= 0.75) {
-        const pred = data.prediction.toString().toUpperCase();
-        setConfidence(Math.round(data.confidence * 100));
+      if (data && data.prediction) {
+        const pred = String(data.prediction).trim().toUpperCase();
+        const conf = Math.round(Number(data.confidence || 0) * 100);
 
+        setPredictionText(pred);
+        setConfidence(conf);
+
+        // Track temporal consistency
         if (pred === lastPredictionRef.current) {
-          repeatCountRef.current += 1;
+          consecutiveCountRef.current += 1;
         } else {
-          repeatCountRef.current = 1;
+          consecutiveCountRef.current = 1;
           lastPredictionRef.current = pred;
         }
 
-        if (repeatCountRef.current >= 2) {
-          setPredictionText(pred);
-          lastSignTimeRef.current = Date.now();
-          sentenceGeneratedRef.current = false;
-
-          if (targetSign && pred === targetSign.toUpperCase()) {
+        // Target sign matching: require exact match, confidence >= 65%, and stable hold (>=2 consecutive windows)
+        if (targetSign) {
+          const targetClean = targetSign.trim().toUpperCase();
+          if (pred === targetClean && conf >= 65 && consecutiveCountRef.current >= 2) {
             setPracticeSuccess(true);
             if (onSuccess) onSuccess();
           }
+        }
 
-          if (pred.length === 1) {
-            setCurrentLetters((prev) => {
-              if (prev.endsWith(pred)) return prev;
-              return prev + pred;
-            });
-          } else {
-            setGlossTokens((prev) => {
-              if (prev[prev.length - 1] === pred) return prev;
-              return [...prev, pred];
-            });
-          }
+        // Commit recognized signs: require stability (>= 3 consecutive windows) and confidence >= 72%
+        // Store each recognized sign as a distinct token chip (never concatenate raw characters)
+        const now = Date.now();
+        if (
+          conf >= 72 &&
+          consecutiveCountRef.current >= 3 &&
+          (pred !== lastCommittedSignRef.current || now - lastCommittedTimeRef.current > 2000)
+        ) {
+          lastCommittedSignRef.current = pred;
+          lastCommittedTimeRef.current = now;
+          setGlossTokens((prev) => [...prev, pred]);
         }
       }
     } catch (err) {
-      console.error("Sign prediction error:", err);
+      console.warn("Prediction error:", err);
     } finally {
-      setTimeout(() => setIsPredicting(false), 200);
+      setTimeout(() => {
+        isPredictingRef.current = false;
+        setIsPredicting(false);
+      }, 250);
     }
-  }, [isPredicting, targetSign, onSuccess]);
+  }, [targetSign, onSuccess]);
 
-  // Initialize MediaPipe Hands after CDN scripts load
+  // Robust MediaPipe Initialization
   const initMediaPipe = useCallback(() => {
     if (typeof window === "undefined") return;
     const windowMp = window as unknown as WindowWithMediaPipe;
 
-    if (!windowMp.Hands || !windowMp.Camera) {
-      console.log("MediaPipe scripts loading...");
+    if (!windowMp.Hands) {
+      console.log("MediaPipe Hands script not yet available on window.");
       return;
     }
+
+    if (handsInstanceRef.current) return;
 
     try {
       const hands = new windowMp.Hands({
@@ -150,23 +243,35 @@ export function SignLanguageTrainer({
       });
 
       hands.onResults((results: MediaPipeResults) => {
+        if (!isMountedRef.current || !canvasRef.current || !videoRef.current) return;
         const canvas = canvasRef.current;
-        if (!canvas) return;
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
+
+        // Keep canvas size matching video
+        const vid = videoRef.current;
+        if (vid.videoWidth && canvas.width !== vid.videoWidth) {
+          canvas.width = vid.videoWidth;
+          canvas.height = vid.videoHeight;
+        }
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
-          setHandsDetectedCount(results.multiHandLandmarks.length);
+          const detected = results.multiHandLandmarks.length;
+          setHandsDetectedCount(detected);
+          setLandmarkCount(detected * 21);
 
           let frame: number[] = [];
           results.multiHandLandmarks.forEach((hand) => {
-            if (windowMp.drawConnectors && windowMp.drawLandmarks && windowMp.HAND_CONNECTIONS) {
+            // Draw skeleton landmarks
+            if (windowMp.drawConnectors && windowMp.HAND_CONNECTIONS) {
               windowMp.drawConnectors(ctx, hand, windowMp.HAND_CONNECTIONS, {
                 color: "#506847",
                 lineWidth: 3,
               });
+            }
+            if (windowMp.drawLandmarks) {
               windowMp.drawLandmarks(ctx, hand, {
                 color: "#D8663F",
                 lineWidth: 1,
@@ -179,6 +284,7 @@ export function SignLanguageTrainer({
             });
           });
 
+          // Normalize to 126 float values (2 hands * 21 * 3)
           if (frame.length === 63) {
             frame = frame.concat(new Array(63).fill(0));
           }
@@ -188,75 +294,180 @@ export function SignLanguageTrainer({
             if (frameBufferRef.current.length > 30) {
               frameBufferRef.current.shift();
             }
-            if (frameBufferRef.current.length === 30) {
+            setBufferCount(frameBufferRef.current.length);
+            if (frameBufferRef.current.length === 30 && !isPredictingRef.current) {
               sendToAPI();
             }
           }
         } else {
           setHandsDetectedCount(0);
+          setLandmarkCount(0);
+          if (frameBufferRef.current.length > 0) {
+            frameBufferRef.current.shift();
+            setBufferCount(frameBufferRef.current.length);
+          }
         }
       });
 
       handsInstanceRef.current = hands;
+      setMediaPipeReady(true);
+      console.log("MediaPipe Hands initialized successfully.");
     } catch (err) {
       console.error("Failed to initialize MediaPipe Hands:", err);
+      setCameraError("MediaPipe model loading issue. You can still use Demo Gestures below.");
     }
   }, [sendToAPI]);
+
+  // Dynamic script loader fallback in case <Script> tags are cached
+  useEffect(() => {
+    const checkOrLoad = () => {
+      const windowMp = window as unknown as WindowWithMediaPipe;
+      if (windowMp.Hands) {
+        initMediaPipe();
+        return;
+      }
+
+      const scripts = [
+        "https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js",
+        "https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js",
+        "https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js",
+      ];
+
+      scripts.forEach((src) => {
+        if (!document.querySelector(`script[src="${src}"]`)) {
+          const s = document.createElement("script");
+          s.src = src;
+          s.crossOrigin = "anonymous";
+          s.onload = () => {
+            const w = window as unknown as WindowWithMediaPipe;
+            if (w.Hands) initMediaPipe();
+          };
+          document.head.appendChild(s);
+        }
+      });
+    };
+
+    checkOrLoad();
+    const timer = setInterval(() => {
+      const w = window as unknown as WindowWithMediaPipe;
+      if (w.Hands && !handsInstanceRef.current) {
+        initMediaPipe();
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [initMediaPipe]);
+
+  // Frame processing loop using requestAnimationFrame
+  const startFrameLoop = useCallback(() => {
+    const processFrame = async () => {
+      if (!isMountedRef.current || !isCameraActiveRef.current) return;
+
+      if (
+        videoRef.current &&
+        videoRef.current.readyState >= 2 &&
+        handsInstanceRef.current &&
+        !isProcessingFrameRef.current
+      ) {
+        isProcessingFrameRef.current = true;
+        try {
+          await handsInstanceRef.current.send({ image: videoRef.current });
+        } catch (e) {
+          console.warn("Error sending video frame to MediaPipe:", e);
+        } finally {
+          isProcessingFrameRef.current = false;
+        }
+      }
+
+      if (isCameraActiveRef.current) {
+        animFrameRef.current = requestAnimationFrame(processFrame);
+      }
+    };
+
+    animFrameRef.current = requestAnimationFrame(processFrame);
+  }, []);
 
   // Start webcam
   const startCamera = async () => {
     if (!videoRef.current) return;
     setCameraError(null);
+    setCameraStatus("Starting camera feed...");
+
+    // Ensure MediaPipe is initialized
+    const windowMp = window as unknown as WindowWithMediaPipe;
+    if (windowMp.Hands && !handsInstanceRef.current) {
+      initMediaPipe();
+    }
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: 640, height: 480 },
+        video: {
+          width: { ideal: 640 },
+          height: { ideal: 480 },
+          facingMode: "user",
+        },
       });
-      videoRef.current.srcObject = stream;
 
-      const windowMp = window as unknown as WindowWithMediaPipe;
-      if (windowMp.Camera && handsInstanceRef.current) {
-        const camera = new windowMp.Camera(videoRef.current, {
-          onFrame: async () => {
-            if (videoRef.current && handsInstanceRef.current) {
-              await handsInstanceRef.current.send({ image: videoRef.current });
-            }
-          },
-          width: 640,
-          height: 480,
-        });
-        cameraInstanceRef.current = camera;
-        await camera.start();
+      if (!isMountedRef.current) {
+        stream.getTracks().forEach((t) => t.stop());
+        return;
       }
 
+      videoRef.current.srcObject = stream;
+      videoRef.current.onloadedmetadata = () => {
+        if (videoRef.current) {
+          videoRef.current.play().catch(() => {});
+          if (canvasRef.current) {
+            canvasRef.current.width = videoRef.current.videoWidth || 640;
+            canvasRef.current.height = videoRef.current.videoHeight || 480;
+          }
+        }
+      };
+
+      isCameraActiveRef.current = true;
       setIsCameraActive(true);
+      setCameraStatus("Camera active");
+
+      // Start inference processing loop
+      startFrameLoop();
     } catch (err) {
       console.error("Camera access error:", err);
-      setCameraError("Camera permission denied or camera unavailable. You can use Demo Mode below!");
+      setCameraError(
+        "Camera permission was denied or camera is unavailable. You can use instant simulation with Demo Gestures below!"
+      );
+      setCameraStatus("Camera unavailable");
+      setIsCameraActive(false);
     }
   };
 
-  // Stop webcam
-  const stopCamera = () => {
-    if (cameraInstanceRef.current) {
-      try {
-        cameraInstanceRef.current.stop();
-      } catch {
-        /* ignore */
-      }
+  // Clear state
+  const handleClear = () => {
+    setGlossTokens([]);
+    setSentence("");
+    setPredictionText("Waiting for a sign...");
+    setConfidence(0);
+    setPracticeSuccess(false);
+    setBufferCount(0);
+    frameBufferRef.current = [];
+    consecutiveCountRef.current = 0;
+    lastCommittedSignRef.current = "";
+  };
+
+  // Instant simulation with demo gestures
+  const triggerDemoSign = (sign: string) => {
+    const cleanSign = sign.toUpperCase();
+    setPredictionText(cleanSign);
+    setConfidence(94);
+    setGlossTokens((prev) => [...prev, cleanSign]);
+    if (targetSign && cleanSign === targetSign.toUpperCase()) {
+      setPracticeSuccess(true);
+      if (onSuccess) onSuccess();
     }
-    if (videoRef.current && videoRef.current.srcObject) {
-      const stream = videoRef.current.srcObject as MediaStream;
-      stream.getTracks().forEach((track) => track.stop());
-      videoRef.current.srcObject = null;
-    }
-    setIsCameraActive(false);
-    setHandsDetectedCount(0);
   };
 
   // Generate Sentence from current gloss/letters
   const generateSentence = async () => {
-    const fullGloss = [...glossTokens, currentLetters].filter(Boolean).join(" ");
+    const fullGloss = glossTokens.join(" ");
     if (!fullGloss) return;
 
     try {
@@ -268,7 +479,6 @@ export function SignLanguageTrainer({
       const data = await res.json();
       if (data.sentence) {
         setSentence(data.sentence);
-        sentenceGeneratedRef.current = true;
       }
     } catch (err) {
       console.error("Format error:", err);
@@ -304,41 +514,8 @@ export function SignLanguageTrainer({
     }
   };
 
-  // Clear state
-  const handleClear = () => {
-    setGlossTokens([]);
-    setCurrentLetters("");
-    setSentence("");
-    setPredictionText("Waiting for signs...");
-    setConfidence(0);
-    setPracticeSuccess(false);
-    frameBufferRef.current = [];
-  };
-
-  // Demo simulation mode for testing without camera
-  const triggerDemoSign = (sign: string) => {
-    setPredictionText(sign);
-    setConfidence(94);
-    if (sign.length === 1) {
-      setCurrentLetters((prev) => prev + sign);
-    } else {
-      setGlossTokens((prev) => [...prev, sign]);
-    }
-    if (targetSign && sign.toUpperCase() === targetSign.toUpperCase()) {
-      setPracticeSuccess(true);
-      if (onSuccess) onSuccess();
-    }
-  };
-
-  useEffect(() => {
-    lastSignTimeRef.current = Date.now();
-    return () => {
-      stopCamera();
-    };
-  }, []);
-
   return (
-    <div className="isl-trainer w-full max-w-5xl mx-auto p-4 sm:p-6 bg-[#FCFCFB] rounded-3xl border border-[#E5E2DC] shadow-sm transition-all font-sans">
+    <div className="isl-trainer-root">
       {/* MediaPipe CDN Scripts */}
       <Script
         src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"
@@ -354,21 +531,24 @@ export function SignLanguageTrainer({
       />
 
       {/* Header Banner */}
-      <div className="mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-[#E5E2DC] pb-4">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#EDF2E9] text-[#506847] rounded-full text-xs font-semibold uppercase tracking-wider mb-2 border border-[#E5E2DC]">
-            <span>✨ Interactive ISL Trainer</span>
+      <div className="isl-trainer-header">
+        <div className="isl-trainer-header-left">
+          <div className="isl-trainer-badge">
+            <SparkleIcon size={14} />
+            <span>Interactive ISL Trainer</span>
           </div>
-          <h2 className="text-2xl font-extrabold text-[#22352E] tracking-tight">{title}</h2>
-          <p className="text-sm text-[#707877] mt-1">{subtitle}</p>
+          <h2 className="isl-trainer-title">{title}</h2>
+          <p className="isl-trainer-subtitle">{subtitle}</p>
         </div>
 
         {targetSign && (
-          <div className="bg-[#FBECE5] border border-[#D8663F]/30 rounded-2xl px-4 py-3 flex items-center gap-3">
-            <span className="text-2xl">🎯</span>
+          <div className="isl-trainer-target-badge">
+            <div className="isl-trainer-target-icon">
+              <TargetIcon size={20} />
+            </div>
             <div>
-              <span className="text-xs uppercase font-extrabold text-[#D8663F] tracking-wider">Target Sign</span>
-              <div className="text-xl font-black text-[#22352E]">{targetSign}</div>
+              <span className="isl-trainer-target-label">Target Sign</span>
+              <div className="isl-trainer-target-val">{targetSign}</div>
             </div>
           </div>
         )}
@@ -376,21 +556,25 @@ export function SignLanguageTrainer({
 
       {/* Practice Match Success Alert */}
       {practiceSuccess && (
-        <div className="mb-6 p-4 bg-[#EDF2E9] border-2 border-[#506847] rounded-2xl flex items-center justify-between animate-fadeIn">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#506847] text-white flex items-center justify-center font-bold text-xl">
-              ✓
+        <div className="isl-trainer-success-banner">
+          <div className="isl-trainer-success-info">
+            <div className="isl-trainer-success-icon">
+              <CheckIcon size={20} />
             </div>
-            <div>
-              <h4 className="font-bold text-[#22352E]">Excellent Sign Match!</h4>
-              <p className="text-sm text-[#506847]">
-                You accurately performed sign &quot;{targetSign || predictionText}&quot;.
+            <div className="isl-trainer-success-text">
+              <h4>Correct Sign Detected!</h4>
+              <p>
+                You accurately formed sign &quot;{targetSign || predictionText}&quot; ({confidence}% confidence).
               </p>
             </div>
           </div>
           <button
-            onClick={() => setPracticeSuccess(false)}
-            className="px-4 py-2 bg-[#506847] hover:bg-[#344934] text-white font-medium rounded-xl text-sm transition shadow-sm"
+            type="button"
+            onClick={() => {
+              setPracticeSuccess(false);
+              if (onSuccess) onSuccess();
+            }}
+            className="isl-trainer-success-dismiss"
           >
             Continue
           </button>
@@ -398,43 +582,35 @@ export function SignLanguageTrainer({
       )}
 
       {/* Main Grid: Camera Video Box vs Recognition Panel */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="isl-trainer-grid">
         {/* Left Column: Camera Feed with Overlay */}
-        <div className="lg:col-span-7 flex flex-col gap-3">
-          <div className="relative w-full aspect-video bg-[#22352E] rounded-2xl overflow-hidden shadow-inner border border-[#344934] flex items-center justify-center">
+        <div className="isl-trainer-cam-col">
+          <div className="isl-trainer-video-wrap">
             {/* Live Video Element */}
             <video
               ref={videoRef}
               autoPlay
               playsInline
               muted
-              className={`w-full h-full object-cover transform -scale-x-100 ${
-                isCameraActive ? "block" : "hidden"
-              }`}
-              onLoadedMetadata={() => {
-                if (canvasRef.current && videoRef.current) {
-                  canvasRef.current.width = videoRef.current.videoWidth || 640;
-                  canvasRef.current.height = videoRef.current.videoHeight || 480;
-                }
-              }}
+              className="isl-trainer-video"
+              style={{ display: isCameraActive ? "block" : "none" }}
             />
 
             {/* Landmark Skeleton Drawing Canvas */}
             <canvas
               ref={canvasRef}
-              className={`absolute inset-0 w-full h-full object-cover transform -scale-x-100 pointer-events-none ${
-                isCameraActive ? "block" : "hidden"
-              }`}
+              className="isl-trainer-canvas"
+              style={{ display: isCameraActive ? "block" : "none" }}
             />
 
             {/* Placeholder when camera is off */}
             {!isCameraActive && (
-              <div className="p-6 text-center text-[#EDF2E9] flex flex-col items-center gap-3">
-                <div className="w-16 h-16 rounded-full bg-[#344934] flex items-center justify-center text-3xl">
-                  📹
+              <div className="isl-trainer-placeholder">
+                <div className="isl-trainer-placeholder-icon">
+                  <CameraIcon size={32} />
                 </div>
-                <h4 className="text-[#FCFCFB] font-semibold">Webcam is currently off</h4>
-                <p className="text-xs text-[#EDF2E9]/80 max-w-xs">
+                <h4>{cameraStatus}</h4>
+                <p>
                   Click &quot;Start Camera&quot; below to begin real-time hand gesture tracking.
                 </p>
               </div>
@@ -442,65 +618,123 @@ export function SignLanguageTrainer({
 
             {/* Top Status Badges */}
             {isCameraActive && (
-              <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-                <div className="px-3 py-1 rounded-full bg-black/60 backdrop-blur text-white text-xs font-medium flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  Live Detection
+              <div className="isl-trainer-overlay">
+                <div className="isl-trainer-overlay-badge">
+                  <span className="isl-trainer-dot-pulse" />
+                  <span>Camera Active</span>
                 </div>
-                <div className="px-3 py-1 rounded-full bg-black/60 backdrop-blur text-white text-xs font-medium">
-                  {handsDetectedCount > 0
-                    ? `🖐️ Hands detected: ${handsDetectedCount}`
-                    : "🔍 Raise hand in frame"}
+                <div className="isl-trainer-overlay-badge">
+                  {handsDetectedCount > 0 ? (
+                    <>
+                      <HandIcon size={14} style={{ color: "#34D399" }} />
+                      <span>Hands: {handsDetectedCount} ({landmarkCount} pts)</span>
+                    </>
+                  ) : (
+                    <>
+                      <SearchIcon size={14} />
+                      <span>Raise hand in frame</span>
+                    </>
+                  )}
                 </div>
               </div>
             )}
           </div>
 
           {/* Camera Controls */}
-          <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="isl-trainer-controls">
             {!isCameraActive ? (
               <button
+                type="button"
                 onClick={startCamera}
-                className="flex-1 px-5 py-3 bg-[#506847] hover:bg-[#344934] text-white font-semibold rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-sm"
+                className="isl-trainer-btn-start"
               >
-                <span>📹</span> Start Camera
+                <CameraIcon size={18} />
+                <span>Start Camera</span>
               </button>
             ) : (
               <button
+                type="button"
                 onClick={stopCamera}
-                className="flex-1 px-5 py-3 bg-rose-700 hover:bg-rose-800 text-white font-semibold rounded-xl text-sm transition flex items-center justify-center gap-2"
+                className="isl-trainer-btn-stop"
               >
-                <span>⏹️</span> Stop Camera
+                <StopIcon size={18} />
+                <span>Stop Camera</span>
               </button>
             )}
 
             <button
+              type="button"
               onClick={handleClear}
-              className="px-4 py-3 bg-[#EDF2E9] hover:bg-[#E5E2DC] text-[#22352E] font-semibold rounded-xl text-sm transition flex items-center gap-2 border border-[#E5E2DC]"
+              className="isl-trainer-btn-reset"
             >
-              <span>🗑️</span> Reset
+              <ResetIcon size={16} />
+              <span>Reset</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setShowDiagnostics((prev) => !prev)}
+              className="isl-trainer-btn-reset"
+              style={{ fontSize: "0.8125rem" }}
+              title="Toggle Pipeline Diagnostics"
+            >
+              <span>{showDiagnostics ? "Hide Diagnostics" : "Diagnostics"}</span>
             </button>
           </div>
 
           {cameraError && (
-            <div className="p-3 bg-rose-50 text-rose-700 border border-rose-200 rounded-xl text-xs">
+            <div className="isl-trainer-error">
+              <strong>Camera status: </strong>
               {cameraError}
             </div>
           )}
 
-          {/* Fallback Demo Shortcuts */}
-          <div className="p-3 bg.EDF2E9/50 bg-[#EDF2E9]/40 border border-[#E5E2DC] rounded-2xl">
-            <span className="text-xs font-semibold text-[#707877] uppercase tracking-wider block mb-2">
-              Instant Demo Testing (Quick Sign Simulations)
-            </span>
-            <div className="flex flex-wrap gap-2">
-              {["HELLO", "NAMASTE", "THANK YOU", "WATER", "A", "B", "C"].map((s) => (
+          {/* Diagnostic Panel */}
+          {showDiagnostics && (
+            <div
+              style={{
+                marginTop: "0.75rem",
+                padding: "0.85rem 1rem",
+                backgroundColor: "#F7F6F3",
+                border: "1px solid #E5E2DC",
+                borderRadius: "12px",
+                fontSize: "0.8125rem",
+                lineHeight: "1.5",
+                color: "#22352E",
+              }}
+            >
+              <strong style={{ display: "block", marginBottom: "0.35rem", color: "#506847", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                ISL Pipeline Diagnostics (Development Mode)
+              </strong>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.35rem 1rem" }}>
+                <div>Camera: <strong>{isCameraActive ? "READY" : "INACTIVE"}</strong></div>
+                <div>MediaPipe: <strong>{mediaPipeReady ? "INITIALIZED" : "LOADING..."}</strong></div>
+                <div>Hands Detected: <strong>{handsDetectedCount}</strong></div>
+                <div>Landmarks: <strong>{landmarkCount} / 42</strong></div>
+                <div>Backend Service: <strong>{backendStatus}</strong></div>
+                <div>Buffer: <strong>{bufferCount} / 30 frames</strong></div>
+                <div>Inference Loop: <strong>{isPredicting ? "PREDICTING" : isCameraActive ? "READY" : "IDLE"}</strong></div>
+                <div>Last Detected: <strong>{predictionText} ({confidence}%)</strong></div>
+              </div>
+            </div>
+          )}
+
+          {/* Practice / Quick Demo Simulation */}
+          <div className="isl-trainer-demo-card">
+            <div className="isl-trainer-demo-head">
+              <span>Try with demo gestures</span>
+              <small>Instant simulation</small>
+            </div>
+            <div className="isl-trainer-demo-buttons">
+              {["A", "B", "C", "1", "2", "Hello", "Namaste", "Water", "Help", "Thank you"].map((s) => (
                 <button
                   key={s}
-                  onClick={() => triggerDemoSign(s)}
-                  className="px-2.5 py-1 bg-[#FCFCFB] hover:bg-[#EDF2E9] text-[#506847] border border-[#506847]/30 rounded-lg text-xs font-bold transition shadow-2xs"
+                  type="button"
+                  onClick={() => triggerDemoSign(s.toUpperCase())}
+                  className="isl-trainer-demo-btn"
                 >
-                  Sign &quot;{s}&quot;
+                  <strong>{s}</strong>
+                  <span>Try sign</span>
                 </button>
               ))}
             </div>
@@ -508,100 +742,165 @@ export function SignLanguageTrainer({
         </div>
 
         {/* Right Column: Real-Time Recognition Output */}
-        <div className="lg:col-span-5 flex flex-col gap-4">
+        <div className="isl-trainer-out-col">
           {/* Current Sign Detected */}
-          <div className="p-5 bg-gradient-to-br from-[#EDF2E9] to-[#FCFCFB] border border-[#E5E2DC] rounded-2xl flex flex-col gap-2 shadow-2xs">
-            <span className="text-xs font-extrabold text-[#506847] uppercase tracking-wider">
-              Detected Sign / Gesture
-            </span>
-            <div className="text-3xl font-black text-[#22352E] tracking-wide min-h-[44px] flex items-center">
+          <div className="isl-trainer-panel" style={{ backgroundColor: "#FCFCFB" }}>
+            <span className="isl-trainer-panel-title">Detected sign</span>
+            <div className="isl-trainer-detected-display">
               {predictionText}
             </div>
 
             {/* Confidence Bar */}
-            <div className="mt-2">
-              <div className="flex justify-between text-xs text-[#707877] font-semibold mb-1">
-                <span>Confidence Match</span>
-                <span>{confidence}%</span>
+            <div className="isl-trainer-conf-wrap">
+              <div className="isl-trainer-conf-header">
+                <span>Confidence:</span>
+                <strong>{confidence}%</strong>
               </div>
-              <div className="w-full h-2.5 bg-[#E5E2DC] rounded-full overflow-hidden">
+              <div className="isl-trainer-conf-track">
                 <div
-                  className="h-full bg-[#506847] transition-all duration-300"
+                  className="isl-trainer-conf-fill"
                   style={{ width: `${confidence}%` }}
                 />
               </div>
             </div>
+
+            {isCameraActive && handsDetectedCount === 0 && (
+              <p style={{ margin: "0.5rem 0 0 0", fontSize: "0.8125rem", color: "#707877", textAlign: "center" }}>
+                Place your hand clearly inside the camera frame.
+              </p>
+            )}
+            {isCameraActive && handsDetectedCount > 0 && confidence < 50 && (
+              <p style={{ margin: "0.5rem 0 0 0", fontSize: "0.8125rem", color: "#506847", textAlign: "center" }}>
+                Hand detected. Hold gesture steady to analyze...
+              </p>
+            )}
+
+            {/* Target comparison feedback */}
+            {targetSign && isCameraActive && handsDetectedCount > 0 && predictionText !== "Waiting for a sign..." && (
+              <div style={{ marginTop: "0.75rem" }}>
+                {predictionText.trim().toUpperCase() === targetSign.trim().toUpperCase() ? (
+                  <div
+                    style={{
+                      padding: "0.5rem 0.75rem",
+                      backgroundColor: "#EDF2E9",
+                      border: "1px solid #C4D3BE",
+                      borderRadius: "8px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      color: "#22352E",
+                      fontSize: "0.8125rem",
+                      fontWeight: 700,
+                    }}
+                  >
+                    <CheckIcon size={16} />
+                    <span>✓ Correct sign: {targetSign}</span>
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      padding: "0.5rem 0.75rem",
+                      backgroundColor: "#FBECE5",
+                      border: "1px solid #F1C3AF",
+                      borderRadius: "8px",
+                      color: "#9A3412",
+                      fontSize: "0.8125rem",
+                      fontWeight: 600,
+                    }}
+                  >
+                    Try again: Target is &quot;{targetSign}&quot; (detected &quot;{predictionText}&quot;)
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Two-handed sign guidance */}
+            {targetSign &&
+              ISL_TWO_HANDED_SIGNS.has(targetSign.trim().toUpperCase()) &&
+              isCameraActive &&
+              handsDetectedCount === 1 && (
+                <div
+                  style={{
+                    marginTop: "0.5rem",
+                    padding: "0.5rem 0.75rem",
+                    backgroundColor: "#FFFBEB",
+                    border: "1px solid #FDE68A",
+                    borderRadius: "8px",
+                    color: "#92400E",
+                    fontSize: "0.75rem",
+                    lineHeight: "1.4",
+                  }}
+                >
+                  <strong>Notice:</strong> &quot;{targetSign}&quot; is a two-handed sign in ISL. Place both hands inside the camera frame.
+                </div>
+              )}
           </div>
 
           {/* Accumulated Gloss Tokens */}
-          <div className="p-5 bg-[#FCFCFB] border border-[#E5E2DC] rounded-2xl flex flex-col gap-2 shadow-2xs">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-extrabold text-[#707877] uppercase tracking-wider">
-                Recognized Words (Gloss)
-              </span>
+          <div className="isl-trainer-panel">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <span className="isl-trainer-panel-title">Recognized words</span>
               <button
+                type="button"
                 onClick={() => {
                   setGlossTokens([]);
-                  setCurrentLetters("");
                 }}
-                className="text-xs text-[#506847] hover:text-[#344934] font-bold"
+                style={{ background: "none", border: "none", color: "#506847", fontSize: "0.75rem", fontWeight: 700, cursor: "pointer" }}
               >
                 Clear
               </button>
             </div>
 
-            <div className="min-h-[50px] p-3 bg-[#EDF2E9]/40 border border-[#E5E2DC] rounded-xl flex flex-wrap items-center gap-1.5 font-semibold text-[#22352E] text-sm">
-              {glossTokens.length === 0 && !currentLetters ? (
-                <span className="text-[#707877] font-normal italic text-xs">
-                  Your signed words will appear here...
+            <div className="isl-trainer-token-box">
+              {glossTokens.length === 0 ? (
+                <span className="isl-trainer-token-empty">
+                  Your detected signs will appear here.
                 </span>
               ) : (
-                <>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
                   {glossTokens.map((tok, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2.5 py-1 bg-[#506847] text-white rounded-lg text-xs font-bold"
-                    >
+                    <span key={idx} className="isl-trainer-chip-word">
                       {tok}
                     </span>
                   ))}
-                  {currentLetters && (
-                    <span className="px-2.5 py-1 bg-[#D8663F] text-white rounded-lg text-xs font-bold animate-pulse">
-                      {currentLetters}
-                    </span>
-                  )}
-                </>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Sentence Builder */}
+          <div className="isl-trainer-panel">
+            <span className="isl-trainer-panel-title">Build a sentence</span>
+
+            <div className="isl-trainer-sentence-box">
+              {sentence ? (
+                <p className="isl-trainer-sentence-text">{sentence}</p>
+              ) : (
+                <p className="isl-trainer-sentence-placeholder">Your sentence will appear here.</p>
+              )}
+              {sentence && (
+                <button
+                  type="button"
+                  onClick={() => handleSpeak(sentence)}
+                  disabled={isSpeaking}
+                  className="isl-trainer-speak-btn"
+                  title="Listen audio"
+                >
+                  <SpeakerIcon size={14} />
+                  <span>{isSpeaking ? "Playing..." : "Listen"}</span>
+                </button>
               )}
             </div>
 
             <button
+              type="button"
               onClick={generateSentence}
-              disabled={glossTokens.length === 0 && !currentLetters}
-              className="mt-1 w-full py-2.5 bg-[#506847] hover:bg-[#344934] disabled:bg-[#E5E2DC] disabled:text-[#707877] text-white font-bold rounded-xl text-xs transition shadow-sm"
+              disabled={glossTokens.length === 0}
+              className="isl-trainer-btn-build"
             >
-              Construct Sentence ✨
+              <WandIcon size={16} />
+              <span>Construct sentence</span>
             </button>
-          </div>
-
-          {/* Formatted Sentence & Audio Output */}
-          <div className="p-5 bg-[#FCFCFB] border border-[#E5E2DC] rounded-2xl shadow-sm flex flex-col gap-3">
-            <span className="text-xs font-extrabold text-[#707877] uppercase tracking-wider">
-              Translated English Sentence
-            </span>
-
-            <div className="min-h-[60px] p-3 bg-[#EDF2E9]/50 border border-[#E5E2DC] rounded-xl text-[#22352E] font-semibold text-base flex items-center justify-between">
-              <span>{sentence || "Waiting to form sentence..."}</span>
-              {sentence && (
-                <button
-                  onClick={() => handleSpeak(sentence)}
-                  disabled={isSpeaking}
-                  className="p-2 bg-[#EDF2E9] hover:bg-[#E5E2DC] text-[#506847] rounded-xl transition text-lg"
-                  title="Listen Audio"
-                >
-                  {isSpeaking ? "🔊..." : "🔊"}
-                </button>
-              )}
-            </div>
           </div>
         </div>
       </div>

@@ -13,10 +13,10 @@ export const roleLabelsByLocale: Record<Locale, {
     researcher: "Researcher",
   },
   uz: {
-    student: "Oʻquvchi",
-    parent: "Ota-ona",
-    teacher: "Pedagog",
-    researcher: "Tadqiqotchi",
+    student: "Student",
+    parent: "Parent",
+    teacher: "Teacher",
+    researcher: "Researcher",
   },
 };
 
@@ -55,7 +55,7 @@ type DemoSeeds = {
 const ruSeeds: DemoSeeds = {
   parent: {
     name: "Sarah Miller",
-    email: "demo@uquvli.local",
+    email: "demo@mosaic-learning.org",
     password: "1",
     role: "parent",
     profile: {
@@ -69,7 +69,7 @@ const ruSeeds: DemoSeeds = {
   },
   student: {
     name: "Alex Miller",
-    email: "student@uquvli.local",
+    email: "student@mosaic-learning.org",
     password: "2",
     role: "student",
     profile: {
@@ -107,7 +107,7 @@ const ruSeeds: DemoSeeds = {
   },
   teacher: {
     name: "Ms. Johnson",
-    email: "teacher@uquvli.local",
+    email: "teacher@mosaic-learning.org",
     password: "3",
     role: "teacher",
     profile: {
@@ -121,7 +121,7 @@ const ruSeeds: DemoSeeds = {
   },
   researcher: {
     name: "Dr. Rachel Brooks",
-    email: "researcher@uquvli.local",
+    email: "researcher@mosaic-learning.org",
     password: "4",
     role: "researcher",
     profile: {
@@ -134,88 +134,7 @@ const ruSeeds: DemoSeeds = {
   },
 };
 
-const uzSeeds: DemoSeeds = {
-  parent: {
-    name: "Madina Karimova",
-    email: "demo@uquvli.local",
-    password: "1",
-    role: "parent",
-    profile: {
-      childName: "Alina Karimova",
-      childClass: "3-sinf",
-      teacherName: "Olga Sergeyevna",
-      organizationName: "12-maktab",
-      supportNotes:
-        "Qisqa koʻrsatmalar, ekranda bitta savol, javobdan keyin xotirjam pauza.",
-    },
-  },
-  student: {
-    name: "Alina Karimova",
-    email: "student@uquvli.local",
-    password: "2",
-    role: "student",
-    profile: {
-      childName: "Alina Karimova",
-      childClass: "3-sinf",
-      teacherName: "Olga Sergeyevna",
-      organizationName: "12-maktab",
-      supportNotes:
-        "Katta tugmalar, qisqa matn, bir vaqtda bitta tanlov va toʻxtash mumkinligi haqida tushunarli signal.",
-      accessibilityProfile: {
-        supportType: "reading",
-        preferences: {
-          simplifiedLanguage: true,
-          largerText: true,
-          increasedSpacing: true,
-          autoSpeak: true,
-          captions: false,
-          imageDescriptions: false,
-          reducedMotion: false,
-        },
-      },
-    },
-    accessibilityProfile: {
-      supportType: "reading",
-      preferences: {
-        simplifiedLanguage: true,
-        largerText: true,
-        increasedSpacing: true,
-        autoSpeak: true,
-        captions: false,
-        imageDescriptions: false,
-        reducedMotion: false,
-      },
-    },
-  },
-  teacher: {
-    name: "Olga Sergeyevna",
-    email: "teacher@uquvli.local",
-    password: "3",
-    role: "teacher",
-    profile: {
-      childName: "Alina Karimova",
-      childClass: "3-sinf",
-      teacherName: "Olga Sergeyevna",
-      organizationName: "12-maktab",
-      supportNotes:
-        "Mustaqillikni, javob tezligini va keyingi darsdan oldin koʻrsatmani qayta tushuntirish zarurligini qayd etish.",
-    },
-  },
-  researcher: {
-    name: "Olesya Markova",
-    email: "researcher@uquvli.local",
-    password: "4",
-    role: "researcher",
-    profile: {
-      childName: "",
-      childClass: "",
-      teacherName: "",
-      organizationName:
-        "A.I. Gertsen nomidagi RDPU ning Toshkent shahridagi filiali",
-      supportNotes: "",
-    },
-  },
-};
+const uzSeeds: DemoSeeds = ruSeeds;
 
 export const demoUserSeedsByLocale: Record<Locale, DemoSeeds> = {
   ru: ruSeeds,
@@ -268,36 +187,7 @@ const ruLoginProfiles: DemoLoginProfile[] = [
   },
 ];
 
-const uzLoginProfiles: DemoLoginProfile[] = [
-  {
-    code: "1",
-    password: "1",
-    label: "Ota-ona",
-    description: "Mashgʻulotlar nazorati, oila, yutuqlar va pedagog bilan aloqa.",
-    user: uzSeeds.parent,
-  },
-  {
-    code: "2",
-    password: "2",
-    label: "Oʻquvchi",
-    description: "Sodda rejim: katta dars tugmasi, qisqa qadamlar va yordam.",
-    user: uzSeeds.student,
-  },
-  {
-    code: "3",
-    password: "3",
-    label: "Pedagog",
-    description: "Oʻquvchilar, kuzatuvlar, darslar va guruh dinamikasi.",
-    user: uzSeeds.teacher,
-  },
-  {
-    code: "4",
-    password: "4",
-    label: "Tadqiqotchi",
-    description: "Barcha maktablar, oʻqituvchilar, oʻquvchilar, tahlil va maʼlumotlarni eksport qilish.",
-    user: uzSeeds.researcher,
-  },
-];
+const uzLoginProfiles: DemoLoginProfile[] = ruLoginProfiles;
 
 export const demoLoginProfilesByLocale: Record<Locale, DemoLoginProfile[]> = {
   ru: ruLoginProfiles,

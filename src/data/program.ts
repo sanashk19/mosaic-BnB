@@ -342,6 +342,16 @@ export type WashingMachineTrainerV2 = {
   feedbackWrong: string;
 };
 
+export type SignLanguageTrainerData = {
+  type: "sign-language";
+  targetSign: string;
+  title?: string;
+  subtitle?: string;
+  task?: string;
+  feedbackCorrect?: string;
+  feedbackWrong?: string;
+};
+
 export type LessonTrainer =
   | TelegramTrainer
   | WhatsappTrainer
@@ -381,7 +391,8 @@ export type LessonTrainer =
   | AtmTrainer
   | CreditContractTrainer
   | FinalQuestTrainer
-  | WashingMachineTrainerV2;
+  | WashingMachineTrainerV2
+  | SignLanguageTrainerData;
 
 export type LessonStageBlock = {
   duration: string;
@@ -463,9 +474,9 @@ export const programModules: ProgramModule[] = [
     hours: "4 hours",
     lessonCount: 3,
     description: "Learn Indian Sign Language (ISL) alphabets, numbers, and common words with real-time AI webcam gesture recognition and two-way speech translation.",
-    image: "/uzbek-images/shopping-market.jpg",
+    image: "/generated-images/track-isl-studio.jpg",
     imageAlt: "Indian Sign Language Studio",
-    imageCredit: "SanketSetu Inclusive Research",
+    imageCredit: "Mosaic Inclusive Learning",
     imageSourceUrl: "/sign-language",
     knowledge: [
       "ISL Alphabets (A-Z) and Number gestures (0-9)",
@@ -484,8 +495,17 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "Master ISL finger-spelling alphabets and number signs with live camera feedback.",
         intro: "In this interactive lesson, you will practice finger-spelling the alphabets A to Z and numbers 0 to 9 using real-time webcam gesture recognition.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-isl-studio.jpg",
         imageAlt: "ISL Alphabets & Numbers Practice",
+        trainer: {
+          type: "sign-language",
+          targetSign: "A",
+          title: "Practice Sign A (अक्षर ए)",
+          subtitle: "Form the letter A gesture in front of the camera to verify your sign.",
+          task: "Hold a closed fist with your thumb upright alongside fingers.",
+          feedbackCorrect: "Awesome! Sign A recognized accurately.",
+          feedbackWrong: "Adjust your hand position and lighting, then try again."
+        },
         goals: [
           "Learn finger positions for letters A-Z",
           "Practice number counting gestures 0-9",
@@ -532,9 +552,9 @@ export const programModules: ProgramModule[] = [
     hours: "2 hours",
     lessonCount: 2,
     description: "Two diagnostic lessons - ascertaining and control measurements of functional digital literacy (FDL).",
-    image: "/uzbek-images/health-clinic.jpg",
+    image: "/generated-images/track-diagnostic-skills.jpg",
     imageAlt: "Digital Literacy Diagnostic",
-    imageCredit: "Dissertation Research Document",
+    imageCredit: "Mosaic Inclusive Learning",
     imageSourceUrl: "",
     knowledge: [
       "What is functional digital literacy",
@@ -553,7 +573,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "Introductory lesson - diagnostics. The platform looks at how the child copes with digital tasks before the start of the course.",
         intro: "This is the first introduction lesson. The child goes through short tasks: reads the text on the screen, clicks on icons, selects answers. There are no grades here - we just look at the starting level so we can then see what he has learned during the school year.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-diagnostic-skills.jpg",
         imageAlt: "Illustration for the lesson “Personal hygiene for teenagers”",
         goals: [
           "Understand what personal hygiene is and why it is needed in life.",
@@ -733,7 +753,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "Test lesson - final diagnostics. The platform looks at what the child has learned over the year.",
         intro: "The final diagnostic is the same type as in the very first lesson. Comparing the results “before” and “after” shows how much the child’s digital literacy has grown over the school year.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-diagnostic-skills.jpg",
         imageAlt: "Illustration for the lesson “Rules and techniques for keeping the body clean and healthy”",
         goals: [
           "Understand what cleanliness and health of the body is and why it is needed in life.",
@@ -915,9 +935,9 @@ export const programModules: ProgramModule[] = [
     hours: "8 hours",
     lessonCount: 8,
     description: "Eight lessons where the student works with digital health objects: wardrobe, shampoo, skin questionnaire, weather forecast, label, volume control and digital thermometer.",
-    image: "/uzbek-images/health-clinic.jpg",
+    image: "/generated-images/track-digital-health.jpg",
     imageAlt: "Digital Health - Personal Care and Medical Devices",
-    imageCredit: "Mosaic",
+    imageCredit: "Mosaic Inclusive Learning",
     imageSourceUrl: "",
     knowledge: [
       "What does a digital label look like and what are the main places on it?",
@@ -936,7 +956,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We learn to choose clothes for the situation: going to school is one thing, going on a visit is another.",
         intro: "On the screen is a wardrobe with different things. The child puts together an outfit: what to wear to school, what to wear on a visit. The platform tells you if something is not suitable for the occasion. This is how the habit of dressing appropriately is formed.",
-        image: "/uzbek-images/health-clinic.jpg",
+        image: "/generated-images/track-digital-health.jpg",
         imageAlt: "Illustration for the lesson “Appearance of young people”",
         goals: [
           "Understand what appearance is and why it is needed in life.",
@@ -1117,7 +1137,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We learn to determine your hair type and choose the right shampoo according to the mark on the package.",
         intro: "The child determines from the pictures what type of hair he has: dry, oily or normal. Then, on the display screen, he selects a shampoo with a suitable mark and reads the label. This is a typical consumer skill - to choose a product “for yourself”.",
-        image: "/uzbek-images/health-clinic.jpg",
+        image: "/generated-images/track-digital-health.jpg",
         imageAlt: "Illustration for the lesson “Main hair types: characteristics and care features”",
         goals: [
           "Understand what hair types are and why they are needed in life.",
@@ -1298,7 +1318,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We go through the digital questionnaire “What is your skin type” and read the care instructions.",
         intro: "The child answers simple questions about the skin. The platform itself determines the type and shows short care steps. This introduces how questionnaires work in health apps.",
-        image: "/uzbek-images/health-clinic.jpg",
+        image: "/generated-images/track-digital-health.jpg",
         imageAlt: "Illustration for the lesson “Types of facial skin and features of their care”",
         goals: [
           "Understand what skin types are and why they are needed in life.",
@@ -1479,7 +1499,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We read the weather forecast and decide whether a hat and sunscreen are needed today.",
         intro: "On the screen there is a simple forecast: temperature, sun or cloud icon, UV index. According to the rule “sunny → protection needed,” the child decides what to take with him. Phone forecasting is a massive skill that everyone uses.",
-        image: "/uzbek-images/health-clinic.jpg",
+        image: "/generated-images/track-digital-health.jpg",
         imageAlt: "Illustration for the lesson “The effect of the sun on the skin”",
         goals: [
           "Understand what the sun and skin are and why they are needed in life.",
@@ -1660,7 +1680,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We learn to read the product label: where is the name, where is the expiration date, where is the method of use.",
         intro: "On the screen is a package of cream or shampoo. The child finds three key places on the label and decides: the product can be used or it has expired. The main rule is to always check the expiration date.",
-        image: "/uzbek-images/health-clinic.jpg",
+        image: "/generated-images/track-digital-health.jpg",
         imageAlt: "Illustration for the lesson “Cosmetics and their use”",
         goals: [
           "Understand what cosmetics are and why they are needed in life.",
@@ -1841,7 +1861,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We go through morning skin care step by step - like a checklist on a platform.",
         intro: "A simple three-step checklist: wash, apply toner, apply cream. The child marks each step completed. This is how the ability to work with step-by-step digital instructions is formed.",
-        image: "/uzbek-images/health-clinic.jpg",
+        image: "/generated-images/track-digital-health.jpg",
         imageAlt: "Illustration for the lesson “Using cosmetic skin care products”",
         goals: [
           "Understand what skin care is and why it is needed in life.",
@@ -2022,7 +2042,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We adjust the volume to a safe level so as not to harm your hearing.",
         intro: "Volume slider with three zones: green (safe), yellow (careful), red (harmful). The child puts the sound in a safe zone. This is a rule for protecting your hearing when using headphones and a player.",
-        image: "/uzbek-images/health-clinic.jpg",
+        image: "/generated-images/track-digital-health.jpg",
         imageAlt: "Illustration for the lesson “Hearing Hygiene”",
         goals: [
           "Understand what hearing hygiene is and why it is needed in life.",
@@ -2203,7 +2223,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We read the readings of a digital thermometer and decide whether it’s normal or if we need to tell an adult.",
         intro: "A digital thermometer shows a number on the screen. The child compares the readings with the scale: decreased, normal, increased. If the temperature is high, call an adult. The device is real and in demand in every family.",
-        image: "/uzbek-images/health-clinic.jpg",
+        image: "/generated-images/track-digital-health.jpg",
         imageAlt: "Illustration for the lesson “Types of thermometers. Rules for measuring body temperature\"",
         goals: [
           "Understand what a thermometer is and why it is needed in life.",
@@ -2386,9 +2406,9 @@ export const programModules: ProgramModule[] = [
     hours: "10 hours",
     lessonCount: 10,
     description: "Ten lessons on how digital tools can help you manage your household: forecasted clothing, clothing label, washing machine, product dosage, recipe, timer, serving, family income and expenses.",
-    image: "/uzbek-images/shopping-market.jpg",
+    image: "/generated-images/track-home-economics.jpg",
     imageAlt: "Digital economy of everyday life - clothing, food, budget",
-    imageCredit: "Mosaic",
+    imageCredit: "Mosaic Inclusive Learning",
     imageSourceUrl: "",
     knowledge: [
       "How to Read Digital Clothing Tags and Instructions",
@@ -2407,7 +2427,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We read the forecast for the week and collect a set of clothes for every day.",
         intro: "On the screen is the weather for 5–7 days. The child watches the temperature and precipitation and collects a suitable set from his wardrobe for each day. The ability to “dress according to the weather” is basic for independence.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-home-economics.jpg",
         imageAlt: "Illustration for the lesson “Seasonal clothing and its characteristics”",
         goals: [
           "Understand what seasonal clothing is and why it is needed in life.",
@@ -2588,7 +2608,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We learn to read the care symbols on a clothing label—where you can wash it and where you can’t.",
         intro: "On the label there are pictograms: a bowl of water, an iron, a triangle. The child recognizes the icons and determines whether the item can be washed in a machine or only by hand. This will protect clothes from damage.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-home-economics.jpg",
         imageAlt: "Illustration for the lesson “Washing silk items by hand”",
         goals: [
           "Understand what washing silk is and why it is needed in life.",
@@ -2769,7 +2789,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We start the wash on the washing machine: select the program and press “Start”.",
         intro: "On the screen is a real washing machine panel with programs (wool, cotton, synthetics). The child selects a program for the item and presses “Start”. This lesson is exemplary: all 5 components of digital literacy work here.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-home-economics.jpg",
         imageAlt: "Illustration for the lesson “Types of washing machines and their use”",
         goals: [
           "Understand what a washing machine is and why it is needed in life.",
@@ -2950,7 +2970,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We find on the powder packaging the required dosage for a specific wash.",
         intro: "There is a table on the package: how much powder is needed for 3 kg, 5 kg, 8 kg of laundry. The child finds his line and determines the number of spoons. This is a typical ability to read a table of instructions.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-home-economics.jpg",
         imageAlt: "Illustration for the lesson “Washing powders and detergents and their use”",
         goals: [
           "Understand what detergents are and why you need them in life.",
@@ -3131,7 +3151,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We assemble a dinner menu from dish cards with digital clues.",
         intro: "There are dish cards on the screen. Each one has a hint: healthy, heavy, sweet. The child collects a dinner menu for the family, choosing suitable dishes. Learns to make decisions based on prompts.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-home-economics.jpg",
         imageAlt: "Illustration for the lesson “Healthy dinner for the whole family”",
         goals: [
           "Understand what a healthy dinner is and why it is needed in life.",
@@ -3312,7 +3332,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "Reading the digital recipe for cutlets: ingredients, quantities, cooking steps.",
         intro: "On the screen is a recipe for cutlets. The child looks for three blocks in it: a list of products, grams and pieces, a sequence of steps. This ability to read structured text with numbers is the basis for any recipe.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-home-economics.jpg",
         imageAlt: "Illustration for the lesson “Cutlets”",
         goals: [
           "Understand what cutlets are and why you need them in life.",
@@ -3493,7 +3513,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "Prepare the pie step by step and use a digital timer.",
         intro: "Each recipe step is a separate screen. During the waiting stages (dough, baking), a digital timer starts. When it rings, it’s time to move on. This is how you master the ability to work with a timer in cooking.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-home-economics.jpg",
         imageAlt: "Illustration for the lesson “Cooking apple pie”",
         goals: [
           "Understand what apple pie is and why it is needed in life.",
@@ -3674,7 +3694,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We arrange the cutlery on a digital table setting chart.",
         intro: "The diagram shows where the plate, fork, knife, spoon, and glass should be. The child arranges the cutlery according to the pattern. This is work with a sign-symbolic plan - it can be transferred to any schemes in everyday life.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-home-economics.jpg",
         imageAlt: "Illustration for the lesson “Setting the table for dinner”",
         goals: [
           "Understand what serving is and why it is needed in life.",
@@ -3855,7 +3875,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We enter the sources of family income into the digital form of the budget and see the result.",
         intro: "A simple form with fields: mom’s salary, dad’s salary, other income. The child enters the amounts and the platform itself calculates the total. This is an introduction to how online calculators and forms work.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-home-economics.jpg",
         imageAlt: "Illustration for the lesson “Family budget. Sources of income\"",
         goals: [
           "Understand what a family budget is and why it is needed in life.",
@@ -4036,7 +4056,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We fill out the table of expenses and compare them with income.",
         intro: "Table: food, utilities, transport, clothing. The child enters the amount of expenses and sees whether the family is within the budget. This is how the idea of ​​home planning is formed.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-home-economics.jpg",
         imageAlt: "Illustration for the lesson “Family Expenses”",
         goals: [
           "Understand what expenses are and why they are needed in life.",
@@ -4219,9 +4239,9 @@ export const programModules: ProgramModule[] = [
     hours: "3 hours",
     lessonCount: 3,
     description: "Three lessons: a digital guide to modes of transport, reading a station board, and a multi-step scenario for buying a ticket online.",
-    image: "/uzbek-images/shopping-market.jpg",
+    image: "/generated-images/track-mobility-transport.jpg",
     imageAlt: "Digital transport - directory, scoreboard, tickets",
-    imageCredit: "Mosaic",
+    imageCredit: "Mosaic Inclusive Learning",
     imageSourceUrl: "",
     knowledge: [
       "What types of transport are there?",
@@ -4240,7 +4260,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We look for the desired type of transport in the digital directory and read the information card.",
         intro: "Directory of types of transport: bus, train, metro, taxi, plane. The child looks for the desired item and reads a short card. This is the ability to use search in reference books and applications.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-mobility-transport.jpg",
         imageAlt: "Illustration for the lesson “Types of transport”",
         goals: [
           "Understand what types of transport are and why they are needed in life.",
@@ -4421,7 +4441,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We read the digital display of the station and find the desired train, time and platform.",
         intro: "Imitation of a real station board. The child looks for a train in the list by direction and time and determines the platform. A train station display board is a digital object that you will definitely encounter in life.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-mobility-transport.jpg",
         imageAlt: "Illustration for the lesson “Railway station help desk, train schedule”",
         goals: [
           "Understand what a station board is and why it is needed in life.",
@@ -4602,7 +4622,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We buy a ticket online: select the direction, date, place and confirm the purchase.",
         intro: "Multi-step scenario for buying a ticket: choosing a route, date, place, payment. The child goes through all stages under the supervision of the teacher. It is an independent and meaningful digital skill to buy a ticket.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-mobility-transport.jpg",
         imageAlt: "Illustration for the lesson “Procedure for purchasing tickets and returning them”",
         goals: [
           "Understand what buying a ticket is and why you need it in life.",
@@ -4785,9 +4805,9 @@ export const programModules: ProgramModule[] = [
     hours: "3 hours",
     lessonCount: 3,
     description: "Three lessons: tracking a package by track number, working with the phone (call and SMS) and a key lesson in the study - sending a message in the messenger.",
-    image: "/uzbek-images/shopping-market.jpg",
+    image: "/generated-images/track-communication.jpg",
     imageAlt: "Digital communication - parcels, telephone, messenger",
-    imageCredit: "Mosaic",
+    imageCredit: "Mosaic Inclusive Learning",
     imageSourceUrl: "",
     knowledge: [
       "What is a track number and how does it work?",
@@ -4806,7 +4826,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We track the parcel using the track number and find out where it is now.",
         intro: "On the tracking page you need to enter the parcel number. After checking, the following statuses appear: shipped, on the way, delivered. A modern family receives parcels regularly - this is something you need to be able to do.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-communication.jpg",
         imageAlt: "Illustration for the lesson “Postage: letters, parcels, money orders”",
         goals: [
           "Understand what parcels are and why they are needed in life.",
@@ -4987,7 +5007,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "Learning to use the phone: call, SMS, contact list.",
         intro: "There is a phone on the screen. The child selects a contact, makes a call or sends a short message. He also learns number 103 - in case of calling an ambulance.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-communication.jpg",
         imageAlt: "Illustration for the lesson “Rules for using modern means of communication”",
         goals: [
           "Understand what a call and SMS are and why they are needed in life.",
@@ -5168,7 +5188,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We send a message in the messenger: select a contact and write politely.",
         intro: "On the screen is a chat in a messenger like Telegram or WhatsApp. The child chooses what to answer to mom or teacher and sends a message. This is a key research skill - correspondence in the messenger as a modern form of communication.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-communication.jpg",
         imageAlt: "Illustration for the lesson “Internet sites and applications (email, Telegram, WhatsApp)”",
         goals: [
           "Understand what messengers are and why they are needed in life.",
@@ -5351,9 +5371,9 @@ export const programModules: ProgramModule[] = [
     hours: "1 hour",
     lessonCount: 1,
     description: "A lesson that purposefully forms the security component of the FCG - etiquette and safety on the Internet.",
-    image: "/uzbek-images/shopping-market.jpg",
+    image: "/generated-images/track-online-safety.jpg",
     imageAlt: "Digital Security - Online Behavior",
-    imageCredit: "Mosaic",
+    imageCredit: "Mosaic Inclusive Learning",
     imageSourceUrl: "",
     knowledge: [
       "What is personal data and why it should not be disclosed",
@@ -5372,7 +5392,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We learn to distinguish safe situations on the Internet from dangerous ones and react correctly.",
         intro: "On the screen there are cards with situations: a stranger asks for an address, a friend invites you to play, someone sent a strange link. The child chooses safe behavior in every situation. This is a defensive skill for life online.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-online-safety.jpg",
         imageAlt: "Illustration for the lesson “Rules of behavior and etiquette for communicating on the Internet”",
         goals: [
           "Understand what online security is and why it is needed in life.",
@@ -5555,9 +5575,9 @@ export const programModules: ProgramModule[] = [
     hours: "3 hours",
     lessonCount: 3,
     description: "Three lessons: filling out an electronic application on the government services portal, safe operation of an ATM and PIN code protection, critical reading of a digital loan agreement.",
-    image: "/uzbek-images/shopping-market.jpg",
+    image: "/generated-images/track-public-services.jpg",
     imageAlt: "Digital government services - portal, ATM, contract",
-    imageCredit: "Mosaic",
+    imageCredit: "Mosaic Inclusive Learning",
     imageSourceUrl: "",
     knowledge: [
       "What is a public services portal and why is it needed?",
@@ -5576,7 +5596,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We submit an electronic application on the government services portal step by step.",
         intro: "Public services portal: the child selects a service (for example, a certificate of family composition) and fills out an electronic form. This is how he gets acquainted with the portal where most matters with the state are resolved today.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-public-services.jpg",
         imageAlt: "Illustration for the lesson “Rules for citizens to apply to government bodies”",
         goals: [
           "Understand what public services are and why they are needed in life.",
@@ -5757,7 +5777,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We withdraw money from an ATM: insert the card, enter the PIN code, select the amount, take the card and money.",
         intro: "There is an ATM on the screen. The child goes through all five steps of withdrawing money and always learns to cover the keyboard with his hand when entering the PIN code. This is safe training for a real operation that the graduate will have to face on their own.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-public-services.jpg",
         imageAlt: "Illustration for the lesson “Sberbank. Main functions of the bank\"",
         goals: [
           "Understand what an ATM is and why it is needed in life.",
@@ -5938,7 +5958,7 @@ export const programModules: ProgramModule[] = [
         duration: "1 hour",
         summary: "We read the loan agreement and find key terms in it - rate and term.",
         intro: "Simplified text of the contract. The child is looking for three important points: loan amount, interest rate, term. Learning to find key information in a long document is a typical defensive skill.",
-        image: "/uzbek-images/shopping-market.jpg",
+        image: "/generated-images/track-public-services.jpg",
         imageAlt: "Illustration for the lesson “Credit. Main types of loans\"",
         goals: [
           "Understand what a loan is and why it is needed in life.",

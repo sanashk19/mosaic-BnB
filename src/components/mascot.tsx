@@ -22,9 +22,6 @@ export function Mascot({ message, mood = "happy", variant = "inline" }: MascotPr
 
   return (
     <div className={`mascot mascot--${variant} mascot--${mood}`} role="status" aria-live="polite">
-      <div className="mascot-bubble">
-        <p>{message}</p>
-      </div>
       <div className="mascot-portrait" aria-hidden="true">
         <span className="mascot-hand-wave mascot-hand-wave--one" />
         <span className="mascot-hand-wave mascot-hand-wave--two" />
@@ -32,15 +29,19 @@ export function Mascot({ message, mood = "happy", variant = "inline" }: MascotPr
           className="mascot-image"
           src={src}
           alt=""
-          width={421}
-          height={1000}
-          sizes="120px"
+          width={72}
+          height={100}
+          sizes="72px"
           loading={loading}
           fetchPriority={loading === "eager" ? "high" : "auto"}
           decoding="async"
           unoptimized
+          style={{ maxHeight: "64px", width: "auto", objectFit: "contain" }}
           onError={() => setSrc((current) => (current === MASCOT_SVG ? current : MASCOT_SVG))}
         />
+      </div>
+      <div className="mascot-bubble">
+        <p>{message}</p>
       </div>
     </div>
   );

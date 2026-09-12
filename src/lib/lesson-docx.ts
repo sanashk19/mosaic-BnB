@@ -108,7 +108,7 @@ const dict = {
     correctAnswer: "Correct answer",
     question: "Question",
     options: "Options",
-    footer: "MOSAIC. SBO program for children with F70",
+    footer: "MOSAIC. Adaptive Life-Skills Program",
     header: "MOSAIC | Lesson summary",
     page: "Page",
     plannedSubjectDefault: (title: string) =>`The student understands the topic "${title}” and applies it in a simple everyday situation.`,
@@ -394,8 +394,8 @@ function buildAutoMethodology(
       ? "3. Kabinetdagi qoidalarni oʻqish"
       : "3. Reading the rules in the office",
     teacherSays: isUz
-      ? "Endi oʻz kabinetingizni oching va katta «Boshlash» tugmasini bosing. Maskot Dilnoza sizni boshlab boradi."
-      : "Now open your account and click the big “Get Started” button. Mascot Dilnoza will guide you.",
+      ? "Endi oʻz kabinetingizni oching va katta «Boshlash» tugmasini bosing. Maskot Aanya sizni boshlab boradi."
+      : "Now open your account and click the big “Get Started” button. Mascot Aanya will guide you.",
     teacherDoes: isUz
       ? [
           "Sinf uchun darsni ochish («Darslar» boʻlimidagi «Sinfga ochish» tugmasi).",

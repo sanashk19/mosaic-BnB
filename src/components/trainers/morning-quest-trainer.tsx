@@ -162,13 +162,13 @@ const dict: Locales<{
     calendarEvents: [
       { time: "08:30", subject: "Mathematics" },
       { time: "10:10", subject: "Physical education", highlight: true },
-      { time: "11:50", subject: "Russian language" },
+      { time: "11:50", subject: "Language Arts" },
     ],
     calendarQuestion: "Which lesson requires special clothing?",
     calendarOptions: [
       { label: "Mathematics" },
       { label: "Physical education" },
-      { label: "Russian language" },
+      { label: "Language Arts" },
     ],
     wardrobeTask: "Open the closet. Take what you need for physical education.",
     wardrobeHint: "For physical education you need a T-shirt and shorts - a sports uniform.",

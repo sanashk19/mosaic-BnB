@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { MicIcon, StopIcon, SpeakerIcon, HandIcon, SparkleIcon } from "@/components/isl-icons";
 
 interface SignVisualItem {
   token: string;
@@ -179,9 +180,10 @@ export function SignLanguageStt() {
       {/* Header */}
       <div className="border-b border-[#E5E2DC] pb-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#EDF2E9] text-[#506847] rounded-full text-xs font-semibold uppercase tracking-wider mb-2 border border-[#E5E2DC]">
-          <span>🎤 Speech & Text to ISL Sign Converter</span>
+          <MicIcon className="w-3.5 h-3.5" />
+          <span>Speech &amp; Text to ISL Sign Converter</span>
         </div>
-        <h2 className="text-2xl font-bold text-[#22352E] tracking-tight">
+        <h2 className="text-2xl font-bold font-manrope text-[#22352E] tracking-tight">
           Two-Way Communication Studio
         </h2>
         <p className="text-sm text-[#707877] mt-1">
@@ -201,7 +203,7 @@ export function SignLanguageStt() {
             <select
               value={targetLang}
               onChange={(e) => setTargetLang(e.target.value)}
-              className="w-full p-3 bg-[#EDF2E9]/40 border border-[#E5E2DC] rounded-xl text-sm font-medium focus:ring-2 focus:ring-[#506847] text-[#22352E]"
+              className="w-full p-3 bg-[#FCFCFB] border border-[#E5E2DC] rounded-xl text-sm font-medium focus:ring-2 focus:ring-[#506847] text-[#22352E]"
             >
               <option value="en">English</option>
               <option value="hi">Hindi (हिंदी)</option>
@@ -217,14 +219,23 @@ export function SignLanguageStt() {
           <div className="space-y-2">
             <button
               onClick={toggleRecording}
-              className={`w-full py-4 rounded-2xl font-bold text-sm transition flex items-center justify-center gap-3 shadow-md ${
+              className={`w-full py-3.5 rounded-xl font-bold text-sm transition flex items-center justify-center gap-2 shadow-sm ${
                 isRecording
                   ? "bg-rose-700 hover:bg-rose-800 text-white animate-pulse"
                   : "bg-[#506847] hover:bg-[#344934] text-white"
               }`}
             >
-              <span className="text-xl">{isRecording ? "🔴" : "🎙️"}</span>
-              <span>{isRecording ? "Stop Recording" : "Start Microphone"}</span>
+              {isRecording ? (
+                <>
+                  <StopIcon className="w-4 h-4" />
+                  <span>Stop Recording</span>
+                </>
+              ) : (
+                <>
+                  <MicIcon className="w-4 h-4" />
+                  <span>Start Microphone</span>
+                </>
+              )}
             </button>
             <p className="text-xs text-[#707877] text-center font-medium">{speechStatus}</p>
           </div>
@@ -242,7 +253,7 @@ export function SignLanguageStt() {
                     setInputText(phrase);
                     generateSignVisuals(phrase);
                   }}
-                  className="px-3 py-1.5 bg-[#FCFCFB] hover:bg-[#EDF2E9] text-[#506847] border border-[#506847]/30 rounded-xl text-xs font-semibold transition"
+                  className="px-3 py-1.5 bg-[#FCFCFB] hover:bg-[#EDF2E9] text-[#506847] border border-[#506847]/30 rounded-xl text-xs font-semibold transition shadow-2xs"
                 >
                   {phrase}
                 </button>
@@ -263,28 +274,30 @@ export function SignLanguageStt() {
                 value={inputText}
                 onChange={handleInputChange}
                 placeholder="Type a sentence or click Start Microphone..."
-                className="w-full pl-4 pr-12 py-3 bg-[#EDF2E9]/30 border border-[#E5E2DC] rounded-xl text-base font-semibold text-[#22352E] focus:outline-none focus:ring-2 focus:ring-[#506847]"
+                className="w-full pl-4 pr-24 py-3 bg-white border border-[#E5E2DC] rounded-xl text-sm font-semibold text-[#22352E] focus:outline-none focus:ring-2 focus:ring-[#506847]"
               />
               {inputText && (
                 <button
                   onClick={handleSpeak}
                   disabled={isSpeaking}
-                  className="absolute right-2 top-2 p-1.5 bg-[#EDF2E9] hover:bg-[#E5E2DC] text-[#506847] rounded-lg text-lg transition"
+                  className="absolute right-2 top-2 px-2.5 py-1 bg-[#EDF2E9] hover:bg-[#E5E2DC] text-[#506847] rounded-lg text-xs font-semibold transition flex items-center gap-1.5"
                   title="Speak out loud"
                 >
-                  🔊
+                  <SpeakerIcon className="w-3.5 h-3.5" />
+                  <span>{isSpeaking ? "Playing..." : "Speak"}</span>
                 </button>
               )}
             </div>
           </div>
 
           {/* Results Summary Box */}
-          <div className="p-4 bg-[#EDF2E9]/60 border border-[#E5E2DC] rounded-2xl space-y-2">
+          <div className="p-4 bg-[#EDF2E9]/50 border border-[#E5E2DC] rounded-2xl space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-[#506847] uppercase tracking-wider">
-                Recognized Words Count
+              <span className="text-xs font-bold text-[#506847] uppercase tracking-wider flex items-center gap-1.5">
+                <SparkleIcon className="w-3.5 h-3.5" />
+                <span>Recognized Words Count</span>
               </span>
-              <span className="text-xs font-extrabold px-2.5 py-0.5 bg-[#506847] text-white rounded-full">
+              <span className="text-xs font-bold px-2.5 py-0.5 bg-[#506847] text-white rounded-full">
                 {signVisuals.length} ISL signs
               </span>
             </div>
@@ -298,8 +311,9 @@ export function SignLanguageStt() {
       {/* ISL Visual Sign Sequence Cards */}
       <div className="space-y-3 pt-4 border-t border-[#E5E2DC]">
         <div className="flex items-center justify-between">
-          <h3 className="text-base font-bold text-[#22352E] flex items-center gap-2">
-            <span>🤟</span> Translated ISL Sign Sequence
+          <h3 className="text-base font-bold font-manrope text-[#22352E] flex items-center gap-2">
+            <HandIcon className="w-4 h-4 text-[#506847]" />
+            <span>Translated ISL Sign Sequence</span>
           </h3>
           {signVisuals.length > 0 && (
             <button

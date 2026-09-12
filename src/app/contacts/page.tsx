@@ -4,77 +4,133 @@ import { getLocale } from "@/lib/i18n";
 
 const dict = {
   ru: {
-    title: "Contacts",
-    eyebrow: "Contacts",
-    heroHeading: "Communication with support, platform team and partners.",
+    title: "Contact Mosaic",
+    badge: "Contact Mosaic",
+    heroHeading: "Let's make learning more inclusive, together.",
     heroLead:
-      "Select the appropriate channel: help with access, questions about the office, connecting a school or a partnership offer.",
-    heroAlt: "An adult helps a child use a digital service",
+      "Have a question about Mosaic, accessibility, school partnerships or the learning experience? We'd love to hear from you.",
+    ctaEmail: "Email us",
+    heroAlt: "Educator and learners communicating in an inclusive classroom setting",
     cards: [
       {
-        title: "User support",
-        value: "support@uquvli.uz",
-        note: "Questions about access, accounts and account operation.",
+        id: "support",
+        title: "User Support",
+        accentClass: "contact-card--lavender",
+        email: "sanashk019@gmail.com",
+        note: "Questions about Mosaic, accessibility, learning tools or the prototype.",
+        icon: (
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
+          </svg>
+        ),
       },
       {
-        title: "Phone",
-        value: "+998 90 000-00-00",
-        note: "Weekday communications for families, educators and centers.",
-      },
-      {
+        id: "partnerships",
         title: "Partnerships",
-        value: "schools@uquvli.uz",
-        note: "Connecting schools, NGOs, centers and pilot sites.",
+        accentClass: "contact-card--mint",
+        email: "sanashk019@gmail.com",
+        note: "Schools, educators, organizations and accessibility initiatives.",
+        icon: (
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        ),
+      },
+      {
+        id: "inquiries",
+        title: "Inquiries",
+        accentClass: "contact-card--peach",
+        email: "sanashk019@gmail.com",
+        note: "Questions about Mosaic and the learning platform.",
+        icon: (
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        ),
       },
     ],
-    howEyebrow: "How to write",
+    howEyebrow: "How to reach us",
     howHeading:
-      "To get a response faster, send a short message using structure.",
+      "To get a response faster, send a short message with your context.",
     steps: [
-      "Describe who you are: family, teacher, school, center or partner.",
-      "Briefly indicate the task: access, implementation, consultation, documents.",
-      "Leave a convenient communication channel so that the team will return with an answer.",
+      "Describe who you are: family, educator, school, center or partner.",
+      "Briefly indicate your question or interest: curriculum, accessibility, or classroom pilot.",
+      "Send us an email at sanashk019@gmail.com and we will respond promptly.",
     ],
     docsTitle: "Documents",
-    docsTerms: "User Agreement",
+    docsTerms: "Terms of Service",
     docsPrivacy: "Privacy Policy",
     docsCookies: "Cookies",
   },
   uz: {
-    title: "Aloqa",
-    eyebrow: "Aloqa",
-    heroHeading: "Qoʻllab-quvvatlash, platforma jamoasi va hamkorlar bilan aloqa.",
+    title: "Contact Mosaic",
+    badge: "Contact Mosaic",
+    heroHeading: "Let's make learning more inclusive, together.",
     heroLead:
-      "Mos kanalni tanlang: kirish boʻyicha yordam, kabinetga oid savollar, maktabni ulash yoki hamkorlik taklifi.",
-    heroAlt: "Katta yoshli odam bolaga raqamli xizmatdan foydalanishga yordam bermoqda",
+      "Have a question about Mosaic, accessibility, school partnerships or the learning experience? We'd love to hear from you.",
+    ctaEmail: "Email us",
+    heroAlt: "Educator and learners communicating in an inclusive classroom setting",
     cards: [
       {
-        title: "Foydalanuvchilarni qoʻllab-quvvatlash",
-        value: "support@uquvli.uz",
-        note: "Kirish, akkauntlar va kabinet ishi boʻyicha savollar.",
+        id: "support",
+        title: "User Support",
+        accentClass: "contact-card--lavender",
+        email: "sanashk019@gmail.com",
+        note: "Questions about Mosaic, accessibility, learning tools or the prototype.",
+        icon: (
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
+          </svg>
+        ),
       },
       {
-        title: "Telefon",
-        value: "+998 90 000-00-00",
-        note: "Oilalar, pedagoglar va markazlar uchun ish kunlari aloqa.",
+        id: "partnerships",
+        title: "Partnerships",
+        accentClass: "contact-card--mint",
+        email: "sanashk019@gmail.com",
+        note: "Schools, educators, organizations and accessibility initiatives.",
+        icon: (
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        ),
       },
       {
-        title: "Hamkorlik",
-        value: "schools@uquvli.uz",
-        note: "Maktablar, NTTlar, markazlar va sinov maydonchalarini ulash.",
+        id: "inquiries",
+        title: "Inquiries",
+        accentClass: "contact-card--peach",
+        email: "sanashk019@gmail.com",
+        note: "Questions about Mosaic and the learning platform.",
+        icon: (
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        ),
       },
     ],
-    howEyebrow: "Qanday yozish kerak",
+    howEyebrow: "How to reach us",
     howHeading:
-      "Tezroq javob olish uchun qisqa va tuzilgan xabar yuboring.",
+      "To get a response faster, send a short message with your context.",
     steps: [
-      "Oʻzingizni tanishtiring: oila, pedagog, maktab, markaz yoki hamkor.",
-      "Qisqa qilib vazifani yozing: kirish, joriy etish, maslahat, hujjatlar.",
-      "Jamoaga javob qaytarish uchun qulay aloqa kanalini qoldiring.",
+      "Describe who you are: family, educator, school, center or partner.",
+      "Briefly indicate your question or interest: curriculum, accessibility, or classroom pilot.",
+      "Send us an email at sanashk019@gmail.com and we will respond promptly.",
     ],
-    docsTitle: "Hujjatlar",
-    docsTerms: "Foydalanuvchi shartnomasi",
-    docsPrivacy: "Maxfiylik siyosati",
+    docsTitle: "Documents",
+    docsTerms: "Terms of Service",
+    docsPrivacy: "Privacy Policy",
     docsCookies: "Cookies",
   },
 } as const;
@@ -92,9 +148,14 @@ export default async function ContactsPage() {
       <section className="marketing-hero">
         <div className="marketing-wrap marketing-hero-grid">
           <div className="marketing-copy">
-            <span className="eyebrow">{t.eyebrow}</span>
+            <span className="eyebrow">{t.badge}</span>
             <h1>{t.heroHeading}</h1>
             <p>{t.heroLead}</p>
+            <div className="marketing-actions" style={{ marginTop: "24px" }}>
+              <a className="button button-primary" href="mailto:sanashk019@gmail.com">
+                {t.ctaEmail}
+              </a>
+            </div>
           </div>
 
           <figure className="marketing-figure">
@@ -114,10 +175,21 @@ export default async function ContactsPage() {
         <div className="marketing-wrap">
           <div className="marketing-card-grid">
             {t.cards.map((item) => (
-              <article key={item.title} className="marketing-card">
-                <h3>{item.title}</h3>
-                <p className="marketing-contact-value">{item.value}</p>
-                <p>{item.note}</p>
+              <article key={item.id} className={`marketing-card contact-card ${item.accentClass}`}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "4px" }}>
+                  <h3 style={{ margin: 0 }}>{item.title}</h3>
+                  <div className="contact-card-badge" style={{ padding: "8px", borderRadius: "8px", display: "inline-flex" }}>
+                    {item.icon}
+                  </div>
+                </div>
+                <a
+                  href={`mailto:${item.email}`}
+                  className="marketing-contact-value"
+                  style={{ color: "var(--mosaic-green, #506847)", fontWeight: 700, textDecoration: "none" }}
+                >
+                  {item.email}
+                </a>
+                <p style={{ margin: 0, fontSize: "0.9rem" }}>{item.note}</p>
               </article>
             ))}
           </div>
@@ -149,3 +221,4 @@ export default async function ContactsPage() {
     </main>
   );
 }
+

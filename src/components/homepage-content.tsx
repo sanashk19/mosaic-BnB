@@ -415,11 +415,6 @@ export function HomepageContent({
         <div className="home-wrap">
           <div className="home-hero-layout">
             <div className="home-hero-copy">
-              <div className="mosaic-hero-pill-badge">
-                <span style={{ color: "var(--mosaic-orange)" }} aria-hidden="true">✦</span>
-                <span>Adaptive learning for brighter futures</span>
-              </div>
-
               <h1 className="mosaic-hero-title">
                 One lesson shouldn&apos;t mean{" "}
                 <span className="mosaic-hero-accent-orange">one way of learning.</span>

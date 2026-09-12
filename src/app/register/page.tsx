@@ -7,14 +7,6 @@ import { useAuth } from "@/components/auth-provider";
 import { useLocale } from "@/components/locale-provider";
 import type { UserProfile, UserRole } from "@/lib/auth-storage";
 
-const emptyProfile: UserProfile = {
-  childName: "",
-  childClass: "",
-  teacherName: "",
-  organizationName: "",
-  supportNotes: "",
-};
-
 type RoleCopy = {
   nameLabel: string;
   namePlaceholder: string;
@@ -23,113 +15,63 @@ type RoleCopy = {
   showChildFields: boolean;
 };
 
+const englishRegisterDict = {
+  roleCopy: {
+    parent: {
+      nameLabel: "Your name",
+      namePlaceholder: "Enter your full name",
+      childNameLabel: "Child's name",
+      childNamePlaceholder: "Enter your child's name",
+      showChildFields: true,
+    },
+    teacher: {
+      nameLabel: "Your name",
+      namePlaceholder: "Enter your name",
+      childNameLabel: "Student name for demo",
+      childNamePlaceholder: "Enter student name",
+      showChildFields: true,
+    },
+    student: {
+      nameLabel: "Your name",
+      namePlaceholder: "Enter your name",
+      childNameLabel: "Display name",
+      childNamePlaceholder: "Name shown in lessons",
+      showChildFields: true,
+    },
+    researcher: {
+      nameLabel: "Your name",
+      namePlaceholder: "Enter your full name",
+      showChildFields: false,
+    },
+  } as Record<UserRole, RoleCopy>,
+  consentRequired: "Please accept the terms to continue.",
+  createFailed: "Failed to create account. Please try again.",
+  eyebrow: "Sign Up",
+  heading: "Create your Mosaic account.",
+  lead: "Fill in the fields below to get started with Mosaic.",
+  whoLabel: "I am a...",
+  parentOpt: "Parent",
+  studentOpt: "Student",
+  teacherOpt: "Teacher",
+  researcherOpt: "Researcher",
+  emailLabel: "Email address",
+  emailPlaceholder: "Enter your email",
+  passwordLabel: "Password",
+  passwordPlaceholder: "Create a password",
+  classLabel: "Grade / Class",
+  classPlaceholder: "e.g. Grade 3",
+  consentPrefix: "I agree with the",
+  consentLink: "terms and privacy policy",
+  consentSuffix: ".",
+  creating: "Creating account...",
+  createButton: "Create account",
+  haveCabinet: "Already have an account?",
+  loginLink: "Sign in",
+};
+
 const dict = {
-  ru: {
-    roleCopy: {
-      parent: {
-        nameLabel: "Name",
-        namePlaceholder: "Write your name",
-        childNameLabel: "Child's name",
-        childNamePlaceholder: "Write the child's name",
-        showChildFields: true,
-      },
-      teacher: {
-        nameLabel: "Name",
-        namePlaceholder: "Write your name",
-        childNameLabel: "Student name for demo",
-        childNamePlaceholder: "Write the student's name",
-        showChildFields: true,
-      },
-      student: {
-        nameLabel: "What is your name",
-        namePlaceholder: "Write your name",
-        childNameLabel: "Name in lessons",
-        childNamePlaceholder: "Can it be the same name?",
-        showChildFields: true,
-      },
-      researcher: {
-        nameLabel: "Name",
-        namePlaceholder: "For example, Olesya Markova",
-        showChildFields: false,
-      },
-    } as Record<UserRole, RoleCopy>,
-    consentRequired: "Check the box to continue.",
-    createFailed: "Failed to create an account.",
-    eyebrow: "New office",
-    heading: "Create your own office.",
-    lead: "Fill in the fields. It's simple. If you don’t know what to write, ask an adult.",
-    whoLabel: "Who are you",
-    parentOpt: "Parent",
-    studentOpt: "Student",
-    teacherOpt: "Teacher",
-    researcherOpt: "Researcher",
-    emailLabel: "Post office",
-    emailPlaceholder: "Write your email",
-    passwordLabel: "Password",
-    passwordPlaceholder: "Create a password",
-    classLabel: "Class",
-    classPlaceholder: "For example, 3",
-    consentPrefix: "I agree with",
-    consentLink: "rules",
-    consentSuffix: ".",
-    creating: "I create...",
-    createButton: "Create an account",
-    haveCabinet: "Already have an office?",
-    loginLink: "Sign in",
-  },
-  uz: {
-    roleCopy: {
-      parent: {
-        nameLabel: "Ism",
-        namePlaceholder: "Ismni yoz",
-        childNameLabel: "Bolaning ismi",
-        childNamePlaceholder: "Bolaning ismini yoz",
-        showChildFields: true,
-      },
-      teacher: {
-        nameLabel: "Ism",
-        namePlaceholder: "Ismni yoz",
-        childNameLabel: "Demo uchun oʻquvchining ismi",
-        childNamePlaceholder: "Oʻquvchining ismini yoz",
-        showChildFields: true,
-      },
-      student: {
-        nameLabel: "Isming nima",
-        namePlaceholder: "Ismni yoz",
-        childNameLabel: "Darslardagi ism",
-        childNamePlaceholder: "Xuddi shu ism boʻlishi mumkin",
-        showChildFields: true,
-      },
-      researcher: {
-        nameLabel: "Ism",
-        namePlaceholder: "Masalan, Olesya Markova",
-        showChildFields: false,
-      },
-    } as Record<UserRole, RoleCopy>,
-    consentRequired: "Davom etish uchun belgini qoʻy.",
-    createFailed: "Kabinet yaratib boʻlmadi.",
-    eyebrow: "Yangi kabinet",
-    heading: "Oʻz kabinetingni yarat.",
-    lead: "Maydonlarni toʻldir. Bu oson. Agar nima yozishni bilmasang — kattalardan soʻra.",
-    whoLabel: "Sen kimsan",
-    parentOpt: "Ota-ona",
-    studentOpt: "Oʻquvchi",
-    teacherOpt: "Pedagog",
-    researcherOpt: "Tadqiqotchi",
-    emailLabel: "E-pochta",
-    emailPlaceholder: "E-pochtani yoz",
-    passwordLabel: "Parol",
-    passwordPlaceholder: "Parol oʻylab top",
-    classLabel: "Sinf",
-    classPlaceholder: "Masalan, 3",
-    consentPrefix: "",
-    consentLink: "Shartlarga",
-    consentSuffix: " roziman.",
-    creating: "Yaratilmoqda...",
-    createButton: "Kabinet yaratish",
-    haveCabinet: "Hisobingiz bormi?",
-    loginLink: "Kirish",
-  },
+  ru: englishRegisterDict,
+  uz: englishRegisterDict,
 } as const;
 
 export default function RegisterPage() {
@@ -141,7 +83,8 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState<UserRole>("parent");
-  const [profile, setProfile] = useState<UserProfile>(emptyProfile);
+  const [childName, setChildName] = useState("");
+  const [childClass, setChildClass] = useState("");
   const [acceptedConsent, setAcceptedConsent] = useState(false);
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -165,8 +108,16 @@ export default function RegisterPage() {
     setIsSubmitting(true);
 
     try {
-      const created = await register({ name, email, password, role, profile });
-      const destination = created.role === "parent" ? "/onboarding/anketa" : "/dashboard";
+      const profile: UserProfile = {
+        childName: childName.trim(),
+        childClass: childClass.trim(),
+        teacherName: "",
+        organizationName: "",
+        supportNotes: "",
+      };
+
+      await register({ name, email, password, role, profile });
+      const destination = "/dashboard";
       startTransition(() => {
         router.push(destination);
       });
@@ -179,13 +130,6 @@ export default function RegisterPage() {
     } finally {
       setIsSubmitting(false);
     }
-  }
-
-  function updateProfileField<Key extends keyof UserProfile>(
-    key: Key,
-    value: UserProfile[Key],
-  ) {
-    setProfile((current) => ({ ...current, [key]: value }));
   }
 
   return (
@@ -258,8 +202,8 @@ export default function RegisterPage() {
                   <input
                     id="childName"
                     type="text"
-                    value={profile.childName}
-                    onChange={(event) => updateProfileField("childName", event.target.value)}
+                    value={childName}
+                    onChange={(event) => setChildName(event.target.value)}
                     placeholder={roleCopy.childNamePlaceholder}
                   />
                 </div>
@@ -269,8 +213,8 @@ export default function RegisterPage() {
                   <input
                     id="childClass"
                     type="text"
-                    value={profile.childClass}
-                    onChange={(event) => updateProfileField("childClass", event.target.value)}
+                    value={childClass}
+                    onChange={(event) => setChildClass(event.target.value)}
                     placeholder={t.classPlaceholder}
                   />
                 </div>

@@ -1,12 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "@/components/auth-provider";
 import { CabinetShell } from "@/components/cabinet-shell";
 import { LessonExperience } from "@/components/lesson-experience";
 import { LessonMaterial } from "@/components/lesson-material";
 import { useLocale } from "@/components/locale-provider";
-import { Mascot } from "@/components/mascot";
+import type { AccessibilityProfile } from "@/lib/adaptation/adaptation-types";
 import { CabinetIcon, SocialIcon, UiIcon } from "@/components/ui-icons";
 import {
   type ClassState,
@@ -54,8 +55,10 @@ type DashboardUser = {
     teacherName: string;
     organizationName: string;
     supportNotes: string;
+    accessibilityProfile?: AccessibilityProfile;
   };
   teacherId?: string;
+  accessibilityProfile?: AccessibilityProfile;
 };
 
 type DashboardModuleSummary = {
@@ -93,8 +96,7 @@ type DashboardHashState = {
 
 // ── i18n dictionary ──────────────────────────────────────────────────────────
 
-const dict = {
-  ru: {
+const englishDashboardDict = {
     // section catalog (default)
     sec_today_label: "Today",
     sec_today_caption: "lesson and activities",
@@ -123,13 +125,13 @@ const dict = {
 
     // parent overrides
     parent_today_label: "My child",
-    parent_today_caption: "what's happening",
-    parent_today_title: "My child",
-    parent_today_desc: "The main thing about the child today.",
-    parent_family_label: "Profiles and home",
-    parent_family_caption: "questionnaire and support",
-    parent_family_title: "Questionnaires and help at home",
-    parent_family_desc: "Program questionnaire and tips for home.",
+    parent_today_caption: "learning & progress",
+    parent_today_title: "How your child is doing",
+    parent_today_desc: "Keep track of learning progress, current lessons and support at home.",
+    parent_family_label: "Questionnaires",
+    parent_family_caption: "surveys & support",
+    parent_family_title: "Parent questionnaires",
+    parent_family_desc: "Complete or review the current questionnaire.",
     parent_account_label: "Profile",
     parent_account_caption: "family contacts",
     parent_account_title: "Family profile",
@@ -281,11 +283,11 @@ const dict = {
     fill_final_questionnaire: "Fill out the exit form",
     final_questionnaire_hint: "The final questionnaire is the last step of participation in the study.",
     fill: "Fill in",
-    now_in_class: "Now in class",
-    parent_lesson_open_text: (name: string) => `The teacher opened this lesson -${name}can come in and take a class. You can see what is being taught.`,
+    now_in_class: "Now in session",
+    parent_lesson_open_text: (name: string) => `The teacher opened this lesson — ${name} can join and participate now.`,
     view_lesson: "View lesson",
-    lesson_not_open_yet: "Lesson is not open yet",
-    parent_lesson_closed_text: (name: string) => `When the teacher opens the activity, it will appear here - and${name}will be able to start.`,
+    lesson_not_open_yet: "Nothing is open yet",
+    parent_lesson_closed_text: () => "When the teacher starts the lesson, it will appear here.",
     progress_by_topics: "Progress by topic",
     today_section: "Today",
     earlier: "Previously",
@@ -446,342 +448,12 @@ const dict = {
     err_open_lesson: "Failed to open lesson",
     err_close_lesson: "Failed to close lesson",
     err_download_plan: "Failed to download lesson plan",
-  },
-  uz: {
-    sec_today_label: "Bugun",
-    sec_today_caption: "dars va harakatlar",
-    sec_today_title: "Bugun",
-    sec_today_desc: "Kun uchun ish xulosasi: keyingi dars, eng yaqin harakatlar, qisqa yutuqlar va soʻnggi faollik.",
-    sec_lessons_label: "Darslar",
-    sec_lessons_caption: "modullar va mashgʻulotlar",
-    sec_lessons_title: "Darslar",
-    sec_lessons_desc: "Barcha modullar va darslar kabinet ichida ochiladi, alohida kurs ekransiz.",
-    sec_progress_label: "Yutuqlar",
-    sec_progress_caption: "oʻqish tarixi",
-    sec_progress_title: "Yutuqlar",
-    sec_progress_desc: "Modullar, yakunlangan darslar va natijalar boʻyicha yutuqlar tarixi — profil bilan aralashtirilmagan.",
-    sec_account_label: "Hisob",
-    sec_account_caption: "profil va kirish",
-    sec_account_title: "Hisob",
-    sec_account_desc: "Kirish maʼlumotlari, bola profili va oʻquv kuzatuvining asosiy sozlamalari bir boʻlimda.",
-    sec_family_label: "Oila",
-    sec_family_caption: "uy ritmi",
-    sec_family_title: "Oila",
-    sec_family_desc: "Uydagi kuzatuv: kattalar, mashgʻulot ritmi va darsdan keyingi tushunarli harakatlar.",
-    sec_teacher_label: "Pedagog",
-    sec_teacher_caption: "kuzatuvlar",
-    sec_teacher_title: "Pedagog",
-    sec_teacher_desc: "Pedagogik zona: sur'at boʻyicha kuzatuvlar, eng yaqin fokus va darslarga havola.",
-
-    parent_today_label: "Bolam",
-    parent_today_caption: "nima boʻlmoqda",
-    parent_today_title: "Bolam",
-    parent_today_desc: "Bola haqida bugungi asosiy maʼlumot.",
-    parent_family_label: "Anketalar va uy",
-    parent_family_caption: "soʻrovnoma va yordam",
-    parent_family_title: "Anketalar va uyda yordam",
-    parent_family_desc: "Dastur soʻrovnomasi va uy uchun maslahatlar.",
-    parent_account_label: "Profil",
-    parent_account_caption: "oilaning aloqalari",
-    parent_account_title: "Oila profili",
-    parent_account_desc: "Bolaning aloqalari va maʼlumotlari.",
-
-    student_today_label: "Start",
-    student_today_caption: "hozir nima qilish kerak",
-    student_today_title: "Mening darsim",
-    student_today_desc: "Oʻquvchining oddiy kabineti: yirik harakatlar, qisqa maslahatlar va faqat kerakli oʻquv boʻlimlari.",
-    student_lessons_label: "Darslar",
-    student_lessons_caption: "mashgʻulot tanlash",
-    student_lessons_title: "Mening darslarim",
-    student_lessons_desc: "Bir vaqtda bitta modul va bitta dars. Oʻquv harakatining atrofida hech narsa ortiqcha emas.",
-    student_progress_label: "Yutuqlar",
-    student_progress_caption: "nima qilingan",
-    student_progress_title: "Yutuqlarim",
-    student_progress_desc: "Mashgʻulotlarning qisqa tarixi va ortiqcha jadvallarsiz tushunarli yutuqlar.",
-    student_account_label: "Yordam",
-    student_account_caption: "yondagi katta",
-    student_account_title: "Yordam va profil",
-    student_account_desc: "Kim yordam beradi, qaysi sinf va darsda qanday maslahatlar kerak.",
-
-    teacher_today_label: "Bosh sahifa",
-    teacher_today_caption: "dars va oʻquvchilar",
-    teacher_today_title: "Bosh sahifa",
-    teacher_today_desc: "Bitta ekranda darsni boshqarish va sinfni koʻrish: darsni ochish, kim qanday ishlayotganini koʻrish, oʻquvchi qoʻshish.",
-    teacher_lessons_label: "Dastur",
-    teacher_lessons_caption: "14 ta dars, 5 ta modul",
-    teacher_lessons_title: "Kurs dasturi",
-    teacher_lessons_desc: "Dasturning barcha darslari: sinfga ochish, rejani koʻrish yoki oʻzingiz oʻtish.",
-    teacher_progress_label: "Dinamika",
-    teacher_progress_caption: "sinf natijalari",
-    teacher_progress_title: "Oʻqitish dinamikasi",
-    teacher_progress_desc: "Modullar boʻyicha yutuqlar, darslar jurnali va keyingi dars uchun eʼtibor nuqtalari.",
-    teacher_account_label: "Profil",
-    teacher_account_caption: "pedagog maʼlumotlari",
-    teacher_account_title: "Pedagog profili",
-    teacher_account_desc: "Kirish maʼlumotlari, maktab va sinf. Shu yerda — tadqiqot rejimi sozlamalari.",
-
-    notYet: "hali yoʻq",
-    locale: "uz-UZ",
-    activity_start_label: "Start",
-    activity_start_title: "Kabinet birinchi darsga tayyor",
-    activity_start_text: "Keyingi qadamni oching va qisqa mashgʻulot bilan boshlang.",
-    activity_lessons_label: "Darslar",
-    activity_lessons_title: "Modullar «Darslar» boʻlimida mavjud",
-    activity_lessons_text: "Modulni tanlab, darsni xotirjam sur'atda oʻtish mumkin.",
-    lessonCompletedFallback: "Dars yakunlandi",
-    scoreResult: (n: number) => `Tekshiruv natijasi: 3 dan ${n}.`,
-    lessonMarkedDone: "Dars oʻtilgan deb belgilandi.",
-    moduleCompleted: "Modul yakunlandi",
-
-    aria_student_start: "Oʻquvchi starti",
-    hello_ready: (name: string) => `Salom, ${name}! Bugun bitta asosiy qadam: «Boshlash»ni bos.`,
-    hello_waiting: (name: string) => `Salom, ${name}! Hozir biroz kutib tur. Oʻqituvchi darsni ochadi.`,
-    hello_greeting: (name: string) => `Salom, ${name}!`,
-    today_have_lesson: "Bugun sening darsing bor:",
-    next_lesson_fallback: "Keyingi dars",
-    btn_start: "Boshlash",
-    lesson_of: (n: number, total: number) => `${total} dan ${n}-dars`,
-    wait_teacher_title: "Oʻqituvchini kutib tur",
-    wait_teacher_text: "Oʻqituvchi tez orada darsni ochadi.",
-    stars_aria: (done: number, total: number) => `${total} ta darsdan ${done} tasi oʻtildi`,
-
-    not_logged_in: "hali kirmagan",
-    today_at: (t: string) => `bugun soat ${t}`,
-    days_ago: (n: number) => `${n} kun oldin`,
-    long_ago: "ancha vaqt boʻldi",
-    code_eyebrow: (cls: string) => `${cls}-sinf`,
-    code_hint: "Enter this code to access your student dashboard.",
-    print_codes_title: (n: number) => `Oʻquvchilar kirish kodlari · ${n} ta`,
-
-    download_failed: "Dars rejasini yuklab boʻlmadi.",
-    trainer_phone: "Qoʻngʻiroq",
-    aria_lessons: "Darslar",
-    program_title: "Kurs dasturi",
-    program_subtitle: "5 ta modulda 14 ta dars. Darsni sinfga oching, rejani yuklab oling yoki oʻzingiz oʻting.",
-    lessons_count_short: (n: number) => `${n} ta dars`,
-    trainer_label: (name: string) => `Mashq: ${name}`,
-    live_now: "hozir oʻtmoqda",
-    btn_close: "Yopish",
-    btn_open_for_class: "Sinfga ochish",
-    other_actions: "Boshqa harakatlar",
-    downloading: "Yuklab olinmoqda...",
-    lesson_plan_docx: "Dars rejasi .docx",
-    try_yourself: "Oʻzim oʻtaman",
-
-    aria_teacher_home: "Pedagog bosh sahifasi",
-    lesson_in_progress: "Dars hozir oʻtmoqda",
-    next_lesson_label: "Keyingi dars",
-    course_done: "Kurs yakunlandi",
-    opened_at: (t: string) => `${t} da ochildi. Oʻquvchilar oʻz kodi bilan kirishlari mumkin.`,
-    passed: "Oʻtdi:",
-    in_work: "Ishlamoqda:",
-    not_started_p: "Boshlamadi:",
-    lesson_plan_label: "Dars rejasi:",
-    close_lesson: "Darsni yopish",
-    open_lesson_for_class: "Darsni sinfga ochish",
-    full_program: "Butun dastur →",
-    school_default: "Maktab",
-    class_short: (c: string) => `${c}-sinf`,
-    students_count: (n: number) => `${n} ta oʻquvchi`,
-    print_codes: "Kodlarni chop etish",
-    hide_form: "Formani yashirish",
-    add_student: "Oʻquvchi qoʻshish",
-    new_student: "Yangi oʻquvchi",
-    student_name_label: "Oʻquvchi ismi",
-    student_name_placeholder: "Masalan, Alina K.",
-    research_group: "Tadqiqot guruhi",
-    group_experimental: "Eksperimental",
-    group_control: "Nazorat",
-    enter_student_name: "Oʻquvchi ismini kiriting",
-    adding: "Qoʻshilmoqda...",
-    btn_create: "Yaratish",
-    btn_cancel: "Bekor qilish",
-    err_default: "Xatolik",
-    err_add_default: "Qoʻshishda xatolik.",
-    no_codes_yet: "Oʻquvchilarda hali kirish kodlari yoʻq.",
-    print_codes_for_class: (c: string) => `Kirish kodlari · ${c}-sinf`,
-    all_students: "Barcha oʻquvchilar",
-    on_lesson_prefix: (t: string) => `Darsda: ${t}`,
-    class_word: "Sinf",
-    of_count: (a: number, b: number) => `${b} dan ${a}`,
-    no_students_yet: "Hali oʻquvchilar yoʻq. Birinchi oʻquvchini yaratish uchun yuqoridagi «Oʻquvchi qoʻshish» tugmasini bosing.",
-    no_students_in_group: "Bu guruhda hali oʻquvchilar yoʻq.",
-    no_students_short: "Hali oʻquvchilar yoʻq. Yuqoridagi «Oʻquvchi qoʻshish» tugmasini bosing.",
-    code_word: "Kod",
-    lesson_word: "Dars",
-    of_word: "dan",
-    passed_short: "Oʻtdi",
-    in_work_short: "Ishlamoqda",
-    not_started_short: "Boshlamagan",
-    today_word: "Bugun",
-    recently: "Yaqinda",
-    dash: "—",
-    group_exp_short: "Eksp.",
-    group_ctrl_short: "Nazor.",
-
-    your_child: "Sizning bolangiz",
-    aria_parent: "Ota-ona kabineti",
-    fill_final_questionnaire: "Yakuniy anketani toʻldiring",
-    final_questionnaire_hint: "Yakuniy anketa — tadqiqotda ishtirokning oxirgi qadami.",
-    fill: "Toʻldirish",
-    now_in_class: "Hozir sinfda",
-    parent_lesson_open_text: (name: string) => `Oʻqituvchi shu darsni ochdi — ${name} kirib mashgʻulotni oʻtishi mumkin. Siz nimaga oʻrgatilayotganini koʻrishingiz mumkin.`,
-    view_lesson: "Darsni koʻrish",
-    lesson_not_open_yet: "Dars hali ochilmagan",
-    parent_lesson_closed_text: (name: string) => `Oʻqituvchi darsni ochganda u shu yerda paydo boʻladi — va ${name} boshlay oladi.`,
-    progress_by_topics: "Mavzular boʻyicha yutuqlar",
-    today_section: "Bugun",
-    earlier: "Ilgari",
-    parent_feed_no_marks: (lessonTitle: string, name: string, fem: string) =>
-      `«${lessonTitle}» darsi ochilgan. Hozircha ${name} kabinetda hech narsa belgilamadi${fem}.`,
-    parent_feed_idle: "Oʻqituvchi hali darsni ochmagan — mashgʻulot boshlanishini kutmoqdamiz.",
-    feed_child_passed: (name: string, fem: string, lesson: string) =>
-      `${name} «${lesson}» darsini oʻtdi${fem}`,
-    feed_lesson_done: "Dars yakunlandi",
-    feed_teacher_opened: (t: string) => `Oʻqituvchi «${t}» darsini ochdi`,
-
-    aria_today: "Bugun",
-    class_kicker: "Sinf",
-    open_lesson_now: (t: string) => `Ochildi: ${t}`,
-    lesson_not_open_class: "Sinfga dars ochilmagan",
-    students_can_join_now: "Oʻquvchilar hozir kirib darsni boshlashlari mumkin.",
-    press_open_to_let_join: "Oʻquvchilar kirishi uchun «Darsni ochish» tugmasini bosing.",
-    home_rhythm_kicker: "Uy ritmi",
-    home_rhythm_title: "10-15 daqiqa xotirjam mashgʻulot",
-    home_rhythm_text: "Bir darsni parallel oynalar va ortiqcha topshiriqlarsiz oʻtgan maʼqul.",
-    next_step: "Keyingi qadam",
-    choose_first_lesson: "Birinchi darsni tanlang",
-    lessons_ready: "Darslar boshlashga tayyor.",
-    module_word: "Modul",
-    lessons_section: "Darslar boʻlimi",
-    continue_with: (t: string) => `Davom ettiring: ${t}.`,
-    pick_next_module: "Modullarni koʻrib chiqing va keyingi oʻquv blokini tanlang.",
-    lesson_control_kicker: "Darsni boshqarish",
-    lesson_not_open: "Dars ochilmagan",
-    state_open: "Ochiq",
-    state_closed: "Yopiq",
-    opened_at_short: (t: string) => `${t} da ochildi. Oʻquvchilar kirib boshlashlari mumkin.`,
-    close_lesson_for_class: "Sinf uchun darsni yopish",
-    students_see_lock: "Oʻquvchilar qulfni koʻrmoqda va darsni boshlay olmaydi. Ular kirishi uchun darsni oching.",
-    open_for_class_with: (t: string) => `Sinfga ochish: ${t}`,
-    start_learning: "Oʻqishni boshlang",
-    start_word: "start",
-    open_lessons_and_start: "Darslar boʻlimini oching va birinchi darsni boshlang.",
-    one_screen_one_action: "bitta ekran = bitta harakat",
-    upcoming_actions: "Eng yaqin harakatlar",
-    what_to_do_today: "Bugun nima qilish kerak",
-    short_progress: "Qisqa yutuqlar",
-    pct_of_course: (n: number) => `kursning ${n}%`,
-    recent_activity: "Yaqinda faollik",
-    latest_events: "Soʻnggi hodisalar",
-
-    aria_teacher_class: "Sinfni boshqarish",
-    students_list: "Oʻquvchilar roʻyxati",
-    student_word: "Oʻquvchi",
-    group_word: "Guruh",
-    progress_word: "Yutuqlar",
-    status_word: "Holat",
-    online: "Onlayn",
-    offline: "Oflayn",
-    how_codes_work: "Kirish kodlaridan qanday foydalanish kerak",
-    codes_step1: "Har bir oʻquvchi qoʻshilganda noyob 4 xonali kod oladi.",
-    codes_step2: "Kodlarni chop etib darsdan oldin tarqating.",
-    codes_step3: "Oʻquvchi kirish ekranida kodni kiritadi — parol kerak emas.",
-    codes_step4: "Kod oʻzgarmaydi — uni kundalikka yozib qoʻyish mumkin.",
-
-    aria_lesson_material: "Dars materiali",
-    aria_lesson_trainer: "Oʻquv mashqi",
-    back: "Orqaga",
-    to_lesson_list: "Darslar roʻyxatiga",
-    aria_student_lessons: "Darslar",
-    student_lessons_wait: "Oʻqituvchi kerakli darsni ochadi. Sen uni bosh ekranda koʻrasan.",
-    aria_modules: "Modullar",
-    modules_kicker: "Modullar",
-    modules_title: "Kurs boʻlimlari",
-    course_word: "Kurs",
-    lesson_n: (n: number) => `${n}-dars`,
-    completed_short: "oʻtildi",
-    chosen: "Tanlandi",
-    show: "Koʻrsatish",
-    lesson_card_kicker: "Dars kartochkasi",
-    pick_lesson: "Darsni tanlang",
-    open_one_module: "Bitta modulni oching va darsni tanlang.",
-    view_material: "Materialni koʻrish",
-    lessons_short_count: (n: number) => `${n} ta dars`,
-
-    aria_account: "Hisob",
-    label_name: "Ism",
-    label_email: "E-pochta",
-    label_mode: "Rejim",
-    label_class: "Sinf",
-    label_teacher: "Oʻqituvchi",
-    label_org: "Tashkilot",
-    label_group: "Guruh",
-    label_role: "Rol",
-    label_student: "Oʻquvchi",
-    account_data_kicker: "Hisob maʼlumotlari",
-    supports_kicker: "Tayanchlar",
-    student_supports_title: "Nima oʻrganishga yordam beradi",
-    adult_supports_title: "Kuzatuv sozlamalari",
-    student_support_1: "Bir vaqtda faqat bitta qisqa blokni oʻqish.",
-    student_support_2: "Tushunarli boʻlmasa, yordamni bosib, kattadan qadamni tushuntirib berishni soʻrash.",
-    student_support_3: "Darsdan keyin boshqa mavzular qolsa ham toʻxtash mumkin.",
-    teacher_support_1: "Har bir mashgʻulotdan keyin qisqa kuzatuv qoldirish.",
-    teacher_support_2: "Oʻquvchi sur'atini butun guruh bilan emas, oldingi dars bilan solishtirish.",
-    teacher_support_3: "Oilaga uzun roʻyxat oʻrniga bitta uy takrorlanishini berish.",
-    parent_support_1: "Har bir harakatdan oldin qisqa koʻrsatma.",
-    parent_support_2: "Ekranda bitta savol — koʻzni charchatuvchi narsa yoʻq.",
-    parent_support_3: "Javobdan keyin pauza, bola yechimni aytishga ulgursin.",
-    quick_jump: "Tezkor oʻtish",
-    next_lesson_short: "Eng yaqin dars",
-    lesson_will_be_chosen: "Dars darslar boʻlimidan tanlanadi.",
-    open_lessons_tab: "Mashgʻulotga oʻtish uchun «Darslar» yorligʻini oching.",
-
-    save_questionnaire_failed: "Anketani saqlab boʻlmadi.",
-    questionnaire_saved: "Anketa saqlandi. Rahmat!",
-    close_word: "Yopish",
-    saving: "Saqlanmoqda...",
-    submit_questionnaire: "Anketani yuborish",
-    research_kicker: "Tadqiqot",
-    parent_questionnaires: "Ota-ona anketalari",
-    filled_a: "Toʻldirilgan",
-    fill_before_start: "Mashgʻulotlar boshlangunga qadar toʻldiring",
-    need_fill: "Toʻldirish kerak",
-    initial_questionnaire: "Kirish anketasi",
-    final_questionnaire: "Yakuniy anketa",
-    filled_on: (date: string) => `${date} da toʻldirilgan`,
-    all_lessons_done_fill_final: "Barcha darslar oʻtildi — yakuniy anketani toʻldiring",
-    opens_after: (total: number, current: number) => `${total} ta darsdan keyin ochiladi (hozir ${current})`,
-    closed_yet: "Hali yopiq",
-
-    aria_family: "Anketalar va uyda yordam",
-    label_adult: "Katta",
-    label_post: "Pochta",
-    label_child: "Bola",
-    home_rhythm_step_1: "Darsdan oldin qisqa vaqt haqida kelishib oling: 10-15 daqiqa.",
-    home_rhythm_step_2: "Darsdan keyin nima eng tushunarli boʻlganini va nimani takrorlash kerakligini soʻrang.",
-    home_rhythm_step_3: "Bola charchasa, joriy qadamda toʻxtab, keyinroq qayting.",
-    home_rhythm_caption: "Uyda mashgʻulotlarni qanday qoʻllab-quvvatlash",
-    step_n: (n: number) => `${n}-qadam`,
-    family_profile_kicker: "Oila profili",
-    contacts_context: "Aloqalar va kontekst",
-    note_kicker: "Eslatma",
-    individual_support: "Individual yordam",
-
-    aria_progress: "Yutuqlar",
-    history_kicker: "Yutuqlar tarixi",
-    course_dynamics: "Kurs boʻyicha dinamika",
-    modules_word: "Modullar",
-    next_short: (t: string) => `Keyingi: ${t}`,
-    journal: "Jurnal",
-
-    cabinet: "Shaxsiy kabinet",
-
-    err_open_lesson: "Darsni ochib boʻlmadi",
-    err_close_lesson: "Darsni yopib boʻlmadi",
-    err_download_plan: "Dars rejasini yuklab boʻlmadi",
-  },
 };
+
+const dict = {
+  ru: englishDashboardDict,
+  uz: englishDashboardDict,
+} as const;
 
 type Dict = (typeof dict)["ru"];
 
@@ -948,6 +620,59 @@ function buildProgressAreas(modules: ModuleProgress[], t: Dict) {
   }));
 }
 
+// ── Student preference chips helper ──────────────────────────────────────────
+
+type PreferenceChip = {
+  id: string;
+  label: string;
+  tone: "peach" | "mint" | "pink" | "cream" | "lavender";
+};
+
+function getStudentPreferenceChips(profile?: AccessibilityProfile): PreferenceChip[] {
+  if (!profile) return [];
+  const chips: PreferenceChip[] = [];
+  const { supportType, preferences } = profile;
+
+  if (supportType === "reading") {
+    chips.push({ id: "support-type", label: "Reading support", tone: "peach" });
+  } else if (supportType === "visual") {
+    chips.push({ id: "support-type", label: "Visual support", tone: "mint" });
+  } else if (supportType === "hearing") {
+    chips.push({ id: "support-type", label: "Hearing support", tone: "pink" });
+  }
+
+  if (preferences) {
+    if (preferences.autoSpeak) {
+      chips.push({
+        id: "autospeak",
+        label: supportType === "visual" ? "Audio-first" : "Read aloud",
+        tone: supportType === "visual" ? "mint" : "peach",
+      });
+    }
+    if (preferences.imageDescriptions) {
+      chips.push({ id: "images", label: "Image descriptions", tone: "mint" });
+    }
+    if (preferences.captions) {
+      chips.push({ id: "captions", label: "Captions", tone: "pink" });
+      chips.push({ id: "cues", label: "Visual cues", tone: "pink" });
+    }
+    if (preferences.largerText) {
+      chips.push({ id: "larger-text", label: "Larger text", tone: "cream" });
+    }
+    if (preferences.simplifiedLanguage && supportType !== "reading") {
+      chips.push({ id: "simpler-text", label: "Simpler text", tone: "peach" });
+    }
+    if (preferences.increasedSpacing) {
+      chips.push({ id: "spacing", label: "Increased spacing", tone: "cream" });
+    }
+    if (preferences.reducedMotion) {
+      chips.push({ id: "motion", label: "Reduced motion", tone: "lavender" });
+    }
+  }
+
+  return chips;
+}
+
 // ── StudentTodaySection ──────────────────────────────────────────────────────
 
 function StudentTodaySection({
@@ -978,73 +703,147 @@ function StudentTodaySection({
   t: Dict;
 }) {
   const isLessonOpen = openLesson?.openLessonSlug != null;
-  void openLesson?.openLessonSlug;
   void activityFeed;
   void overallProgress;
   void onOpenProgress;
-  void onOpenHelp;
 
   const openedSlug = openLesson?.openLessonSlug;
   const openedLesson = openedSlug ? lessons.find((l) => l.slug === openedSlug) : undefined;
   const heroLesson = openedLesson ?? nextLesson;
   const lessonNumber = completedLessons + 1;
-  const studentName = user.profile.childName || user.name;
-  const firstName = studentName.split(/\s+/)[0] || studentName;
+  const studentName = user.profile?.childName || user.name;
+  const firstName = studentName.trim().split(/\s+/)[0] || studentName;
+
+  const studentProfile = user.accessibilityProfile ?? user.profile?.accessibilityProfile;
+  const preferenceChips = getStudentPreferenceChips(studentProfile);
 
   return (
-    <section className="student-home" aria-label={t.aria_student_start}>
-      <Mascot
-        message={isLessonOpen ? t.hello_ready(firstName) : t.hello_waiting(firstName)}
-        mood={isLessonOpen ? "cheer" : "happy"}
-        variant="inline"
-      />
+    <section className="mosaic-student-dashboard" aria-label={t.aria_student_start}>
+      {/* Top calm greeting */}
+      <div className="mosaic-student-header">
+        <h1 className="mosaic-student-greeting">Good to see you, {firstName}.</h1>
+        <p className="mosaic-student-greeting-sub">
+          {isLessonOpen
+            ? "Your lesson is open and ready. Click below to begin."
+            : "Your next lesson will appear here when your teacher opens it."}
+        </p>
+      </div>
 
-      {/* UI Module */}
-      <div className={`student-hero${isLessonOpen ? " student-hero--ready" : " student-hero--waiting"}`}>
-        <p className="student-hero-greeting">{t.hello_greeting(firstName)}</p>
+      {/* Prominent centered card */}
+      <div className={`mosaic-student-card${isLessonOpen ? " mosaic-student-card--active" : " mosaic-student-card--waiting"}`}>
+        <div className="mosaic-card-eyebrow">TODAY&apos;S LEARNING</div>
 
         {isLessonOpen ? (
           <>
-            <p className="student-hero-instruction">{t.today_have_lesson}</p>
-            <h2 className="student-hero-lesson">{heroLesson?.title ?? t.next_lesson_fallback}</h2>
-            <button
-              type="button"
-              className="student-go-button"
-              onClick={onStartLesson}
-            >
-              {t.btn_start}
-            </button>
-            <p className="student-hero-footnote">{t.lesson_of(lessonNumber, lessonCount)}</p>
+            <div className="mosaic-status-pill mosaic-status-pill--active">
+              <span className="mosaic-status-dot mosaic-status-dot--live" aria-hidden="true" />
+              <span>Lesson open now</span>
+            </div>
+
+            <h2 className="mosaic-card-title">{heroLesson?.title ?? t.next_lesson_fallback}</h2>
+
+            <p className="mosaic-card-desc">
+              {heroLesson?.summary ??
+                "Your personalized learning experience is ready. Once you start, the lesson will adapt to your preferences automatically."}
+            </p>
+
+            <div className="mosaic-card-actions">
+              <button
+                type="button"
+                className="mosaic-btn-start-lesson"
+                onClick={onStartLesson}
+              >
+                <span>{t.btn_start}</span>
+                <span className="mosaic-btn-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <p className="mosaic-card-footnote">
+              {t.lesson_of(lessonNumber, lessonCount)} · {heroLesson?.duration ?? "15 min"}
+            </p>
           </>
         ) : (
           <>
-            <div className="student-hero-illustration" aria-hidden="true">
-              <CabinetIcon name="clock" />
+            <h2 className="mosaic-card-title">Waiting for your teacher</h2>
+
+            <p className="mosaic-card-desc">
+              Your personalized learning experience is ready. Once your teacher opens the
+              lesson, Mosaic will adapt it to your learning preferences automatically.
+            </p>
+
+            <div className="mosaic-status-pill mosaic-status-pill--waiting">
+              <span className="mosaic-status-dot mosaic-status-dot--pulse" aria-hidden="true" />
+              <span>Waiting for lesson</span>
             </div>
-            <h2 className="student-hero-lesson">{t.wait_teacher_title}</h2>
-            <p className="student-hero-instruction">{t.wait_teacher_text}</p>
           </>
         )}
       </div>
 
-      {/* UI Module */}
+      {/* Personalization preview section */}
+      <section className="mosaic-student-prefs-section" aria-label="Your learning preferences">
+        <div className="mosaic-prefs-header">
+          <h3 className="mosaic-prefs-heading">Your learning preferences</h3>
+        </div>
+
+        {preferenceChips.length > 0 ? (
+          <div className="mosaic-pref-chips-container">
+            <div className="mosaic-pref-chips-list">
+              {preferenceChips.map((chip) => (
+                <span
+                  key={chip.id}
+                  className={`mosaic-pref-chip mosaic-pref-chip--${chip.tone}`}
+                >
+                  {chip.label}
+                </span>
+              ))}
+            </div>
+            <button
+              type="button"
+              className="mosaic-pref-edit-btn"
+              onClick={onOpenHelp}
+            >
+              Adjust in profile
+            </button>
+          </div>
+        ) : (
+          <div className="mosaic-pref-empty-box">
+            <p className="mosaic-pref-empty-text">
+              Set up your reading, visual, or hearing preferences so every lesson is adapted for you.
+            </p>
+            <button
+              type="button"
+              className="mosaic-pref-setup-btn"
+              onClick={onOpenHelp}
+            >
+              Set up your learning preferences →
+            </button>
+          </div>
+        )}
+      </section>
+
+      {/* Progress completion indicator */}
       <div
-        className="student-stars-strip"
+        className="mosaic-student-stars"
         aria-label={t.stars_aria(completedLessons, lessonCount)}
       >
-        {Array.from({ length: lessonCount }, (_, i) => {
-          const isDone = i < completedLessons;
-
-          return (
-            <span
-              key={i}
-              className={`star-pip${isDone ? " star-pip--done" : ""}`}
-              aria-hidden="true"
-            >
-              <CabinetIcon name={isDone ? "check" : "circle"} />
-            </span>
-          );
-        })}
+        <span className="mosaic-stars-label">
+          {completedLessons} of {lessonCount} lessons completed
+        </span>
+        <div className="mosaic-stars-pips">
+          {Array.from({ length: lessonCount }, (_, i) => {
+            const isDone = i < completedLessons;
+            return (
+              <span
+                key={i}
+                className={`mosaic-star-pip${isDone ? " mosaic-star-pip--done" : ""}`}
+                title={`Lesson ${i + 1}${isDone ? " (completed)" : ""}`}
+                aria-hidden="true"
+              >
+                <CabinetIcon name={isDone ? "check" : "circle"} />
+              </span>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -1818,7 +1617,6 @@ function ParentTodaySection({
   overallProgress,
   moduleProgress,
   onOpenLesson,
-  onOpenAnketa,
   t,
 }: {
   user: DashboardUser;
@@ -1829,16 +1627,17 @@ function ParentTodaySection({
   overallProgress: number;
   moduleProgress: ModuleProgress[];
   onOpenLesson: (slug: string) => void;
-  onOpenAnketa: () => void;
   t: Dict;
 }) {
   const childName = user.profile.childName || t.your_child;
   const childFirstName = childName.split(/\s+/)[0] || childName;
-  const childClass = user.profile.childClass || t.dash;
+  const childClass = user.profile.childClass || "Grade 3";
+  const orgName = user.profile.organizationName || "Oak Creek Academy";
+  const teacherName = user.profile.teacherName || "Ms. Johnson";
 
   // Questionnaire state
-  const [initialDone, setInitialDone] = useState(false);
-  const [finalDone, setFinalDone] = useState(false);
+  const [initialDone, setInitialDone] = useState<boolean | null>(null);
+  const [finalDone, setFinalDone] = useState<boolean | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -1870,172 +1669,222 @@ function ParentTodaySection({
 
   const openSlug = classState?.openLessonSlug;
   const openLesson = openSlug ? lessons.find((l) => l.slug === openSlug) : undefined;
-
-  // Build event feed: progress entries (lesson completions) + class state changes
-  type FeedItem = { id: string; time: string; kind: "lesson" | "class"; text: string };
-  const feed: FeedItem[] = [];
-
-  user.progress.forEach((p) => {
-    const lesson = lessons.find((l) => l.slug === p.lessonSlug);
-    const fem = childFirstName.endsWith("a") ? "a" : "";
-    feed.push({
-      id: `lesson-${p.lessonSlug}-${p.completedAt}`,
-      time: p.completedAt,
-      kind: "lesson",
-      text: lesson
-        ? t.feed_child_passed(childFirstName, fem, lesson.title)
-        : t.feed_lesson_done,
-    });
-  });
-
-  if (classState?.openedAt && openLesson) {
-    feed.push({
-      id: `class-open-${classState.openedAt}`,
-      time: classState.openedAt,
-      kind: "class",
-      text: t.feed_teacher_opened(openLesson.title),
-    });
-  }
-
-  feed.sort((a, b) => (b.time > a.time ? 1 : -1));
-  const todayItems = feed.filter((i) => isToday(i.time));
-  const earlierItems = feed.filter((i) => !isToday(i.time)).slice(0, 5);
-
-  // UI Logic
-  // UI Logic
-  const finalPending = initialDone && !finalDone;
+  const allLessonsDone = completedLessons >= lessonCount;
 
   return (
-    <section className="parent-feed" aria-label={t.aria_parent}>
+    <section className="mosaic-parent-dashboard" aria-label={t.aria_parent}>
+      <div className="mosaic-dashboard-grid">
+        {/* Main Column */}
+        <div className="mosaic-dashboard-main-col">
+          {/* Child Summary Card */}
+          <article className="mosaic-card">
+            <div className="mosaic-card-head">
+              <span className="mosaic-card-eyebrow">Child Summary</span>
+              <h2 className="mosaic-card-title">{childName}</h2>
+            </div>
+            <div className="mosaic-profile-meta-grid">
+              <div className="mosaic-meta-item">
+                <span className="mosaic-meta-label">Grade</span>
+                <strong className="mosaic-meta-value">{childClass}</strong>
+              </div>
+              <div className="mosaic-meta-item">
+                <span className="mosaic-meta-label">School / Organization</span>
+                <strong className="mosaic-meta-value">{orgName}</strong>
+              </div>
+              <div className="mosaic-meta-item">
+                <span className="mosaic-meta-label">Assigned Educator</span>
+                <strong className="mosaic-meta-value">{teacherName}</strong>
+              </div>
+            </div>
 
-      {/* UI Module */}
-      <header className="parent-head parent-head--compact">
-        <div className="parent-head-main">
-          <strong className="parent-head-name">{childName}</strong>
-          <span className="parent-head-meta">
-            {childClass}
-            {user.profile.organizationName ? `, ${user.profile.organizationName}` : ""}
-          </span>
+            <div className="mosaic-progress-block">
+              <div className="mosaic-progress-header">
+                <span className="mosaic-progress-label">Overall Course Progress</span>
+                <span className="mosaic-progress-metric">
+                  <strong>{completedLessons}</strong> of {lessonCount} lessons ({overallProgress}%)
+                </span>
+              </div>
+              <div className="mosaic-progress-track">
+                <div
+                  className="mosaic-progress-bar"
+                  style={{ width: `${overallProgress}%` }}
+                />
+              </div>
+            </div>
+          </article>
+
+          {/* Today's Learning Card */}
+          <article className="mosaic-card">
+            <div className="mosaic-card-head">
+              <div className="flex items-center justify-between mb-2">
+                <span className="mosaic-card-eyebrow">Today&apos;s Learning</span>
+                {openLesson ? (
+                  <span className="mosaic-badge mosaic-badge-success">In session</span>
+                ) : (
+                  <span className="mosaic-badge mosaic-badge-idle">Idle</span>
+                )}
+              </div>
+              {openLesson ? (
+                <>
+                  <h2 className="mosaic-card-title">{openLesson.title}</h2>
+                  <p className="mosaic-card-text">
+                    {t.parent_lesson_open_text(childFirstName)}
+                  </p>
+                  <div className="mt-4">
+                    <button
+                      type="button"
+                      className="button button-primary"
+                      onClick={() => onOpenLesson(openLesson.slug)}
+                    >
+                      {t.view_lesson}
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <h2 className="mosaic-card-title">{t.lesson_not_open_yet}</h2>
+                  <p className="mosaic-card-text">
+                    {t.parent_lesson_closed_text()}
+                  </p>
+                </>
+              )}
+            </div>
+          </article>
+
+          {/* Progress by Topic */}
+          {moduleProgress.length > 0 && (
+            <article className="mosaic-card">
+              <div className="mosaic-card-head">
+                <span className="mosaic-card-eyebrow">Curriculum Tracks</span>
+                <h2 className="mosaic-card-title">{t.progress_by_topics}</h2>
+              </div>
+              <div className="mosaic-module-list">
+                {moduleProgress.map((module) => (
+                  <button
+                    key={module.slug}
+                    type="button"
+                    className="mosaic-module-row"
+                    onClick={() => {
+                      const nextSlug = module.nextLesson?.slug ?? module.lessons[0]?.slug;
+                      if (nextSlug) onOpenLesson(nextSlug);
+                    }}
+                  >
+                    <div className="mosaic-module-info">
+                      <span className="mosaic-module-title">{module.title}</span>
+                      <span className="mosaic-module-count">
+                        {module.done} / {module.total}
+                      </span>
+                    </div>
+                    <div className="mosaic-progress-track mosaic-progress-track--sm">
+                      <div
+                        className="mosaic-progress-bar"
+                        style={{ width: `${module.progress}%` }}
+                      />
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </article>
+          )}
         </div>
-        <div className="parent-head-progress">
-          <div className="parent-head-progress-top">
-            <strong>{completedLessons}/{lessonCount}</strong>
-            <span>{overallProgress}%</span>
-          </div>
-          <div className="parent-progress-bar parent-progress-bar--lg">
-            <div className="parent-progress-fill" style={{ width: `${overallProgress}%` }} />
-          </div>
-        </div>
-      </header>
 
-      {/* UI Module */}
-      {finalPending ? (
-        <article className="parent-anketa-banner">
-          <div>
-            <strong>{t.fill_final_questionnaire}</strong>
-            <p>{t.final_questionnaire_hint}</p>
-          </div>
-          <button type="button" className="parent-anketa-btn" onClick={onOpenAnketa}>
-            {t.fill}
-          </button>
-        </article>
-      ) : null}
+        {/* Side Column */}
+        <div className="mosaic-dashboard-side-col">
+          {/* Parent Questionnaires Card */}
+          <article className="mosaic-card">
+            <div className="mosaic-card-head">
+              <span className="mosaic-card-eyebrow">Questionnaires</span>
+              <h2 className="mosaic-card-title">{t.parent_family_title}</h2>
+              <p className="mosaic-card-text">
+                {t.parent_family_desc}
+              </p>
+            </div>
 
-      {/* UI Module */}
-      <article className={`parent-now-card ${openLesson ? "parent-now-card--active" : "parent-now-card--idle"}`}>
-        <p className="parent-now-kicker">{t.now_in_class}</p>
-        {openLesson ? (
-          <>
-            <h3>{openLesson.title}</h3>
-            <p className="parent-now-text">
-              {t.parent_lesson_open_text(childFirstName)}
-            </p>
-            <button
-              type="button"
-              className="parent-now-btn"
-              onClick={() => onOpenLesson(openLesson.slug)}
-            >
-              {t.view_lesson}
-            </button>
-          </>
-        ) : (
-          <>
-            <h3>{t.lesson_not_open_yet}</h3>
-            <p className="parent-now-text">
-              {t.parent_lesson_closed_text(childFirstName)}
-            </p>
-          </>
-        )}
-      </article>
+            <div className="mosaic-questionnaire-list">
+              <div className="mosaic-q-item">
+                <div className="mosaic-q-info">
+                  <strong>Initial Questionnaire</strong>
+                  <p className="mosaic-q-sub">
+                    {initialDone ? "Completed and submitted" : "Baseline digital skills evaluation"}
+                  </p>
+                </div>
+                {initialDone ? (
+                  <span className="mosaic-badge mosaic-badge-success">Completed</span>
+                ) : (
+                  <span className="mosaic-badge mosaic-badge-warning">Pending</span>
+                )}
+              </div>
 
-      {/* UI Module */}
-      {moduleProgress.length > 0 ? (
-        <article className="parent-feed-card parent-feed-card--progress">
-          <h3>{t.progress_by_topics}</h3>
-          <div className="parent-progress-bars">
-            {moduleProgress.map((module) => (
-              <button
-                key={module.slug}
-                type="button"
-                className="parent-progress-row"
-                onClick={() => {
-                  const nextSlug = module.nextLesson?.slug ?? module.lessons[0]?.slug;
-                  if (nextSlug) onOpenLesson(nextSlug);
-                }}
+              <div className="mosaic-q-item">
+                <div className="mosaic-q-info">
+                  <strong>Final Questionnaire</strong>
+                  <p className="mosaic-q-sub">
+                    {finalDone
+                      ? "Completed and submitted"
+                      : allLessonsDone
+                        ? "Ready for completion"
+                        : t.opens_after(lessonCount, completedLessons)}
+                  </p>
+                </div>
+                {finalDone ? (
+                  <span className="mosaic-badge mosaic-badge-success">Completed</span>
+                ) : allLessonsDone ? (
+                  <span className="mosaic-badge mosaic-badge-warning">Ready</span>
+                ) : (
+                  <span className="mosaic-badge mosaic-badge-neutral">Locked</span>
+                )}
+              </div>
+            </div>
+
+            <div className="mosaic-card-action">
+              <Link
+                href="/onboarding/anketa"
+                className="button button-primary w-full text-center block"
               >
-                <div className="parent-progress-row-head">
-                  <span className="parent-progress-row-title">{module.title}</span>
-                  <strong className="parent-progress-row-value">{module.done}/{module.total}</strong>
-                </div>
-                <div className="parent-progress-bar">
-                  <div className="parent-progress-fill" style={{ width: `${module.progress}%` }} />
-                </div>
-              </button>
-            ))}
-          </div>
-        </article>
-      ) : null}
+                Open questionnaires
+              </Link>
+            </div>
+          </article>
 
-      {/* UI Module */}
-      <article className="parent-feed-card parent-feed-card--today">
-        <h3>{t.today_section}</h3>
-        {todayItems.length === 0 ? (
-          <p className="parent-feed-empty">
-            {openLesson
-              ? t.parent_feed_no_marks(openLesson.title, childFirstName, childFirstName.endsWith("a") ? "a" : "")
-              : t.parent_feed_idle}
-          </p>
-        ) : (
-          <ul className="parent-feed-list">
-            {todayItems.map((item) => (
-              <li key={item.id} className={`parent-feed-item parent-feed-item--${item.kind}`}>
-                <span className="parent-feed-time">{formatTime(item.time, t)}</span>
-                <span className="parent-feed-text">{item.text}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </article>
+          {/* Support at Home Card */}
+          <article className="mosaic-card">
+            <div className="mosaic-card-head">
+              <span className="mosaic-card-eyebrow">Home Guidance</span>
+              <h2 className="mosaic-card-title">Support at home</h2>
+            </div>
+            <div className="mosaic-step-list">
+              <div className="mosaic-step-item">
+                <span className="mosaic-step-number">1</span>
+                <p>Agree on a short practice time before starting: 10–15 minutes.</p>
+              </div>
+              <div className="mosaic-step-item">
+                <span className="mosaic-step-number">2</span>
+                <p>After the activity, ask what felt easiest and what was fun to repeat.</p>
+              </div>
+              <div className="mosaic-step-item">
+                <span className="mosaic-step-number">3</span>
+                <p>If the learner needs a pause, stop at the current step and return later.</p>
+              </div>
+            </div>
 
-      {earlierItems.length > 0 ? (
-        <article className="parent-feed-card parent-feed-card--earlier">
-          <h3>{t.earlier}</h3>
-          <ul className="parent-feed-list">
-            {earlierItems.map((item) => (
-              <li key={item.id} className={`parent-feed-item parent-feed-item--${item.kind}`}>
-                <span className="parent-feed-time">{formatDateShort(item.time, t)}</span>
-                <span className="parent-feed-text">{item.text}</span>
-              </li>
-            ))}
-          </ul>
-        </article>
-      ) : null}
+            {user.profile.supportNotes && (
+              <div className="mosaic-subcard">
+                <span className="mosaic-card-eyebrow">Individual Support Notes</span>
+                <p className="mosaic-note-text">
+                  &ldquo;{user.profile.supportNotes}&rdquo;
+                </p>
+              </div>
+            )}
+
+            <div className="mosaic-contacts-strip">
+              <div><strong>Parent:</strong> {user.name} ({user.email})</div>
+              <div><strong>Educator:</strong> {teacherName}</div>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
   );
-}
-
-function formatDateShort(iso: string, t: Dict) {
-  return new Intl.DateTimeFormat(t.locale, { day: "2-digit", month: "short" }).format(new Date(iso));
 }
 
 // ── TodaySection (parent / teacher generic) ──────────────────────────────────
@@ -3447,7 +3296,6 @@ export function DashboardClient({
             overallProgress={overallProgress}
             moduleProgress={moduleProgress}
             onOpenLesson={handleOpenLesson}
-            onOpenAnketa={() => setDashboardState({ section: "family" })}
             t={t}
           />
         ) : (

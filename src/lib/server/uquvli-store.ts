@@ -766,7 +766,7 @@ export async function addStudentToClass(
 
     const group = requireGroup(input.group);
     const studentCode = generateStudentCode(db);
-    const email =`student-${studentCode}@uquvli.local`;
+    const email = `student-${studentCode}@mosaic-learning.org`;
 
     const newStudent: StoredUser = {
       id: randomUUID(),

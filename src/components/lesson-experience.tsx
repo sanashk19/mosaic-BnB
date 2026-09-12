@@ -42,6 +42,7 @@ import { DetergentDosageTrainer } from "@/components/trainers/detergent-dosage-t
 import { MenuBuilderTrainer } from "@/components/trainers/menu-builder-trainer";
 import { RecipeReaderTrainer } from "@/components/trainers/recipe-reader-trainer";
 import { RecipeTimerTrainer } from "@/components/trainers/recipe-timer-trainer";
+import { SignLanguageTrainer } from "@/components/trainers/sign-language-trainer";
 import { Mascot, type MascotMood } from "@/components/mascot";
 import { SceneScenario } from "@/components/scene-scenario";
 import { StudentTaskPanel, type StudentTaskPanelAnswer } from "@/components/student-task-panel";
@@ -99,7 +100,7 @@ const englishLessonDict = {
   trainerMenu: "Healthy Dinner",
   trainerRecipe: "Cutlet Recipe",
   trainerRecipeTimer: "Apple Pie with Timer",
-  mascotIntro: "Hi! I'm Dilnoza. Let's take it easy: one step at a time.",
+  mascotIntro: "Hi! I'm Aanya. Let's take it easy: one step at a time.",
   mascotLastRule: "This is the last rule. Then click the button below.",
   mascotReadRule: "Read the rule. Then click \"Next\".",
   mascotTrainer: "Take your time. Think calmly.",
@@ -363,6 +364,8 @@ function trainerTitle(trainer: LessonTrainer, t: (typeof dict)[keyof typeof dict
       return t.trainerRecipe;
     case "recipe-timer":
       return t.trainerRecipeTimer;
+    case "sign-language":
+      return "ISL Gesture Practice";
     default:
       return t.trainerLabel;
   }
@@ -391,6 +394,7 @@ export function LessonExperience({
     () => createAnswerState(lesson.quiz.length),
   );
   const [notice, setNotice] = useState("");
+  const [showAnswerRequiredNotice, setShowAnswerRequiredNotice] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -677,9 +681,12 @@ export function LessonExperience({
 
   function goToNextScenario() {
     if (currentScenarioAnswer === -1) {
+      setShowAnswerRequiredNotice(true);
       setNotice(t.chooseAnswerFirst);
       return;
     }
+
+    setShowAnswerRequiredNotice(false);
 
     if (scenarioIndex < lesson.scenarios.length - 1) {
       setScenarioIndex((current) => current + 1);
@@ -1135,6 +1142,27 @@ export function LessonExperience({
             onDone={finishTrainer}
           />
         );
+      case "sign-language":
+        return (
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <SignLanguageTrainer
+              key={keyId}
+              targetSign={currentTrainer.targetSign}
+              title={currentTrainer.title}
+              subtitle={currentTrainer.subtitle}
+              onSuccess={finishTrainer}
+            />
+            <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "0.5rem" }}>
+              <button
+                type="button"
+                className="button button-primary"
+                onClick={finishTrainer}
+              >
+                Proceed to questions
+              </button>
+            </div>
+          </div>
+        );
       default:
         return null;
     }
@@ -1431,6 +1459,7 @@ export function LessonExperience({
                         currentScenarioAnswer === optionIndex ? "selected" : ""
                       }`}
                       onClick={() => {
+                        setShowAnswerRequiredNotice(false);
                         setScenarioAnswers((current) =>
                           replaceAnswer(current, scenarioIndex, optionIndex),
                         );
@@ -1466,6 +1495,28 @@ export function LessonExperience({
                     </p>
                   </div>
                 ) : null}
+
+                {showAnswerRequiredNotice && currentScenarioAnswer === -1 && (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      padding: "0.625rem 1rem",
+                      backgroundColor: "#FBECE5",
+                      border: "1px solid #D8663F",
+                      borderRadius: "10px",
+                      color: "#D8663F",
+                      fontWeight: 600,
+                      fontSize: "0.875rem",
+                      marginTop: "1rem",
+                      marginBottom: "0.75rem",
+                    }}
+                  >
+                    <span>⚠️</span>
+                    <span>{t.chooseAnswerFirst}</span>
+                  </div>
+                )}
 
                 <div className="lesson-actions">
                   <button

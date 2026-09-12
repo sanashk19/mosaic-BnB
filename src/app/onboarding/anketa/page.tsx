@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { startTransition, useEffect, useState } from "react";
 import { useAuth } from "@/components/auth-provider";
@@ -13,35 +14,25 @@ import {
 
 const questions = questionnaireQuestions.initial;
 
+const englishOnboardingDict = {
+  defaultChild: "your child",
+  saveFailed: "Failed to save responses. Please try again.",
+  loading: "Loading questionnaire...",
+  step: "Parent Questionnaire",
+  headingPrefix: "How confident is",
+  headingSuffix: "with digital skills today?",
+  lead: "This brief survey helps us measure your learner's growth and personalize lesson pacing. 5 short questions, rated 1 to 5.",
+  filled: "Completed",
+  of: "of",
+  saving: "Saving responses...",
+  finish: "Save and Return to Dashboard",
+  backToDashboard: "Back to Parent Dashboard",
+  logout: "Sign out and complete later",
+};
+
 const dict = {
-  ru: {
-    defaultChild: "your child",
-    saveFailed: "Failed to save profile. Try again.",
-    loading: "Loading the form...",
-    step: "Step 2 of 2 - short survey",
-    headingPrefix: "Tell me how it is now",
-    headingSuffix: "with digital skills",
-    lead: "This is necessary so that the program can measure the effect of training. 5 short questions, rating from 1 to 5. After that, you will be taken to the office.",
-    filled: "Completed",
-    of: "from",
-    saving: "Let's save...",
-    finish: "Complete and enter your account",
-    logout: "Log out and fill out later",
-  },
-  uz: {
-    defaultChild: "farzandingiz",
-    saveFailed: "Anketani saqlab boʻlmadi. Yana urinib koʻring.",
-    loading: "Anketa yuklanmoqda...",
-    step: "2-bosqich 2 dan — qisqa soʻrovnoma",
-    headingPrefix: "Hozir",
-    headingSuffix: "ning raqamli koʻnikmalari qanday ekanini ayting",
-    lead: "Bu dastur oʻqitish samarasini oʻlchashi uchun kerak. 5 ta qisqa savol, 1 dan 5 gacha baho. Keyin — kabinetga oʻtasiz.",
-    filled: "Toʻldirildi",
-    of: "dan",
-    saving: "Saqlanmoqda...",
-    finish: "Yakunlash va kabinetga kirish",
-    logout: "Chiqish va keyinroq toʻldirish",
-  },
+  ru: englishOnboardingDict,
+  uz: englishOnboardingDict,
 } as const;
 
 export default function OnboardingAnketaPage() {
@@ -203,13 +194,21 @@ export default function OnboardingAnketaPage() {
           >
             {submitting ? t.saving : t.finish}
           </button>
-          <button
-            type="button"
-            className="onboarding-logout-link"
-            onClick={() => void handleLogout()}
-          >
-            {t.logout}
-          </button>
+          <div className="flex flex-col items-center gap-2 mt-2">
+            <Link
+              href="/dashboard"
+              className="text-sm font-semibold text-[#506847] hover:underline"
+            >
+              {t.backToDashboard}
+            </Link>
+            <button
+              type="button"
+              className="onboarding-logout-link"
+              onClick={() => void handleLogout()}
+            >
+              {t.logout}
+            </button>
+          </div>
         </div>
       </section>
     </main>

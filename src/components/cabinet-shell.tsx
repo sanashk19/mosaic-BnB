@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { startTransition, useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useAuth } from "@/components/auth-provider";
 import { useLocale } from "@/components/locale-provider";
 import { demoUserPreview } from "@/data/demo-user";
-import { AUTH_CHANGE_EVENT, getQuestionnaire, type CurrentUser } from "@/lib/auth-storage";
 import { isCabinetRoute } from "@/lib/is-cabinet-route";
 import type { Locale } from "@/lib/i18n-shared";
 
@@ -93,22 +92,6 @@ function getDefaultNavigation(locale: Locale): CabinetNavigationGroup[] {
   ];
 }
 
-function getRoleLabel(role: string, locale: Locale): string {
-  const t = dict[locale];
-  switch (role) {
-    case "student":
-      return t.roleLabelStudent;
-    case "parent":
-      return t.roleLabelParent;
-    case "teacher":
-      return t.roleLabelTeacher;
-    case "researcher":
-      return t.roleLabelResearcher;
-    default:
-      return t.roleLabelUser;
-  }
-}
-
 function getRoleDisplayName(role: string, locale: Locale): string {
   const t = dict[locale];
   switch (role) {
@@ -156,50 +139,11 @@ function isActiveLink(
   return pathname === hrefPath || pathname.startsWith(`${hrefPath}/`);
 }
 
-function getUserDisplay(user: CurrentUser, isLoggedIn: boolean, locale: Locale) {
-  const t = dict[locale];
-  const roleLabel = getRoleLabel(user.role, locale);
-
-  if (user.role === "teacher") {
-    return {
-      name: user.name,
-      meta: `${user.profile.organizationName} • ${user.profile.childClass}`,
-      state: isLoggedIn ? t.modeRole(roleLabel) : t.previewMode,
-    };
-  }
-
-  if (user.role === "student") {
-    return {
-      name: user.profile.childName || user.name,
-      meta: `${user.profile.childClass} • ${user.profile.teacherName}`,
-      state: isLoggedIn ? t.modeRole(roleLabel) : t.previewMode,
-    };
-  }
-
-  if (user.role === "researcher") {
-    return {
-      name: user.name,
-      meta: t.researcher,
-      state: isLoggedIn ? t.modeRole(roleLabel) : t.previewMode,
-    };
-  }
-
-  return {
-    name: user.name,
-    meta: user.profile.childName
-      ? `${user.profile.childName} • ${user.profile.childClass}`
-      : user.profile.childClass || t.parent,
-    state: isLoggedIn ? t.modeRole(roleLabel) : t.previewMode,
-  };
-}
-
-
 export function CabinetShell({
   title,
   description,
   activeHref,
   actions,
-  layoutVariant = "adult-sidebar",
   navigation,
   onNavigate,
   children,
@@ -208,13 +152,11 @@ export function CabinetShell({
   const router = useRouter();
   const locale = useLocale();
   const t = dict[locale];
-  const { ready, user, logout } = useAuth();
+  const { ready, user } = useAuth();
   const [activeHash, setActiveHash] = useState("");
-  const [parentInitialPending, setParentInitialPending] = useState<boolean | null>(null);
   const isAuthRoute = pathname.startsWith("/login") || pathname.startsWith("/register");
   const isProtectedCabinetRoute = isCabinetRoute(pathname) && !isAuthRoute;
   const activeUser = user ?? demoUserPreview;
-  const userDisplay = getUserDisplay(activeUser, Boolean(user), locale);
   const navigationGroups = navigation ?? getDefaultNavigation(locale);
 
   useEffect(() => {
@@ -230,210 +172,80 @@ export function CabinetShell({
     }
   }, [isProtectedCabinetRoute, ready, router, user]);
 
-  useEffect(() => {
-    if (!user || user.role !== "parent") {
-      return;
-    }
-
-    let cancelled = false;
-
-    const refresh = () => {
-      void getQuestionnaire(user.id, "initial")
-        .then((initial) => {
-          if (!cancelled) setParentInitialPending(!initial);
-        })
-        .catch(() => {
-          if (!cancelled) setParentInitialPending(null);
-        });
-    };
-
-    refresh();
-    window.addEventListener(AUTH_CHANGE_EVENT, refresh);
-
-    return () => {
-      cancelled = true;
-      window.removeEventListener(AUTH_CHANGE_EVENT, refresh);
-    };
-  }, [user]);
-
-  useEffect(() => {
-    if (
-      user?.role === "parent"
-      && parentInitialPending === true
-      && isProtectedCabinetRoute
-      && !pathname.startsWith("/onboarding")
-    ) {
-      router.replace("/onboarding/anketa");
-    }
-  }, [parentInitialPending, isProtectedCabinetRoute, pathname, router, user?.role]);
-
-  if (!isCabinetRoute(pathname)) {
-    return <>{children}</>;
-  }
-
-  if (isProtectedCabinetRoute && (!ready || !user)) {
-    return (
-      <section className="cabinet-access-screen">
-        <div className="cabinet-access-card">
-          <span className="eyebrow">{t.accessEyebrow}</span>
-          <h1>{t.accessTitle}</h1>
-          <p>{t.accessText}</p>
-          <Link className="button button-primary" href="/login">
-            {t.accessButton}
-          </Link>
-        </div>
-      </section>
-    );
-  }
-
-  function handleLogout() {
-    void logout().finally(() => {
-      startTransition(() => router.replace("/login"));
-    });
-  }
-
-  // ── Student layout: single-screen, no navigation ────────────────────────────
-  if (layoutVariant === "student-top-nav") {
-    return (
-      <div className="student-shell" data-role="student">
-        <header className="student-shell-header">
-          <div className="student-shell-brand">
-            <strong>MOSAIC</strong>
+  // ── Unified Mosaic Dashboard Shell ──────────────────────────────────────────
+  return (
+    <div className="mosaic-dashboard-shell" data-role={activeUser.role}>
+      <div className="mosaic-dashboard-container">
+        <header className="mosaic-dashboard-header">
+          <div className="mosaic-dashboard-header-copy">
+            <span className="mosaic-dashboard-eyebrow">
+              {getRoleDisplayName(activeUser.role, locale)}
+            </span>
+            <h1 className="mosaic-dashboard-title">{title}</h1>
+            <p className="mosaic-dashboard-description">{description}</p>
           </div>
-          {user ? (
-            <button
-              type="button"
-              className="student-shell-logout"
-              onClick={handleLogout}
-              aria-label={t.logoutAria}
-            >
-              {t.logoutLabel}
-            </button>
+          {actions ? (
+            <div className="mosaic-dashboard-header-actions">{actions}</div>
           ) : null}
         </header>
 
-        <main className="student-shell-main">
-          {children ?? <p className="loading-copy">{t.loadingCabinet}</p>}
+        {navigationGroups.some((g) => g.items.length > 1) && (
+          <nav className="mosaic-dashboard-nav" aria-label={t.navAria}>
+            <div className="mosaic-dashboard-tabs">
+              {navigationGroups.flatMap((group) => group.items).map((item) => {
+                const active = isActiveLink(pathname, activeHash, item.href, activeHref);
+                const hrefHash = getHrefHash(item.href);
+                const isSamePageHashLink = hrefHash && getHrefPath(item.href) === pathname;
+                const content = (
+                  <>
+                    <span className="mosaic-tab-label">{item.label}</span>
+                    {item.caption ? (
+                      <span className="mosaic-tab-caption">{item.caption}</span>
+                    ) : null}
+                  </>
+                );
+
+                if (isSamePageHashLink) {
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className={`mosaic-tab-link ${active ? "active" : ""}`}
+                      onClick={(event) => {
+                        if (event.metaKey || event.ctrlKey || event.shiftKey) return;
+                        if (onNavigate) {
+                          event.preventDefault();
+                          onNavigate(item.href);
+                        }
+                      }}
+                    >
+                      {content}
+                    </a>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`mosaic-tab-link ${active ? "active" : ""}`}
+                  >
+                    {content}
+                  </Link>
+                );
+              })}
+            </div>
+          </nav>
+        )}
+
+        <main className="mosaic-dashboard-content">
+          {children ?? (
+            <section className="mosaic-dashboard-loading">
+              <p className="loading-copy">{t.loadingCabinet}</p>
+            </section>
+          )}
         </main>
       </div>
-    );
-  }
-
-  // ── Adult layout: role-colored sidebar ───────────────────────────────────────
-  return (
-    <section className="cabinet-shell" data-role={activeUser.role}>
-      <aside className="cabinet-sidebar">
-        <div className="cabinet-brand">
-          <strong>MOSAIC</strong>
-          <span>{getRoleDisplayName(activeUser.role, locale)}</span>
-        </div>
-
-        <div className="cabinet-user">
-          <p className="cabinet-user-name">{userDisplay.name}</p>
-          <p className="cabinet-user-meta">{userDisplay.meta}</p>
-          <span className="cabinet-user-state">{userDisplay.state}</span>
-        </div>
-
-        <nav className="cabinet-nav" aria-label={t.navAria}>
-          {navigationGroups.map((group) => (
-            <div key={group.title} className="cabinet-nav-group">
-              <p className="cabinet-nav-title">{group.title}</p>
-              <div className="cabinet-nav-list">
-                {group.items.map((item) => {
-                  const className = `cabinet-nav-link ${
-                    isActiveLink(pathname, activeHash, item.href, activeHref) ? "active" : ""
-                  }`;
-                  const hrefHash = getHrefHash(item.href);
-                  const isSamePageHashLink = hrefHash && getHrefPath(item.href) === pathname;
-                  const content = (
-                    <>
-                      <span>{item.label}</span>
-                      {item.caption ? <small>{item.caption}</small> : null}
-                    </>
-                  );
-
-                  if (isSamePageHashLink) {
-                    return (
-                      <a
-                        key={item.href}
-                        href={item.href}
-                        className={className}
-                        onClick={(event) => {
-                          if (event.metaKey || event.ctrlKey || event.shiftKey) return;
-                          if (onNavigate) {
-                            event.preventDefault();
-                            onNavigate(item.href);
-                          }
-                        }}
-                      >
-                        {content}
-                      </a>
-                    );
-                  }
-
-                  return (
-                    <Link key={item.href} href={item.href} className={className}>
-                      {content}
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </nav>
-
-        <div className="cabinet-sidebar-bottom">
-          <div className="cabinet-session-actions">
-            {user ? (
-              <button
-                type="button"
-                className="button button-ghost small cabinet-session-button"
-                onClick={handleLogout}
-              >
-                {t.logoutCabinet}
-              </button>
-            ) : (
-              <>
-                <Link className="button button-secondary small cabinet-session-button" href="/login">
-                  {t.login}
-                </Link>
-                <Link className="button button-primary small cabinet-session-button" href="/register">
-                  {t.register}
-                </Link>
-              </>
-            )}
-          </div>
-        </div>
-      </aside>
-
-      <div className="cabinet-main">
-        {parentInitialPending ? (
-          <div className="parent-onboarding-sticky" role="alert">
-            <div className="parent-onboarding-sticky-copy">
-              <strong>{t.parentOnboardingTitle}</strong>
-              <p>{t.parentOnboardingText}</p>
-            </div>
-            <Link href="/onboarding/anketa" className="parent-onboarding-sticky-btn">
-              {t.parentOnboardingButton}
-            </Link>
-          </div>
-        ) : null}
-
-        <header className="cabinet-topbar cabinet-topbar-page">
-          <div className="cabinet-topbar-copy">
-            <p className="cabinet-kicker">{t.cabinetKicker}</p>
-            <h1>{title}</h1>
-            <p className="cabinet-topbar-text">{description}</p>
-          </div>
-          {actions ? <div className="cabinet-topbar-actions">{actions}</div> : null}
-        </header>
-
-        {children ?? (
-          <section className="cabinet-board">
-            <p className="loading-copy">{t.loadingCabinet}</p>
-          </section>
-        )}
-      </div>
-    </section>
+    </div>
   );
 }

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { SignLanguageLearningStudio } from "@/components/sign-language-learning-studio";
+import "@/components/sign-language.css";
 
 export const metadata: Metadata = {
-  title: "Sign Language Studio | Mosaic",
+  title: "Indian Sign Language | Mosaic",
   description:
-    "Learn Indian Sign Language (ISL) alphabets, numbers, and common conversation signs with real-time AI hand gesture recognition and feedback.",
+    "Mosaic's Indian Sign Language learning studio helps learners practice, recognize and explore Indian Sign Language through accessible interactive tools.",
 };
 
 export default function SignLanguagePage() {
   return (
-    <main className="sign-language-page min-h-screen py-10 px-4 sm:px-6 lg:px-8 bg-[#F9F6F1]">
+    <main className="sign-language-page min-h-screen bg-white">
       <SignLanguageLearningStudio />
     </main>
   );

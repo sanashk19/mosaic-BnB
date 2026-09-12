@@ -5,56 +5,44 @@ import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/auth-provider";
 import { useLocale } from "@/components/locale-provider";
 import { MosaicLogo } from "@/components/mosaic-logo";
-import { SocialIcon, type SocialIconName } from "@/components/ui-icons";
 import { isCabinetRoute } from "@/lib/is-cabinet-route";
-
-const socialLinks: Array<{ label: string; icon: SocialIconName; href: string }> = [
-  { label: "Telegram", icon: "telegram", href: "https://t.me" },
-  { label: "YouTube", icon: "youtube", href: "https://youtube.com" },
-  { label: "Instagram", icon: "instagram", href: "https://instagram.com" },
-  { label: "Facebook", icon: "facebook", href: "https://facebook.com" },
-];
 
 const dict = {
   ru: {
     aboutCopy:
-      "Mosaic adapts one lesson into personalized learning experiences for different learner needs — from simplified language and read-aloud support to captions and audio descriptions. One lesson. Every learner.",
-    socialsLabel: "Social networks",
+      "Mosaic adapts one lesson into personalized learning experiences for different learner needs — from simplified language and read-aloud support to captions and audio descriptions.",
+    tagline: "One lesson. Every learner.",
     platform: "Platform",
-    program: "Curriculum",
-    directions: "Tracks",
+    program: "Program",
+    signLanguage: "Sign Language",
     aboutPlatform: "About Mosaic",
     contacts: "Contact",
     users: "For Users",
-    forFamilies: "For Parents",
-    forSchools: "For Schools",
+    forTeachers: "For Teachers",
+    forFamilies: "For Families",
     cabinet: "Dashboard",
-    startLearning: "Start learning",
-    questions: "Have questions?",
+    contactHeading: "Contact",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
-    copyrightSuffix: "Adaptive Digital Learning Platform",
     openCabinet: "Open dashboard",
     loginCabinet: "Log in to dashboard",
   },
   uz: {
     aboutCopy:
-      "Mosaic adapts one lesson into personalized learning experiences for different learner needs — from simplified language and read-aloud support to captions and audio descriptions. One lesson. Every learner.",
-    socialsLabel: "Social networks",
+      "Mosaic adapts one lesson into personalized learning experiences for different learner needs — from simplified language and read-aloud support to captions and audio descriptions.",
+    tagline: "One lesson. Every learner.",
     platform: "Platform",
-    program: "Curriculum",
-    directions: "Tracks",
+    program: "Program",
+    signLanguage: "Sign Language",
     aboutPlatform: "About Mosaic",
     contacts: "Contact",
     users: "For Users",
-    forFamilies: "For Parents",
-    forSchools: "For Schools",
+    forTeachers: "For Teachers",
+    forFamilies: "For Families",
     cabinet: "Dashboard",
-    startLearning: "Start learning",
-    questions: "Have questions?",
+    contactHeading: "Contact",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
-    copyrightSuffix: "Adaptive Digital Learning Platform",
     openCabinet: "Open dashboard",
     loginCabinet: "Log in to dashboard",
   },
@@ -75,31 +63,21 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-grid">
         <div>
-          <div style={{ marginBottom: "14px" }}>
-            <MosaicLogo size={32} />
+          <div style={{ marginBottom: "12px" }}>
+            <MosaicLogo size={34} />
           </div>
+          <p className="footer-title" style={{ fontSize: "1.05rem", marginBottom: "6px" }}>
+            {t.tagline}
+          </p>
           <p className="footer-copy">{t.aboutCopy}</p>
-          <div className="footer-socials" aria-label={t.socialsLabel}>
-            {socialLinks.map((item) => (
-              <a
-                key={item.icon}
-                href={item.href}
-                aria-label={item.label}
-                title={item.label}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <SocialIcon name={item.icon} />
-              </a>
-            ))}
-          </div>
         </div>
 
         <div>
           <p className="footer-title">{t.platform}</p>
           <div className="footer-links">
             <Link href="/program">{t.program}</Link>
-            <Link href="/program#directions">{t.directions}</Link>
+            <Link href="/sign-language">{t.signLanguage}</Link>
+            <Link href="/contacts">{t.aboutPlatform}</Link>
             <Link href="/contacts">{t.contacts}</Link>
           </div>
         </div>
@@ -107,19 +85,18 @@ export function SiteFooter() {
         <div>
           <p className="footer-title">{t.users}</p>
           <div className="footer-links">
+            <Link href="/educators">{t.forTeachers}</Link>
             <Link href="/families">{t.forFamilies}</Link>
-            <Link href="/educators">{t.forSchools}</Link>
             <Link href="/dashboard">{t.cabinet}</Link>
-            <Link href="/register">{t.startLearning}</Link>
           </div>
         </div>
 
         <div>
-          <p className="footer-title">{t.questions}</p>
+          <p className="footer-title">{t.contactHeading}</p>
           <div className="footer-links">
-            <span>support@mosaic-learning.org</span>
-            <span>Accessible Learning Initiative</span>
-            <Link href="/contacts">{t.contacts}</Link>
+            <a href="mailto:sanashk019@gmail.com" style={{ fontWeight: 600, color: "var(--mosaic-green, #506847)" }}>
+              sanashk019@gmail.com
+            </a>
             <Link href="/privacy">{t.privacy}</Link>
             <Link href="/terms">{t.terms}</Link>
           </div>
@@ -135,3 +112,4 @@ export function SiteFooter() {
     </footer>
   );
 }
+

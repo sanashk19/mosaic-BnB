@@ -10,7 +10,7 @@ const englishDict = {
     "Transform any lesson into multiple personalized accessibility experiences with the Mosaic Adaptive Engine. Built for inclusive classrooms: calm, predictable, and tailored to each student's needs.",
   ctaContact: "Get in touch with our team",
   ctaProgram: "Explore curriculum",
-  heroImageAlt: "Educator guiding an inclusive digital literacy lesson",
+  heroImageAlt: "Teacher helping students use tablets in an inclusive classroom",
 
   formatsEyebrow: "Classroom Formats",
   formatsHeading: "Designed for guided classroom teaching, small groups, or independent pacing.",
@@ -89,7 +89,7 @@ export default async function EducatorsPage() {
 
           <figure className="marketing-figure">
             <Image
-              src="/generated-images/audience-school.jpg"
+              src="/generated-images/hero-educators.jpg"
               alt={t.heroImageAlt}
               width={1120}
               height={840}

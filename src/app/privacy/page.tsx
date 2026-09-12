@@ -43,7 +43,7 @@ const dict = {
       ],
       [
         "10. Communication on data issues.",
-        "To contact us regarding privacy issues, deleting a profile or revoking consent, you can use the address support@mosaic-learning.org.",
+        "To contact us regarding privacy issues, deleting a profile or revoking consent, you can use the address sanashk019@gmail.com.",
       ],
     ],
   },
@@ -89,7 +89,7 @@ const dict = {
       ],
       [
         "10. Maʼlumotlar boʻyicha aloqa.",
-        " Maxfiylik masalalari, profilni oʻchirish yoki rozilikni qaytarib olish boʻyicha murojaatlar uchun support@mosaic-learning.org manzilidan foydalanish mumkin.",
+        " Maxfiylik masalalari, profilni oʻchirish yoki rozilikni qaytarib olish boʻyicha murojaatlar uchun sanashk019@gmail.com manzilidan foydalanish mumkin.",
       ],
     ],
   },

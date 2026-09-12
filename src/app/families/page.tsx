@@ -10,7 +10,7 @@ const englishDict = {
     "Learners work with Mosaic at school alongside their teacher. At home, families can practice the exact same interactive simulator together and build real-world digital independence.",
   ctaCreate: "Create family account",
   ctaLessons: "Explore lessons",
-  heroImageAlt: "Family practicing an adaptive digital lesson together at home",
+  heroImageAlt: "Parent helping a child learn on a tablet at home",
 
   stepsEyebrow: "Home Practice",
   stepsHeading: "Three simple steps to support your child's progress.",
@@ -89,7 +89,7 @@ export default async function FamiliesPage() {
 
           <figure className="marketing-figure">
             <Image
-              src="/generated-images/audience-family.jpg"
+              src="/generated-images/hero-families.jpg"
               alt={t.heroImageAlt}
               width={1120}
               height={840}

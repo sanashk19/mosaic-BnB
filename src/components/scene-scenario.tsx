@@ -1,6 +1,5 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
 import type { CSSProperties } from "react";
 import { useLocale } from "@/components/locale-provider";
 import { CabinetIcon } from "@/components/ui-icons";
@@ -158,6 +157,8 @@ function getSceneForModule(locale: Locale, moduleSlug: string): SceneRole {
   return sceneByLocale[locale][moduleSlug] ?? defaultByLocale[locale];
 }
 
+import { ScenarioCharacters } from "@/components/scenario-characters";
+
 type Props = {
   scenario: LessonScenario;
   moduleSlug: string;
@@ -193,35 +194,49 @@ export function SceneScenario({
         <span className="scene-step">{t.situation(index + 1, total)}</span>
       </div>
 
+      {scenario.title ? (
+        <h3 className="scene-prompt-title">{scenario.title}</h3>
+      ) : null}
+
       <div
         className={`scene-stage scene-stage--${moduleSlug}`}
         style={{ "--scene-bg": npc.bg } as CSSProperties}
       >
-        <div className="scene-character scene-character--npc">
-          <div className="scene-avatar" aria-hidden="true">
-            <img
-              src={npc.avatarSrc}
-              alt=""
-              width={180}
-              height={240}
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-            />
-          </div>
-          <span className="scene-name">{npc.name}</span>
-        </div>
+        {/* Avatars standing on a shared baseline */}
+        <ScenarioCharacters
+          teacher={{
+            name: npc.name,
+            avatarSrc: npc.avatarSrc,
+            avatarAlt: npc.avatarAlt,
+          }}
+          learner={{
+            name: t.you,
+            avatarSrc: "/mascot/dilnoza.png",
+            avatarAlt: t.you,
+            isPrimary: true,
+          }}
+        />
 
-        <div className="scene-dialogue">
-          <div className="scene-bubble scene-bubble--npc">
-            <p>{scenario.text}</p>
+        {/* Dialogue thread */}
+        <div className="scene-dialogue-thread">
+          <div className="scene-dialogue-card scene-dialogue-card--teacher">
+            <div className="scene-dialogue-speaker">
+              <span className="scene-dialogue-dot scene-dialogue-dot--teacher" aria-hidden="true" />
+              <span className="scene-dialogue-name">{npc.name}</span>
+            </div>
+            <p className="scene-dialogue-text">{scenario.text}</p>
           </div>
+
           <div
-            className={`scene-bubble scene-bubble--you ${
-              answered ? "" : "scene-bubble--pending"
+            className={`scene-dialogue-card scene-dialogue-card--learner ${
+              answered ? "scene-dialogue-card--answered" : "scene-dialogue-card--pending"
             }`}
           >
-            <p>
+            <div className="scene-dialogue-speaker">
+              <span className="scene-dialogue-dot scene-dialogue-dot--learner" aria-hidden="true" />
+              <span className="scene-dialogue-name">{t.you}</span>
+            </div>
+            <p className="scene-dialogue-text">
               {answered
                 ? chosenText
                 : showControls
@@ -229,21 +244,6 @@ export function SceneScenario({
                   : t.pendingRight}
             </p>
           </div>
-        </div>
-
-        <div className="scene-character scene-character--you">
-          <div className="scene-avatar scene-avatar--you" aria-hidden="true">
-            <img
-              src="/mascot/dilnoza.png"
-              alt=""
-              width={120}
-              height={180}
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-            />
-          </div>
-          <span className="scene-name">{t.you}</span>
         </div>
       </div>
 

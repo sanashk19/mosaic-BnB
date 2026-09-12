@@ -20,13 +20,13 @@ const dict = {
     gotIt: "Got it",
   },
   uz: {
-    title: "Biz cookie fayllaridan foydalanamiz",
+    title: "We use cookies",
     copyBefore:
-      "Texnik jihatdan zarur cookie fayllar tizimga kirish uchun, localStorage esa banner orqali tanlov va sozlamalar uchun ishlatiladi. Batafsil maʼlumot",
-    copyLink: "cookie siyosatida",
+      "Technically necessary cookies are required for navigation and authentication, while local storage saves your preferences. Learn more in our ",
+    copyLink: "cookie policy",
     copyAfter: ".",
-    onlyRequired: "Faqat zarurlari",
-    gotIt: "Tushunarli",
+    onlyRequired: "Only necessary",
+    gotIt: "Got it",
   },
 } as const;
 

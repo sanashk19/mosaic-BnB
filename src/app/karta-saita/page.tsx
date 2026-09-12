@@ -12,10 +12,10 @@ type DiagramSection = {
 export const metadata: Metadata = {
   title: "User Path Map",
   description:
-    "A detailed Mermaid map of the UQUVLI.UZ platform for guests, parents, students, teachers and researchers.",
+    "A detailed Mermaid map of the Mosaic platform for guests, parents, students, teachers and researchers.",
 };
 
-const shareUrl = "https://uquvli.uz/karta-saita";
+const shareUrl = "https://mosaic-learning.org/karta-saita";
 
 const diagramSections: DiagramSection[] = [
   {
@@ -23,7 +23,7 @@ const diagramSections: DiagramSection[] = [
     title: "General platform map",
     lead: "All platform logic on one diagram: public zone, role accounts and server APIs.",
     chart: String.raw`flowchart LR
-  %% UQUVLI.UZ user journey map
+  %% Mosaic user journey map
 
   subgraph Public["Public area"]
     Home["Home page<br/>The user gets acquainted with the platform"]
@@ -181,7 +181,7 @@ const diagramSections: DiagramSection[] = [
     title: "Detailed guest card",
     lead: "The path of a person who is not yet authorized: from the main page to choosing a role.",
     chart: String.raw`flowchart TD
-  GuestStart["The guest opens uquvli.uz"]
+  GuestStart["The guest opens mosaic-learning.org"]
   GuestHome["Home page<br/>reads who the platform is for"]
   GuestProgramClick["Clicks Program"]
   GuestProgram["Looks at areas<br/>diagnostics, health, everyday life, transport, communications, security, government services"]
@@ -420,7 +420,7 @@ export default function SiteMapPage() {
       <section className={styles.hero} aria-labelledby="journey-title">
         <div className={styles.heroText}>
           <span className={styles.kicker}>Mermaid card in browser</span>
-          <h1 id="journey-title" className={styles.title}>Map of user paths UQUVLI.UZ</h1>
+          <h1 id="journey-title" className={styles.title}>Map of user paths Mosaic</h1>
           <p className={styles.lead}>These are the same Mermaid diagrams, but already drawn on the website. Can be opened
             link, show on your computer and follow the detailed flow of each
             roles without editors and special programs.</p>

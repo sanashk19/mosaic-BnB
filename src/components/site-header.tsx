@@ -1,37 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuth } from "@/components/auth-provider";
 import { useLocale } from "@/components/locale-provider";
 import { MosaicLogo } from "@/components/mosaic-logo";
-import { GlobeIcon, MenuIcon } from "@/components/ui-icons";
+import { MenuIcon } from "@/components/ui-icons";
 import { isCabinetRoute } from "@/lib/is-cabinet-route";
 import type { Locale } from "@/lib/i18n-shared";
 
 type NavItem = { href: string; label: string; activePath: string };
 
-const navStartByLocale: Record<Locale, NavItem[]> = {
+const navItemsAfterProgramByLocale: Record<Locale, NavItem[]> = {
   ru: [
-    { href: "/", label: "Home", activePath: "/" },
     { href: "/sign-language", label: "Sign Language", activePath: "/sign-language" },
     { href: "/educators", label: "For Teachers", activePath: "/educators" },
     { href: "/families", label: "For Families", activePath: "/families" },
-  ],
-  uz: [
-    { href: "/", label: "Home", activePath: "/" },
-    { href: "/sign-language", label: "Sign Language", activePath: "/sign-language" },
-    { href: "/educators", label: "For Teachers", activePath: "/educators" },
-    { href: "/families", label: "For Families", activePath: "/families" },
-  ],
-};
-
-const navEndByLocale: Record<Locale, NavItem[]> = {
-  ru: [
     { href: "/contacts", label: "Contact", activePath: "/contacts" },
   ],
   uz: [
+    { href: "/sign-language", label: "Sign Language", activePath: "/sign-language" },
+    { href: "/educators", label: "For Teachers", activePath: "/educators" },
+    { href: "/families", label: "For Families", activePath: "/families" },
     { href: "/contacts", label: "Contact", activePath: "/contacts" },
   ],
 };
@@ -131,6 +122,7 @@ const dict = {
     switchLanguage: "Switch language",
     cabinet: "Dashboard",
     login: "Log in",
+    logout: "Sign out",
     startLearning: "Get started",
   },
   uz: {
@@ -147,13 +139,15 @@ const dict = {
     switchLanguage: "Switch language",
     cabinet: "Dashboard",
     login: "Log in",
+    logout: "Sign out",
     startLearning: "Get started",
   },
 } as const;
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const { user } = useAuth();
+  const router = useRouter();
+  const { user, logout } = useAuth();
   const locale = useLocale();
   const [isOpen, setIsOpen] = useState(false);
   const [isProgramOpen, setIsProgramOpen] = useState(false);
@@ -163,8 +157,7 @@ export function SiteHeader() {
   }
 
   const t = dict[locale];
-  const navigationStart = navStartByLocale[locale];
-  const navigationEnd = navEndByLocale[locale];
+  const navItemsAfterProgram = navItemsAfterProgramByLocale[locale];
   const directionLinks = directionLinksByLocale[locale];
 
   const isActive = (item: NavItem) => {
@@ -216,27 +209,22 @@ export function SiteHeader() {
 
         <div id="site-menu" className={`header-panel ${isOpen ? "open" : ""}`}>
           <nav className="main-nav" aria-label={t.mainNav}>
-            {navigationStart.map((item) => (
-              <Link
-                key={`${item.href}-${item.label}`}
-                className={`nav-link ${isActive(item) ? "active" : ""}`}
-                href={item.href}
-                onClick={closeMenu}
-              >
-                {item.label}
-              </Link>
-            ))}
+            <Link
+              className={`nav-link ${pathname === "/" ? "active" : ""}`}
+              href="/"
+              onClick={closeMenu}
+            >
+              Home
+            </Link>
 
             <div className={`nav-dropdown ${isProgramOpen ? "open" : ""}`}>
-              <button
-                type="button"
+              <Link
                 className={`nav-link nav-dropdown-trigger ${pathname.startsWith("/program") ? "active" : ""}`}
-                onClick={() => setIsProgramOpen((value) => !value)}
-                aria-expanded={isProgramOpen}
-                aria-controls="program-menu"
+                href="/program"
+                onClick={closeMenu}
               >
                 {t.program}
-              </button>
+              </Link>
               <div
                 id="program-menu"
                 className="nav-dropdown-menu"
@@ -272,7 +260,7 @@ export function SiteHeader() {
               </div>
             </div>
 
-            {navigationEnd.map((item) => (
+            {navItemsAfterProgram.map((item) => (
               <Link
                 key={`${item.href}-${item.label}`}
                 className={`nav-link ${isActive(item) ? "active" : ""}`}
@@ -285,22 +273,28 @@ export function SiteHeader() {
           </nav>
 
           <div className="header-actions">
-            <span
-              className="language-pill"
-              title="Language: English"
-              style={{ display: "inline-flex", alignItems: "center", gap: "6px", cursor: "default" }}
-            >
-              <GlobeIcon />
-              <span>EN</span>
-            </span>
             {user ? (
-              <Link
-                className="button button-primary small"
-                href="/dashboard"
-                onClick={closeMenu}
-              >
-                {t.cabinet}
-              </Link>
+              <div className="flex items-center gap-2">
+                <Link
+                  className={`button small ${
+                    pathname.startsWith("/dashboard") ? "button-secondary" : "button-primary"
+                  }`}
+                  href="/dashboard"
+                  onClick={closeMenu}
+                >
+                  {t.cabinet}
+                </Link>
+                <button
+                  type="button"
+                  className="button button-ghost small"
+                  onClick={() => {
+                    closeMenu();
+                    void logout().then(() => router.replace("/login"));
+                  }}
+                >
+                  {t.logout}
+                </button>
+              </div>
             ) : (
               <>
                 <Link
