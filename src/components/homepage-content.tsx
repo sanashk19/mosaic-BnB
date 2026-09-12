@@ -415,13 +415,10 @@ export function HomepageContent({
         <div className="home-wrap">
           <div className="home-hero-layout">
             <div className="home-hero-copy">
-              <span className="mosaic-hero-pill-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M12 22v-7" />
-                  <path d="M12 15c-3-1-5-3-5-7a7 7 0 0 1 10-5c0 4-2 6-5 7z" />
-                </svg>
-                Adaptive learning for brighter futures
-              </span>
+              <div className="mosaic-hero-pill-badge">
+                <span style={{ color: "var(--mosaic-orange)" }} aria-hidden="true">✦</span>
+                <span>Adaptive learning for brighter futures</span>
+              </div>
 
               <h1 className="mosaic-hero-title">
                 One lesson shouldn&apos;t mean{" "}
@@ -449,28 +446,6 @@ export function HomepageContent({
                   See how it works
                 </a>
               </div>
-
-              <div className="mosaic-hero-stats" aria-label="Platform facts">
-                <div className="mosaic-stat-item">
-                  <strong>7</strong>
-                  <span>learning areas</span>
-                </div>
-                <div className="mosaic-stat-divider" />
-                <div className="mosaic-stat-item">
-                  <strong>32</strong>
-                  <span>interactive lessons</span>
-                </div>
-                <div className="mosaic-stat-divider" />
-                <div className="mosaic-stat-item">
-                  <strong>3</strong>
-                  <span>accessibility profiles (to start)</span>
-                </div>
-                <div className="mosaic-stat-divider" />
-                <div className="mosaic-stat-item">
-                  <strong>100%</strong>
-                  <span>free to use</span>
-                </div>
-              </div>
             </div>
 
             <div className="home-hero-showcase">
@@ -483,10 +458,10 @@ export function HomepageContent({
                 </div>
 
                 <Image
-                  src="/generated-images/audience-children.jpg"
+                  src="/generated-images/hero-learner.jpg"
                   alt="Student learning with adaptive support on laptop"
                   width={1200}
-                  height={800}
+                  height={900}
                   priority
                   className="mosaic-hero-student-img"
                   sizes="(max-width: 900px) 100vw, 620px"
@@ -513,10 +488,6 @@ export function HomepageContent({
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22v-7"/><path d="M12 15c-3-1-5-3-5-7a7 7 0 0 1 10-5c0 4-2 6-5 7z"/></svg>
                     <strong>Less distractions</strong>
                   </div>
-                </div>
-
-                <div className="mosaic-hero-script-tag">
-                  Different learners. A brighter tomorrow.
                 </div>
               </div>
             </div>
@@ -780,19 +751,9 @@ export function HomepageContent({
   };
 
   return (
-    <main className="home-page home-reference-page">
-      {draft.sectionOrder.map((sectionId) => {
-        if (draft.hiddenSections.includes(sectionId)) return null;
-        if (sectionId === "hero") {
-          return (
-            <div key="mosaic-hero-and-demo">
-              {sections.hero}
-              <HomepageAdaptationDemo />
-            </div>
-          );
-        }
-        return sections[sectionId];
-      })}
+    <main className="home-page home-reference-page" style={{ background: "#FFFFFF" }}>
+      {sections.hero}
+      <HomepageAdaptationDemo />
     </main>
   );
 }

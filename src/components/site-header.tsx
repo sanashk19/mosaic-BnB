@@ -29,11 +29,9 @@ const navStartByLocale: Record<Locale, NavItem[]> = {
 
 const navEndByLocale: Record<Locale, NavItem[]> = {
   ru: [
-    { href: "/about", label: "About", activePath: "/about" },
     { href: "/contacts", label: "Contact", activePath: "/contacts" },
   ],
   uz: [
-    { href: "/about", label: "About", activePath: "/about" },
     { href: "/contacts", label: "Contact", activePath: "/contacts" },
   ],
 };

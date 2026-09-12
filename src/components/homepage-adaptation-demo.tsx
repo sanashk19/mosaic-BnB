@@ -1,9 +1,68 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+type LessonKey = "buying-online" | "staying-safe";
+
+const LESSON_DEMOS: Record<
+  LessonKey,
+  {
+    title: string;
+    simplifiedSteps: string[];
+    unsimplifiedText: string;
+    simplifiedSpeech: string;
+    unsimplifiedSpeech: string;
+    visualSpeechBubble: string;
+    captionText: string;
+    captionKeyword: string;
+  }
+> = {
+  "buying-online": {
+    title: "Buying Online",
+    simplifiedSteps: [
+      "Choose the item.",
+      "Check the price.",
+      "Pay safely.",
+      "Wait for delivery.",
+    ],
+    unsimplifiedText:
+      "Follow established e-commerce protocols: verify the seller rating, confirm total charges including delivery fees, utilize a verified two-factor payment portal, and monitor shipment confirmation.",
+    simplifiedSpeech:
+      "Buying Online. Step one: Choose the item. Step two: Check the price. Step three: Pay safely. Step four: Wait for delivery.",
+    unsimplifiedSpeech:
+      "Buying Online. Follow established e-commerce protocols: verify the seller rating, confirm total charges including delivery fees, utilize a verified two-factor payment portal, and monitor shipment confirmation.",
+    visualSpeechBubble:
+      "This is a login screen. There is a username field, a password field, and a blue sign in button.",
+    captionText: "Always check if the website address starts with https://",
+    captionKeyword: "https://",
+  },
+  "staying-safe": {
+    title: "Staying Safe Online",
+    simplifiedSteps: [
+      "Use a strong password.",
+      "Keep personal information private.",
+      "Verify the website address.",
+      "Tell a trusted adult if unsure.",
+    ],
+    unsimplifiedText:
+      "Follow essential digital security practices: construct complex multi-character passwords, refrain from disclosing identifiable credentials, inspect website URLs for HTTPS encryption, and alert facilitators to anomalous prompts.",
+    simplifiedSpeech:
+      "Staying Safe Online. Step one: Use a strong password. Step two: Keep personal information private. Step three: Verify the website address. Step four: Tell a trusted adult if unsure.",
+    unsimplifiedSpeech:
+      "Staying Safe Online. Follow essential digital security practices: construct complex multi-character passwords, refrain from disclosing identifiable credentials, inspect website URLs for HTTPS encryption, and alert facilitators to anomalous prompts.",
+    visualSpeechBubble:
+      "This is a login screen. There is a username field, a password field, and a blue sign in button.",
+    captionText: "Always check if the website address starts with https://",
+    captionKeyword: "https://",
+  },
+};
+
 export function HomepageAdaptationDemo() {
+  // Selected demo lesson
+  const [selectedLesson, setSelectedLesson] = useState<LessonKey>("buying-online");
+
   // Card 1: Dyslexia / Reading support state
   const [readingSimplified, setReadingSimplified] = useState(true);
   const [readingSpacing, setReadingSpacing] = useState(false);
@@ -18,6 +77,8 @@ export function HomepageAdaptationDemo() {
   const [hearingCaptions, setHearingCaptions] = useState(true);
   const [hearingVisualCues, setHearingVisualCues] = useState(true);
   const [hearingKeyWords, setHearingKeyWords] = useState(true);
+
+  const activeLesson = LESSON_DEMOS[selectedLesson];
 
   // Speech synthesis helper
   function speak(text: string, onEnd: () => void) {
@@ -43,8 +104,8 @@ export function HomepageAdaptationDemo() {
     }
     setReadingIsSpeaking(true);
     const textToRead = readingSimplified
-      ? "Staying Safe Online. Step one: Use a strong password. Step two: Do not share personal information. Step three: If something feels wrong, tell a trusted adult."
-      : "Follow these steps to safely browse online, manage strong account passwords, and protect your privacy.";
+      ? activeLesson.simplifiedSpeech
+      : activeLesson.unsimplifiedSpeech;
     speak(textToRead, () => setReadingIsSpeaking(false));
   }
 
@@ -57,8 +118,7 @@ export function HomepageAdaptationDemo() {
       return;
     }
     setVisualIsSpeaking(true);
-    const textToRead =
-      "Describing screen. This is a login screen. In the top area is the logo. In the center, there is a username field, a password field, and a bright blue sign in button.";
+    const textToRead = activeLesson.visualSpeechBubble;
     speak(textToRead, () => setVisualIsSpeaking(false));
   }
 
@@ -71,8 +131,7 @@ export function HomepageAdaptationDemo() {
             <div>
               <h2 className="mosaic-section-title">How Mosaic adapts a lesson</h2>
               <p className="mosaic-section-sub">
-                Teachers create or choose a lesson once. Our adaptation engine transforms it for each
-                learner based on their needs. Same learning goal. Different experience.
+                Teachers create or choose a lesson once. Mosaic adapts it for each learner based on their support needs.
               </p>
             </div>
             <Link href="/educators" className="mosaic-text-link">
@@ -89,7 +148,7 @@ export function HomepageAdaptationDemo() {
                 <span className="mosaic-step-num">1</span>
                 <strong>One lesson</strong>
               </div>
-              <p>Teacher uploads or selects a lesson</p>
+              <p>Teacher selects or creates one lesson.</p>
             </div>
 
             <div className="mosaic-step-arrow" aria-hidden="true">&rarr;</div>
@@ -102,7 +161,7 @@ export function HomepageAdaptationDemo() {
                 <span className="mosaic-step-num">2</span>
                 <strong>Adapt with AI</strong>
               </div>
-              <p>Content is transformed based on learner profiles</p>
+              <p>Mosaic analyzes the lesson and learner profile.</p>
             </div>
 
             <div className="mosaic-step-arrow" aria-hidden="true">&rarr;</div>
@@ -113,9 +172,9 @@ export function HomepageAdaptationDemo() {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B84A62" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </span>
                 <span className="mosaic-step-num">3</span>
-                <strong>Personalized versions</strong>
+                <strong>Personalized experience</strong>
               </div>
-              <p>Each learner gets the format that works for them</p>
+              <p>Each learner receives the format that works for them.</p>
             </div>
 
             <div className="mosaic-step-arrow" aria-hidden="true">&rarr;</div>
@@ -128,7 +187,7 @@ export function HomepageAdaptationDemo() {
                 <span className="mosaic-step-num">4</span>
                 <strong>Learn with confidence</strong>
               </div>
-              <p>Students engage and make progress</p>
+              <p>Students learn and make progress.</p>
             </div>
           </div>
         </div>
@@ -139,17 +198,36 @@ export function HomepageAdaptationDemo() {
             <div>
               <h2 className="mosaic-section-title">Different learners. Real examples.</h2>
               <p className="mosaic-section-sub">
-                Here&apos;s how the same lesson looks for different needs.
+                One lesson. Different ways to experience it.
               </p>
             </div>
-            <div className="mosaic-lesson-select-pill">
-              <span style={{ color: "var(--mosaic-muted)" }}>Lesson:</span>
-              <strong>Staying Safe Online &#9662;</strong>
+            <div className="mosaic-lesson-select-row">
+              <label htmlFor="mosaic-lesson-picker" className="mosaic-lesson-label">Lesson:</label>
+              <div className="mosaic-lesson-dropdown">
+                <select
+                  id="mosaic-lesson-picker"
+                  value={selectedLesson}
+                  onChange={(e) => {
+                    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                      window.speechSynthesis.cancel();
+                    }
+                    setReadingIsSpeaking(false);
+                    setVisualIsSpeaking(false);
+                    setSelectedLesson(e.target.value as LessonKey);
+                  }}
+                  className="mosaic-lesson-select-input"
+                  aria-label="Select demo lesson"
+                >
+                  <option value="buying-online">Buying Online</option>
+                  <option value="staying-safe">Staying Safe Online</option>
+                </select>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="mosaic-dropdown-arrow" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
             </div>
           </div>
 
           <div className="mosaic-comparison-grid">
-            {/* Card 1: Dyslexia / Reading Support */}
+            {/* Card 1: Reading Support */}
             <article className="mosaic-card mosaic-card-reading">
               <div className="mosaic-card-head">
                 <span className="mosaic-card-icon-badge mosaic-badge-peach">
@@ -165,32 +243,22 @@ export function HomepageAdaptationDemo() {
                   lineHeight: readingSpacing ? "1.9" : "1.6",
                 }}
               >
-                <h3 style={{ fontSize: "1.15rem", fontWeight: 750, color: "var(--mosaic-ink)", marginBottom: "16px" }}>
-                  Buying Online
+                <h3 className="mosaic-card-inner-title">
+                  {activeLesson.title}
                 </h3>
 
                 {readingSimplified ? (
                   <ol className="mosaic-simplified-list">
-                    <li>
-                      <span className="num">1</span>
-                      <span>Choose the item.</span>
-                    </li>
-                    <li>
-                      <span className="num">2</span>
-                      <span>Check the price.</span>
-                    </li>
-                    <li>
-                      <span className="num">3</span>
-                      <span>Pay safely.</span>
-                    </li>
-                    <li>
-                      <span className="num">4</span>
-                      <span>Wait for delivery.</span>
-                    </li>
+                    {activeLesson.simplifiedSteps.map((stepText, idx) => (
+                      <li key={stepText}>
+                        <span className="num">{idx + 1}</span>
+                        <span>{stepText}</span>
+                      </li>
+                    ))}
                   </ol>
                 ) : (
                   <p style={{ color: "var(--mosaic-text)", fontSize: "0.92rem", lineHeight: 1.6 }}>
-                    Follow established e-commerce protocols: verify the seller rating, confirm total charges including delivery fees, utilize a verified two-factor payment portal, and monitor shipment confirmation.
+                    {activeLesson.unsimplifiedText}
                   </p>
                 )}
               </div>
@@ -199,22 +267,28 @@ export function HomepageAdaptationDemo() {
                 <button
                   type="button"
                   onClick={handleReadingListen}
-                  className={`mosaic-pill-btn ${readingIsSpeaking ? "active" : ""}`}
+                  className={`mosaic-pill-btn mosaic-pill-btn-white ${readingIsSpeaking ? "active" : ""}`}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
                   {readingIsSpeaking ? "Playing..." : "Listen"}
                 </button>
                 <button
                   type="button"
-                  onClick={() => setReadingSimplified((v) => !v)}
-                  className={`mosaic-pill-btn ${readingSimplified ? "active" : ""}`}
+                  onClick={() => {
+                    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                      window.speechSynthesis.cancel();
+                    }
+                    setReadingIsSpeaking(false);
+                    setReadingSimplified((v) => !v);
+                  }}
+                  className={`mosaic-pill-btn mosaic-pill-peach ${readingSimplified ? "active" : ""}`}
                 >
                   Simpler text
                 </button>
                 <button
                   type="button"
                   onClick={() => setReadingSpacing((v) => !v)}
-                  className={`mosaic-pill-btn ${readingSpacing ? "active" : ""}`}
+                  className={`mosaic-pill-btn mosaic-pill-peach ${readingSpacing ? "active" : ""}`}
                 >
                   Larger spacing
                 </button>
@@ -230,23 +304,21 @@ export function HomepageAdaptationDemo() {
                 <strong>For visually impaired learners</strong>
               </div>
 
-              <div className="mosaic-card-body">
-                <div className="mosaic-laptop-mockup">
-                  <div className="mosaic-laptop-screen">
-                    <div className="mockup-header-bar">Welcome back</div>
-                    <div className="mockup-login-box">
-                      <div className="mockup-input-wire">username</div>
-                      <div className="mockup-input-wire">password</div>
-                      <div className="mockup-btn-wire">Sign in</div>
+              <div className="mosaic-card-body mosaic-card-body-media">
+                <div className="mosaic-media-container">
+                  <Image
+                    src="/generated-images/preview-laptop-login.jpg"
+                    alt="Laptop screen with login form"
+                    width={520}
+                    height={360}
+                    className="mosaic-preview-img"
+                  />
+                  {visualShowDescription && (
+                    <div className="mosaic-speech-bubble-overlay">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0, marginTop: "2px" }}><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                      <span>{activeLesson.visualSpeechBubble}</span>
                     </div>
-
-                    {visualShowDescription && (
-                      <div className="mosaic-speech-bubble-overlay">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0, marginTop: "2px" }}><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                        <span>This is a login screen. There is a username field, a password field, and a blue sign in button.</span>
-                      </div>
-                    )}
-                  </div>
+                  )}
                 </div>
               </div>
 
@@ -254,22 +326,22 @@ export function HomepageAdaptationDemo() {
                 <button
                   type="button"
                   onClick={handleVisualPlayAudio}
-                  className={`mosaic-pill-btn ${visualIsSpeaking ? "active" : ""}`}
+                  className={`mosaic-pill-btn mosaic-pill-btn-white ${visualIsSpeaking ? "active" : ""}`}
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
                   {visualIsSpeaking ? "Playing..." : "Play audio"}
                 </button>
                 <button
                   type="button"
                   onClick={() => setVisualAudioFirst((v) => !v)}
-                  className={`mosaic-pill-btn ${visualAudioFirst ? "active" : ""}`}
+                  className={`mosaic-pill-btn mosaic-pill-mint ${visualAudioFirst ? "active" : ""}`}
                 >
                   Audio-first
                 </button>
                 <button
                   type="button"
                   onClick={() => setVisualShowDescription((v) => !v)}
-                  className={`mosaic-pill-btn ${visualShowDescription ? "active" : ""}`}
+                  className={`mosaic-pill-btn mosaic-pill-mint ${visualShowDescription ? "active" : ""}`}
                 >
                   Image descriptions
                 </button>
@@ -285,17 +357,24 @@ export function HomepageAdaptationDemo() {
                 <strong>For hearing impaired learners</strong>
               </div>
 
-              <div className="mosaic-card-body">
-                <div className="mosaic-video-mockup">
+              <div className="mosaic-card-body mosaic-card-body-media">
+                <div className="mosaic-media-container">
+                  <Image
+                    src="/generated-images/preview-hearing-video.jpg"
+                    alt="Instructor presenting video lesson"
+                    width={520}
+                    height={360}
+                    className="mosaic-preview-img"
+                  />
                   <span className="mosaic-cc-tag">CC</span>
 
                   {hearingCaptions && (
                     <div className="mosaic-caption-bar">
-                      Always check if the website address starts with{" "}
+                      {activeLesson.captionText.replace(activeLesson.captionKeyword, "")}
                       {hearingKeyWords ? (
-                        <span className="mosaic-keyword-highlight">https://</span>
+                        <span className="mosaic-keyword-highlight">{activeLesson.captionKeyword}</span>
                       ) : (
-                        "https://"
+                        activeLesson.captionKeyword
                       )}
                     </div>
                   )}
@@ -306,21 +385,21 @@ export function HomepageAdaptationDemo() {
                 <button
                   type="button"
                   onClick={() => setHearingCaptions((v) => !v)}
-                  className={`mosaic-pill-btn ${hearingCaptions ? "active" : ""}`}
+                  className={`mosaic-pill-btn mosaic-pill-pink ${hearingCaptions ? "active" : ""}`}
                 >
                   Captions
                 </button>
                 <button
                   type="button"
                   onClick={() => setHearingVisualCues((v) => !v)}
-                  className={`mosaic-pill-btn ${hearingVisualCues ? "active" : ""}`}
+                  className={`mosaic-pill-btn mosaic-pill-pink ${hearingVisualCues ? "active" : ""}`}
                 >
                   Visual cues
                 </button>
                 <button
                   type="button"
                   onClick={() => setHearingKeyWords((v) => !v)}
-                  className={`mosaic-pill-btn ${hearingKeyWords ? "active" : ""}`}
+                  className={`mosaic-pill-btn mosaic-pill-pink ${hearingKeyWords ? "active" : ""}`}
                 >
                   Key words
                 </button>
@@ -329,43 +408,20 @@ export function HomepageAdaptationDemo() {
           </div>
         </div>
 
-        {/* Section 4: Built for real classrooms */}
-        <div className="mosaic-classrooms-wrapper">
-          <div className="mosaic-classrooms-box">
-            <div className="mosaic-classrooms-left">
-              <h2 className="mosaic-classrooms-title">Built for real classrooms</h2>
-              <p className="mosaic-classrooms-sub">
-                Mosaic supports students, teachers and families with simple, practical tools.
-              </p>
-              <Link href="/about" className="mosaic-classrooms-btn">
-                Explore all features &rarr;
+        {/* Section 5: Final CTA */}
+        <div className="mosaic-final-cta-wrapper">
+          <div className="mosaic-final-cta-card">
+            <h2 className="mosaic-final-cta-title">Create once. Reach every learner.</h2>
+            <p className="mosaic-final-cta-sub">
+              Mosaic helps teachers make learning more inclusive without creating a separate lesson for every learner.
+            </p>
+            <div className="mosaic-final-cta-actions">
+              <Link href="/lesson/messenger-message" className="mosaic-btn-primary">
+                Try Mosaic &rarr;
               </Link>
-            </div>
-
-            <div className="mosaic-classrooms-cards">
-              <div className="mosaic-audience-col">
-                <div className="mosaic-audience-circle mosaic-circle-mint">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#506847" strokeWidth="2.2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                </div>
-                <strong>For students</strong>
-                <p>A calm, focused learning experience that adapts to your needs.</p>
-              </div>
-
-              <div className="mosaic-audience-col">
-                <div className="mosaic-audience-circle mosaic-circle-peach">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D8663F" strokeWidth="2.2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                </div>
-                <strong>For teachers</strong>
-                <p>Create once. Reach every learner. Save time and make learning inclusive.</p>
-              </div>
-
-              <div className="mosaic-audience-col">
-                <div className="mosaic-audience-circle mosaic-circle-pink">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B84A62" strokeWidth="2.2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                </div>
-                <strong>For families</strong>
-                <p>Track progress and support learning at home.</p>
-              </div>
+              <Link href="/educators" className="mosaic-btn-secondary">
+                For Teachers
+              </Link>
             </div>
           </div>
         </div>

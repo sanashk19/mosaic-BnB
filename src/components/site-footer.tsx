@@ -100,7 +100,6 @@ export function SiteFooter() {
           <div className="footer-links">
             <Link href="/program">{t.program}</Link>
             <Link href="/program#directions">{t.directions}</Link>
-            <Link href="/about">{t.aboutPlatform}</Link>
             <Link href="/contacts">{t.contacts}</Link>
           </div>
         </div>

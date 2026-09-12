@@ -7,8 +7,8 @@
   --font-heading: var(--font-heading, "Manrope"), "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-body: var(--font-body, "Inter"), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   
-  --mosaic-bg: #F9F6F1;
-  --mosaic-surface: #FCFCFB;
+  --mosaic-bg: #FFFFFF;
+  --mosaic-surface: #FFFFFF;
 
   --mosaic-ink: #22352E;
   --mosaic-text: #59635E;
@@ -29,10 +29,10 @@
   --mosaic-border-soft: #EBE8E1;
 
   /* Theme mappings mapped directly to warm palette to eradicate blue/cyan */
-  --bg: var(--mosaic-bg);
+  --bg: #FFFFFF;
   --bg-soft: var(--mosaic-mint);
-  --surface: var(--mosaic-surface);
-  --surface-soft: var(--mosaic-surface);
+  --surface: #FFFFFF;
+  --surface-soft: #FFFFFF;
   --ink: var(--mosaic-ink);
   --muted: var(--mosaic-muted);
   --line: var(--mosaic-border);
@@ -68,7 +68,7 @@ body {
 body {
   min-height: 100vh;
   color: var(--mosaic-ink);
-  background: var(--mosaic-bg);
+  background: #FFFFFF;
   font-family: var(--font-body);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -318,8 +318,8 @@ svg {
   position: sticky;
   top: 0;
   z-index: 40;
-  border-bottom: 1px solid var(--mosaic-border-soft);
-  background: var(--mosaic-bg);
+  border-bottom: 1px solid #ECEEEB;
+  background: #FFFFFF;
 }
 
 .site-header::after,
@@ -568,8 +568,8 @@ svg {
   margin-top: auto;
   overflow: hidden;
   padding: 48px 24px 24px;
-  background: var(--mosaic-bg, #F9F6F1);
-  border-top: 1px solid var(--mosaic-border, #E5E2DC);
+  background: #FFFFFF;
+  border-top: 1px solid #ECEEEB;
   color: var(--mosaic-text, #59635E);
 }
 
@@ -586,7 +586,7 @@ svg {
   grid-template-columns: minmax(260px, 1.3fr) repeat(3, minmax(150px, 0.7fr));
   gap: 32px;
   padding-bottom: 32px;
-  border-bottom: 1px solid var(--mosaic-border, #E5E2DC);
+  border-bottom: 1px solid #ECEEEB;
 }
 
 .footer-emblem {
@@ -10824,20 +10824,17 @@ svg {
 .bake-pie { background: rgba(255,255,255,0.7); border-radius: 18px; padding: 8px; }
 .bake-steps { width: 100%; display: flex; flex-direction: column; gap: 5px; }
 .bake-step { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: #fff; border-radius: 10px; border-left: 3px solid transparent; font-size: 0.86rem; color: #475569; }
-.bake-step--active { border-left-color: #f59e0b; background: linear-gradient(90deg, rgba(245,158,11,0.12), #fff); color: #0f172a; font-weight: 600; }
-.bake-step--done { border-left-color: #22c55e; color: #166534; }
-.bake-step-num { width: 24px; height: 24px; border-radius: 50%; background: #f1f5f9; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; flex-shrink: 0; }
-.bake-step--done .bake-step-num { background: #22c55e; color: #052e16; }
-.bake-timer { width: 100%; text-align: center; padding: 12px; border-radius: 12px; background: #fef3c7; color: #b45309; font-weight: 700; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
-.bake-timer--done { background: #d1fae5; color: #166534; }
-.bake-action { width: 100%; margin-top: 4px; }
 
 /* ── Mosaic Brand & Homepage Adaptation Styles ────────────────────────────── */
 
-/* ── Mosaic Brand & Homepage Adaptation Styles ────────────────────────────── */
+.home-page,
+.home-reference-page {
+  background: #FFFFFF !important;
+}
 
+.home-hero,
 .home-reference-hero {
-  background: var(--mosaic-bg);
+  background: #FFFFFF;
   padding: 40px 0 60px;
 }
 
@@ -10860,6 +10857,12 @@ svg {
   font-weight: 700;
   border-radius: 9999px;
   margin-bottom: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mosaic-hero-pill-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(34, 53, 46, 0.06);
 }
 
 .mosaic-hero-title {
@@ -10904,12 +10907,13 @@ svg {
   border-radius: 9999px;
   box-shadow: 0 4px 12px rgba(52, 73, 52, 0.15);
   text-decoration: none;
-  transition: background 150ms ease, transform 150ms ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mosaic-btn-primary:hover {
   background: #233323;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(52, 73, 52, 0.24);
 }
 
 .mosaic-btn-secondary {
@@ -10918,19 +10922,22 @@ svg {
   justify-content: center;
   gap: 8px;
   padding: 14px 24px;
-  background: var(--mosaic-surface);
+  background: #ffffff;
   border: 1.5px solid var(--mosaic-border);
   color: var(--mosaic-ink);
   font-weight: 650;
   font-size: 1rem;
   border-radius: 9999px;
   text-decoration: none;
-  transition: border-color 150ms ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mosaic-btn-secondary:hover {
   border-color: var(--mosaic-green-dark);
+  color: var(--mosaic-green-dark);
   background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(34, 53, 46, 0.08);
 }
 
 .mosaic-hero-stats {
@@ -10999,6 +11006,11 @@ svg {
   border-radius: 50%;
   box-shadow: 0 16px 40px rgba(52, 73, 52, 0.12);
   display: block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mosaic-hero-photo-wrap:hover .mosaic-hero-student-img {
+  transform: scale(1.02);
 }
 
 .mosaic-hero-speech-bubble {
@@ -11015,6 +11027,12 @@ svg {
   border: 1px solid var(--mosaic-border-soft);
   z-index: 3;
   text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mosaic-hero-speech-bubble:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(34, 53, 46, 0.12);
 }
 
 .mosaic-bubble-rays {
@@ -11054,6 +11072,13 @@ svg {
   font-size: 0.84rem;
   font-weight: 650;
   box-shadow: 0 4px 12px rgba(34, 53, 46, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.mosaic-hero-pill-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(34, 53, 46, 0.1);
 }
 
 .mosaic-pill-cream {
@@ -11091,16 +11116,62 @@ svg {
   z-index: 2;
 }
 
-/* Mosaic Flow & Demo Sections */
+/* Mosaic Flow & Demo Sections — Pure White Background */
 .mosaic-demo-section {
   padding: 30px 0 80px;
-  background: var(--mosaic-bg);
+  background: #FFFFFF;
 }
 
-.mosaic-flow-wrapper,
-.mosaic-comparison-wrapper,
-.mosaic-classrooms-wrapper {
-  margin-bottom: 80px;
+.mosaic-flow-wrapper {
+  margin-bottom: 72px;
+}
+
+.mosaic-comparison-wrapper {
+  margin-bottom: 72px;
+}
+
+.mosaic-final-cta-wrapper {
+  margin-bottom: 30px;
+}
+
+.mosaic-final-cta-card {
+  background: #EDF4E8;
+  border: 1px solid #DFEAD8;
+  border-radius: 24px;
+  padding: 56px 40px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 8px 24px rgba(34, 53, 46, 0.04);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.mosaic-final-cta-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(34, 53, 46, 0.08);
+}
+
+.mosaic-final-cta-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #1F2E28;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+
+.mosaic-final-cta-sub {
+  font-size: 1.1rem;
+  color: #4D5953;
+  max-width: 620px;
+  margin: 0 auto 32px;
+  line-height: 1.55;
+}
+
+.mosaic-final-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .mosaic-flow-header {
@@ -11142,39 +11213,68 @@ svg {
   gap: 10px;
 }
 
-.mosaic-lesson-select-pill {
+.mosaic-lesson-select-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mosaic-lesson-label {
+  font-size: 0.95rem;
+  color: #59635E;
+  font-weight: 500;
+}
+
+.mosaic-lesson-dropdown {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 18px;
-  background: var(--mosaic-surface);
+  padding: 8px 16px;
+  background: #ffffff;
   border-radius: 9999px;
-  border: 1px solid var(--mosaic-border);
+  border: 1px solid #DFE3E0;
   font-size: 0.92rem;
-  color: var(--mosaic-ink);
-  box-shadow: 0 2px 8px rgba(34, 53, 46, 0.04);
+  font-weight: 600;
+  color: #22352E;
+  box-shadow: 0 2px 6px rgba(34, 53, 46, 0.04);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
-/* 4 Step visual flow */
+.mosaic-lesson-dropdown:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(34, 53, 46, 0.08);
+  border-color: #CAD5C6;
+}
+
+/* 4 Step visual flow — all cards identical equal size */
 .mosaic-flow-steps {
   display: grid;
   grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
-  align-items: center;
+  align-items: stretch;
   gap: 12px;
 }
 
 .mosaic-step-card {
-  background: var(--mosaic-surface);
+  background: #ffffff;
   border: 1px solid var(--mosaic-border);
   border-radius: 16px;
   padding: 22px 18px;
   box-shadow: 0 4px 16px rgba(34, 53, 46, 0.04);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  min-height: 124px;
+  box-sizing: border-box;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: default;
 }
 
 .mosaic-step-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(34, 53, 46, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(34, 53, 46, 0.08);
+  border-color: #CAD5C6;
 }
 
 .mosaic-step-head {
@@ -11215,6 +11315,8 @@ svg {
   font-size: 0.86rem;
   color: var(--mosaic-text);
   line-height: 1.45;
+  margin: 0;
+  flex: 1;
 }
 
 .mosaic-step-arrow {
@@ -11222,68 +11324,164 @@ svg {
   font-size: 1.3rem;
   font-weight: 700;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Comparison Cards */
+.mosaic-lesson-select-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mosaic-lesson-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #6C7A72;
+}
+
+.mosaic-lesson-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(34, 53, 46, 0.15);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  box-shadow: 0 1px 4px rgba(34, 53, 46, 0.04);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mosaic-lesson-dropdown:hover,
+.mosaic-lesson-dropdown:focus-within {
+  border-color: #22352E;
+  box-shadow: 0 2px 8px rgba(34, 53, 46, 0.08);
+}
+
+.mosaic-lesson-select-input {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #22352E;
+  cursor: pointer;
+  padding-right: 18px;
+  outline: none;
+}
+
+.mosaic-dropdown-arrow {
+  pointer-events: none;
+  margin-left: -12px;
+  color: #556B60;
+}
+
+/* Comparison Cards — Section 3 matching image 2 */
 .mosaic-comparison-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  align-items: stretch;
 }
 
 .mosaic-card {
-  border-radius: 20px;
+  border-radius: 24px;
   padding: 24px;
-  border: 1px solid var(--mosaic-border);
+  border: 1px solid transparent;
   box-shadow: 0 8px 24px rgba(34, 53, 46, 0.04);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 440px;
+  height: 100%;
+  box-sizing: border-box;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.mosaic-card-reading { background: var(--mosaic-lavender); }
-.mosaic-card-visual { background: var(--mosaic-mint); }
-.mosaic-card-hearing { background: var(--mosaic-pink); }
+.mosaic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(34, 53, 46, 0.08);
+}
+
+/* Card 1: Soft Peach */
+.mosaic-card-reading {
+  background: #FBECE5;
+  border-color: #F3DDD3;
+}
+
+/* Card 2: Soft Mint */
+.mosaic-card-visual {
+  background: #EDF4E8;
+  border-color: #DFEAD8;
+}
+
+/* Card 3: Soft Pink */
+.mosaic-card-hearing {
+  background: #FAEAEB;
+  border-color: #F5D8DB;
+}
 
 .mosaic-card-head {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .mosaic-card-icon-badge {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.mosaic-badge-peach { background: var(--mosaic-peach); color: var(--mosaic-orange); }
-.mosaic-badge-mint { background: #DCE6D6; color: var(--mosaic-green); }
-.mosaic-badge-pink { background: #F5D6D8; color: #B84A62; }
+.mosaic-badge-peach {
+  background: #F4DFD5;
+  color: #D8663F;
+}
+
+.mosaic-badge-mint {
+  background: #DCE7D5;
+  color: #435E3B;
+}
+
+.mosaic-badge-pink {
+  background: #F7D7DC;
+  color: #B84A62;
+}
 
 .mosaic-card-head strong {
-  font-size: 0.95rem;
-  color: var(--mosaic-ink);
+  font-size: 0.98rem;
+  color: #1F2E28;
   font-weight: 700;
 }
 
+/* Inner white card for reading */
 .mosaic-card-body {
   flex: 1;
-  background: var(--mosaic-surface);
-  border-radius: 14px;
-  padding: 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 20px;
   margin-bottom: 20px;
-  border: 1px solid var(--mosaic-border-soft);
+  border: 1px solid rgba(34, 53, 46, 0.04);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(34, 53, 46, 0.03);
+  box-shadow: 0 4px 14px rgba(34, 53, 46, 0.03);
+  min-height: 230px;
+  box-sizing: border-box;
+}
+
+.mosaic-card-inner-title {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: #1F2E28;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
 }
 
 .mosaic-simplified-list {
@@ -11297,10 +11495,10 @@ svg {
 
 .mosaic-simplified-list li {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  gap: 14px;
   font-size: 0.95rem;
-  color: var(--mosaic-ink);
+  color: #1F2E28;
   font-weight: 600;
 }
 
@@ -11308,134 +11506,99 @@ svg {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--mosaic-peach);
-  color: var(--mosaic-orange);
+  background: #FCEEE8;
+  color: #D8663F;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 750;
+  font-size: 0.82rem;
+  font-weight: 800;
   flex-shrink: 0;
 }
 
-/* Mockups inside comparison cards */
-.mosaic-laptop-mockup {
-  background: #22352E;
-  border-radius: 12px;
-  padding: 8px 8px 14px;
-  position: relative;
-  box-shadow: 0 8px 20px rgba(34, 53, 46, 0.15);
-}
-
-.mosaic-laptop-screen {
-  background: #FCFCFB;
-  border-radius: 8px;
-  height: 160px;
-  position: relative;
+/* Media bodies for Cards 2 and 3 */
+.mosaic-card-body-media {
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  min-height: 230px;
+  height: 230px;
   overflow: hidden;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  border-radius: 16px;
 }
 
-.mockup-header-bar {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--mosaic-ink);
-  margin-bottom: 8px;
-}
-
-.mockup-login-box {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: center;
-}
-
-.mockup-input-wire {
+.mosaic-media-container {
+  position: relative;
   width: 100%;
-  height: 18px;
-  background: #F4F3EF;
-  border-radius: 4px;
-  border: 1px solid #D5D2CA;
-  font-size: 0.65rem;
-  color: var(--mosaic-muted);
-  padding: 0 6px;
-  display: flex;
-  align-items: center;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #22352E;
 }
 
-.mockup-btn-wire {
-  width: 50%;
-  height: 20px;
-  background: var(--mosaic-green-dark);
-  color: #ffffff;
-  font-size: 0.7rem;
-  font-weight: 600;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2px;
+.mosaic-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
+/* Floating speech bubble in Card 2 */
 .mosaic-speech-bubble-overlay {
   position: absolute;
-  inset: 10px;
-  background: rgba(34, 53, 46, 0.94);
-  color: #FCFCFB;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 0.82rem;
+  top: 36px;
+  right: 14px;
+  max-width: 225px;
+  background: rgba(26, 36, 31, 0.93);
+  color: #ffffff;
+  padding: 11px 14px;
+  border-radius: 14px;
+  font-size: 0.8rem;
   line-height: 1.4;
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  text-align: left;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 2;
 }
 
-.mosaic-video-mockup {
-  background: #22352E;
-  border-radius: 12px;
-  height: 180px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
+/* CC Tag in Card 3 */
 .mosaic-cc-tag {
   position: absolute;
-  top: 10px;
-  right: 12px;
-  background: rgba(0, 0, 0, 0.6);
+  top: 14px;
+  right: 14px;
+  background: rgba(22, 28, 25, 0.8);
   color: #ffffff;
-  padding: 2px 7px;
-  border-radius: 4px;
-  font-size: 0.72rem;
-  font-weight: 750;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 2;
 }
 
+/* Caption bar in Card 3 */
 .mosaic-caption-bar {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  background: rgba(34, 53, 46, 0.92);
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  background: rgba(24, 32, 28, 0.9);
   color: #ffffff;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 0.82rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.84rem;
   text-align: center;
   line-height: 1.35;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 2;
 }
 
 .mosaic-keyword-highlight {
@@ -11444,130 +11607,74 @@ svg {
   text-decoration: underline;
 }
 
-/* Card Control Pills */
+/* Controls */
 .mosaic-card-controls {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .mosaic-pill-btn {
-  padding: 7px 12px;
+  padding: 8px 14px;
   border-radius: 9999px;
-  border: 1px solid var(--mosaic-border);
-  background: var(--mosaic-surface);
-  color: var(--mosaic-ink);
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   transition: all 0.15s ease;
 }
 
-.mosaic-pill-btn:hover {
+/* Pill color variations exactly matching image 2 */
+.mosaic-pill-btn-white {
   background: #ffffff;
-  border-color: var(--mosaic-green-dark);
+  color: #1F2E28;
+  border: 1px solid rgba(34, 53, 46, 0.12);
+  box-shadow: 0 1px 4px rgba(34, 53, 46, 0.04);
+}
+.mosaic-pill-btn-white:hover {
+  background: #F7FAF6;
+  border-color: #22352E;
 }
 
-.mosaic-pill-btn.active {
-  background: var(--mosaic-green-dark);
-  color: #ffffff;
-  border-color: var(--mosaic-green-dark);
+.mosaic-pill-peach {
+  background: #F4DFD5;
+  color: #38423D;
+  border: 1px solid #ECC8BC;
+}
+.mosaic-pill-peach:hover,
+.mosaic-pill-peach.active {
+  background: #ECD0C3;
+  color: #1F2E28;
 }
 
-/* Section 4: Built for real classrooms */
-.mosaic-classrooms-box {
-  background: var(--mosaic-mint);
-  border: 1px solid var(--mosaic-border);
-  border-radius: 28px;
-  padding: 48px;
-  display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 40px;
-  align-items: center;
+.mosaic-pill-mint {
+  background: #DFEBD7;
+  color: #38423D;
+  border: 1px solid #CFDFC4;
+}
+.mosaic-pill-mint:hover,
+.mosaic-pill-mint.active {
+  background: #D2E2C8;
+  color: #1F2E28;
 }
 
-.mosaic-classrooms-title {
-  font-size: 2.1rem;
-  font-weight: 800;
-  color: var(--mosaic-ink);
-  margin-bottom: 12px;
-  letter-spacing: -0.02em;
+.mosaic-pill-pink {
+  background: #F7D7DC;
+  color: #38423D;
+  border: 1px solid #ECC4CB;
 }
-
-.mosaic-classrooms-sub {
-  font-size: 1.05rem;
-  color: var(--mosaic-text);
-  line-height: 1.55;
-  margin-bottom: 28px;
-}
-
-.mosaic-classrooms-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  background: var(--mosaic-green-dark);
-  color: #ffffff;
-  border-radius: 9999px;
-  font-weight: 650;
-  font-size: 1rem;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(52, 73, 52, 0.15);
-  transition: background 150ms ease, transform 150ms ease;
-}
-
-.mosaic-classrooms-btn:hover {
-  background: #233323;
-  transform: translateY(-1px);
-}
-
-.mosaic-classrooms-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.mosaic-audience-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 10px;
-}
-
-.mosaic-audience-circle {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 4px;
-}
-
-.mosaic-circle-mint { background: #DCE6D6; }
-.mosaic-circle-peach { background: var(--mosaic-peach); }
-.mosaic-circle-pink { background: var(--mosaic-pink); }
-
-.mosaic-audience-col strong {
-  font-size: 1.05rem;
-  font-weight: 750;
-  color: var(--mosaic-ink);
-}
-
-.mosaic-audience-col p {
-  font-size: 0.86rem;
-  color: var(--mosaic-text);
-  line-height: 1.45;
+.mosaic-pill-pink:hover,
+.mosaic-pill-pink.active {
+  background: #ECC3CA;
+  color: #1F2E28;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-  .home-hero-layout,
-  .mosaic-classrooms-box {
+  .home-hero-layout {
     grid-template-columns: 1fr;
   }
   .mosaic-comparison-grid {
@@ -11578,9 +11685,6 @@ svg {
   }
   .mosaic-step-arrow {
     transform: rotate(90deg);
-  }
-  .mosaic-classrooms-cards {
-    grid-template-columns: 1fr;
   }
 }
 
