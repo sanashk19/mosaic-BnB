@@ -96,356 +96,356 @@ type DashboardHashState = {
 const dict = {
   ru: {
     // section catalog (default)
-    sec_today_label: "Сегодня",
-    sec_today_caption: "урок и действия",
-    sec_today_title: "Сегодня",
-    sec_today_desc: "Рабочая сводка на день: следующий урок, ближайшие действия, короткий прогресс и последняя активность.",
-    sec_lessons_label: "Уроки",
-    sec_lessons_caption: "модули и занятия",
-    sec_lessons_title: "Уроки",
-    sec_lessons_desc: "Все модули и уроки открываются внутри кабинета, без отдельного экрана курса.",
-    sec_progress_label: "Прогресс",
-    sec_progress_caption: "история обучения",
-    sec_progress_title: "Прогресс",
-    sec_progress_desc: "История прогресса по модулям, завершенным урокам и результатам без смешивания с профилем.",
-    sec_account_label: "Учетная запись",
-    sec_account_caption: "профиль и вход",
-    sec_account_title: "Учетная запись",
-    sec_account_desc: "Данные входа, профиль ребенка и базовые настройки учебного сопровождения в одном разделе.",
-    sec_family_label: "Семья",
-    sec_family_caption: "домашний ритм",
-    sec_family_title: "Семья",
-    sec_family_desc: "Домашний контур сопровождения: взрослый, ритм занятий и понятные действия после урока.",
-    sec_teacher_label: "Педагог",
-    sec_teacher_caption: "наблюдения",
-    sec_teacher_title: "Педагог",
-    sec_teacher_desc: "Педагогическая зона с наблюдениями по темпу, ближайшим фокусом и ссылкой на уроки.",
+    sec_today_label: "Today",
+    sec_today_caption: "lesson and activities",
+    sec_today_title: "Today",
+    sec_today_desc: "Work summary for the day: next lesson, upcoming activities, short progress and last activity.",
+    sec_lessons_label: "Lessons",
+    sec_lessons_caption: "modules and classes",
+    sec_lessons_title: "Lessons",
+    sec_lessons_desc: "All modules and lessons open inside the office, without a separate course screen.",
+    sec_progress_label: "Progress",
+    sec_progress_caption: "training history",
+    sec_progress_title: "Progress",
+    sec_progress_desc: "History of progress by modules, lessons completed and results without mixing with the profile.",
+    sec_account_label: "Account",
+    sec_account_caption: "profile and login",
+    sec_account_title: "Account",
+    sec_account_desc: "Login data, child profile and basic educational support settings in one section.",
+    sec_family_label: "Family",
+    sec_family_caption: "home rhythm",
+    sec_family_title: "Family",
+    sec_family_desc: "Home support circuit: adult, rhythm of classes and clear actions after the lesson.",
+    sec_teacher_label: "Teacher",
+    sec_teacher_caption: "observations",
+    sec_teacher_title: "Teacher",
+    sec_teacher_desc: "Pedagogical zone with pacing observations, immediate focus and link to lessons.",
 
     // parent overrides
-    parent_today_label: "Мой ребёнок",
-    parent_today_caption: "что происходит",
-    parent_today_title: "Мой ребёнок",
-    parent_today_desc: "Главное о ребёнке за сегодня.",
-    parent_family_label: "Анкеты и дом",
-    parent_family_caption: "опросник и поддержка",
-    parent_family_title: "Анкеты и помощь дома",
-    parent_family_desc: "Опросник программы и подсказки для дома.",
-    parent_account_label: "Профиль",
-    parent_account_caption: "контакты семьи",
-    parent_account_title: "Профиль семьи",
-    parent_account_desc: "Контакты и данные ребёнка.",
+    parent_today_label: "My child",
+    parent_today_caption: "what's happening",
+    parent_today_title: "My child",
+    parent_today_desc: "The main thing about the child today.",
+    parent_family_label: "Profiles and home",
+    parent_family_caption: "questionnaire and support",
+    parent_family_title: "Questionnaires and help at home",
+    parent_family_desc: "Program questionnaire and tips for home.",
+    parent_account_label: "Profile",
+    parent_account_caption: "family contacts",
+    parent_account_title: "Family profile",
+    parent_account_desc: "Contacts and details of the child.",
 
     // student overrides
-    student_today_label: "Старт",
-    student_today_caption: "что делать сейчас",
-    student_today_title: "Мой урок",
-    student_today_desc: "Простой кабинет ученика: крупные действия, короткие подсказки и только нужные учебные разделы.",
-    student_lessons_label: "Уроки",
-    student_lessons_caption: "выбрать занятие",
-    student_lessons_title: "Мои уроки",
-    student_lessons_desc: "Один модуль и один урок за раз. Ничего лишнего вокруг учебного действия.",
-    student_progress_label: "Успехи",
-    student_progress_caption: "что уже сделано",
-    student_progress_title: "Мои успехи",
-    student_progress_desc: "Короткая история занятий и понятный прогресс без лишних таблиц.",
-    student_account_label: "Помощь",
-    student_account_caption: "взрослый рядом",
-    student_account_title: "Помощь и профиль",
-    student_account_desc: "Кто помогает, какой класс и какие подсказки нужны на уроке.",
+    student_today_label: "Start",
+    student_today_caption: "what to do now",
+    student_today_title: "My lesson",
+    student_today_desc: "A simple student office: large actions, short tips and only the necessary educational sections.",
+    student_lessons_label: "Lessons",
+    student_lessons_caption: "choose an activity",
+    student_lessons_title: "My lessons",
+    student_lessons_desc: "One module and one lesson at a time. Nothing extra around the learning activity.",
+    student_progress_label: "Good luck",
+    student_progress_caption: "what has already been done",
+    student_progress_title: "My successes",
+    student_progress_desc: "A short history of classes and clear progress without unnecessary tables.",
+    student_account_label: "Help",
+    student_account_caption: "adult nearby",
+    student_account_title: "Help and profile",
+    student_account_desc: "Who helps, what class and what tips are needed in the lesson.",
 
     // teacher overrides
-    teacher_today_label: "Главная",
-    teacher_today_caption: "урок и ученики",
-    teacher_today_title: "Главная",
-    teacher_today_desc: "Управление уроком и класс на одном экране: открыть урок, видеть кто как работает, добавить ученика.",
-    teacher_lessons_label: "Программа",
-    teacher_lessons_caption: "14 уроков, 5 модулей",
-    teacher_lessons_title: "Программа курса",
-    teacher_lessons_desc: "Все уроки программы: открыть для класса, посмотреть план или пройти самому.",
-    teacher_progress_label: "Динамика",
-    teacher_progress_caption: "результаты класса",
-    teacher_progress_title: "Динамика обучения",
-    teacher_progress_desc: "Прогресс по модулям, журнал уроков и точки внимания для следующего занятия.",
-    teacher_account_label: "Профиль",
-    teacher_account_caption: "данные педагога",
-    teacher_account_title: "Профиль педагога",
-    teacher_account_desc: "Данные входа, школа и класс. Здесь же — настройки исследовательского режима.",
+    teacher_today_label: "Home",
+    teacher_today_caption: "lesson and students",
+    teacher_today_title: "Home",
+    teacher_today_desc: "Lesson management and class on one screen: open a lesson, see who is working how, add a student.",
+    teacher_lessons_label: "Program",
+    teacher_lessons_caption: "14 lessons, 5 modules",
+    teacher_lessons_title: "Course program",
+    teacher_lessons_desc: "All lessons of the program: open for the class, see the plan or take it yourself.",
+    teacher_progress_label: "Dynamics",
+    teacher_progress_caption: "class results",
+    teacher_progress_title: "Dynamics of learning",
+    teacher_progress_desc: "Module progress, lesson log and focus points for the next lesson.",
+    teacher_account_label: "Profile",
+    teacher_account_caption: "teacher data",
+    teacher_account_title: "Teacher profile",
+    teacher_account_desc: "Login details, school and class. Here are the research mode settings.",
 
     // formatDate / activity feed
-    notYet: "ещё нет",
+    notYet: "Not yet",
     locale: "ru-RU",
-    activity_start_label: "Старт",
-    activity_start_title: "Кабинет готов к первому уроку",
-    activity_start_text: "Откройте следующий шаг и начните с короткого занятия.",
-    activity_lessons_label: "Уроки",
-    activity_lessons_title: "Модули доступны в разделе «Уроки»",
-    activity_lessons_text: "Можно выбрать модуль и пройти урок в спокойном темпе.",
-    lessonCompletedFallback: "Урок завершен",
-    scoreResult: (n: number) => `Результат проверки: ${n} из 3.`,
-    lessonMarkedDone: "Урок отмечен как пройденный.",
-    moduleCompleted: "Модуль завершен",
+    activity_start_label: "Start",
+    activity_start_title: "The classroom is ready for the first lesson",
+    activity_start_text: "Open the next step and start with a short lesson.",
+    activity_lessons_label: "Lessons",
+    activity_lessons_title: "Modules are available in the \"Lessons\" section",
+    activity_lessons_text: "You can choose a module and go through the lesson at a relaxed pace.",
+    lessonCompletedFallback: "Lesson completed",
+    scoreResult: (n: number) => `Check result:${n}from 3.`,
+    lessonMarkedDone: "The lesson is marked as completed.",
+    moduleCompleted: "Module completed",
 
     // student today
-    aria_student_start: "Старт ученика",
-    hello_ready: (name: string) => `Привет, ${name}! Сегодня один главный шаг: нажми «Начать».`,
-    hello_waiting: (name: string) => `Привет, ${name}! Сейчас просто подожди. Учитель откроет урок.`,
-    hello_greeting: (name: string) => `Привет, ${name}!`,
-    today_have_lesson: "Сегодня у тебя урок:",
-    next_lesson_fallback: "Следующий урок",
-    btn_start: "Начать",
-    lesson_of: (n: number, total: number) => `Урок ${n} из ${total}`,
-    wait_teacher_title: "Подожди учителя",
-    wait_teacher_text: "Учитель скоро откроет урок.",
-    stars_aria: (done: number, total: number) => `${done} из ${total} уроков пройдено`,
+    aria_student_start: "Student start",
+    hello_ready: (name: string) => `Hello,${name}! Today there is one main step: click “Get Started”.`,
+    hello_waiting: (name: string) => `Hello,${name}! Now just wait. The teacher will open the lesson.`,
+    hello_greeting: (name: string) => `Hello,${name}!`,
+    today_have_lesson: "Today you have a lesson:",
+    next_lesson_fallback: "Next lesson",
+    btn_start: "Begin",
+    lesson_of: (n: number, total: number) => `Lesson${n}from${total}`,
+    wait_teacher_title: "Wait for the teacher",
+    wait_teacher_text: "The teacher will open the lesson soon.",
+    stars_aria: (done: number, total: number) => `${done}from${total}lessons completed`,
 
     // helpers
-    not_logged_in: "ещё не входил",
-    today_at: (t: string) => `сегодня в ${t}`,
-    days_ago: (n: number) => `${n} дн. назад`,
-    long_ago: "давно не был",
-    code_eyebrow: (cls: string) => `Класс ${cls}`,
-    code_hint: "Введи этот код, чтобы войти в кабинет UQUVLI.",
-    print_codes_title: (n: number) => `Коды входа учеников · ${n} шт.`,
+    not_logged_in: "haven't entered yet",
+    today_at: (t: string) => `today at${t}`,
+    days_ago: (n: number) => `${n}days back`,
+    long_ago: "haven't been for a long time",
+    code_eyebrow: (cls: string) => `Class${cls}`,
+    code_hint: "Enter this code to access your student dashboard.",
+    print_codes_title: (n: number) => `Student entry codes ·${n}pcs.`,
 
     // teacher lessons section
-    download_failed: "Не удалось скачать план урока.",
-    trainer_phone: "Звонок",
-    aria_lessons: "Уроки",
-    program_title: "Программа курса",
-    program_subtitle: "14 уроков в 5 модулях. Откройте урок классу, скачайте план или пройдите сами.",
-    lessons_count_short: (n: number) => `${n} уроков`,
-    trainer_label: (name: string) => `Тренажёр: ${name}`,
-    live_now: "идёт сейчас",
-    btn_close: "Закрыть",
-    btn_open_for_class: "Открыть классу",
-    other_actions: "Другие действия",
-    downloading: "Скачивание...",
-    lesson_plan_docx: "План урока .docx",
-    try_yourself: "Пройти самому",
+    download_failed: "Failed to download lesson plan.",
+    trainer_phone: "Call",
+    aria_lessons: "Lessons",
+    program_title: "Course program",
+    program_subtitle: "14 lessons in 5 modules. Share the lesson with your class, download the plan, or take it yourself.",
+    lessons_count_short: (n: number) => `${n}lessons`,
+    trainer_label: (name: string) => `Trainer:${name}`,
+    live_now: "coming now",
+    btn_close: "Close",
+    btn_open_for_class: "Open to class",
+    other_actions: "Other actions",
+    downloading: "Download...",
+    lesson_plan_docx: "Lesson plan .docx",
+    try_yourself: "Go through it yourself",
 
     // teacher today / class
-    aria_teacher_home: "Главная педагога",
-    lesson_in_progress: "Урок идёт сейчас",
-    next_lesson_label: "Следующий урок",
-    course_done: "Курс завершён",
-    opened_at: (t: string) => `Открыт в ${t}. Ученики могут войти по своему коду.`,
-    passed: "Прошли:",
-    in_work: "В работе:",
-    not_started_p: "Не начали:",
-    lesson_plan_label: "План урока:",
-    close_lesson: "Закрыть урок",
-    open_lesson_for_class: "Открыть урок для класса",
-    full_program: "Вся программа →",
-    school_default: "Школа",
-    class_short: (c: string) => `Класс ${c}`,
-    students_count: (n: number) => `${n} учеников`,
-    print_codes: "Распечатать коды",
-    hide_form: "Скрыть форму",
-    add_student: "Добавить ученика",
-    new_student: "Новый ученик",
-    student_name_label: "Имя ученика",
-    student_name_placeholder: "Например, Алина К.",
-    research_group: "Исследовательская группа",
-    group_experimental: "Экспериментальная",
-    group_control: "Контрольная",
-    enter_student_name: "Введите имя ученика",
-    adding: "Добавляю...",
-    btn_create: "Создать",
-    btn_cancel: "Отмена",
-    err_default: "Ошибка",
-    err_add_default: "Ошибка при добавлении.",
-    no_codes_yet: "У учеников ещё нет кодов входа.",
-    print_codes_for_class: (c: string) => `Коды входа · класс ${c}`,
-    all_students: "Все ученики",
-    on_lesson_prefix: (t: string) => `На уроке: ${t}`,
-    class_word: "Класс",
-    of_count: (a: number, b: number) => `${a} из ${b}`,
-    no_students_yet: "Учеников пока нет. Нажмите «Добавить ученика» сверху, чтобы создать первого.",
-    no_students_in_group: "В этой группе ещё нет учеников.",
-    no_students_short: "Учеников пока нет. Нажмите «Добавить ученика» сверху.",
-    code_word: "Код",
-    lesson_word: "Урок",
-    of_word: "из",
-    passed_short: "Прошёл",
-    in_work_short: "В работе",
-    not_started_short: "Не начал",
-    today_word: "Сегодня",
-    recently: "Недавно",
+    aria_teacher_home: "Home teacher",
+    lesson_in_progress: "The lesson is going on now",
+    next_lesson_label: "Next lesson",
+    course_done: "Course completed",
+    opened_at: (t: string) => `Open at${t}. Students can log in using their code.`,
+    passed: "Passed:",
+    in_work: "At work:",
+    not_started_p: "Haven't started:",
+    lesson_plan_label: "Lesson plan:",
+    close_lesson: "Close lesson",
+    open_lesson_for_class: "Open lesson for class",
+    full_program: "Entire program →",
+    school_default: "School",
+    class_short: (c: string) => `Class${c}`,
+    students_count: (n: number) => `${n}students`,
+    print_codes: "Print codes",
+    hide_form: "Hide form",
+    add_student: "Add a student",
+    new_student: "New student",
+    student_name_label: "Student name",
+    student_name_placeholder: "For example, Alina K.",
+    research_group: "Research group",
+    group_experimental: "Experimental",
+    group_control: "Test",
+    enter_student_name: "Enter student name",
+    adding: "I'm adding...",
+    btn_create: "Create",
+    btn_cancel: "Cancel",
+    err_default: "Error",
+    err_add_default: "Error while adding.",
+    no_codes_yet: "Students do not have entry codes yet.",
+    print_codes_for_class: (c: string) => `Entry codes · class${c}`,
+    all_students: "All students",
+    on_lesson_prefix: (t: string) => `In class:${t}`,
+    class_word: "Class",
+    of_count: (a: number, b: number) => `${a}from${b}`,
+    no_students_yet: "There are no students yet. Click \"Add Student\" at the top to create your first one.",
+    no_students_in_group: "There are no students in this group yet.",
+    no_students_short: "There are no students yet. Click \"Add Student\" at the top.",
+    code_word: "The code",
+    lesson_word: "Lesson",
+    of_word: "from",
+    passed_short: "Passed",
+    in_work_short: "In progress",
+    not_started_short: "Didn't start",
+    today_word: "Today",
+    recently: "Recently",
     dash: "—",
-    group_exp_short: "Эксп.",
-    group_ctrl_short: "Контр.",
+    group_exp_short: "Exp.",
+    group_ctrl_short: "Counter.",
 
     // parent today
-    your_child: "Ваш ребёнок",
-    aria_parent: "Кабинет родителя",
-    fill_final_questionnaire: "Заполните выходную анкету",
-    final_questionnaire_hint: "Финальная анкета — последний шаг участия в исследовании.",
-    fill: "Заполнить",
-    now_in_class: "Сейчас в классе",
-    parent_lesson_open_text: (name: string) => `Учитель открыл этот урок — ${name} может зайти и проходить занятие. Вы можете посмотреть, чему учат.`,
-    view_lesson: "Посмотреть урок",
-    lesson_not_open_yet: "Урок ещё не открыт",
-    parent_lesson_closed_text: (name: string) => `Когда учитель откроет занятие, оно появится здесь — и ${name} сможет начать.`,
-    progress_by_topics: "Прогресс по темам",
-    today_section: "Сегодня",
-    earlier: "Ранее",
+    your_child: "Your child",
+    aria_parent: "Parent's office",
+    fill_final_questionnaire: "Fill out the exit form",
+    final_questionnaire_hint: "The final questionnaire is the last step of participation in the study.",
+    fill: "Fill in",
+    now_in_class: "Now in class",
+    parent_lesson_open_text: (name: string) => `The teacher opened this lesson -${name}can come in and take a class. You can see what is being taught.`,
+    view_lesson: "View lesson",
+    lesson_not_open_yet: "Lesson is not open yet",
+    parent_lesson_closed_text: (name: string) => `When the teacher opens the activity, it will appear here - and${name}will be able to start.`,
+    progress_by_topics: "Progress by topic",
+    today_section: "Today",
+    earlier: "Previously",
     parent_feed_no_marks: (lessonTitle: string, name: string, fem: string) =>
-      `Урок «${lessonTitle}» открыт. Пока ${name} ничего не отметил${fem} в кабинете.`,
-    parent_feed_idle: "Учитель пока не открывал урок — ждём начала занятия.",
+      `Lesson "${lessonTitle}» is open. Bye${name}didn't mark anything${fem}in the office.`,
+    parent_feed_idle: "The teacher has not opened the lesson yet - we are waiting for the lesson to start.",
     feed_child_passed: (name: string, fem: string, lesson: string) =>
-      `${name} прошёл${fem} урок «${lesson}»`,
-    feed_lesson_done: "Урок завершён",
-    feed_teacher_opened: (t: string) => `Учитель открыл урок «${t}»`,
+      `${name}passed${fem}lesson "${lesson}»`,
+    feed_lesson_done: "The lesson is over",
+    feed_teacher_opened: (t: string) => `The teacher opened the lesson "${t}»`,
 
     // today section (generic)
-    aria_today: "Сегодня",
-    class_kicker: "Класс",
-    open_lesson_now: (t: string) => `Открыт: ${t}`,
-    lesson_not_open_class: "Урок не открыт для класса",
-    students_can_join_now: "Ученики могут войти и начать занятие прямо сейчас.",
-    press_open_to_let_join: "Нажмите «Открыть урок» чтобы ученики могли войти.",
-    home_rhythm_kicker: "Домашний ритм",
-    home_rhythm_title: "10-15 минут спокойного занятия",
-    home_rhythm_text: "Один урок лучше проходить без параллельных вкладок и лишних заданий.",
-    next_step: "Следующий шаг",
-    choose_first_lesson: "Выберите первый урок",
-    lessons_ready: "Уроки готовы к старту.",
-    module_word: "Модуль",
-    lessons_section: "Раздел уроков",
-    continue_with: (t: string) => `Продолжить: ${t}.`,
-    pick_next_module: "Посмотрите модули и выберите следующий учебный блок.",
-    lesson_control_kicker: "Управление уроком",
-    lesson_not_open: "Урок не открыт",
-    state_open: "Открыт",
-    state_closed: "Закрыт",
-    opened_at_short: (t: string) => `Открыт в ${t}. Ученики могут войти и начать.`,
-    close_lesson_for_class: "Закрыть урок для класса",
-    students_see_lock: "Ученики видят замок и не могут начать урок. Откройте урок, чтобы они могли войти.",
-    open_for_class_with: (t: string) => `Открыть для класса: ${t}`,
-    start_learning: "Начните обучение",
-    start_word: "старт",
-    open_lessons_and_start: "Откройте раздел уроков и начните первый урок.",
-    one_screen_one_action: "один экран = одно действие",
-    upcoming_actions: "Ближайшие действия",
-    what_to_do_today: "Что сделать сегодня",
-    short_progress: "Краткий прогресс",
-    pct_of_course: (n: number) => `${n}% курса`,
-    recent_activity: "Недавняя активность",
-    latest_events: "Последние события",
+    aria_today: "Today",
+    class_kicker: "Class",
+    open_lesson_now: (t: string) => `Open:${t}`,
+    lesson_not_open_class: "Lesson is not open to class",
+    students_can_join_now: "Students can log in and start class right away.",
+    press_open_to_let_join: "Click \"Open Lesson\" for students to log in.",
+    home_rhythm_kicker: "Home rhythm",
+    home_rhythm_title: "10-15 minutes of quiet exercise",
+    home_rhythm_text: "It is better to complete one lesson without parallel tabs and unnecessary tasks.",
+    next_step: "Next step",
+    choose_first_lesson: "Select first lesson",
+    lessons_ready: "Lessons are ready to start.",
+    module_word: "Module",
+    lessons_section: "Lessons section",
+    continue_with: (t: string) => `Continue:${t}.`,
+    pick_next_module: "Review the modules and select the next unit of study.",
+    lesson_control_kicker: "Lesson management",
+    lesson_not_open: "Lesson is not open",
+    state_open: "Open",
+    state_closed: "Closed",
+    opened_at_short: (t: string) => `Open at${t}. Students can log in and get started.`,
+    close_lesson_for_class: "Close lesson for class",
+    students_see_lock: "The students see the castle and cannot start the lesson. Open the lesson so they can log in.",
+    open_for_class_with: (t: string) => `Open for class:${t}`,
+    start_learning: "Start training",
+    start_word: "start",
+    open_lessons_and_start: "Open the lessons section and start the first lesson.",
+    one_screen_one_action: "one screen = one action",
+    upcoming_actions: "Upcoming actions",
+    what_to_do_today: "What to do today",
+    short_progress: "Brief progress",
+    pct_of_course: (n: number) => `${n}% rate`,
+    recent_activity: "Recent Activity",
+    latest_events: "Latest events",
 
     // teacher class section
-    aria_teacher_class: "Управление классом",
-    students_list: "Список учеников",
-    student_word: "Ученик",
-    group_word: "Группа",
-    progress_word: "Прогресс",
-    status_word: "Статус",
-    online: "Онлайн",
-    offline: "Оффлайн",
-    how_codes_work: "Как пользоваться кодами входа",
-    codes_step1: "Каждый ученик получает уникальный 4-значный код при добавлении.",
-    codes_step2: "Распечатайте коды и раздайте перед уроком.",
-    codes_step3: "Ученик вводит код на экране входа — пароль не нужен.",
-    codes_step4: "Код не меняется — можно записать в дневнике.",
+    aria_teacher_class: "Classroom management",
+    students_list: "List of students",
+    student_word: "Student",
+    group_word: "Group",
+    progress_word: "Progress",
+    status_word: "Status",
+    online: "Online",
+    offline: "Offline",
+    how_codes_work: "How to use entry codes",
+    codes_step1: "Each student receives a unique 4-digit code when added.",
+    codes_step2: "Print out the codes and hand them out before class.",
+    codes_step3: "The student enters the code on the login screen—no password is needed.",
+    codes_step4: "The code does not change - you can write it down in your diary.",
 
     // lessons section
-    aria_lesson_material: "Материал урока",
-    aria_lesson_trainer: "Учебный тренажер",
-    back: "Назад",
-    to_lesson_list: "К списку уроков",
-    aria_student_lessons: "Уроки",
-    student_lessons_wait: "Учитель откроет нужный урок. Ты увидишь его на главном экране.",
-    aria_modules: "Модули",
-    modules_kicker: "Модули",
-    modules_title: "Разделы курса",
-    course_word: "Курс",
-    lesson_n: (n: number) => `Урок ${n}`,
-    completed_short: "пройден",
-    chosen: "Выбрано",
-    show: "Показать",
-    lesson_card_kicker: "Карточка урока",
-    pick_lesson: "Выберите урок",
-    open_one_module: "Откройте один модуль и выберите урок.",
-    view_material: "Посмотреть материал",
-    lessons_short_count: (n: number) => `${n} уроков`,
+    aria_lesson_material: "Lesson material",
+    aria_lesson_trainer: "Training simulator",
+    back: "Back",
+    to_lesson_list: "To the list of lessons",
+    aria_student_lessons: "Lessons",
+    student_lessons_wait: "The teacher will open the required lesson. You will see it on the main screen.",
+    aria_modules: "Modules",
+    modules_kicker: "Modules",
+    modules_title: "Course Sections",
+    course_word: "Well",
+    lesson_n: (n: number) => `Lesson${n}`,
+    completed_short: "passed",
+    chosen: "Selected",
+    show: "Show",
+    lesson_card_kicker: "Lesson Card",
+    pick_lesson: "Choose a lesson",
+    open_one_module: "Open one module and select a lesson.",
+    view_material: "View material",
+    lessons_short_count: (n: number) => `${n}lessons`,
 
     // account section
-    aria_account: "Учетная запись",
-    label_name: "Имя",
+    aria_account: "Account",
+    label_name: "Name",
     label_email: "Email",
-    label_mode: "Режим",
-    label_class: "Класс",
-    label_teacher: "Педагог",
-    label_org: "Организация",
-    label_group: "Группа",
-    label_role: "Роль",
-    label_student: "Ученик",
-    account_data_kicker: "Данные учетной записи",
-    supports_kicker: "Опоры",
-    student_supports_title: "Что помогает учиться",
-    adult_supports_title: "Настройки сопровождения",
-    student_support_1: "Читать только один короткий блок за раз.",
-    student_support_2: "Если непонятно, нажать помощь и попросить взрослого объяснить шаг.",
-    student_support_3: "После урока можно остановиться, даже если остались другие темы.",
-    teacher_support_1: "Оставлять короткое наблюдение после каждого занятия.",
-    teacher_support_2: "Сравнивать темп ученика с предыдущим уроком, а не со всей группой.",
-    teacher_support_3: "Давать семье один домашний повтор вместо длинного списка.",
-    parent_support_1: "Короткие инструкции перед каждым действием.",
-    parent_support_2: "Один вопрос на экране без визуального перегруза.",
-    parent_support_3: "Пауза после ответа, чтобы ребенок успел проговорить решение.",
-    quick_jump: "Быстрый переход",
-    next_lesson_short: "Ближайший урок",
-    lesson_will_be_chosen: "Урок будет выбран из раздела уроков.",
-    open_lessons_tab: "Откройте вкладку «Уроки», чтобы перейти к занятию.",
+    label_mode: "Mode",
+    label_class: "Class",
+    label_teacher: "Teacher",
+    label_org: "Organization",
+    label_group: "Group",
+    label_role: "Role",
+    label_student: "Student",
+    account_data_kicker: "Account details",
+    supports_kicker: "Supports",
+    student_supports_title: "What helps you study",
+    adult_supports_title: "Escort Settings",
+    student_support_1: "Read only one short block at a time.",
+    student_support_2: "If it is not clear, press help and ask an adult to explain the step.",
+    student_support_3: "After the lesson, you can stop, even if there are other topics left.",
+    teacher_support_1: "Leave a short observation after each lesson.",
+    teacher_support_2: "Compare the student's pace with the previous lesson, not with the entire group.",
+    teacher_support_3: "Giving families one home replay instead of a long list.",
+    parent_support_1: "Short instructions before each action.",
+    parent_support_2: "One question on the screen without visual overload.",
+    parent_support_3: "Pause after the answer so that the child has time to say the decision.",
+    quick_jump: "Quick Jump",
+    next_lesson_short: "Upcoming lesson",
+    lesson_will_be_chosen: "The lesson will be selected from the lessons section.",
+    open_lessons_tab: "Click the Lessons tab to access the lesson.",
 
     // questionnaire
-    save_questionnaire_failed: "Не удалось сохранить анкету.",
-    questionnaire_saved: "Анкета сохранена. Спасибо!",
-    close_word: "Закрыть",
-    saving: "Сохраняю...",
-    submit_questionnaire: "Отправить анкету",
-    research_kicker: "Исследование",
-    parent_questionnaires: "Анкеты родителя",
-    filled_a: "Заполнена",
-    fill_before_start: "Заполните до начала занятий",
-    need_fill: "Нужно заполнить",
-    initial_questionnaire: "Входная анкета",
-    final_questionnaire: "Выходная анкета",
-    filled_on: (date: string) => `Заполнена ${date}`,
-    all_lessons_done_fill_final: "Все уроки пройдены — заполните итоговую анкету",
-    opens_after: (total: number, current: number) => `Откроется после ${total} уроков (сейчас ${current})`,
-    closed_yet: "Пока закрыта",
+    save_questionnaire_failed: "Failed to save profile.",
+    questionnaire_saved: "The questionnaire has been saved. Thank you!",
+    close_word: "Close",
+    saving: "I'm saving...",
+    submit_questionnaire: "Send a form",
+    research_kicker: "Study",
+    parent_questionnaires: "Parent questionnaires",
+    filled_a: "Filled",
+    fill_before_start: "Complete before class starts.",
+    need_fill: "Needs to be filled out",
+    initial_questionnaire: "Entry form",
+    final_questionnaire: "Exit form",
+    filled_on: (date: string) => `Filled${date}`,
+    all_lessons_done_fill_final: "All lessons completed - fill out the final form",
+    opens_after: (total: number, current: number) => `Will open after${total}lessons (now${current})`,
+    closed_yet: "Closed for now",
 
     // family section
-    aria_family: "Анкеты и помощь дома",
-    label_adult: "Взрослый",
-    label_post: "Почта",
-    label_child: "Ребенок",
-    home_rhythm_step_1: "Перед уроком договориться о коротком времени: 10-15 минут.",
-    home_rhythm_step_2: "После урока спросить, что было самым понятным и что повторить.",
-    home_rhythm_step_3: "Если ребенок устал, остановиться на текущем шаге и вернуться позже.",
-    home_rhythm_caption: "Как поддерживать занятия дома",
-    step_n: (n: number) => `Шаг ${n}`,
-    family_profile_kicker: "Семейный профиль",
-    contacts_context: "Контакты и контекст",
-    note_kicker: "Заметка",
-    individual_support: "Индивидуальная поддержка",
+    aria_family: "Questionnaires and help at home",
+    label_adult: "Adult",
+    label_post: "Post office",
+    label_child: "Child",
+    home_rhythm_step_1: "Before the lesson, agree on a short time: 10-15 minutes.",
+    home_rhythm_step_2: "After the lesson, ask what was most clear and what to repeat.",
+    home_rhythm_step_3: "If the child is tired, stop at the current step and return later.",
+    home_rhythm_caption: "How to keep studying at home",
+    step_n: (n: number) => `Step${n}`,
+    family_profile_kicker: "Family profile",
+    contacts_context: "Contacts and context",
+    note_kicker: "Note",
+    individual_support: "Individual support",
 
     // progress section
-    aria_progress: "Прогресс",
-    history_kicker: "История прогресса",
-    course_dynamics: "Динамика по курсу",
-    modules_word: "Модули",
-    next_short: (t: string) => `Следующее: ${t}`,
-    journal: "Журнал",
+    aria_progress: "Progress",
+    history_kicker: "History of progress",
+    course_dynamics: "Dynamics by exchange rate",
+    modules_word: "Modules",
+    next_short: (t: string) => `Next:${t}`,
+    journal: "Magazine",
 
     // shell
-    cabinet: "Кабинет",
+    cabinet: "Cabinet",
 
     // console errors
-    err_open_lesson: "Не удалось открыть урок",
-    err_close_lesson: "Не удалось закрыть урок",
-    err_download_plan: "Не удалось скачать план урока",
+    err_open_lesson: "Failed to open lesson",
+    err_close_lesson: "Failed to close lesson",
+    err_download_plan: "Failed to download lesson plan",
   },
   uz: {
     sec_today_label: "Bugun",
@@ -550,7 +550,7 @@ const dict = {
     days_ago: (n: number) => `${n} kun oldin`,
     long_ago: "ancha vaqt boʻldi",
     code_eyebrow: (cls: string) => `${cls}-sinf`,
-    code_hint: "UQUVLI kabinetiga kirish uchun shu kodni kirit.",
+    code_hint: "Enter this code to access your student dashboard.",
     print_codes_title: (n: number) => `Oʻquvchilar kirish kodlari · ${n} ta`,
 
     download_failed: "Dars rejasini yuklab boʻlmadi.",
@@ -827,7 +827,7 @@ const sectionLookup = new Set<DashboardSectionKey>([
 
 const roleSectionOrder: Record<UserRole, DashboardSectionKey[]> = {
   parent: ["today", "family", "account"],
-  // Ученик F70: видимой навигации нет, но "lessons" нужен для перехода в урок
+  // UI Logic
   student: ["today", "lessons"],
   teacher: ["today", "lessons", "progress", "account"],
   researcher: ["today", "lessons", "progress", "account"],
@@ -999,7 +999,7 @@ function StudentTodaySection({
         variant="inline"
       />
 
-      {/* One screen, one decision: ждать или начать */}
+      {/* UI Module */}
       <div className={`student-hero${isLessonOpen ? " student-hero--ready" : " student-hero--waiting"}`}>
         <p className="student-hero-greeting">{t.hello_greeting(firstName)}</p>
 
@@ -1027,7 +1027,7 @@ function StudentTodaySection({
         )}
       </div>
 
-      {/* Звёзды по числу пройденных уроков — наглядно */}
+      {/* UI Module */}
       <div
         className="student-stars-strip"
         aria-label={t.stars_aria(completedLessons, lessonCount)}
@@ -1125,7 +1125,7 @@ function buildStudentCodesHtml(
       <div class="card-code">${r.code}</div>
       <p class="card-hint">${t.code_hint}</p>
       <footer class="card-foot">
-        <span>uquvli.uz</span>
+        <span>mosaic-learning.org</span>
         ${r.group ? `<span class="card-group">${r.group}</span>` : ""}
       </footer>
     </article>
@@ -1277,7 +1277,7 @@ function TeacherLessonsSection({
   }
 
   function trainerInfo(lesson: ProgramLesson): { name: string; icon: React.ReactNode; tone: string } | null {
-    // 1. Legacy trainer field (для уроков 23, 24, 27 — phone, telegram, mygov)
+    // UI Logic
     const type = lesson.trainer?.type;
     if (type === "telegram")
       return { name: "Telegram", icon: <SocialIcon name="telegram" />, tone: "telegram" };
@@ -1290,43 +1290,43 @@ function TeacherLessonsSection({
     if (type === "phone")
       return { name: t.trainer_phone, icon: <CabinetIcon name="phone" />, tone: "phone" };
 
-    // 2. Mockup в LessonPlayer — извлечь kind из practice screen
+    // UI Logic
     const practiceScreen = lesson.screens?.find((s) => s.type === "practice");
     const mockup = practiceScreen && "mockup" in practiceScreen ? practiceScreen.mockup : undefined;
     const kind = mockup?.kind;
     if (!kind) return null;
 
-    // Маппинг mockup → читаемое имя и тон
+    // UI Logic
     const MOCKUP_LABELS: Record<string, { name: string; tone: string }> = {
-      "thermometer":         { name: "Термометр",        tone: "phone" },
-      "atm":                 { name: "Банкомат",         tone: "mygov" },
-      "washing-machine":     { name: "Стиральная машина",tone: "uzum" },
-      "messenger":           { name: "Мессенджер",       tone: "telegram" },
-      "weather":             { name: "Прогноз погоды",   tone: "phone" },
-      "product-label":       { name: "Этикетка",         tone: "uzum" },
-      "train-board":         { name: "Табло вокзала",    tone: "mygov" },
-      "package-tracking":    { name: "Трек посылки",     tone: "gmail" },
-      "skin-quiz":           { name: "Опросник кожи",    tone: "phone" },
-      "checklist":           { name: "Чек-лист",         tone: "phone" },
-      "menu":                { name: "Меню блюд",        tone: "uzum" },
-      "recipe":              { name: "Рецепт",           tone: "uzum" },
-      "budget-form":         { name: "Бюджет",           tone: "mygov" },
+      "thermometer":         { name: "Thermometer",        tone: "phone" },
+      "atm":                 { name: "ATM",         tone: "mygov" },
+      "washing-machine":     { name: "Washing machine",tone: "uzum" },
+      "messenger":           { name: "Messenger",       tone: "telegram" },
+      "weather":             { name: "Weather forecast",   tone: "phone" },
+      "product-label":       { name: "Label",         tone: "uzum" },
+      "train-board":         { name: "Station board",    tone: "mygov" },
+      "package-tracking":    { name: "Parcel track",     tone: "gmail" },
+      "skin-quiz":           { name: "Skin questionnaire",    tone: "phone" },
+      "checklist":           { name: "Checklist",         tone: "phone" },
+      "menu":                { name: "Food menu",        tone: "uzum" },
+      "recipe":              { name: "Recipe",           tone: "uzum" },
+      "budget-form":         { name: "Budget",           tone: "mygov" },
       "gov-portal":          { name: "my.gov.uz",        tone: "mygov" },
-      "contract":            { name: "Договор",          tone: "mygov" },
-      "transport-directory": { name: "Справочник",       tone: "phone" },
-      "wardrobe":            { name: "Гардероб",         tone: "uzum" },
-      "table-setting":       { name: "Сервировка",       tone: "uzum" },
-      "shampoo-store":       { name: "Витрина",          tone: "uzum" },
-      "weekly-weather":      { name: "Прогноз недели",   tone: "phone" },
-      "care-label":          { name: "Ярлык одежды",     tone: "uzum" },
-      "detergent-box":       { name: "Упаковка",         tone: "uzum" },
-      "oven-timer":          { name: "Таймер",           tone: "phone" },
-      "ticket-booking":      { name: "Покупка билета",   tone: "mygov" },
+      "contract":            { name: "Agreement",          tone: "mygov" },
+      "transport-directory": { name: "Directory",       tone: "phone" },
+      "wardrobe":            { name: "Wardrobe",         tone: "uzum" },
+      "table-setting":       { name: "Serving",       tone: "uzum" },
+      "shampoo-store":       { name: "Showcase",          tone: "uzum" },
+      "weekly-weather":      { name: "Weekly Forecast",   tone: "phone" },
+      "care-label":          { name: "Clothes label",     tone: "uzum" },
+      "detergent-box":       { name: "Packaging",         tone: "uzum" },
+      "oven-timer":          { name: "Timer",           tone: "phone" },
+      "ticket-booking":      { name: "Buying a ticket",   tone: "mygov" },
       "phone-call":          { name: t.trainer_phone,    tone: "phone" },
-      "safety-cards":        { name: "Безопасность",     tone: "mygov" },
-      "volume-slider":       { name: "Громкость",        tone: "phone" },
-      "diagnostic":          { name: "Диагностика",      tone: "phone" },
-      "hygiene-shelf":       { name: "Предметы гигиены", tone: "phone" },
+      "safety-cards":        { name: "Safety",     tone: "mygov" },
+      "volume-slider":       { name: "Volume",        tone: "phone" },
+      "diagnostic":          { name: "Diagnostic Life Skills",      tone: "phone" },
+      "hygiene-shelf":       { name: "Hygiene items", tone: "phone" },
     };
     const label = MOCKUP_LABELS[kind];
     if (!label) return null;
@@ -1549,7 +1549,7 @@ function TeacherTodaySection({
   const experimentalCount = students.filter((s) => s.group === "experimental").length;
   const controlCount = students.filter((s) => s.group === "control").length;
 
-  // Live-режим: статистика по открытому уроку
+  // UI Logic
   const liveStats = openLesson
     ? students.reduce(
         (acc, s) => {
@@ -1564,7 +1564,7 @@ function TeacherTodaySection({
   return (
     <section className="teacher-console" aria-label={t.aria_teacher_home}>
 
-      {/* ── Главное: контроль урока ── */}
+      {/* UI Module */}
       <article className={`teacher-lesson-control${openLesson ? " teacher-lesson-control--open" : ""}`}>
         <div className="teacher-lesson-control-info">
           <p className="teacher-lesson-eyebrow">
@@ -1636,7 +1636,7 @@ function TeacherTodaySection({
         </div>
       </article>
 
-      {/* ── Action bar: класс + действия ── */}
+      {/* UI Module */}
       <div className="teacher-class-actionbar">
         <div className="teacher-class-actionbar-info">
           <p className="teacher-class-actionbar-eyebrow">
@@ -1709,7 +1709,7 @@ function TeacherTodaySection({
         </article>
       ) : null}
 
-      {/* ── Фильтр групп ── */}
+      {/* UI Module */}
       {students.length > 0 ? (
         <div className="teacher-class-summary">
           <button
@@ -1739,7 +1739,7 @@ function TeacherTodaySection({
         </div>
       ) : null}
 
-      {/* ── Список учеников ── */}
+      {/* UI Module */}
       <article className="teacher-class-card">
         <div className="teacher-class-head">
           <h3>{openLesson ? t.on_lesson_prefix(openLesson.title) : t.class_word}</h3>
@@ -1877,7 +1877,7 @@ function ParentTodaySection({
 
   user.progress.forEach((p) => {
     const lesson = lessons.find((l) => l.slug === p.lessonSlug);
-    const fem = childFirstName.endsWith("а") ? "а" : "";
+    const fem = childFirstName.endsWith("a") ? "a" : "";
     feed.push({
       id: `lesson-${p.lessonSlug}-${p.completedAt}`,
       time: p.completedAt,
@@ -1901,14 +1901,14 @@ function ParentTodaySection({
   const todayItems = feed.filter((i) => isToday(i.time));
   const earlierItems = feed.filter((i) => !isToday(i.time)).slice(0, 5);
 
-  // Входную анкету обрабатывает шлюз /onboarding/anketa + sticky-баннер в shell.
-  // Здесь баннер показываем ТОЛЬКО для выходной — чтобы не дублировать кнопку.
+  // UI Logic
+  // UI Logic
   const finalPending = initialDone && !finalDone;
 
   return (
     <section className="parent-feed" aria-label={t.aria_parent}>
 
-      {/* Шапка: ребёнок + прогресс компактно в одну строку */}
+      {/* UI Module */}
       <header className="parent-head parent-head--compact">
         <div className="parent-head-main">
           <strong className="parent-head-name">{childName}</strong>
@@ -1928,7 +1928,7 @@ function ParentTodaySection({
         </div>
       </header>
 
-      {/* Выходная анкета — только когда входная уже сдана */}
+      {/* UI Module */}
       {finalPending ? (
         <article className="parent-anketa-banner">
           <div>
@@ -1941,7 +1941,7 @@ function ParentTodaySection({
         </article>
       ) : null}
 
-      {/* Что сейчас на уроке */}
+      {/* UI Module */}
       <article className={`parent-now-card ${openLesson ? "parent-now-card--active" : "parent-now-card--idle"}`}>
         <p className="parent-now-kicker">{t.now_in_class}</p>
         {openLesson ? (
@@ -1968,7 +1968,7 @@ function ParentTodaySection({
         )}
       </article>
 
-      {/* Прогресс по темам */}
+      {/* UI Module */}
       {moduleProgress.length > 0 ? (
         <article className="parent-feed-card parent-feed-card--progress">
           <h3>{t.progress_by_topics}</h3>
@@ -1996,13 +1996,13 @@ function ParentTodaySection({
         </article>
       ) : null}
 
-      {/* Лента событий */}
+      {/* UI Module */}
       <article className="parent-feed-card parent-feed-card--today">
         <h3>{t.today_section}</h3>
         {todayItems.length === 0 ? (
           <p className="parent-feed-empty">
             {openLesson
-              ? t.parent_feed_no_marks(openLesson.title, childFirstName, childFirstName.endsWith("а") ? "а" : "")
+              ? t.parent_feed_no_marks(openLesson.title, childFirstName, childFirstName.endsWith("a") ? "a" : "")
               : t.parent_feed_idle}
           </p>
         ) : (
@@ -2556,7 +2556,7 @@ function LessonsSection({
   }
 
   if (studyLesson) {
-    // Только родитель видит читабельную методичку. Учитель и ученик — сам тренажёр.
+    // UI Logic
     const isAdultPreview = userRole === "parent";
     return (
       <section
@@ -2594,7 +2594,7 @@ function LessonsSection({
     );
   }
 
-  // F70-ученик не должен видеть список уроков — учитель сам решает что открыть
+  // UI Logic
   if (isStudent) {
     return (
       <section className="student-lessons-empty" aria-label={t.aria_student_lessons}>
@@ -3228,12 +3228,12 @@ export function DashboardClient({
   const activeConfig = dashboardSections.find((s) => s.key === activeSection) ?? dashboardSections[0];
   const visibleSection = activeConfig.key;
 
-  // Для ученика ищем teacherId чтобы получить classState
+  // UI Logic
   const teacherIdForStudent = activeUser.role === "student" ? activeUser.teacherId : undefined;
   const teacherIdForClass = activeUser.role === "teacher" ? activeUser.id : undefined;
   const relevantTeacherId = teacherIdForClass ?? teacherIdForStudent;
 
-  // Загрузка classState
+  // UI Logic
   useEffect(() => {
     if (!relevantTeacherId) {
       const resetId = window.setTimeout(() => setClassState(null), 0);
@@ -3263,7 +3263,7 @@ export function DashboardClient({
     };
   }, [activeUser.role, relevantTeacherId]);
 
-  // Загрузка учеников для учителя
+  // UI Logic
   useEffect(() => {
     if (activeUser.role !== "teacher") return;
     let cancelled = false;
@@ -3296,7 +3296,7 @@ export function DashboardClient({
     }
   }, [activeUser.id, activeUser.role]);
 
-  // Хэш-навигация
+  // UI Logic
   useEffect(() => {
     const sectionsForRole = getDashboardSections(activeUser.role, t);
     const availableSectionKeys = new Set(sectionsForRole.map((s) => s.key));
@@ -3341,7 +3341,7 @@ export function DashboardClient({
   }
 
   function handleBackToLessons() {
-    // F70-ученик не должен видеть список уроков — возвращаем его на «Сегодня»
+    // UI Logic
     if (activeUser.role === "student") {
       setDashboardState({ section: "today" });
       return;
@@ -3377,7 +3377,7 @@ export function DashboardClient({
     }
   }
 
-  // Для ученика: определяем урок который надо открыть (тот что открыл учитель)
+  // UI Logic
   function handleStudentStartLesson() {
     const targetSlug = classState?.openLessonSlug ?? nextLesson?.slug;
     if (targetSlug) {

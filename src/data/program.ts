@@ -567,7 +567,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Diagnostic module”)",
+            "Mosaic Platform (section “Diagnostic module”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -747,7 +747,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Diagnostic module”)",
+            "Mosaic Platform (section “Diagnostic module”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -848,7 +848,7 @@ export const programModules: ProgramModule[] = [
     description: "Eight lessons where the student works with digital health objects: wardrobe, shampoo, skin questionnaire, weather forecast, label, volume control and digital thermometer.",
     image: "/uzbek-images/health-clinic.jpg",
     imageAlt: "Digital Health - Personal Care and Medical Devices",
-    imageCredit: "UQUVLI.UZ",
+    imageCredit: "Mosaic",
     imageSourceUrl: "",
     knowledge: [
       "What does a digital label look like and what are the main places on it?",
@@ -950,7 +950,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Mosaic Platform (section “Digital Health”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -1131,7 +1131,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Mosaic Platform (section “Digital Health”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -1312,7 +1312,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Mosaic Platform (section “Digital Health”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -1493,7 +1493,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Mosaic Platform (section “Digital Health”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -1674,7 +1674,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Mosaic Platform (section “Digital Health”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -1855,7 +1855,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Mosaic Platform (section “Digital Health”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -2036,7 +2036,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Mosaic Platform (section “Digital Health”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -2217,7 +2217,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Health”)",
+            "Mosaic Platform (section “Digital Health”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -2319,7 +2319,7 @@ export const programModules: ProgramModule[] = [
     description: "Ten lessons on how digital tools can help you manage your household: forecasted clothing, clothing label, washing machine, product dosage, recipe, timer, serving, family income and expenses.",
     image: "/uzbek-images/shopping-market.jpg",
     imageAlt: "Digital economy of everyday life - clothing, food, budget",
-    imageCredit: "UQUVLI.UZ",
+    imageCredit: "Mosaic",
     imageSourceUrl: "",
     knowledge: [
       "How to Read Digital Clothing Tags and Instructions",
@@ -2421,7 +2421,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Mosaic Platform (section “Digital economy of everyday life”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -2602,7 +2602,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Mosaic Platform (section “Digital economy of everyday life”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -2783,7 +2783,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Mosaic Platform (section “Digital economy of everyday life”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -2964,7 +2964,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Mosaic Platform (section “Digital economy of everyday life”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -3145,7 +3145,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Mosaic Platform (section “Digital economy of everyday life”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -3326,7 +3326,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Mosaic Platform (section “Digital economy of everyday life”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -3507,7 +3507,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Mosaic Platform (section “Digital economy of everyday life”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -3688,7 +3688,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Mosaic Platform (section “Digital economy of everyday life”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -3869,7 +3869,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Mosaic Platform (section “Digital economy of everyday life”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -4050,7 +4050,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital economy of everyday life”)",
+            "Mosaic Platform (section “Digital economy of everyday life”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -4152,7 +4152,7 @@ export const programModules: ProgramModule[] = [
     description: "Three lessons: a digital guide to modes of transport, reading a station board, and a multi-step scenario for buying a ticket online.",
     image: "/uzbek-images/shopping-market.jpg",
     imageAlt: "Digital transport - directory, scoreboard, tickets",
-    imageCredit: "UQUVLI.UZ",
+    imageCredit: "Mosaic",
     imageSourceUrl: "",
     knowledge: [
       "What types of transport are there?",
@@ -4254,7 +4254,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Transport”)",
+            "Mosaic Platform (section “Digital Transport”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -4435,7 +4435,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Transport”)",
+            "Mosaic Platform (section “Digital Transport”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -4616,7 +4616,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Transport”)",
+            "Mosaic Platform (section “Digital Transport”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -4718,7 +4718,7 @@ export const programModules: ProgramModule[] = [
     description: "Three lessons: tracking a package by track number, working with the phone (call and SMS) and a key lesson in the study - sending a message in the messenger.",
     image: "/uzbek-images/shopping-market.jpg",
     imageAlt: "Digital communication - parcels, telephone, messenger",
-    imageCredit: "UQUVLI.UZ",
+    imageCredit: "Mosaic",
     imageSourceUrl: "",
     knowledge: [
       "What is a track number and how does it work?",
@@ -4820,7 +4820,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Communication”)",
+            "Mosaic Platform (section “Digital Communication”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -5001,7 +5001,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Communication”)",
+            "Mosaic Platform (section “Digital Communication”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -5182,7 +5182,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Communication”)",
+            "Mosaic Platform (section “Digital Communication”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -5284,7 +5284,7 @@ export const programModules: ProgramModule[] = [
     description: "A lesson that purposefully forms the security component of the FCG - etiquette and safety on the Internet.",
     image: "/uzbek-images/shopping-market.jpg",
     imageAlt: "Digital Security - Online Behavior",
-    imageCredit: "UQUVLI.UZ",
+    imageCredit: "Mosaic",
     imageSourceUrl: "",
     knowledge: [
       "What is personal data and why it should not be disclosed",
@@ -5386,7 +5386,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital Security”)",
+            "Mosaic Platform (section “Digital Security”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -5488,7 +5488,7 @@ export const programModules: ProgramModule[] = [
     description: "Three lessons: filling out an electronic application on the government services portal, safe operation of an ATM and PIN code protection, critical reading of a digital loan agreement.",
     image: "/uzbek-images/shopping-market.jpg",
     imageAlt: "Digital government services - portal, ATM, contract",
-    imageCredit: "UQUVLI.UZ",
+    imageCredit: "Mosaic",
     imageSourceUrl: "",
     knowledge: [
       "What is a public services portal and why is it needed?",
@@ -5590,7 +5590,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital public services”)",
+            "Mosaic Platform (section “Digital public services”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -5771,7 +5771,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital public services”)",
+            "Mosaic Platform (section “Digital public services”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"
@@ -5952,7 +5952,7 @@ export const programModules: ProgramModule[] = [
             "ensure the transfer of digital action into everyday situations"
           ],
           materials: [
-            "Platform UQUVLI.UZ (section “Digital public services”)",
+            "Mosaic Platform (section “Digital public services”)",
             "Tablets/laptops by number of students or 1 to 2",
             "Interactive whiteboard/projector",
             "2-3 real objects related to the lesson topic (for demonstration)"

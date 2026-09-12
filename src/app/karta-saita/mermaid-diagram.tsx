@@ -46,10 +46,10 @@ function loadMermaid() {
     if (existingScript) {
       existingScript.addEventListener("load", () => {
         if (window.mermaid) resolve(window.mermaid);
-        else reject(new Error("Mermaid загрузился, но API не найден."));
+        else reject(new Error("Mermaid has loaded, but the API is not found."));
       });
       existingScript.addEventListener("error", () => {
-        reject(new Error("Не удалось загрузить Mermaid."));
+        reject(new Error("Failed to load Mermaid."));
       });
       return;
     }
@@ -60,10 +60,10 @@ function loadMermaid() {
     script.dataset.uquvliMermaid = "true";
     script.addEventListener("load", () => {
       if (window.mermaid) resolve(window.mermaid);
-      else reject(new Error("Mermaid загрузился, но API не найден."));
+      else reject(new Error("Mermaid has loaded, but the API is not found."));
     });
     script.addEventListener("error", () => {
-      reject(new Error("Не удалось загрузить Mermaid."));
+      reject(new Error("Failed to load Mermaid."));
     });
     document.head.appendChild(script);
   });
@@ -142,7 +142,7 @@ export function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
           setError(
             renderError instanceof Error
               ? renderError.message
-              : "Не удалось отрисовать схему.",
+              : "Failed to draw the diagram.",
           );
         }
       }
@@ -220,17 +220,16 @@ export function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
       <div className={styles.diagramToolbar}>
         <span>Mermaid SVG</span>
         <div className={styles.diagramControls}>
-          <span>Зажмите мышкой и двигайте схему</span>
-          <button type="button" onClick={() => changeScale(-0.1)} aria-label="Уменьшить схему">
+          <span>Click and drag the diagram</span>
+          <button type="button" onClick={() => changeScale(-0.1)} aria-label="Reduce diagram">
             −
           </button>
           <strong>{Math.round(scale * 100)}%</strong>
-          <button type="button" onClick={() => changeScale(0.1)} aria-label="Увеличить схему">
+          <button type="button" onClick={() => changeScale(0.1)} aria-label="Enlarge diagram">
             +
           </button>
           <button type="button" onClick={resetView}>
-            Сброс
-          </button>
+            Reset</button>
         </div>
       </div>
       <div
@@ -256,7 +255,7 @@ export function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
           ) : svg ? (
             <div dangerouslySetInnerHTML={{ __html: svg }} />
           ) : (
-            <div className={styles.diagramLoading}>Схема загружается...</div>
+            <div className={styles.diagramLoading}>The diagram is loading...</div>
           )}
         </div>
       </div>

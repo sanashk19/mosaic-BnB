@@ -37,27 +37,27 @@ const dict: Locales<{
   feedbackWrong: (correctName: string) => string;
 }> = {
   ru: {
-    appTitle: "Умывание и крем",
-    taskEyebrow: "Что нужно сделать",
-    questionEyebrow: "Следующий шаг",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Шаг выполнен",
-    skip: "Не знаю",
-    finish: "Закончить",
-    doneTitle: "Молодец! Лицо чистое, крем нанесён.",
-    doneHint: "Так нужно делать каждое утро и каждый вечер.",
-    stepCounter: (n) => `Шаг ${n} из 5`,
-    task: "Разложи шаги в правильном порядке. Нажми на тот, который идёт следующим.",
-    hint: "Сначала намочи лицо, потом мыло, смой, вытри, потом крем.",
+    appTitle: "Wash and cream",
+    taskEyebrow: "What to do",
+    questionEyebrow: "Next step",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Step completed",
+    skip: "Don't know",
+    finish: "Finish",
+    doneTitle: "Well done! The face is clean, the cream is applied.",
+    doneHint: "This should be done every morning and every evening.",
+    stepCounter: (n) => `Step${n}out of 5`,
+    task: "Put the steps in the correct order. Click on the one that comes next.",
+    hint: "First wet your face, then soap, rinse, dry, then cream.",
     steps: {
-      "wet-face": { name: "Намочить лицо", short: "Вода" },
-      soap: { name: "Намылить", short: "Мыло" },
-      rinse: { name: "Смыть пену", short: "Смыть" },
-      dry: { name: "Вытереть полотенцем", short: "Полотенце" },
-      cream: { name: "Нанести крем", short: "Крем" },
+      "wet-face": { name: "Wet your face", short: "Water" },
+      soap: { name: "Lather up", short: "Soap" },
+      rinse: { name: "Wash off the foam", short: "Wash off" },
+      dry: { name: "Dry with a towel", short: "Towel" },
+      cream: { name: "Apply cream", short: "Cream" },
     },
-    feedbackGood: "Верно! Идём дальше.",
-    feedbackWrong: (correctName) => `Это не следующий шаг. Сейчас нужно: «${correctName}».`,
+    feedbackGood: "Right! Let's move on.",
+    feedbackWrong: (correctName) => `This is not the next step. Now you need: "${correctName}».`,
   },
   uz: {
     appTitle: "Yuv va krem",
@@ -229,8 +229,8 @@ export function StepSequenceTrainer({ trainer, onDone }: Props) {
               <span className="mq-eyebrow">{t.questionEyebrow}</span>
               <h3>{t.steps[nextStep].name}</h3>
               <p className="outfit-pick-summary">
-                Найди карточку и нажми. Это {nextIndex + 1}-й шаг из 5.
-              </p>
+                
+                Find the card and click. This{nextIndex + 1}-th step out of 5.</p>
             </div>
           ) : null}
 

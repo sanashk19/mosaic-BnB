@@ -29,43 +29,43 @@ type Situation = {
 const SITUATIONS: Situation[] = [
   {
     key: "share-password",
-    text: "Друг просит сказать ему пароль от твоего аккаунта.",
+    text: "A friend asks you to tell him the password for your account.",
     icon: "password-key",
     correct: "danger",
-    feedbackGood: "Верно. Пароль — только твой. Никому не давай.",
-    feedbackSoft: "Это опасно. Пароль нельзя давать никому, даже другу.",
+    feedbackGood: "Right. The password is yours alone. Don't give it to anyone.",
+    feedbackSoft: "It's dangerous. The password should not be given to anyone, not even a friend.",
   },
   {
     key: "friend-game",
-    text: "Друг с класса зовёт играть после школы.",
+    text: "A friend from class invites me to play after school.",
     icon: "game-controller",
     correct: "safe",
-    feedbackGood: "Верно. Это твой друг — играть можно.",
-    feedbackSoft: "Это безопасно. Это известный тебе друг.",
+    feedbackGood: "Right. This is your friend - you can play.",
+    feedbackSoft: "It's safe. This is a friend you know.",
   },
   {
     key: "unknown-link",
-    text: "Пришла ссылка от незнакомца: «Открой, узнаешь что-то».",
+    text: "A link came from a stranger: “Open it, you’ll find out something.”",
     icon: "suspicious-link",
     correct: "danger",
-    feedbackGood: "Верно. Чужие ссылки — не открывай.",
-    feedbackSoft: "Это опасно. Незнакомые ссылки могут заразить телефон.",
+    feedbackGood: "Right. Do not open other people's links.",
+    feedbackSoft: "It's dangerous. Unfamiliar links can infect your phone.",
   },
   {
     key: "share-photo",
-    text: "В чате просят прислать домашнее фото для конкурса.",
+    text: "The chat asks you to send home photos for the competition.",
     icon: "photo-card",
     correct: "danger",
-    feedbackGood: "Верно. Лучше не присылать — фото может уйти куда не нужно.",
-    feedbackSoft: "Это опасно. Не присылай личные фото незнакомым.",
+    feedbackGood: "Right. It’s better not to send - the photo may go where it’s not needed.",
+    feedbackSoft: "It's dangerous. Don't send personal photos to strangers.",
   },
   {
     key: "help-elder",
-    text: "Бабушка просит помочь ей войти в её почту.",
+    text: "Grandma asks you to help her log into her mail.",
     icon: "elder-helper",
     correct: "safe",
-    feedbackGood: "Верно. Помогать близким — это правильно.",
-    feedbackSoft: "Это безопасно. Помогать бабушке — нормально.",
+    feedbackGood: "Right. Helping loved ones is the right thing to do.",
+    feedbackSoft: "It's safe. Helping your grandmother is normal.",
   },
 ];
 
@@ -91,24 +91,24 @@ const dict: Locales<{
   dangerSub: string;
 }> = {
   ru: {
-    appTitle: "Безопасно или опасно",
-    stepCounter: (n, total) => `Карточка ${n} из ${total}`,
-    taskEyebrow: "Ситуация",
-    questionEyebrow: "Решение",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    next: "Следующая ситуация",
-    doneTitle: "Молодец! Ты различаешь безопасные и опасные ситуации.",
-    doneHint: "Помни: пароли — никому; ссылки от незнакомцев — не открывать; личные фото — не пересылать.",
-    hintGeneral: "Подумай, кто это: близкий человек или незнакомец. Что он от тебя хочет?",
-    question: "Это безопасно или опасно?",
-    safe: "Безопасно",
-    danger: "Опасно",
-    safeSub: "можно делать",
-    dangerSub: "так делать нельзя",
+    appTitle: "Safe or dangerous",
+    stepCounter: (n, total) => `Card${n}from${total}`,
+    taskEyebrow: "Situation",
+    questionEyebrow: "Solution",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    next: "Next situation",
+    doneTitle: "Well done! You differentiate between safe and dangerous situations.",
+    doneHint: "Remember: passwords are for no one; links from strangers - do not open; personal photos - do not forward.",
+    hintGeneral: "Think about who it is: a loved one or a stranger. What does he want from you?",
+    question: "Is it safe or dangerous?",
+    safe: "Safe",
+    danger: "Dangerous",
+    safeSub: "can be done",
+    dangerSub: "you can't do that",
   },
   uz: {
     appTitle: "Xavfsiz yoki xavfli",
@@ -181,8 +181,8 @@ export function SafetyEtiquetteTrainer({ trainer, onDone }: Props) {
         <p className="safety-card-text">{s.text}</p>
       </div>
       <div className="safety-marks">
-        <span className="safety-mark safety-mark--safe">✓ Безопасно</span>
-        <span className="safety-mark safety-mark--danger">✕ Опасно</span>
+        <span className="safety-mark safety-mark--safe">✓ Safe</span>
+        <span className="safety-mark safety-mark--danger">✕ Dangerous</span>
       </div>
     </div>
   ) : null;

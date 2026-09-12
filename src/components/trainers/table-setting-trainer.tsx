@@ -47,28 +47,28 @@ const dict: Locales<{
   feedbackSoft: string;
 }> = {
   ru: {
-    appTitle: "Сервировка стола",
-    stepCounter: (n) => `Шаг ${n} из ${STEPS}`,
-    taskEyebrow: "Что поставить",
-    questionEyebrow: "Найди нужный предмет",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    doneTitle: "Молодец! Стол накрыт.",
-    doneHint: "Тарелка по центру, вилка слева, нож и ложка справа, стакан вверху справа, салфетка на тарелке.",
-    items: { plate: "Тарелка", fork: "Вилка", knife: "Нож", glass: "Стакан", napkin: "Салфетка", spoon: "Ложка" },
+    appTitle: "Table setting",
+    stepCounter: (n) => `Step${n}from${STEPS}`,
+    taskEyebrow: "What to put",
+    questionEyebrow: "Find the item you need",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    doneTitle: "Well done! The table is set.",
+    doneHint: "Plate in the center, fork on the left, knife and spoon on the right, glass top right, napkin on the plate.",
+    items: { plate: "Plate", fork: "Fork", knife: "Knife", glass: "Cup", napkin: "Napkin", spoon: "Spoon" },
     slotInstr: {
-      center: "По центру — большая обеденная тарелка.",
-      left: "Слева от тарелки — вилка.",
-      "right-inner": "Справа от тарелки — нож.",
-      "right-outer": "Справа от ножа — ложка.",
-      "top-right": "Вверху справа — стакан.",
-      "on-plate": "На тарелке — сложенная салфетка.",
+      center: "In the center is a large dinner plate.",
+      left: "To the left of the plate is a fork.",
+      "right-inner": "To the right of the plate is a knife.",
+      "right-outer": "To the right of the knife is a spoon.",
+      "top-right": "Top right is a glass.",
+      "on-plate": "There is a folded napkin on the plate.",
     },
-    feedbackGood: "Верно! Поставлено правильно.",
-    feedbackSoft: "Это не тот предмет. Попробуй снова.",
+    feedbackGood: "Right! Placed correctly.",
+    feedbackSoft: "This is not the same item. Try again.",
   },
   uz: {
     appTitle: "Dasturxon yozish",
@@ -257,7 +257,7 @@ export function TableSettingTrainer({ trainer, onDone }: Props) {
               <p>{feedback === "good" ? t.feedbackGood : t.feedbackSoft}</p>
               <div className="outfit-feedback-actions">
                 {feedback === "good" ? (
-                  <button type="button" className="mq-panel-primary" onClick={advance}>{stepIdx + 1 >= STEPS ? t.finish : "Дальше"}</button>
+                  <button type="button" className="mq-panel-primary" onClick={advance}>{stepIdx + 1 >= STEPS ? t.finish : "Next"}</button>
                 ) : (
                   <button type="button" className="mq-panel-primary outfit-retry" onClick={retry}>{t.retry}</button>
                 )}

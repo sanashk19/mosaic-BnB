@@ -139,7 +139,7 @@ export function transformLessonContent(
       summary: lesson.summary
         ? lesson.summary.split(".")[0] + ". Step-by-step simple guide."
         : lesson.summary,
-      rules: lesson.rules.map((r, i) => `${i + 1}. ${r.replace(/^Сначала |Затем |Потом /i, "")}`),
+      rules: lesson.rules.map((r, i) => `${i + 1}. ${r.replace(/^(First, |Then, |Next, |After that, )/i, "")}`),
     };
   }
 

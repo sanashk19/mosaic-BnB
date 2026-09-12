@@ -6,7 +6,7 @@ const dict = {
     eyebrow: "Documents",
     p1Bold: "1. Platform status.",
     p1:
-      "uquvli.uz is provided as a test educational platform. Individual sections, scenarios, texts, classrooms and lesson mechanics can be changed, supplemented, temporarily limited or operated in a simplified mode.",
+      "mosaic-learning.org is provided as a test educational platform. Individual sections, scenarios, texts, classrooms and lesson mechanics can be changed, supplemented, temporarily limited or operated in a simplified mode.",
     p2Bold: "2. Acceptance of the terms.",
     p2:
       "By registering, logging into your account or continuing to use the platform, the user confirms that he has read this agreement, the privacy policy and the cookie policy, and accepts their terms.",
@@ -37,31 +37,31 @@ const dict = {
     eyebrow: "Hujjatlar",
     p1Bold: "1. Platforma maqomi.",
     p1:
-      " uquvli.uz sinov taʼlim platformasi sifatida taqdim etiladi. Ayrim boʻlimlar, stsenariylar, matnlar, kabinet va dars mexanikasi oʻzgartirilishi, toʻldirilishi, vaqtincha cheklanishi yoki soddalashtirilgan tartibda ishlashi mumkin.",
+      "mosaic-learning.org sinov taʼlim platformasi sifatida taqdim etiladi. Ayrim boʻlimlar, stsenariylar, matnlar, kabinet va dars mexanikasi oʻzgartirilishi, toʻldirilishi, vaqtincha cheklanishi yoki soddalashtirilgan tartibda ishlashi mumkin.",
     p2Bold: "2. Shartlarni qabul qilish.",
     p2:
-      " Roʻyxatdan oʻtish, kabinetga kirish yoki platformadan foydalanishni davom ettirish bilan foydalanuvchi mazkur shartnoma, maxfiylik siyosati va cookie fayllaridan foydalanish siyosati bilan tanishganini va ularning shartlarini qabul qilishini tasdiqlaydi.",
+      "Roʻyxatdan oʻtish, kabinetga kirish yoki platformadan foydalanishni davom ettirish bilan foydalanuvchi mazkur shartnoma, maxfiylik siyosati va cookie fayllaridan foydalanish siyosati bilan tanishganini va ularning shartlarini qabul qilishini tasdiqlaydi.",
     p3Bold: "3. Sinovga rozilik.",
     p3:
-      " Foydalanuvchi sinov davrida platforma kabinetdan foydalanish, darslarni oʻtish, stsenariylarni tanlash, texnik xatoliklar va interfeys barqarorligi haqidagi maʼlumotlarni xizmatni tekshirish, sozlash va yaxshilash maqsadida toʻplashi mumkinligiga rozilik bildiradi.",
+      "Foydalanuvchi sinov davrida platforma kabinetdan foydalanish, darslarni oʻtish, stsenariylarni tanlash, texnik xatoliklar va interfeys barqarorligi haqidagi maʼlumotlarni xizmatni tekshirish, sozlash va yaxshilash maqsadida toʻplashi mumkinligiga rozilik bildiradi.",
     p4Bold: "4. Natijalardan foydalanish.",
     p4:
-      " Platformadagi ish natijalari, jumladan, oʻzlashtirish, javoblar va shaxsga bogʻlanmagan tahliliy koʻrsatkichlar materiallarni takomillashtirish, foydalanuvchi tajribasini yaxshilash, kontent sifatini baholash va sinov platformasi ishi boʻyicha ichki hisobotlarni tayyorlash uchun ishlatilishi mumkin.",
+      "Platformadagi ish natijalari, jumladan, oʻzlashtirish, javoblar va shaxsga bogʻlanmagan tahliliy koʻrsatkichlar materiallarni takomillashtirish, foydalanuvchi tajribasini yaxshilash, kontent sifatini baholash va sinov platformasi ishi boʻyicha ichki hisobotlarni tayyorlash uchun ishlatilishi mumkin.",
     p5Bold: "5. Voyaga yetmaganlar maʼlumotlari.",
     p5:
-      " Agar foydalanuvchi bola haqidagi maʼlumotlarni taqdim etsa, u ota-ona, qonuniy vakil yoki bola manfaatlarini koʻzlab bunday maʼlumotlarni taqdim etish va platforma shartlarini qabul qilish huquqiga ega boshqa vakolatli shaxs sifatida ish koʻrayotganini tasdiqlaydi.",
+      "Agar foydalanuvchi bola haqidagi maʼlumotlarni taqdim etsa, u ota-ona, qonuniy vakil yoki bola manfaatlarini koʻzlab bunday maʼlumotlarni taqdim etish va platforma shartlarini qabul qilish huquqiga ega boshqa vakolatli shaxs sifatida ish koʻrayotganini tasdiqlaydi.",
     p6Bold: "6. Foydalanish qoidalari.",
     p6:
-      " Foydalanuvchi ishonchli maʼlumotlarni taqdim etish, zarurat boʻlmasa, kabinetga kirish huquqini begona shaxslarga bermaslik, platformadan qonunni buzish uchun foydalanmaslik, sayt ishiga aralashmaslik hamda oʻquv materiallari va boshqa ishtirokchilarning natijalariga hurmat bilan munosabatda boʻlish majburiyatini oladi.",
+      "Foydalanuvchi ishonchli maʼlumotlarni taqdim etish, zarurat boʻlmasa, kabinetga kirish huquqini begona shaxslarga bermaslik, platformadan qonunni buzish uchun foydalanmaslik, sayt ishiga aralashmaslik hamda oʻquv materiallari va boshqa ishtirokchilarning natijalariga hurmat bilan munosabatda boʻlish majburiyatini oladi.",
     p7Bold: "7. Maqsadli cheklov.",
     p7:
-      " Platforma materiallari taʼlimga yordam berish va koʻnikmalarni mashq qilish uchun moʻljallangan. Ular tibbiy, psixologik, pedagogik yoki boshqa kasbiy diagnostika va individual kuzatuvni almashtirmaydi.",
+      "Platforma materiallari taʼlimga yordam berish va koʻnikmalarni mashq qilish uchun moʻljallangan. Ular tibbiy, psixologik, pedagogik yoki boshqa kasbiy diagnostika va individual kuzatuvni almashtirmaydi.",
     p8Bold: "8. Platforma oʻzgarishlari.",
     p8:
       " Maʼmuriyat sinov platformasi rivojlanishi bilan darslar tuzilmasi, interfeys, kabinet mexanikasi va hujjatlar matnini yangilashi mumkin. Hujjatlarning amaldagi versiyasi saytda eʼlon qilinadi.",
     p9Bold: "9. Foydalanishni toʻxtatish.",
     p9:
-      " Agar foydalanuvchi platforma shartlariga rozi boʻlmasa, u saytdan foydalanishni toʻxtatishi va zarur boʻlsa, maʼlumotlarni oʻchirish yoki rozilikni qaytarib olish boʻyicha murojaat qilishi kerak.",
+      "Agar foydalanuvchi platforma shartlariga rozi boʻlmasa, u saytdan foydalanishni toʻxtatishi va zarur boʻlsa, maʼlumotlarni oʻchirish yoki rozilikni qaytarib olish boʻyicha murojaat qilishi kerak.",
   },
 } as const;
 

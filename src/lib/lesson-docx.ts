@@ -30,120 +30,120 @@ import type { Locale } from "@/lib/i18n-shared";
 
 const dict = {
   ru: {
-    lessonNotes: "Конспект урока",
-    section1: "1. Паспорт урока",
-    section2: "2. Цель и задачи",
-    section3: "3. Планируемые результаты",
-    section4: "4. Ход урока",
-    section5: "5. Индивидуализация и поддержка",
-    section6: "6. Домашнее задание",
-    section7: "7. Лист наблюдения педагога",
-    appendix1: "Приложение 1. Ситуационные задания",
-    appendix2: "Приложение 2. Контрольные вопросы",
+    lessonNotes: "Lesson summary",
+    section1: "1. Lesson passport",
+    section2: "2. Goal and objectives",
+    section3: "3. Planned results",
+    section4: "4. Lesson progress",
+    section5: "5. Personalization and support",
+    section6: "6. Homework",
+    section7: "7. Teacher observation sheet",
+    appendix1: "Appendix 1. Situational tasks",
+    appendix2: "Appendix 2. Test questions",
     course: "Well",
-    courseValue: "Социально-бытовая ориентировка / цифровая грамотность",
+    courseValue: "Social awareness / digital literacy",
     module: "Module",
-    lessonTopic: "Тема урока",
-    classGroup: "Класс / группа",
-    studentCategory: "Категория обучающихся",
-    studentCategoryValue: "дети с ОВЗ, лёгкая умственная отсталость (F70)",
-    duration: "Продолжительность",
-    lessonType: "Тип урока",
-    workForm: "Форма работы",
+    lessonTopic: "Lesson topic",
+    classGroup: "Class/group",
+    studentCategory: "Category of students",
+    studentCategoryValue: "children with disabilities, mild mental retardation (F70)",
+    duration: "Duration",
+    lessonType: "Lesson type",
+    workForm: "Form of work",
     workFormValue:
-      "фронтальная работа, индивидуальная практика, разбор ситуаций",
-    methods: "Методы",
+      "frontal work, individual practice, situation analysis",
+    methods: "Methods",
     methodsValue:
-      "объяснение, показ образца, практическая работа, вопросы по ситуации, положительное подкрепление",
-    equipment: "Оборудование",
+      "explanation, showing a sample, practical work, questions on the situation, positive reinforcement",
+    equipment: "Equipment",
     teacher: "Teacher",
-    date: "Дата",
-    objective: "Цель",
-    educationalTasks: "Образовательные задачи",
-    correctionalTasks: "Коррекционно-развивающие задачи",
+    date: "Date",
+    objective: "Target",
+    educationalTasks: "Educational objectives",
+    correctionalTasks: "Corrective and developmental tasks",
     correctionalTasksValue:
-      "развивать понимание инструкции, внимание, самостоятельность, умение выбирать безопасное действие по образцу",
-    upbringingTasks: "Воспитательные задачи",
+      "develop understanding of instructions, attention, independence, ability to choose a safe action according to a model",
+    upbringingTasks: "Educational tasks",
     upbringingTasksValue:
-      "формировать вежливое общение, аккуратность, спокойное отношение к ошибке и готовность попросить помощь",
-    keywords: "Ключевые слова",
-    keywordsDefault: "ключевые понятия темы",
+      "develop polite communication, accuracy, a calm attitude towards mistakes and a willingness to ask for help",
+    keywords: "Keywords",
+    keywordsDefault: "key concepts of the topic",
     flowIntro:
-      "Технологическая карта показывает последовательность этапов, действия педагога и ожидаемую активность учащихся.",
-    stage: "Этап урока",
-    time: "Время",
-    activity: "Содержание деятельности",
-    teacherSays: "Слова учителя:",
-    teacherDoes: "Деятельность учителя:",
-    studentActivity: "Деятельность учащихся:",
+      "The technological map shows the sequence of stages, the actions of the teacher and the expected activity of students.",
+    stage: "Lesson stage",
+    time: "Time",
+    activity: "Contents of the activity",
+    teacherSays: "Teacher's words:",
+    teacherDoes: "Teacher's activities:",
+    studentActivity: "Student activities:",
     studentActivityDefault:
-      "Слушают инструкцию, отвечают на вопросы, выполняют задание.",
-    methodSupport: "Методическая поддержка и контроль:",
+      "Listen to the instructions, answer questions, complete the task.",
+    methodSupport: "Methodological support and control:",
     methodSupportDefault:
-      "Короткая инструкция, показ образца, индивидуальное повторение шага.",
-    direction: "Направление",
-    plannedResult: "Планируемый результат",
-    subject: "Предметные",
-    correctional: "Коррекционно-развивающие",
-    personal: "Личностные",
+      "Short instructions, showing a sample, individual repetition of the step.",
+    direction: "Direction",
+    plannedResult: "Planned result",
+    subject: "Subject",
+    correctional: "Correctional and developmental",
+    personal: "Personal",
     individualization1:
-      "Давать инструкцию короткой фразой и показывать один образец действия.",
+      "Give instructions in a short phrase and show one example of an action.",
     individualization2:
-      "При затруднении возвращать ученика к предыдущему успешному шагу.",
+      "If there is difficulty, return the student to the previous successful step.",
     individualization3:
-      "Оценивать не скорость, а понимание инструкции и самостоятельность выполнения.",
+      "Assess not speed, but understanding of instructions and independence of execution.",
     homeworkDefault:
-      "Повторить с родителем главное действие из урока в спокойной бытовой ситуации.",
-    adultNoteTitle: "Памятка взрослому",
-    observationIntro: "Заполняется во время или сразу после урока.",
-    observationStudent: "ФИ ученика",
-    observationUnderstood: "Понял инструкцию",
-    observationPerformed: "Выполнил действие",
-    observationHelp: "Нужна помощь",
-    observationComment: "Комментарий педагога",
+      "Repeat with your parent the main action from the lesson in a calm everyday situation.",
+    adultNoteTitle: "Memo for an adult",
+    observationIntro: "To be completed during or immediately after class.",
+    observationStudent: "FI students",
+    observationUnderstood: "I understand the instructions",
+    observationPerformed: "Performed an action",
+    observationHelp: "Need help",
+    observationComment: "Teacher's comment",
     num: "№",
     situation: "Situation",
     answerOptions: "Answer options",
-    methodHint: "Методическая подсказка",
-    correctAnswer: "Верный ответ",
+    methodHint: "Methodical hint",
+    correctAnswer: "Correct answer",
     question: "Question",
-    options: "Варианты",
-    footer: "UQUVLI.UZ. Программа СБО для детей с F70",
-    header: "UQUVLI.UZ | Конспект урока",
-    page: "Страница",
-    plannedSubjectDefault: (title: string) =>`Ученик понимает тему «${title}» и применяет её в простой бытовой ситуации.`,
+    options: "Options",
+    footer: "MOSAIC. SBO program for children with F70",
+    header: "MOSAIC | Lesson summary",
+    page: "Page",
+    plannedSubjectDefault: (title: string) =>`The student understands the topic "${title}” and applies it in a simple everyday situation.`,
     correctional1:
-      "Понимает короткую инструкцию и выполняет действие по шагам.",
-    correctional2: "Сохраняет внимание на одном задании без перегрузки экрана.",
+      "Understands short instructions and carries out the action step by step.",
+    correctional2: "Keeps you focused on one task without cluttering the screen.",
     correctional3:
-      "Учится просить помощь спокойной фразой, если действие не получилось.",
-    personal1: "Соблюдает правила безопасного и вежливого поведения.",
-    personal2: "Проявляет самостоятельность в учебной бытовой ситуации.",
-    personal3: "Принимает исправление ошибки без резкой отрицательной реакции.",
-    formatWithTrainer: (label: string) =>`комбинированный урок с цифровым тренажёром ${label}`,
+      "Learns to ask for help in a calm phrase if the action does not work.",
+    personal1: "Follows rules of safe and polite behavior.",
+    personal2: "Shows independence in educational everyday situations.",
+    personal3: "Accepts the correction of an error without a strong negative reaction.",
+    formatWithTrainer: (label: string) =>`combined lesson with digital simulator${label}`,
     formatWithoutTrainer:
-      "комбинированный урок с разбором жизненных ситуаций",
-    resultOrg: "Класс готов к работе, правила поведения напомнены.",
-    resultIntro: "Ученики понимают тему и жизненную ситуацию урока.",
+      "combined lesson with analysis of life situations",
+    resultOrg: "The class is ready for work, the rules of conduct have been reminded.",
+    resultIntro: "Students understand the topic and life situation of the lesson.",
     resultRules:
-      "Ученики проговорили ключевые правила безопасного действия.",
+      "The students discussed the key rules for safe operation.",
     resultTrainer:
-      "Ученики выполнили основное практическое действие в тренажёре.",
+      "The students completed the main practical action in the simulator.",
     resultScenarios:
-      "Ученики объясняют выбор и отличают безопасный вариант.",
+      "Students explain the choice and identify the safe option.",
     resultSummary:
-      "Учитель фиксирует, что получилось и кому нужна поддержка.",
-    resultHomework: "Домашнее задание понятно ребёнку и взрослому.",
+      "The teacher records what happened and who needs support.",
+    resultHomework: "Homework is understandable to both the child and the adult.",
     resultDefault:
-      "Наблюдение учителя и короткая устная обратная связь.",
-    keywordCheckOrg: "организа",
-    keywordCheckIntro: "введение",
-    keywordCheckRules: "правил",
-    keywordCheckTrainer: "тренаж",
-    keywordCheckScenarios: "ситуац",
-    keywordCheckSummary: "итог",
-    keywordCheckHomework: "домаш",
-    desc: (title: string) =>`План урока: ${title}`,
+      "Teacher observation and short verbal feedback.",
+    keywordCheckOrg: "organization",
+    keywordCheckIntro: "introduction",
+    keywordCheckRules: "rules",
+    keywordCheckTrainer: "training",
+    keywordCheckScenarios: "situation",
+    keywordCheckSummary: "result",
+    keywordCheckHomework: "home",
+    desc: (title: string) =>`Lesson plan:${title}`,
   },
   uz: {
     lessonNotes: "Dars konspekti",
@@ -226,8 +226,8 @@ const dict = {
     correctAnswer: "Toʻgʻri javob",
     question: "Savol",
     options: "Variantlar",
-    footer: "UQUVLI.UZ. F70 bolalar uchun IMM dasturi",
-    header: "UQUVLI.UZ | Dars konspekti",
+    footer: "MOSAIC. F70 bolalar uchun IMM dasturi",
+    header: "MOSAIC | Dars konspekti",
     page: "Sahifa ",
     plannedSubjectDefault: (title: string) =>
       `Oʻquvchi «${title}» mavzusini tushunadi va uni oddiy maishiy vaziyatda qoʻllaydi.`,
@@ -274,7 +274,7 @@ const trainerHumanLabels: Record<string, Record<Locale, string>> = {
   gmail: { ru: "Gmail", uz: "Gmail" },
   uzum: { ru: "Uzum Market", uz: "Uzum Market" },
   mygov: { ru: "my.gov.uz", uz: "my.gov.uz" },
-  phone: { ru: "телефонный звонок (103)", uz: "telefon qoʻngʻirogʻi (103)" },
+  phone: { ru: "phone call (103)", uz: "telefon qoʻngʻirogʻi (103)" },
 };
 
 // Generate a sensible 30-minute methodology from the lesson's data
@@ -298,7 +298,7 @@ function buildAutoMethodology(
     lesson.intro
     ?? (isUz
       ?`«${lesson.title}» mavzusi doirasida yengil aqliy zaiflikka ega bolalarda amaliy koʻnikma shakllantirish.`
-      : `Сформировать практический навык в рамках темы «${lesson.title}» у детей с лёгкой умственной отсталостью.`);
+      : `Develop practical skills within the framework of the topic “${lesson.title}» in children with mild mental retardation.`);
 
   const tasks = lesson.goals.length
     ? lesson.goals
@@ -309,25 +309,25 @@ function buildAutoMethodology(
           "Bilimlarni amaliy topshiriqda qoʻllash.",
         ]
       : [
-          `Понять основные понятия урока «${lesson.title}».`,
-          "Запомнить безопасный порядок действий.",
-          "Применить знания на практическом задании.",
+          `Understand the basic concepts of the lesson "${lesson.title}».`,
+          "Remember safe procedures.",
+          "Apply knowledge on a practical task.",
         ];
 
   const materials = isUz
     ? [
-        "Har bir oʻquvchida UQUVLI kabineti ochilgan planshet yoki noutbuk.",
+        "Har bir oʻquvchida Mosaic kabineti ochilgan planshet yoki noutbuk.",
         trainerLabel
           ?`Internetga ulanish (${trainerLabel} mashqi).`: "Mavzu boʻyicha kalit soʻzlar kartochkalari (har bir partaga bittadan).",
         "Namoyish uchun doska yoki ekran.",
         "Oʻqituvchining qisqa qaydlari uchun daftar va ruchka.",
       ]
     : [
-        "Планшет или ноутбук у каждого ученика с открытым кабинетом UQUVLI.",
+        "Each student has a tablet or laptop with an open Mosaic office.",
         trainerLabel
-          ?`Подключение к интернету (тренажёр ${trainerLabel}).`: "Карточки с ключевыми словами темы (по одной на парту).",
-        "Доска или экран для демонстрации.",
-        "Тетрадь и ручка для коротких заметок учителя.",
+          ?`Internet connection (simulator${trainerLabel}).`: "Cards with keywords of the topic (one per desk).",
+        "Board or screen for display.",
+        "Notebook and pen for short teacher notes.",
       ];
 
   const minLabel = isUz ? "daqiqa" : "i";
@@ -336,10 +336,10 @@ function buildAutoMethodology(
   // UI Logic
   stages.push({
     duration:`3 ${minLabel}`,
-    title: isUz ? "1. Tashkiliy qism" : "1. Организационный момент",
+    title: isUz ? "1. Tashkiliy qism" : "1. Organizational moment",
     teacherSays: isUz
       ?`Assalomu alaykum, bolalar. Bugun «${lesson.title}» mavzusini oʻrganamiz. Sokin va navbat bilan ishlaymiz.`
-      : `Здравствуйте, ребята. Сегодня мы изучим тему: «${lesson.title}». Будем учиться спокойно и по одному.`,
+      : `Hello guys. Today we will study the topic: “${lesson.title}" Let's study calmly and one at a time.`,
     teacherDoes: isUz
       ? [
           "Sinfni salomlash, planshetlar tayyorligini tekshirish.",
@@ -347,27 +347,27 @@ function buildAutoMethodology(
           "Sukunat va qoʻl koʻtarish qoidasini eslatish.",
         ]
       : [
-          "Поприветствовать класс, проверить готовность планшетов.",
-          "Раздать карточки или раздатку (если используется).",
-          "Напомнить правило тишины и поднятой руки.",
+          "Greet the class and check that the tablets are ready.",
+          "Distribute cards or handouts (if used).",
+          "Remind the rule of silence and raised hands.",
         ],
     studentActivity: isUz
-      ? "Oʻquvchilar partada oʻtirgan, har birida UQUVLI kabineti ochilgan planshet."
-      : "Ученики сидят за партами, у каждого открытый кабинет UQUVLI на планшете.",
+      ? "Oʻquvchilar partada oʻtirgan, har birida Mosaic kabineti ochilgan planshet."
+      : "Students sit at desks, each with an open Mosaic office on a tablet.",
     hint: isUz
       ? "Agar kimdir hayajonlangan boʻlsa — bolaning ismini sokin takrorlang, ovozni koʻtarmasdan."
-      : "Если кто-то возбуждён — спокойно повторить имя ребёнка, не повышая голоса.",
+      : "If someone is excited, calmly repeat the child’s name without raising your voice.",
   });
 
   // UI Logic
   stages.push({
     duration:`5 ${minLabel}`,
-    title: isUz ? "2. Mavzuga kirish" : "2. Введение в тему",
+    title: isUz ? "2. Mavzuga kirish" : "2. Introduction to the topic",
     teacherSays:
       lesson.summary
       ?? (isUz
         ?`Bugungi mavzu — ${lesson.title}.`
-        : `Сегодня тема — ${lesson.title}.`),
+        : `Today's topic is${lesson.title}.`),
     teacherDoes: isUz
       ? [
           "Ekranda darsning kalit tushunchalarini koʻrsatish (yoki aytib berish).",
@@ -375,16 +375,16 @@ function buildAutoMethodology(
           "Bolalarning har qanday javobini bahosiz qabul qilish.",
         ]
       : [
-          "Показать на экране (или назвать) ключевые понятия урока.",
-          "Связать тему с жизнью: задать 1–2 простых вопроса классу.",
-          "Принимать любые ответы детей без оценки.",
+          "Display (or name) the key concepts of the lesson.",
+          "Relate the topic to life: Ask 1-2 simple questions to the class.",
+          "Accept any children's answers without evaluation.",
         ],
     studentActivity: isUz
       ? "Oʻquvchilar qoʻl koʻtarib, mavzu boʻyicha tanish narsalarni aytib beradilar."
-      : "Ученики поднимают руку, отвечают, что им знакомо по теме.",
+      : "Students raise their hands and answer what they know about the topic.",
     hint: isUz
       ? "Bu bosqichda eng muhimi — mavhum soʻzni aniq rasm yoki bolaning hayotidagi vaziyat bilan bogʻlash."
-      : "Главное на этом этапе — связать абстрактное слово с конкретной картинкой или случаем из жизни ребёнка.",
+      : "The main thing at this stage is to connect an abstract word with a specific picture or incident from the child’s life.",
   });
 
   // UI Logic
@@ -392,10 +392,10 @@ function buildAutoMethodology(
     duration:`4 ${minLabel}`,
     title: isUz
       ? "3. Kabinetdagi qoidalarni oʻqish"
-      : "3. Чтение правил в кабинете",
+      : "3. Reading the rules in the office",
     teacherSays: isUz
       ? "Endi oʻz kabinetingizni oching va katta «Boshlash» tugmasini bosing. Maskot Dilnoza sizni boshlab boradi."
-      : "Теперь откройте свой кабинет и нажмите большую кнопку «Начать». Маскот Дилноза будет вас вести.",
+      : "Now open your account and click the big “Get Started” button. Mascot Dilnoza will guide you.",
     teacherDoes: isUz
       ? [
           "Sinf uchun darsni ochish («Darslar» boʻlimidagi «Sinfga ochish» tugmasi).",
@@ -403,16 +403,16 @@ function buildAutoMethodology(
           "Har bir qoidani bolalar bilan birga ovoz chiqarib oʻqish, bir-bir.",
         ]
       : [
-          "Открыть урок для класса (кнопка «Открыть классу» в разделе «Уроки»).",
-          "Подойти к каждому ученику и убедиться, что урок открылся.",
-          "Прочитать каждое правило вслух вместе с детьми, по одному.",
+          "Open a lesson for the class (the “Open to class” button in the “Lessons” section).",
+          "Approach each student and make sure that the lesson has opened.",
+          "Read each rule out loud with the children, one at a time.",
         ],
     studentActivity: isUz
       ?`Oʻquvchilar ${lesson.rules.length} ta qoidani bir-bir oʻqib, «Davom etish →» tugmasini bosadilar. Maskot maslahat aytadi.`
-      : `Ученики читают по одному ${lesson.rules.length} правилам, нажимают «Дальше →». Маскот говорит подсказку.`,
+      : `Students read one at a time${lesson.rules.length}rules, click “Next →”. The mascot tells the clue.`,
     hint: isUz
       ? "Agar bola qoidada «toʻxtab qolsa» — ovoz chiqarib oʻqishni soʻrang, shoshiltirmang."
-      : "Если ребёнок «застрял» на правиле — попросить его прочитать вслух, не торопить.",
+      : "If a child gets “stuck” on a rule, ask him to read it out loud, don’t rush it.",
   });
 
   // UI Logic
@@ -421,10 +421,10 @@ function buildAutoMethodology(
       duration:`8 ${minLabel}`,
       title: isUz
         ? `4. ${trainerLabel} mashqi (asosiy bosqich)`
-        : `4. Тренажёр ${trainerLabel} (главный этап)`,
+        : `4. Trainer${trainerLabel}(main stage)`,
       teacherSays: isUz
         ? "Hozir siz haqiqiy ilova ekranini koʻrasiz. Topshiriqni oʻqing va sokin bajarib koʻring."
-        : "Сейчас вы увидите настоящий экран приложения. Прочитайте задание и попробуйте сделать спокойно.",
+        : "Now you will see the actual application screen. Read the task and try to do it calmly.",
       teacherDoes: isUz
         ? [
             "Har bir oʻquvchiga yaqinlashib, tanlovini kuzatish.",
@@ -433,29 +433,29 @@ function buildAutoMethodology(
             "Daftarga kimga maslahat kerak boʻlganini qayd qilish.",
           ]
         : [
-            "Подходить к каждому ученику, наблюдать за выбором.",
-            "Не подсказывать прямой ответ — задавать наводящий вопрос: «Как бы ты сделал в жизни?».",
-            "После завершения спросить: «Почему ты выбрал именно это?».",
-            "Зафиксировать в тетради, кому понадобилась подсказка.",
+            "Approach each student and observe their choice.",
+            "Don’t give a direct answer - ask a leading question: “What would you do in life?”",
+            "After finishing, ask: “Why did you choose this?”",
+            "Record in your notebook who needed the hint.",
           ],
       studentActivity: trainerTask
         ? isUz
           ?`Har bir oʻquvchi oʻz planshetida topshiriqni bajaradi: «${trainerTask}». Mashq ${trainerLabel} interfeysini takrorlaydi.`
-          : `Каждый ученик в своём планшете выполняет задание: «${trainerTask}». Тренажёр повторяет интерфейс ${trainerLabel}.`
+          : `Each student completes the task on his tablet: “${trainerTask}" The simulator replicates the interface${trainerLabel}.`
         : isUz
           ? `Har bir oʻquvchi planshetda ${trainerLabel} mashqini oʻtaydi.`
-          : `Каждый ученик в планшете проходит тренажёр ${trainerLabel}.`,
+          : `Each student goes through a simulator on a tablet.${trainerLabel}.`,
       hint: isUz
         ? "Bu eng muhim bosqich. Maqsad — birinchi marta toʻgʻri javob emas, balki haqiqiy vazifani tushunish."
-        : "Это самый важный этап. Цель — не правильный ответ с первого раза, а понимание реальной задачи.",
+        : "This is the most important stage. The goal is not to get the answer right the first time, but to understand the real problem.",
     });
   } else {
     stages.push({
       duration:`8 ${minLabel}`,
-      title: isUz ? "4. Amaliy topshiriq" : "4. Практическое задание",
+      title: isUz ? "4. Amaliy topshiriq" : "4. Practical task",
       teacherSays: isUz
         ? "Kabinetda topshiriqni oching. Har bir vaziyatda qanday harakat qilishni oʻylab koʻring."
-        : "Откройте задание в кабинете. Подумайте, как поступить в каждой ситуации.",
+        : "Open the task in your office. Think about what to do in each situation.",
       teacherDoes: isUz
         ? [
             "Har bir oʻquvchiga yaqinlashib, tanlovini kuzatish.",
@@ -463,16 +463,16 @@ function buildAutoMethodology(
             "Qoʻllab-quvvatlash kerak boʻlgan bolalarning ismlarini yozib olish.",
           ]
         : [
-            "Подходить к каждому ученику, наблюдать выбор.",
-            "Если ребёнок ошибся — попросить прочитать правильный ответ вслух.",
-            "Записать имена тех, кому понадобилась поддержка.",
+            "Approach each student and observe the choice.",
+            "If the child makes a mistake, ask the child to read the correct answer out loud.",
+            "Write down the names of those who needed support.",
           ],
       studentActivity: isUz
         ? "Oʻquvchilar kabinetda dars mavzusiga oid oʻquv vaziyatlarini oʻtaydilar, sokin va xavfsiz javobni tanlaydilar."
-        : "Ученики в кабинете проходят учебные ситуации по теме урока, выбирают спокойный и безопасный ответ.",
+        : "Students in the classroom go through educational situations on the topic of the lesson, choose a calm and safe answer.",
       hint: isUz
         ? "Agar topshiriq qiyin boʻlsa — birinchi vaziyatni ekranda sinf bilan birga oʻting."
-        : "Если задание оказалось трудным — пройти первую ситуацию вместе с классом на экране.",
+        : "If the task turned out to be difficult, go through the first situation with the class on the screen.",
     });
   }
 
@@ -480,10 +480,10 @@ function buildAutoMethodology(
   if (lesson.scenarios.length > 0) {
     stages.push({
       duration:`5 ${minLabel}`,
-      title: isUz ? "5. Vaziyatlarni tahlil qilish" : "5. Разбор ситуаций",
+      title: isUz ? "5. Vaziyatlarni tahlil qilish" : "5. Analysis of situations",
       teacherSays: isUz
         ? "Endi bir nechta qisqa vaziyat. Sokin oʻylab koʻring, kim nima deydi."
-        : "Теперь несколько коротких ситуаций. Подумайте спокойно, кто что скажет.",
+        : "Now a few short situations. Think calmly about who will say what.",
       teacherDoes: isUz
         ? [
             "Bolalar savolni oxirigacha oʻqishini nazorat qilish.",
@@ -491,16 +491,16 @@ function buildAutoMethodology(
             "Agar oʻquvchi xato qilsa — koyimaslik, balki toʻgʻri javobni ovoz chiqarib oʻqishni soʻrash.",
           ]
         : [
-            "Следить, чтобы дети дочитывали вопрос до конца.",
-            "После каждой сцены — спросить класс: «Что выбрал? Почему?».",
-            "Если ученик ошибся — не ругать, а попросить прочитать правильный ответ вслух.",
+            "Make sure that children read the question to the end.",
+            "After each scene, ask the class: “What did you choose? Why?\".",
+            "If the student makes a mistake, do not scold him, but ask him to read the correct answer out loud.",
           ],
       studentActivity: isUz
         ?`Oʻquvchilar turli suhbatdoshlar bilan ${lesson.scenarios.length} ta qisqa sahnani oʻtaydilar. Muloyim va xavfsiz javobni tanlaydilar.`
-        : `Ученики проходят ${lesson.scenarios.length} коротких сцен с разными собеседниками. Выбирают вежливый и безопасный ответ.`,
+        : `Students pass${lesson.scenarios.length}short scenes with different interlocutors. Choose a polite and safe answer.`,
       hint: isUz
         ? "Sahnalarda vaziyatlarni farqlashga oʻrgatamiz. Boshida oʻqigan qoidalarga tayanamiz."
-        : "В сценах учим различать ситуации. Опираемся на правила, которые читали в начале.",
+        : "In scenes we learn to distinguish between situations. We rely on the rules that we read at the beginning.",
     });
   }
 
@@ -509,10 +509,10 @@ function buildAutoMethodology(
     duration:`3 ${minLabel}`,
     title: isUz
       ? `${stages.length + 1}. Muhokama va yakun`
-      : `${stages.length + 1}. Обсуждение и итог`,
+      : `${stages.length + 1}. Discussion and outcome`,
     teacherSays: isUz
       ? "Bugun nima yangi narsa bilib oldingiz? Nima qiyin boʻldi? Nima yodda qoldi?"
-      : "Что нового вы сегодня узнали? Что было трудно? Что запомнилось?",
+      : "What new did you learn today? What was difficult? What do you remember?",
     teacherDoes: isUz
       ? [
           "3–4 oʻquvchini tinglash.",
@@ -520,16 +520,16 @@ function buildAutoMethodology(
           "Kabinetda darsni sinf uchun yopish.",
         ]
       : [
-          "Выслушать 3–4 учеников.",
-          "Похвалить каждого ученика по имени за конкретное действие.",
-          "Закрыть урок для класса в кабинете.",
+          "Listen to 3–4 students.",
+          "Praise each student by name for a specific action.",
+          "Close the lesson for the class in the office.",
         ],
     studentActivity: isUz
       ? "Oʻquvchilar endi nimani bilishlarini aytadilar. Individual maqtov oladilar."
-      : "Ученики называют, что они теперь умеют. Получают индивидуальную похвалу.",
+      : "Students say what they can do now. Receive individual praise.",
     hint: isUz
       ? "Maqtov aniq boʻlishi kerak: «Sen toʻgʻri javobni tanlading» — umumiy «barakalla» emas."
-      : "Похвала должна быть конкретной: «Ты выбрал правильный ответ» — а не общее «молодец».",
+      : "Praise should be specific: “You chose the right answer” - and not a general “well done.”",
   });
 
   // UI Logic
@@ -537,22 +537,22 @@ function buildAutoMethodology(
     duration:`2 ${minLabel}`,
     title: isUz
       ? `${stages.length + 1}. Uy vazifasi`
-      : `${stages.length + 1}. Домашнее задание`,
+      : `${stages.length + 1}. Homework`,
     teacherSays: isUz
       ? "Uyda ota-ona bilan birga darsning asosiysini takrorlang. Ertaga aytib berasiz."
-      : "Дома вместе с родителем повторите главное из урока. Завтра расскажете.",
+      : "At home, together with your parent, repeat the main points from the lesson. You'll tell me tomorrow.",
     teacherDoes: isUz
       ? [
           "Doskaga uy vazifasining qisqa matnini yozish.",
           "Agar ota-ona uchun eslatma boʻlsa — tarqatish.",
         ]
       : [
-          "Записать короткую формулировку домашнего задания на доске.",
-          "Раздать памятку родителям (если есть).",
+          "Write a short statement of homework on the board.",
+          "Distribute the handout to parents (if you have one).",
         ],
     hint: isUz
       ? "Uy vazifasi koʻnikmani haqiqiy hayotda mustahkamlaydi. Ota-onasiz — ishlamaydi."
-      : "Домашнее закрепляет навык в реальной жизни. Без родителя — не работает.",
+      : "Homework reinforces the skill in real life. Without a parent, it doesn't work.",
   });
 
   return {
@@ -562,10 +562,10 @@ function buildAutoMethodology(
     stages,
     differentiation: isUz
       ? "Kuchli oʻquvchilar uchun: mashqni qayta oʻtish yoki oʻz misolini oʻylab topishni taklif qiling. Zaif oʻquvchilar uchun: pedagog bilan juftlikda, har bir qadamni ovoz chiqarib aytib mashqni oʻting."
-      : "Для сильных учеников: предложите пройти тренажёр повторно или придумать свой пример. Для слабых: пройти тренажёр в паре с педагогом, проговаривая каждый шаг вслух.",
+      : "For strong students: offer to go through the simulator again or come up with your own example. For the weak: go through the simulator together with a teacher, saying each step out loud.",
     homework: isUz
       ? "Uyda kattalar bilan birga: darsdagi asosiy harakatni haqiqiy hayotda bir marta takrorlash (yoki topshiriqni qanday oʻtishni koʻrsatish)."
-      : "Дома вместе со взрослым: один раз повторить главное действие из урока в реальной жизни (или показать, как пройти задание).",
+      : "At home with an adult: repeat the main action from the lesson once in real life (or show how to complete the task).",
     safetyNote: lesson.adultNote,
   };
 }
@@ -587,7 +587,7 @@ const trainerLabels: Record<string, Record<Locale, string>> = {
   gmail: { ru: "Gmail", uz: "Gmail" },
   uzum: { ru: "Uzum Market", uz: "Uzum Market" },
   mygov: { ru: "my.gov.uz", uz: "my.gov.uz" },
-  phone: { ru: "Звонок 103", uz: "103 qoʻngʻiroq" },
+  phone: { ru: "Call 103", uz: "103 qoʻngʻiroq" },
 };
 
 export function getLessonDocxFileName(lesson: Pick<ProgramLesson, "slug">) {
@@ -1100,7 +1100,7 @@ function buildLessonDoc(lesson: ProgramLesson, locale: Locale) {
   );
 
   return new Document({
-    creator: "UQUVLI.UZ",
+    creator: "MOSAIC",
     title: lesson.title,
     description: d.desc(lesson.title),
     styles: {

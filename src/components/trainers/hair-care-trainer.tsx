@@ -45,48 +45,48 @@ const dict: Locales<{
   cases: Record<HairKind, { customer: string; description: string; question: string; hint: string; feedbackGood: string; feedbackSoft: string }>;
 }> = {
   ru: {
-    appTitle: "Полка для волос",
-    stepCounter: (n) => `Клиент ${n} из ${STEPS}`,
-    taskEyebrow: "Клиент",
-    questionEyebrow: "Какой шампунь",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    next: "Следующий клиент",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    doneTitle: "Молодец! Все клиенты довольны.",
-    doneHint: "Ты научился подбирать шампунь по типу волос.",
+    appTitle: "Hair shelf",
+    stepCounter: (n) => `Client${n}from${STEPS}`,
+    taskEyebrow: "Client",
+    questionEyebrow: "What shampoo",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    next: "Next client",
+    finish: "Finish",
+    retry: "Try again",
+    doneTitle: "Well done! All clients are happy.",
+    doneHint: "You've learned how to choose shampoo based on your hair type.",
     shampoos: {
-      "for-oily": { name: "Для жирных", sub: "глубокое очищение" },
-      "for-dry": { name: "Для сухих", sub: "с маслом и увлажнением" },
-      "for-normal": { name: "Обычный", sub: "для нормальных волос" },
-      "kids": { name: "Детский", sub: "для малышей до 3 лет" },
+      "for-oily": { name: "For fatty people", sub: "deep cleansing" },
+      "for-dry": { name: "For dry", sub: "with oil and moisturizing" },
+      "for-normal": { name: "Ordinary", sub: "for normal hair" },
+      "kids": { name: "Children's", sub: "for children up to 3 years old" },
     },
     cases: {
       oily: {
-        customer: "Алиша",
-        description: "У Алиши волосы быстро становятся жирными — уже к вечеру блестят.",
-        question: "Какой шампунь нужен Алише?",
-        hint: "Жирные волосы — нужен шампунь «Для жирных» с глубоким очищением.",
-        feedbackGood: "Верно. «Для жирных» — глубоко очищает.",
-        feedbackSoft: "Этот шампунь не подойдёт. Алише нужен «Для жирных».",
+        customer: "Alicia",
+        description: "Alisha’s hair quickly becomes oily and by the evening it’s shiny.",
+        question: "What shampoo does Alisha need?",
+        hint: "Oily hair - you need shampoo “For oily” with deep cleansing.",
+        feedbackGood: "Right. “For oily people” - deeply cleanses.",
+        feedbackSoft: "This shampoo will not work. Alisha needs “For Fat People.”",
       },
       dry: {
-        customer: "Зебо",
-        description: "У Зебо волосы сухие и пушатся, на концах посечённые.",
-        question: "Какой шампунь нужен Зебо?",
-        hint: "Сухие волосы — нужен шампунь «Для сухих» с маслом и увлажнением.",
-        feedbackGood: "Верно. «Для сухих» — с увлажнением.",
-        feedbackSoft: "Этот шампунь сделает волосы ещё суше. Возьми «Для сухих».",
+        customer: "Beautiful",
+        description: "Zebo's hair is dry and frizzy, with split ends.",
+        question: "What kind of shampoo does Zebo need?",
+        hint: "Dry hair - you need shampoo “For Dry” with oil and moisturizing.",
+        feedbackGood: "Right. “For dry skin” - with moisturizing.",
+        feedbackSoft: "This shampoo will make your hair even drier. Take “For dry ones.”",
       },
       normal: {
-        customer: "Тимур",
-        description: "У Тимура обычные здоровые волосы — не жирные и не сухие.",
-        question: "Какой шампунь нужен Тимуру?",
-        hint: "Нормальные волосы — обычный шампунь «Для нормальных волос».",
-        feedbackGood: "Верно. Обычный шампунь для нормальных волос.",
-        feedbackSoft: "Этот шампунь слишком сильный. Возьми обычный.",
+        customer: "Timur",
+        description: "Timur has normal healthy hair - neither greasy nor dry.",
+        question: "What shampoo does Timur need?",
+        hint: "Normal hair - regular shampoo “For normal hair”.",
+        feedbackGood: "Right. Regular shampoo for normal hair.",
+        feedbackSoft: "This shampoo is too strong. Take the regular one.",
       },
     },
   },
@@ -204,7 +204,7 @@ export function HairCareTrainer({ trainer, onDone }: Props) {
           <div>
             <strong>{sit.customer}</strong>
             <small>
-              {stage === "oily" ? "Жирные волосы" : stage === "dry" ? "Сухие волосы" : "Нормальные волосы"}
+              {stage === "oily" ? "Oily hair" : stage === "dry" ? "Dry hair" : "Normal hair"}
             </small>
           </div>
         </div>
@@ -300,12 +300,12 @@ export function HairCareTrainer({ trainer, onDone }: Props) {
               <p className="outfit-pick-summary">
                 {picked ? (
                   <>
-                    Выбран: <strong>{t.shampoos[picked].name}</strong>
+                    Selected:<strong>{t.shampoos[picked].name}</strong>
                     <br />
                     <small>{t.shampoos[picked].sub}</small>
                   </>
                 ) : (
-                  <>Нажми на бутылочку с шампунем на полке.</>
+                  <>Click on the shampoo bottle on the shelf.</>
                 )}
               </p>
             </div>

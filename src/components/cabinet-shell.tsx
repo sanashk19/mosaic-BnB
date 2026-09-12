@@ -32,87 +32,50 @@ type CabinetShellProps = {
   children?: ReactNode;
 };
 
+const englishCabinetShellDict = {
+  defaultNavTitle: "Dashboard",
+  navToday: "Today",
+  navTodayCaption: "tasks and lesson",
+  navLessons: "Lessons",
+  navLessonsCaption: "modules and activities",
+  navProgress: "Progress",
+  navProgressCaption: "learning history",
+  navAccount: "Account",
+  navAccountCaption: "profile and login",
+  roleLabelStudent: "student",
+  roleLabelParent: "parent",
+  roleLabelTeacher: "teacher",
+  roleLabelResearcher: "researcher",
+  roleLabelUser: "user",
+  roleDisplayStudent: "Student Dashboard",
+  roleDisplayParent: "Parent Dashboard",
+  roleDisplayTeacher: "Teacher Dashboard",
+  roleDisplayResearcher: "Researcher Dashboard",
+  cabinetGeneric: "Dashboard",
+  modeRole: (role: string) => `${role} mode`,
+  previewMode: "Dashboard Preview",
+  researcher: "Researcher",
+  parent: "Parent",
+  accessEyebrow: "Dashboard Access",
+  accessTitle: "Please sign in to continue.",
+  accessText: "After signing in, the curriculum, lessons, and profile workspace will be available.",
+  accessButton: "Go to sign in",
+  logoutAria: "Sign out",
+  logoutLabel: "Sign out",
+  loadingCabinet: "Loading dashboard...",
+  navAria: "Dashboard navigation",
+  logoutCabinet: "Sign out of dashboard",
+  login: "Sign in",
+  register: "Register",
+  parentOnboardingTitle: "Complete the initial questionnaire",
+  parentOnboardingText: "Participation requires this brief 5-question check.",
+  parentOnboardingButton: "Fill out now",
+  cabinetKicker: "Learning Dashboard",
+};
+
 const dict = {
-  ru: {
-    defaultNavTitle: "Кабинет",
-    navToday: "Сегодня",
-    navTodayCaption: "задачи и урок",
-    navLessons: "Уроки",
-    navLessonsCaption: "модули и занятия",
-    navProgress: "Прогресс",
-    navProgressCaption: "история обучения",
-    navAccount: "Учетная запись",
-    navAccountCaption: "профиль и вход",
-    roleLabelStudent: "ученика",
-    roleLabelParent: "родителя",
-    roleLabelTeacher: "педагога",
-    roleLabelResearcher: "исследователя",
-    roleLabelUser: "пользователя",
-    roleDisplayStudent: "Кабинет ученика",
-    roleDisplayParent: "Кабинет родителя",
-    roleDisplayTeacher: "Кабинет педагога",
-    roleDisplayResearcher: "Кабинет исследователя",
-    cabinetGeneric: "Кабинет",
-    modeRole: (role: string) => `Режим ${role}`,
-    previewMode: "Предпросмотр кабинета",
-    researcher: "Исследователь",
-    parent: "Родитель",
-    accessEyebrow: "Вход в кабинет",
-    accessTitle: "Сначала войдите в сервис.",
-    accessText: "После входа откроются программа, уроки и рабочая область профиля.",
-    accessButton: "Перейти ко входу",
-    logoutAria: "Выйти",
-    logoutLabel: "Выйти",
-    loadingCabinet: "Загружаем кабинет...",
-    navAria: "Навигация кабинета",
-    logoutCabinet: "Выйти из кабинета",
-    login: "Войти",
-    register: "Регистрация",
-    parentOnboardingTitle: "Заполните входную анкету",
-    parentOnboardingText: "Без неё участие в исследовании не активируется — 5 коротких вопросов.",
-    parentOnboardingButton: "Заполнить сейчас",
-    cabinetKicker: "Учебный кабинет",
-  },
-  uz: {
-    defaultNavTitle: "Kabinet",
-    navToday: "Bugun",
-    navTodayCaption: "vazifalar va dars",
-    navLessons: "Darslar",
-    navLessonsCaption: "modullar va mashgʻulotlar",
-    navProgress: "Yutuqlar",
-    navProgressCaption: "oʻqish tarixi",
-    navAccount: "Hisob",
-    navAccountCaption: "profil va kirish",
-    roleLabelStudent: "oʻquvchi",
-    roleLabelParent: "ota-ona",
-    roleLabelTeacher: "pedagog",
-    roleLabelResearcher: "tadqiqotchi",
-    roleLabelUser: "foydalanuvchi",
-    roleDisplayStudent: "Oʻquvchi kabineti",
-    roleDisplayParent: "Ota-ona kabineti",
-    roleDisplayTeacher: "Pedagog kabineti",
-    roleDisplayResearcher: "Tadqiqotchi kabineti",
-    cabinetGeneric: "Kabinet",
-    modeRole: (role: string) => `${role} rejimi`,
-    previewMode: "Kabinet koʻrinishi",
-    researcher: "Tadqiqotchi",
-    parent: "Ota-ona",
-    accessEyebrow: "Kabinetga kirish",
-    accessTitle: "Avval xizmatga kiring.",
-    accessText: "Kirgandan keyin dastur, darslar va profil ish maydoni ochiladi.",
-    accessButton: "Kirishga oʻtish",
-    logoutAria: "Chiqish",
-    logoutLabel: "Chiqish",
-    loadingCabinet: "Kabinet yuklanmoqda...",
-    navAria: "Kabinet navigatsiyasi",
-    logoutCabinet: "Kabinetdan chiqish",
-    login: "Kirish",
-    register: "Roʻyxatdan oʻtish",
-    parentOnboardingTitle: "Kirish anketasini toʻldiring",
-    parentOnboardingText: "Usiz tadqiqotda ishtirok faollashmaydi — 5 ta qisqa savol.",
-    parentOnboardingButton: "Hozir toʻldirish",
-    cabinetKicker: "Oʻquv kabineti",
-  },
+  ru: englishCabinetShellDict,
+  uz: englishCabinetShellDict,
 } as const;
 
 function getDefaultNavigation(locale: Locale): CabinetNavigationGroup[] {
@@ -335,7 +298,7 @@ export function CabinetShell({
       <div className="student-shell" data-role="student">
         <header className="student-shell-header">
           <div className="student-shell-brand">
-            <strong>UQUVLI.UZ</strong>
+            <strong>MOSAIC</strong>
           </div>
           {user ? (
             <button
@@ -361,7 +324,7 @@ export function CabinetShell({
     <section className="cabinet-shell" data-role={activeUser.role}>
       <aside className="cabinet-sidebar">
         <div className="cabinet-brand">
-          <strong>UQUVLI</strong>
+          <strong>MOSAIC</strong>
           <span>{getRoleDisplayName(activeUser.role, locale)}</span>
         </div>
 

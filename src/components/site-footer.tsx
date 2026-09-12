@@ -73,7 +73,6 @@ export function SiteFooter() {
 
   return (
     <footer className="site-footer">
-      <div className="flag-line" aria-hidden="true" />
       <div className="footer-grid">
         <div>
           <div style={{ marginBottom: "14px" }}>
@@ -119,8 +118,8 @@ export function SiteFooter() {
         <div>
           <p className="footer-title">{t.questions}</p>
           <div className="footer-links">
-            <span>support@uquvli.uz</span>
-            <span>+998 90 000-00-00</span>
+            <span>support@mosaic-learning.org</span>
+            <span>Accessible Learning Initiative</span>
             <Link href="/contacts">{t.contacts}</Link>
             <Link href="/privacy">{t.privacy}</Link>
             <Link href="/terms">{t.terms}</Link>

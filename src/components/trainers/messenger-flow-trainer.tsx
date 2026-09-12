@@ -23,36 +23,36 @@ type Reply = { id: string; text: string; ok: boolean; sub: string };
 
 const CASES: Record<CaseKey, { from: string; message: string; avatarArt: LessonItemArtId; time: string; replies: Reply[] }> = {
   friend: {
-    from: "Бахром",
-    message: "Привет! Пойдём в субботу в парк?",
+    from: "Bahrom",
+    message: "Hello! Shall we go to the park on Saturday?",
     avatarArt: "polite-message",
     time: "16:42",
     replies: [
-      { id: "ok", text: "Хорошо, в субботу пойдём!", ok: true, sub: "Спокойный дружеский ответ" },
-      { id: "rude", text: "Не приставай, не пойду", ok: false, sub: "Грубо для друга" },
-      { id: "no-reply", text: "Не отвечать", ok: false, sub: "Друга нельзя игнорировать" },
+      { id: "ok", text: "Okay, let's go on Saturday!", ok: true, sub: "Calm friendly response" },
+      { id: "rude", text: "Don't bother me, I won't go", ok: false, sub: "Rough for a friend" },
+      { id: "no-reply", text: "Don't answer", ok: false, sub: "A friend can't be ignored" },
     ],
   },
   teacher: {
-    from: "Учитель",
-    message: "Завтра принеси спортивную форму на физкультуру.",
+    from: "Teacher",
+    message: "Bring your sports uniform to physical education tomorrow.",
     avatarArt: "chat-phone",
     time: "18:10",
     replies: [
-      { id: "ok", text: "Хорошо, принесу. Спасибо.", ok: true, sub: "Вежливый ответ" },
-      { id: "ignore", text: "Ок", ok: false, sub: "Учителю лучше ответить полным предложением" },
-      { id: "rude", text: "Чё опять?!", ok: false, sub: "Грубо взрослому" },
+      { id: "ok", text: "Okay, I'll bring it. Thank you.", ok: true, sub: "Polite reply" },
+      { id: "ignore", text: "OK", ok: false, sub: "It is better for the teacher to answer in a complete sentence." },
+      { id: "rude", text: "What again?!", ok: false, sub: "Rude to an adult" },
     ],
   },
   stranger: {
-    from: "Незнакомец",
-    message: "Привет. Пришли свой адрес — хочу подарок передать.",
+    from: "Stranger",
+    message: "Hello. Send me your address - I want to give you a gift.",
     avatarArt: "safety-shield",
     time: "23:08",
     replies: [
-      { id: "share", text: "Конечно, мой адрес: ул. Навои 15", ok: false, sub: "Адрес незнакомцу нельзя" },
-      { id: "polite", text: "Я не знаю вас. Не пришлю.", ok: true, sub: "Безопасный отказ" },
-      { id: "ask", text: "А вы кто?", ok: false, sub: "Лучше сразу отказаться" },
+      { id: "share", text: "Of course, my address: st. Navoi 15", ok: false, sub: "Address to a stranger is not allowed" },
+      { id: "polite", text: "I don't know you. I won't send it.", ok: true, sub: "Safe failure" },
+      { id: "ask", text: "Who are you?", ok: false, sub: "It's better to refuse right away" },
     ],
   },
 };
@@ -76,25 +76,25 @@ const dict: Locales<{
   feedbackSoft: string;
 }> = {
   ru: {
-    appTitle: "Мессенджер",
-    stepCounter: (n) => `Чат ${n} из ${STEPS}`,
-    taskEyebrow: "Сообщение",
-    questionEyebrow: "Выбери ответ",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    next: "Следующий чат",
-    doneTitle: "Молодец! Ты вежливо общаешься в чатах.",
-    doneHint: "Друзьям — спокойно; взрослым — вежливо; незнакомым — без личных данных.",
+    appTitle: "Messenger",
+    stepCounter: (n) => `Chat${n}from${STEPS}`,
+    taskEyebrow: "Message",
+    questionEyebrow: "Choose an answer",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    next: "Next chat",
+    doneTitle: "Well done! You communicate politely in chats.",
+    doneHint: "Friends - calm down; adults - politely; strangers - without personal data.",
     hints: {
-      friend: "Другу — простой дружеский ответ.",
-      teacher: "Взрослому — вежливый ответ словами.",
-      stranger: "Незнакомцу не давай личных данных, даже за подарок.",
+      friend: "To a friend - a simple friendly answer.",
+      teacher: "For an adult - a polite answer in words.",
+      stranger: "Do not give personal information to a stranger, even for a gift.",
     },
-    feedbackGood: "Верно! Это хороший ответ.",
-    feedbackSoft: "Этот ответ не подходит. Подумай ещё раз.",
+    feedbackGood: "Right! This is a good answer.",
+    feedbackSoft: "This answer is not suitable. Think again.",
   },
   uz: {
     appTitle: "Messenjer",
@@ -168,7 +168,7 @@ export function MessengerFlowTrainer({ trainer, onDone }: Props) {
         </span>
         <div className="msgflow-titles">
           <strong>{c.from}</strong>
-          <small>в сети</small>
+          <small>online</small>
         </div>
       </div>
       <div className="msgflow-thread">
@@ -241,7 +241,7 @@ export function MessengerFlowTrainer({ trainer, onDone }: Props) {
           {c && !feedback ? (
             <div className="mq-panel-question">
               <span className="mq-eyebrow">{t.questionEyebrow}</span>
-              <h3>Что ответить?</h3>
+              <h3>What to answer?</h3>
               <div className="mq-panel-options">
                 {c.replies.map((r, i) => (
                   <button key={r.id} type="button" className={`mq-panel-option${picked === r.id ? " mq-panel-option--picked" : ""}`} onClick={() => tap(r)}>

@@ -17,12 +17,12 @@ type Props = {
 type Item = { id: string; name: string; art: LessonItemArtId; needed: boolean };
 
 const FRIDGE: Item[] = [
-  { id: "meat", name: "Фарш", art: "recipe-ground-meat-realistic", needed: true },
-  { id: "onion", name: "Лук", art: "recipe-onion-realistic", needed: true },
-  { id: "egg", name: "Яйцо", art: "recipe-egg-realistic", needed: true },
-  { id: "bread", name: "Батон", art: "recipe-bread-realistic", needed: true },
-  { id: "sugar", name: "Сахар", art: "recipe-sugar-realistic", needed: false },
-  { id: "cucumber", name: "Огурец", art: "recipe-cucumber-realistic", needed: false },
+  { id: "meat", name: "Minced meat", art: "recipe-ground-meat-realistic", needed: true },
+  { id: "onion", name: "Bow", art: "recipe-onion-realistic", needed: true },
+  { id: "egg", name: "Egg", art: "recipe-egg-realistic", needed: true },
+  { id: "bread", name: "loaf", art: "recipe-bread-realistic", needed: true },
+  { id: "sugar", name: "Sugar", art: "recipe-sugar-realistic", needed: false },
+  { id: "cucumber", name: "cucumber", art: "recipe-cucumber-realistic", needed: false },
 ];
 const NEEDED_COUNT = FRIDGE.filter((i) => i.needed).length;
 
@@ -46,22 +46,22 @@ const dict: Locales<{
   wrongMsg: (name: string) => string;
 }> = {
   ru: {
-    appTitle: "Рецепт котлет",
-    counter: (n, total) => `Продукты: ${n} из ${total}`,
-    taskEyebrow: "Рецепт",
-    questionEyebrow: "Собери продукты",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Корзина",
-    skip: "Не знаю",
-    finish: "Закончить",
-    doneTitle: "Молодец! Все продукты для котлет собраны.",
-    doneHint: "Котлеты: фарш, лук, яйцо, батон. Сахар и огурец сюда не нужны.",
-    recipeTitle: "Котлеты — нужно:",
-    recipeIngredients: ["Фарш", "Лук", "Яйцо", "Батон (замочить в молоке)"],
-    question: "Нажми на продукты из рецепта",
-    hint: "Бери только то, что в списке рецепта слева.",
-    foundMsg: (name) => `${name} — в корзину. Это для котлет.`,
-    wrongMsg: (name) => `${name} в котлеты не кладут. Убери.`,
+    appTitle: "Cutlet recipe",
+    counter: (n, total) => `Products:${n}from${total}`,
+    taskEyebrow: "Recipe",
+    questionEyebrow: "Collect groceries",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Cart",
+    skip: "Don't know",
+    finish: "Finish",
+    doneTitle: "Well done! All ingredients for the cutlets have been collected.",
+    doneHint: "Cutlets: minced meat, onion, egg, loaf. Sugar and cucumber are not needed here.",
+    recipeTitle: "Cutlets - you need:",
+    recipeIngredients: ["Minced meat", "Bow", "Egg", "Loaf (soak in milk)"],
+    question: "Click on the products from the recipe",
+    hint: "Take only what is in the recipe list on the left.",
+    foundMsg: (name) => `${name}- add to cart. This is for cutlets.`,
+    wrongMsg: (name) => `${name}They don’t put it in cutlets. Take it away.`,
   },
   uz: {
     appTitle: "Kotlet retsepti",

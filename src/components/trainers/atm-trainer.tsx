@@ -19,17 +19,17 @@ const FLOW: Step[] = ["insert", "pin", "operation", "amount", "receipt", "done"]
 const STEPS = 5;
 
 const OPERATIONS: Array<{ id: string; name: string; icon: LessonItemArtId; correct?: boolean }> = [
-  { id: "balance", name: "Узнать баланс", icon: "bank-card-cash" },
-  { id: "withdraw", name: "Снять наличные", icon: "cash-withdrawal", correct: true },
-  { id: "transfer", name: "Перевести", icon: "bank-card-cash" },
-  { id: "phone", name: "Пополнить телефон", icon: "phone-call" },
+  { id: "balance", name: "Find out balance", icon: "bank-card-cash" },
+  { id: "withdraw", name: "Withdraw cash", icon: "cash-withdrawal", correct: true },
+  { id: "transfer", name: "Translate", icon: "bank-card-cash" },
+  { id: "phone", name: "Top up your phone", icon: "phone-call" },
 ];
 
 const AMOUNTS = [
   { id: "100", value: 100_000 },
   { id: "200", value: 200_000, correct: true },
   { id: "500", value: 500_000 },
-  { id: "custom", value: 0, label: "Другая сумма" },
+  { id: "custom", value: 0, label: "Other amount" },
 ];
 
 type Locales<T> = Record<Locale, T>;
@@ -57,39 +57,39 @@ const dict: Locales<{
   feedbackSoft: string;
 }> = {
   ru: {
-    appTitle: "Банкомат",
-    stepCounter: (n) => `Шаг ${n} из ${STEPS}`,
-    taskEyebrow: "Снятие денег",
-    questionEyebrow: "Что сделать",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    next: "Дальше",
-    doneTitle: "Молодец! Деньги получены, карта возвращена.",
-    doneHint: "Порядок: карта → PIN → операция → сумма → чек.",
-    context: "Тебе нужно снять 200 000 сум с карты в банкомате.",
-    insertCard: "Вставь карту в банкомат",
-    pinPrompt: "Введи 4-значный PIN-код",
+    appTitle: "ATM",
+    stepCounter: (n) => `Step${n}from${STEPS}`,
+    taskEyebrow: "Withdrawing money",
+    questionEyebrow: "What to do",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    next: "Next",
+    doneTitle: "Well done! Money received, card returned.",
+    doneHint: "Order: card → PIN → transaction → amount → check.",
+    context: "You need to withdraw 200,000 sum from your card at an ATM.",
+    insertCard: "Insert the card into the ATM",
+    pinPrompt: "Enter 4-digit PIN code",
     questions: {
-      insert: "Что делает с картой?",
-      pin: "Введи PIN: 5432",
-      operation: "Какая операция?",
-      amount: "Какая сумма?",
-      receipt: "Что сделать с чеком?",
+      insert: "What does it do with the card?",
+      pin: "Enter PIN: 5432",
+      operation: "What operation?",
+      amount: "What amount?",
+      receipt: "What to do with the check?",
     },
     hints: {
-      insert: "Вставь карту чипом вперёд.",
-      pin: "PIN — это твой секретный код. Никому не показывай.",
-      operation: "Тебе нужно снять наличные.",
-      amount: "Нужно 200 000 сум.",
-      receipt: "Чек подтверждает операцию. Возьми и не выбрасывай у банкомата.",
+      insert: "Insert the card with the chip first.",
+      pin: "PIN is your secret code. Don't show it to anyone.",
+      operation: "You need to withdraw cash.",
+      amount: "We need 200,000 sum.",
+      receipt: "The receipt confirms the transaction. Take it and don’t throw it away at the ATM.",
     },
-    receiptText: "Снято: 200 000 сум\nКомиссия: 0 сум\nОстаток: 1 240 000 сум",
-    takeReceipt: "Забрать чек",
-    feedbackGood: "Верно! Идём дальше.",
-    feedbackSoft: "Это не то. Попробуй ещё раз.",
+    receiptText: "Withdrawn: 200,000 soum Commission: 0 soum Balance: 1,240,000 soum",
+    takeReceipt: "Pick up check",
+    feedbackGood: "Right! Let's move on.",
+    feedbackSoft: "This is not that. Try again.",
   },
   uz: {
     appTitle: "Bankomat",
@@ -212,7 +212,7 @@ export function AtmTrainer({ trainer, onDone }: Props) {
                 <span className="atm-insert-arrow">↓</span>
               </div>
               <p>{t.insertCard}</p>
-              <button type="button" className="atm-screen-action" onClick={insertCard}>Вставить карту</button>
+              <button type="button" className="atm-screen-action" onClick={insertCard}>Insert card</button>
             </>
           ) : step === "pin" ? (
             <>
@@ -246,13 +246,13 @@ export function AtmTrainer({ trainer, onDone }: Props) {
             <div className="atm-amounts">
               {AMOUNTS.map((a) => (
                 <button key={a.id} type="button" className={`atm-amount${pickedAmount === a.id ? " atm-amount--picked" : ""}`} onClick={() => chooseAmount(a.id, a.correct)} disabled={Boolean(feedback)}>
-                  <strong>{a.label ?? a.value.toLocaleString("ru-RU") + " сум"}</strong>
+                  <strong>{a.label ?? a.value.toLocaleString("ru-RU") + "am"}</strong>
                 </button>
               ))}
             </div>
           ) : step === "receipt" ? (
             <div className="atm-receipt">
-              <strong>Чек</strong>
+              <strong>Check</strong>
               <pre>{t.receiptText}</pre>
               <button type="button" className="atm-screen-action" onClick={takeReceipt} disabled={Boolean(feedback)}>{t.takeReceipt}</button>
             </div>

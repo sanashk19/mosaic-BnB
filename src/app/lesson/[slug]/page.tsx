@@ -19,10 +19,10 @@ const dict = {
     rulesCardCopy: "rules, real situations, and mini-checks in one lesson",
   },
   uz: {
-    notFound: "Dars topilmadi",
-    allDirections: "Barcha yoʻnalishlar",
-    saveProgress: "Yutuqlarni kabinetda saqlash",
-    rulesCardCopy: "qoidalar, vaziyatlar va kichik tekshiruv — bitta darsda",
+    notFound: "Lesson not found",
+    allDirections: "All Curriculum Tracks",
+    saveProgress: "Save progress in dashboard",
+    rulesCardCopy: "rules, real situations, and mini-checks in one lesson",
   },
 } as const;
 

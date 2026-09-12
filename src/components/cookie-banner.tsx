@@ -22,7 +22,7 @@ const dict = {
   uz: {
     title: "Biz cookie fayllaridan foydalanamiz",
     copyBefore:
-      "Texnik jihatdan zarur cookie fayllar tizimga kirish uchun, localStorage esa banner orqali tanlov va sozlamalar uchun ishlatiladi. Batafsil maʼlumot ",
+      "Texnik jihatdan zarur cookie fayllar tizimga kirish uchun, localStorage esa banner orqali tanlov va sozlamalar uchun ishlatiladi. Batafsil maʼlumot",
     copyLink: "cookie siyosatida",
     copyAfter: ".",
     onlyRequired: "Faqat zarurlari",

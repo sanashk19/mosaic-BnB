@@ -17,24 +17,24 @@ type Props = {
 type Step = "home" | "services" | "form" | "sms" | "done";
 
 function serviceIconName(title: string): UiIconName {
-  if (title.includes("врачу") || title.includes("медиц") || title.includes("поликлин") || title.includes("Медиц") || title.includes("Поликлин") || title.includes("shifokor") || title.includes("Shifokor") || title.includes("tibbiy")) return "health";
-  if (title.includes("транспорт") || title.includes("transport")) return "route";
-  if (title.includes("налог") || title.includes("soliq")) return "services";
-  if (title.includes("справ") || title.includes("maʼlumotnoma")) return "certificate";
-  if (title.includes("Жалоб") || title.includes("полиц") || title.includes("Shikoyat") || title.includes("politsiya")) return "shield";
-  if (title.includes("Школ") || title.includes("регистрац") || title.includes("Запись") || title.includes("Maktab") || title.includes("yozilish")) return "school";
-  if (title.includes("ЗАГС") || title.includes("рожден") || title.includes("FHDYo") || title.includes("tugʻil")) return "users";
-  if (title.includes("карт") || title.includes("Заказ") || title.includes("karta") || title.includes("Buyurtma")) return "shopping";
-  if (title.includes("паспорт") || title.includes("Получен") || title.includes("Pasport") || title.includes("olish")) return "shield";
+  if (title.includes("doctor") || title.includes("medic") || title.includes("Polyclinic") || title.includes("Medic") || title.includes("Polyclinic") || title.includes("shifokor") || title.includes("Shifokor") || title.includes("tibbiy")) return "health";
+  if (title.includes("transport") || title.includes("transport")) return "route";
+  if (title.includes("order") || title.includes("soliq")) return "services";
+  if (title.includes("affairs") || title.includes("maʼlumotnoma")) return "certificate";
+  if (title.includes("Complaints") || title.includes("shelf") || title.includes("Shikoyat") || title.includes("politsiya")) return "shield";
+  if (title.includes("School") || title.includes("register") || title.includes("Record") || title.includes("Maktab") || title.includes("yozilish")) return "school";
+  if (title.includes("REGISTER") || title.includes("born") || title.includes("FHDYo") || title.includes("tugʻil")) return "users";
+  if (title.includes("card") || title.includes("Order") || title.includes("karta") || title.includes("Buyurtma")) return "shopping";
+  if (title.includes("passport") || title.includes("Received") || title.includes("Pasport") || title.includes("olish")) return "shield";
   return "services";
 }
 
 const categoriesByLocale: Record<Locale, Array<{ label: string; icon: UiIconName; count: number }>> = {
   ru: [
-    { label: "Здоровье", icon: "health", count: 42 },
-    { label: "Документы", icon: "certificate", count: 76 },
-    { label: "Образование", icon: "school", count: 58 },
-    { label: "Налоги", icon: "services", count: 31 },
+    { label: "Health", icon: "health", count: 42 },
+    { label: "Documents", icon: "certificate", count: 76 },
+    { label: "Education", icon: "school", count: 58 },
+    { label: "Taxes", icon: "services", count: 31 },
   ],
   uz: [
     { label: "Salomatlik", icon: "health", count: 42 },
@@ -48,51 +48,51 @@ const dict = {
   ru: {
     timeNow: "09:42",
     brandTitle: "my.gov.uz",
-    brandSub: "Электронное правительство",
-    avatarLetter: "И",
-    taskLabel: "Задание:",
-    searchPlaceholder: "Найти услугу...",
-    categoriesTitle: "Категории",
-    popularTitle: "Популярное",
-    popularDoctor: "Запись к врачу",
-    popularCert: "Справки",
-    popularAll: "Все услуги",
-    backHome: "На главную",
-    servicesTitle: "Услуги",
-    backServices: "К услугам",
-    timeLabel: "Время приёма",
-    submit: "Отправить заявку",
-    smsTitle: "Подтверждение",
-    smsHint: "На +998 90 *** ** 67 пришёл код из 4 цифр.",
-    confirm: "Подтвердить",
-    resend: "Отправить код ещё раз (45с)",
-    doneTitle: "Заявка принята",
-    timeRow: (t: string) => `Время: ${t}`,
-    navHome: "Главная",
-    navServices: "Услуги",
-    navApplications: "Заявки",
-    navProfile: "Профиль",
-    qHome: "Открой каталог услуг.",
-    qServices: "Какая услуга подходит?",
-    qForm: "Какое время выбрать?",
-    qSms: "Введи код из SMS",
-    qDone: "Запись подтверждена",
-    sDone: "Заявка принята.",
-    sSms: "Ждём код из SMS.",
-    sFormTimeChosen: "Время выбрано.",
-    sFormChooseTime: "Услуга выбрана. Выбери время.",
-    sServicesEmpty: "Услуга еще не выбрана.",
-    sServicesChosen: "Услуга выбрана.",
-    sHome: "Открой раздел услуг.",
-    panelTitle: "Подай заявку",
-    hint: "Открой нужную услугу → заполни форму → подтверди код из SMS.",
-    feedbackCorrect: "Правильно",
-    feedbackSoft: "Давай запомним",
-    next: "Дальше",
-    openServices: "Открыть услуги",
-    overlayGood: "Молодец!",
-    overlaySoft: "Не та услуга",
-    continue: "Продолжить",
+    brandSub: "Electronic government",
+    avatarLetter: "AND",
+    taskLabel: "Exercise:",
+    searchPlaceholder: "Find a service...",
+    categoriesTitle: "Categories",
+    popularTitle: "Popular",
+    popularDoctor: "Make an appointment with a doctor",
+    popularCert: "Inquiries",
+    popularAll: "All services",
+    backHome: "Home",
+    servicesTitle: "Services",
+    backServices: "At our service",
+    timeLabel: "Appointment time",
+    submit: "Send a request",
+    smsTitle: "Confirmation",
+    smsHint: "A 4-digit code was received at +998 90 *** ** 67.",
+    confirm: "Confirm",
+    resend: "Send the code again (45s)",
+    doneTitle: "Application accepted",
+    timeRow: (t: string) => `Time:${t}`,
+    navHome: "Home",
+    navServices: "Services",
+    navApplications: "Applications",
+    navProfile: "Profile",
+    qHome: "Open the service catalog.",
+    qServices: "Which service is suitable?",
+    qForm: "What time should I choose?",
+    qSms: "Enter the code from SMS",
+    qDone: "Appointment confirmed",
+    sDone: "Application accepted.",
+    sSms: "We are waiting for the code from SMS.",
+    sFormTimeChosen: "The time has been chosen.",
+    sFormChooseTime: "The service has been selected. Choose a time.",
+    sServicesEmpty: "The service has not yet been selected.",
+    sServicesChosen: "The service has been selected.",
+    sHome: "Open the services section.",
+    panelTitle: "Submit your application",
+    hint: "Open the desired service → fill out the form → confirm the code from SMS.",
+    feedbackCorrect: "Right",
+    feedbackSoft: "Let's remember",
+    next: "Next",
+    openServices: "Open services",
+    overlayGood: "Well done!",
+    overlaySoft: "Not the service",
+    continue: "Continue",
   },
   uz: {
     timeNow: "09:42",

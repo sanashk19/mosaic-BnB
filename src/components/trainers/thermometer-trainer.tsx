@@ -48,47 +48,47 @@ const dict: Locales<{
   cases: Record<Case, { context: string; question: string; hint: string; feedbackGood: string; feedbackSoft: string }>;
 }> = {
   ru: {
-    appTitle: "Цифровой термометр",
-    stepCounter: (n) => `Измерение ${n} из ${STEPS}`,
-    taskEyebrow: "Измерение",
-    questionEyebrow: "Что сделать",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    next: "Следующее измерение",
-    retry: "Попробовать снова",
-    measure: "Измерить",
-    measuring: "Измеряем…",
-    doneTitle: "Молодец! Ты умеешь читать термометр.",
-    doneHint: "Норма — около 36.6. Выше 37.5 — отдых. Выше 38.5 — звать взрослого, врач.",
+    appTitle: "Digital thermometer",
+    stepCounter: (n) => `Measurement${n}from${STEPS}`,
+    taskEyebrow: "Measurement",
+    questionEyebrow: "What to do",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    next: "Next dimension",
+    retry: "Try again",
+    measure: "Measure",
+    measuring: "We measure...",
+    doneTitle: "Well done! You know how to read a thermometer.",
+    doneHint: "The norm is about 36.6. Above 37.5 - rest. Above 38.5 - call an adult, doctor.",
     actions: {
-      "all-good": { name: "Всё в порядке", sub: "температура нормальная" },
-      "tea-rest": { name: "Чай и отдых", sub: "лечь, выпить тёплое" },
-      "call-adult": { name: "Позвать взрослого", sub: "родителя или учителя" },
-      "call-doctor": { name: "Вызвать врача", sub: "это уже высокая температура" },
+      "all-good": { name: "It's okay", sub: "temperature is normal" },
+      "tea-rest": { name: "Tea and relaxation", sub: "lie down, have a warm drink" },
+      "call-adult": { name: "Call an adult", sub: "parent or teacher" },
+      "call-doctor": { name: "Call a doctor", sub: "this is already a high temperature" },
     },
     cases: {
       norm: {
-        context: "Утром ты измеряешь температуру перед школой.",
-        question: "Температура 36.6. Что сделать?",
-        hint: "36.6 — это норма. Идти в школу можно.",
-        feedbackGood: "Верно. 36.6 — норма, всё хорошо.",
-        feedbackSoft: "При 36.6 — это норма, ничего делать не нужно.",
+        context: "In the morning you take your temperature before school.",
+        question: "Temperature 36.6. What to do?",
+        hint: "36.6 is the norm. You can go to school.",
+        feedbackGood: "Right. 36.6 is the norm, everything is fine.",
+        feedbackSoft: "At 36.6 - this is the norm, nothing needs to be done.",
       },
       fever: {
-        context: "Ты чувствуешь себя уставшим. Голова немного болит.",
-        question: "Температура 38.2. Что сделать?",
-        hint: "От 37.5 до 38.5 — отдых, тёплое питьё, сказать родителям.",
-        feedbackGood: "Верно. 38.2 — отдых, чай. Сказать родителям.",
-        feedbackSoft: "38.2 — уже температура. Нельзя идти на улицу. Отдых и чай.",
+        context: "You feel tired. My head hurts a little.",
+        question: "Temperature 38.2. What to do?",
+        hint: "From 37.5 to 38.5 - rest, warm drink, tell parents.",
+        feedbackGood: "Right. 38.2 - rest, tea. Tell your parents.",
+        feedbackSoft: "38.2 is already a temperature. You can't go outside. Rest and tea.",
       },
       "high-fever": {
-        context: "Тебе плохо, дрожит, голова сильно болит.",
-        question: "Температура 39.5. Что сделать?",
-        hint: "Выше 38.5 — обязательно сказать взрослому и вызвать врача.",
-        feedbackGood: "Верно. 39.5 — это много. Нужен врач.",
-        feedbackSoft: "39.5 — высокая температура. Нужно вызвать врача.",
+        context: "You feel bad, you are shaking, your head hurts a lot.",
+        question: "Temperature 39.5. What to do?",
+        hint: "Above 38.5, be sure to tell an adult and call a doctor.",
+        feedbackGood: "Right. 39.5 is a lot. Need a doctor.",
+        feedbackSoft: "39.5 - high temperature. You need to call a doctor.",
       },
     },
   },
@@ -302,7 +302,7 @@ export function ThermometerTrainer({ trainer, onDone }: Props) {
           {sit && reading !== "done" ? (
             <div className="mq-panel-hint">
               <span className="mq-eyebrow">{t.hintEyebrow}</span>
-              <p>Нажми «Измерить» — термометр покажет температуру.</p>
+              <p>Click “Measure” - the thermometer will show the temperature.</p>
             </div>
           ) : null}
 

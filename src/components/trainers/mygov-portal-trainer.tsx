@@ -19,23 +19,23 @@ const FLOW: Step[] = ["category", "service", "form", "sms", "done"];
 const STEPS = 4;
 
 const CATEGORIES: Array<{ id: string; name: string; icon: LessonItemArtId; correct: boolean }> = [
-  { id: "health", name: "Здоровье", icon: "health-category", correct: true },
-  { id: "education", name: "Образование", icon: "education-category", correct: false },
-  { id: "docs", name: "Документы", icon: "document-category", correct: false },
-  { id: "taxes", name: "Налоги", icon: "taxes-category", correct: false },
+  { id: "health", name: "Health", icon: "health-category", correct: true },
+  { id: "education", name: "Education", icon: "education-category", correct: false },
+  { id: "docs", name: "Documents", icon: "document-category", correct: false },
+  { id: "taxes", name: "Taxes", icon: "taxes-category", correct: false },
 ];
 
 const SERVICES = [
-  { id: "doctor", name: "Запись к врачу", correct: true },
-  { id: "certificate", name: "Получить справку", correct: false },
-  { id: "vaccine", name: "Запись на вакцинацию", correct: false },
+  { id: "doctor", name: "Make an appointment with a doctor", correct: true },
+  { id: "certificate", name: "Get help", correct: false },
+  { id: "vaccine", name: "Sign up for vaccination", correct: false },
 ];
 
 const TIMES = [
-  { id: "9", time: "09:00", note: "Утро", correct: true },
-  { id: "11", time: "11:00", note: "Утро" },
-  { id: "14", time: "14:00", note: "День" },
-  { id: "17", time: "17:00", note: "Вечер" },
+  { id: "9", time: "09:00", note: "Morning", correct: true },
+  { id: "11", time: "11:00", note: "Morning" },
+  { id: "14", time: "14:00", note: "Day" },
+  { id: "17", time: "17:00", note: "Evening" },
 ];
 
 type Locales<T> = Record<Locale, T>;
@@ -62,34 +62,34 @@ const dict: Locales<{
 }> = {
   ru: {
     appTitle: "my.gov.uz",
-    stepCounter: (n) => `Шаг ${n} из ${STEPS}`,
-    taskEyebrow: "Заявление",
-    questionEyebrow: "Выбери",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    next: "Дальше",
-    doneTitle: "Молодец! Заявление подано.",
-    doneHint: "Так подают любую заявку: категория → услуга → форма → SMS-код.",
-    context: "Запишись к врачу через государственный портал. Нужно выбрать категорию, услугу, время и подтвердить код из SMS.",
+    stepCounter: (n) => `Step${n}from${STEPS}`,
+    taskEyebrow: "Statement",
+    questionEyebrow: "Choose",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    next: "Next",
+    doneTitle: "Well done! The application has been submitted.",
+    doneHint: "This is how any application is submitted: category → service → form → SMS code.",
+    context: "Make an appointment with a doctor through the state portal. You need to select a category, service, time and confirm the code from SMS.",
     questions: {
-      category: "Какая категория?",
-      service: "Какая услуга?",
-      form: "На какое время?",
-      sms: "Подтверди SMS-код",
+      category: "What category?",
+      service: "What service?",
+      form: "For how long?",
+      sms: "Confirm SMS code",
     },
     hints: {
-      category: "Запись к врачу — это «Здоровье».",
-      service: "Нужна запись к терапевту.",
-      form: "Утреннее время — лучший выбор.",
-      sms: "Введи код 1234 (демо).",
+      category: "Making an appointment with a doctor is “Health”.",
+      service: "Need an appointment with a therapist.",
+      form: "Morning time is the best choice.",
+      sms: "Enter code 1234 (demo).",
     },
-    smsPrompt: "На телефон пришёл код из 4 цифр. Введи его.",
-    confirm: "Подтвердить",
-    feedbackGood: "Верно! Идём дальше.",
-    feedbackSoft: "Это не подходит. Посмотри ещё раз.",
+    smsPrompt: "The phone received a 4-digit code. Enter it.",
+    confirm: "Confirm",
+    feedbackGood: "Right! Let's move on.",
+    feedbackSoft: "This doesn't fit. Look again.",
   },
   uz: {
     appTitle: "my.gov.uz",

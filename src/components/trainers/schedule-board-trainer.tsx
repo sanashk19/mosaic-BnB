@@ -17,11 +17,11 @@ type Props = {
 type Row = { id: string; train: string; dest: string; time: string; platform: string; status: "on-time" | "boarding" | "delayed" };
 
 const ROWS: Row[] = [
-  { id: "samarqand", train: "Шарк 64", dest: "Самарканд", time: "08:30", platform: "1", status: "boarding" },
-  { id: "bukhara", train: "Афросиёб 72", dest: "Бухара", time: "10:15", platform: "3", status: "on-time" },
-  { id: "khiva", train: "Орзу 102", dest: "Хива", time: "12:45", platform: "2", status: "delayed" },
-  { id: "andijan", train: "Шарк 88", dest: "Андижан", time: "14:20", platform: "4", status: "on-time" },
-  { id: "nukus", train: "Барс 46", dest: "Нукус", time: "16:00", platform: "5", status: "on-time" },
+  { id: "samarqand", train: "Shark 64", dest: "Samarkand", time: "08:30", platform: "1", status: "boarding" },
+  { id: "bukhara", train: "Afrosiyob 72", dest: "Bukhara", time: "10:15", platform: "3", status: "on-time" },
+  { id: "khiva", train: "Orzu 102", dest: "Khiva", time: "12:45", platform: "2", status: "delayed" },
+  { id: "andijan", train: "Shark 88", dest: "Andijan", time: "14:20", platform: "4", status: "on-time" },
+  { id: "nukus", train: "Bars 46", dest: "Nukus", time: "16:00", platform: "5", status: "on-time" },
 ];
 
 type Stage = "p1" | "p2" | "p3" | "done";
@@ -29,9 +29,9 @@ const FLOW: Stage[] = ["p1", "p2", "p3", "done"];
 const STEPS = 3;
 
 const PASSENGERS: Record<Exclude<Stage, "done">, { destination: string; correctId: string; context: string }> = {
-  p1: { destination: "Самарканд", correctId: "samarqand", context: "Тебе купили билет до Самарканда. Поезд утром." },
-  p2: { destination: "Бухара", correctId: "bukhara", context: "Едешь в Бухару в гости. Поезд днём." },
-  p3: { destination: "Хива", correctId: "khiva", context: "Семья едет в Хиву. Поезд после обеда." },
+  p1: { destination: "Samarkand", correctId: "samarqand", context: "They bought you a ticket to Samarkand. Train in the morning." },
+  p2: { destination: "Bukhara", correctId: "bukhara", context: "You are going to Bukhara to visit. Train during the day." },
+  p3: { destination: "Khiva", correctId: "khiva", context: "The family goes to Khiva. Train after lunch." },
 };
 
 type Locales<T> = Record<Locale, T>;
@@ -57,25 +57,25 @@ const dict: Locales<{
   feedbackSoft: (city: string) => string;
 }> = {
   ru: {
-    appTitle: "Табло вокзала",
-    stepCounter: (n) => `Пассажир ${n} из ${STEPS}`,
-    taskEyebrow: "Пассажир",
-    questionEyebrow: "Найди свой поезд",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    next: "Следующий пассажир",
-    doneTitle: "Молодец! Ты находишь поезд на табло.",
-    doneHint: "На табло смотрят на колонку «Куда» — выбирают свой город.",
-    boardTitle: "Отправление",
-    cols: { train: "Поезд", dest: "Куда", time: "Время", platform: "Путь", status: "Статус" },
-    statuses: { "on-time": "по расписанию", boarding: "посадка", delayed: "задержка" },
-    question: (city) => `Какой поезд идёт в ${city}?`,
-    hint: (city) => `Смотри на колонку «Куда» — найди строку «${city}». В этой строке — твой поезд.`,
-    feedbackGood: (row) => `Верно. Поезд ${row.train} в ${row.dest}, время ${row.time}, путь ${row.platform}.`,
-    feedbackSoft: (city) => `Это не твой поезд. Найди строку «${city}».`,
+    appTitle: "Station board",
+    stepCounter: (n) => `Passenger${n}from${STEPS}`,
+    taskEyebrow: "Passenger",
+    questionEyebrow: "Find your train",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    next: "Next passenger",
+    doneTitle: "Well done! You find the train on the board.",
+    doneHint: "On the scoreboard they look at the “Where” column and select their city.",
+    boardTitle: "Departure",
+    cols: { train: "Train", dest: "Where", time: "Time", platform: "Path", status: "Status" },
+    statuses: { "on-time": "on schedule", boarding: "landing", delayed: "delay" },
+    question: (city) => `Which train goes to${city}?`,
+    hint: (city) => `Look at the “Where” column - find the line “${city}" This line contains your train.`,
+    feedbackGood: (row) => `Right. Train${row.train}in${row.dest}, time${row.time}, path${row.platform}.`,
+    feedbackSoft: (city) => `This is not your train. Find the line "${city}».`,
   },
   uz: {
     appTitle: "Vokzal taxtasi",

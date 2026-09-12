@@ -19,11 +19,11 @@ const ORDER: Clause[] = ["amount", "rate", "term", "total"];
 const TOTAL = ORDER.length;
 
 const VALUES: Record<Clause, { label: string; value: string; risk?: boolean }> = {
-  amount: { label: "Сумма кредита", value: "10 000 000 сум" },
-  rate: { label: "Процент в год", value: "24%" },
-  term: { label: "Срок", value: "12 месяцев" },
-  total: { label: "Всего к возврату", value: "12 240 000 сум" },
-  penalty: { label: "Штраф за просрочку", value: "0,5% в день", risk: true },
+  amount: { label: "Loan amount", value: "10,000,000 soum" },
+  rate: { label: "Percentage per year", value: "24%" },
+  term: { label: "Term", value: "12 months" },
+  total: { label: "Total to return", value: "12,240,000 sum" },
+  penalty: { label: "Fine for late payment", value: "0.5% per day", risk: true },
 };
 
 type Locales<T> = Record<Locale, T>;
@@ -46,28 +46,28 @@ const dict: Locales<{
   step: (n: number, total: number) => string;
 }> = {
   ru: {
-    appTitle: "Договор кредита",
-    taskEyebrow: "Договор",
-    questionEyebrow: "Найди в договоре",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    doneTitle: "Молодец! Ты прочитал все важные пункты.",
-    doneHint: "Перед подписью кредита всегда проверяй: сумму, процент, срок и общий возврат.",
-    context: "Мама хочет взять кредит. Помоги прочитать договор — найди 4 важные цифры.",
+    appTitle: "Loan agreement",
+    taskEyebrow: "Agreement",
+    questionEyebrow: "Find it in the contract",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    doneTitle: "Well done! You have read all the important points.",
+    doneHint: "Before signing a loan, always check: the amount, interest, term and total repayment.",
+    context: "Mom wants to take out a loan. Help me read the contract - find 4 important numbers.",
     prompt: (label) => label,
     hints: {
-      amount: "Сумма — это сколько мама получит на руки.",
-      rate: "Процент — сколько в год нужно доплатить.",
-      term: "Срок — за какое время вернуть.",
-      total: "Общий возврат — сумма + проценты за всё время.",
-      penalty: "Штраф — отдельный пункт; не первое что нужно знать.",
+      amount: "The amount is how much the mother will receive in her hands.",
+      rate: "Interest - how much you need to pay extra per year.",
+      term: "Term - how long it takes to return it.",
+      total: "Total refund - amount + interest for the entire time.",
+      penalty: "The fine is a separate item; not the first thing you need to know.",
     },
-    feedbackGood: (label, value) => `Верно. ${label}: ${value}.`,
-    feedbackSoft: "Это другой пункт. Посмотри ещё раз.",
-    step: (n, total) => `Найдено ${n} из ${total}`,
+    feedbackGood: (label, value) => `That's right.${label}: ${value}.`,
+    feedbackSoft: "This is another point. Look again.",
+    step: (n, total) => `Found${n}from${total}`,
   },
   uz: {
     appTitle: "Kredit shartnomasi",
@@ -153,8 +153,8 @@ export function CreditContractTrainer({ trainer, onDone }: Props) {
             <LessonItemArt id="realistic-credit-contract" size={58} />
           </span>
           <div>
-            <strong>Кредитный договор № <span className="credit-doc-number">К-2026-08-14</span></strong>
-            <small>Банк UQUVLI</small>
+            <strong>Loan agreement No.<span className="credit-doc-number">K-2026-08-14</span></strong>
+            <small>Bank Mosaic</small>
           </div>
         </div>
         <div className="credit-doc-body">
@@ -176,8 +176,8 @@ export function CreditContractTrainer({ trainer, onDone }: Props) {
           })}
         </div>
         <div className="credit-doc-foot">
-          <small>Подпись клиента: ________</small>
-          <small>Подпись банка: UQUVLI</small>
+          <small>Client signature: ________</small>
+          <small>Bank signature: Mosaic</small>
         </div>
       </div>
     </div>

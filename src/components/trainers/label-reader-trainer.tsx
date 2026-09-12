@@ -34,42 +34,42 @@ const dict: Locales<{
   brand: string;
 }> = {
   ru: {
-    appTitle: "Этикетка крема",
-    taskEyebrow: "Что искать",
-    questionEyebrow: "Найди на этикетке",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Найдено",
-    skip: "Не знаю",
-    finish: "Закончить",
-    doneTitle: "Отлично! Все 4 места найдены.",
-    doneHint: "Так и нужно читать этикетку любого крема.",
-    foundCounter: (n, total) => `Найдено ${n} из ${total}`,
-    productName: "Крем для лица «Нежный»",
-    brand: "UQUVLI Care",
+    appTitle: "Cream label",
+    taskEyebrow: "What to look for",
+    questionEyebrow: "Find it on the label",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Found",
+    skip: "Don't know",
+    finish: "Finish",
+    doneTitle: "Great! All 4 locations have been found.",
+    doneHint: "This is how you need to read the label of any cream.",
+    foundCounter: (n, total) => `Found${n}from${total}`,
+    productName: "Face cream “Gentle”",
+    brand: "Mosaic Care",
     spots: {
       expiry: {
-        label: "Срок годности",
-        value: "До 12.2027",
-        description: "После этой даты крем нельзя использовать.",
-        instruction: "Найди дату — после неё крем уже не нужен.",
+        label: "Best before date",
+        value: "Until 12.2027",
+        description: "After this date, the cream cannot be used.",
+        instruction: "Find the date - after it the cream is no longer needed.",
       },
       ingredients: {
-        label: "Состав",
-        value: "Вода, глицерин, витамин E…",
-        description: "Что внутри: какие вещества входят в крем.",
-        instruction: "Найди список — там перечислены компоненты.",
+        label: "Composition",
+        value: "Water, glycerin, vitamin E...",
+        description: "What's inside: what substances are included in the cream.",
+        instruction: "Find the list - the components are listed there.",
       },
       usage: {
-        label: "Как применять",
-        value: "Нанести на чистое лицо утром",
-        description: "Правила: куда, когда и как наносить.",
-        instruction: "Найди абзац про нанесение крема.",
+        label: "How to use",
+        value: "Apply to clean face in the morning",
+        description: "Rules: where, when and how to apply.",
+        instruction: "Find the paragraph about applying cream.",
       },
       warning: {
-        label: "Предупреждение",
-        value: "При покраснении смыть водой",
-        description: "Что делать, если что-то пошло не так.",
-        instruction: "Найди предупреждение — что делать при аллергии.",
+        label: "Warning",
+        value: "If redness occurs, rinse with water.",
+        description: "What to do if something goes wrong.",
+        instruction: "Find a warning - what to do if you have an allergy.",
       },
     },
   },
@@ -85,7 +85,7 @@ const dict: Locales<{
     doneHint: "Har qanday krem yorligʻini shunday oʻqish kerak.",
     foundCounter: (n, total) => `${n} / ${total} topildi`,
     productName: "Yuz uchun «Yumshoq» kremi",
-    brand: "UQUVLI Care",
+    brand: "Mosaic Care",
     spots: {
       expiry: {
         label: "Yaroqlilik muddati",
@@ -284,7 +284,8 @@ export function LabelReaderTrainer({ trainer, onDone }: Props) {
               <span className="mq-eyebrow">{t.questionEyebrow}</span>
               <h3>{t.spots[currentTarget].label}</h3>
               <p className="outfit-pick-summary">
-                Нажми на нужное место на этикетке. {wrongTap ? <strong style={{ color: "#dc2626" }}>Это не то место — посмотри ещё раз.</strong> : null}
+                
+                Click on the desired location on the label.{wrongTap ? <strong style={{ color: "#dc2626" }}>This is not the place - look again.</strong> : null}
               </p>
             </div>
           ) : null}
@@ -366,7 +367,7 @@ function LabelSpot({
       </span>
       <span className="label-spot-text">
         <strong>{info.label}</strong>
-        {found ? <small>{info.value}</small> : <small>нажми чтобы прочитать</small>}
+        {found ? <small>{info.value}</small> : <small>click to read</small>}
       </span>
       {found ? (
         <span className="label-spot-check" aria-hidden="true">

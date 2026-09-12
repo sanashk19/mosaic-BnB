@@ -19,22 +19,22 @@ const FLOW: StepKey[] = ["route", "date", "seat", "pay", "done"];
 const STEPS = 4;
 
 const ROUTE_OPTIONS = [
-  { id: "samarkand", name: "Самарканд", price: "120 000", correct: true },
-  { id: "bukhara", name: "Бухара", price: "180 000", correct: false },
-  { id: "tashkent", name: "Ташкент", price: "—", correct: false },
+  { id: "samarkand", name: "Samarkand", price: "120 000", correct: true },
+  { id: "bukhara", name: "Bukhara", price: "180 000", correct: false },
+  { id: "tashkent", name: "Tashkent", price: "—", correct: false },
 ];
 
 const DATE_OPTIONS = [
-  { id: "today", name: "Сегодня", sub: "не подходит" },
-  { id: "tomorrow", name: "Завтра", sub: "нужная дата", correct: true },
-  { id: "weekend", name: "Выходной", sub: "позже" },
+  { id: "today", name: "Today", sub: "doesn't fit" },
+  { id: "tomorrow", name: "Tomorrow", sub: "desired date", correct: true },
+  { id: "weekend", name: "Day off", sub: "later" },
 ];
 
 const SEAT_OPTIONS = [
-  { id: "12", row: "Вагон 4 · Место 12", correct: true },
-  { id: "8", row: "Вагон 4 · Место 8" },
-  { id: "23", row: "Вагон 7 · Место 23" },
-  { id: "45", row: "Вагон 9 · Место 45" },
+  { id: "12", row: "Car 4 · Seat 12", correct: true },
+  { id: "8", row: "Car 4 · Seat 8" },
+  { id: "23", row: "Car 7 · Seat 23" },
+  { id: "45", row: "Car 9 · Seat 45" },
 ];
 
 type Locales<T> = Record<Locale, T>;
@@ -59,34 +59,34 @@ const dict: Locales<{
   context: string;
 }> = {
   ru: {
-    appTitle: "Билет онлайн",
-    stepCounter: (n) => `Шаг ${n} из ${STEPS}`,
-    taskEyebrow: "Заказ",
-    questionEyebrow: "Выбери",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    pay: "Оплатить",
-    doneTitle: "Молодец! Билет в Самарканд на завтра куплен.",
-    doneHint: "Так покупают билет онлайн: маршрут → дата → место → оплата.",
-    fields: { from: "Из", to: "Куда", date: "Дата", seat: "Место" },
+    appTitle: "Ticket online",
+    stepCounter: (n) => `Step${n}from${STEPS}`,
+    taskEyebrow: "Order",
+    questionEyebrow: "Choose",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    pay: "Pay",
+    doneTitle: "Well done! A ticket to Samarkand for tomorrow has been purchased.",
+    doneHint: "This is how you buy a ticket online: route → date → place → payment.",
+    fields: { from: "From", to: "Where", date: "Date", seat: "Place" },
     questions: {
-      route: "Куда едем?",
-      date: "Когда?",
-      seat: "Какое место?",
-      pay: "Подтверди и оплати",
+      route: "Where are we going?",
+      date: "When?",
+      seat: "What place?",
+      pay: "Confirm and pay",
     },
     hints: {
-      route: "Маршрут — Ташкент → Самарканд.",
-      date: "В задании сказано «на завтра» — выбирай «Завтра».",
-      seat: "Любое свободное место. Возьми вагон 4 место 12 — у окна.",
-      pay: "Проверь данные и нажми «Оплатить».",
+      route: "Route - Tashkent → Samarkand.",
+      date: "The task says “for tomorrow” - choose “Tomorrow”.",
+      seat: "Any free space. Take carriage 4, seat 12 - by the window.",
+      pay: "Check the details and click “Pay”.",
     },
-    feedbackGood: "Верно! Идём дальше.",
-    feedbackSoft: "Это не подходит. Посмотри ещё раз.",
-    context: "Нужно купить билет на поезд из Ташкента в Самарканд на завтра.",
+    feedbackGood: "Right! Let's move on.",
+    feedbackSoft: "This doesn't fit. Look again.",
+    context: "You need to buy a train ticket from Tashkent to Samarkand for tomorrow.",
   },
   uz: {
     appTitle: "Onlayn chipta",
@@ -194,10 +194,10 @@ export function TicketPurchaseTrainer({ trainer, onDone }: Props) {
             </span>
             <div>
               <strong>UZ Express</strong>
-              <small>Билет</small>
+              <small>Ticket</small>
             </div>
           </div>
-          <div className="ticket-receipt-row"><span>{t.fields.from}</span><strong>Ташкент</strong></div>
+          <div className="ticket-receipt-row"><span>{t.fields.from}</span><strong>Tashkent</strong></div>
           <div className="ticket-receipt-row"><span>{t.fields.to}</span><strong>{route ? ROUTE_OPTIONS.find((r) => r.id === route)?.name ?? "—" : "—"}</strong></div>
           <div className="ticket-receipt-row"><span>{t.fields.date}</span><strong>{date ? DATE_OPTIONS.find((d) => d.id === date)?.name ?? "—" : "—"}</strong></div>
           <div className="ticket-receipt-row"><span>{t.fields.seat}</span><strong>{seat ? SEAT_OPTIONS.find((s) => s.id === seat)?.row ?? "—" : "—"}</strong></div>
@@ -208,7 +208,7 @@ export function TicketPurchaseTrainer({ trainer, onDone }: Props) {
             {ROUTE_OPTIONS.map((r) => (
               <button key={r.id} type="button" className={`ticket-option${route === r.id ? " ticket-option--picked" : ""}`} onClick={() => chooseRoute(r.id, !!r.correct)} disabled={Boolean(feedback)}>
                 <strong>{r.name}</strong>
-                <small>{r.price} сум</small>
+                <small>{r.price} am</small>
               </button>
             ))}
           </div>
@@ -238,8 +238,7 @@ export function TicketPurchaseTrainer({ trainer, onDone }: Props) {
 
         {step === "pay" ? (
           <button type="button" className="ticket-pay-btn" onClick={pay} disabled={Boolean(feedback)}>
-            {t.pay} — 120 000 сум
-          </button>
+            {t.pay}  — 120,000 soum</button>
         ) : null}
       </div>
     );
@@ -311,7 +310,7 @@ export function TicketPurchaseTrainer({ trainer, onDone }: Props) {
               <p>{feedback === "good" ? t.feedbackGood : t.feedbackSoft}</p>
               <div className="outfit-feedback-actions">
                 {feedback === "good" ? (
-                  <button type="button" className="mq-panel-primary" onClick={advance}>{step === "pay" ? t.finish : "Дальше"}</button>
+                  <button type="button" className="mq-panel-primary" onClick={advance}>{step === "pay" ? t.finish : "Next"}</button>
                 ) : (
                   <button type="button" className="mq-panel-primary outfit-retry" onClick={retry}>{t.retry}</button>
                 )}

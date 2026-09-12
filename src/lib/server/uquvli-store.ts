@@ -83,7 +83,7 @@ function requireGroup(value: unknown): StudentGroup {
   const group = normalizeGroup(value);
   if (!group) {
     throw new HttpError(400, {
-      ru: "Укажите исследовательскую группу.",
+      ru: "Please indicate research group.",
       uz: "Tadqiqot guruhini koʻrsating.",
     });
   }
@@ -99,12 +99,12 @@ function normalizeProfile(
   const defaults = demoSeed
     ? demoSeed.profile
     : {
-        childName: fallbackName || "Ребёнок",
-        childClass: "Класс не указан",
-        teacherName: "Педагог не указан",
-        organizationName: "Школа или центр не указаны",
+        childName: fallbackName || "child",
+        childClass: "Class not specified",
+        teacherName: "Teacher not specified",
+        organizationName: "School or center not specified",
         supportNotes:
-          "Короткие фразы, один шаг за раз и спокойное повторение без спешки.",
+          "Short phrases, one step at a time and calm repetition without rushing.",
       };
 
   return {
@@ -156,7 +156,7 @@ function normalizeStoredUser(entry: unknown): StoredUser | null {
 
   const email = normalizeEmail(sanitizeText(entry.email));
   const passwordHash = sanitizeText(entry.passwordHash);
-  const name = sanitizeText(entry.name) || "Пользователь";
+  const name = sanitizeText(entry.name) || "User";
 
   if (!email || !passwordHash) return null;
 
@@ -456,23 +456,23 @@ export async function registerUser(input: RegisterInput): Promise<CurrentUser>{
     const childClass = sanitizeText(input.profile.childClass);
 
     if (!name) {
-      throw new HttpError(400, { ru: "Введите имя.", uz: "Ismni kiriting." });
+      throw new HttpError(400, { ru: "Enter a name.", uz: "Ismni kiriting." });
     }
     if (!email) {
       throw new HttpError(400, {
-        ru: "Введите email.",
+        ru: "Enter your email.",
         uz: "E-pochtani kiriting.",
       });
     }
     if (!email.includes("@")) {
       throw new HttpError(400, {
-        ru: "Введите корректный email.",
+        ru: "Please enter a valid email.",
         uz: "Toʻgʻri e-pochtani kiriting.",
       });
     }
     if (password.length< 6) {
       throw new HttpError(400, {
-        ru: "Пароль должен быть не короче 6 символов.",
+        ru: "The password must be at least 6 characters.",
         uz: "Parol kamida 6 ta belgidan iborat boʻlishi kerak.",
       });
     }
@@ -480,13 +480,13 @@ export async function registerUser(input: RegisterInput): Promise<CurrentUser>{
     if (!isResearcher) {
       if (!childName) {
         throw new HttpError(400, {
-          ru: "Укажите, как зовут ребёнка.",
+          ru: "Please indicate the child's name.",
           uz: "Bolaning ismini koʻrsating.",
         });
       }
       if (!childClass) {
         throw new HttpError(400, {
-          ru: "Укажите класс или группу.",
+          ru: "Please indicate your class or group.",
           uz: "Sinf yoki guruhni koʻrsating.",
         });
       }
@@ -494,7 +494,7 @@ export async function registerUser(input: RegisterInput): Promise<CurrentUser>{
 
     if (db.users.some((entry) =>entry.email === email)) {
       throw new HttpError(409, {
-        ru: "Пользователь с таким email уже зарегистрирован.",
+        ru: "A user with this email is already registered.",
         uz: "Bunday e-pochta bilan foydalanuvchi roʻyxatdan oʻtgan.",
       });
     }
@@ -535,30 +535,30 @@ export async function createUserByResearcher(
     const role = input.role;
 
     if (!name) {
-      throw new HttpError(400, { ru: "Введите имя.", uz: "Ismni kiriting." });
+      throw new HttpError(400, { ru: "Enter a name.", uz: "Ismni kiriting." });
     }
     if (!email) {
       throw new HttpError(400, {
-        ru: "Введите email.",
+        ru: "Enter your email.",
         uz: "E-pochtani kiriting.",
       });
     }
     if (!email.includes("@")) {
       throw new HttpError(400, {
-        ru: "Введите корректный email.",
+        ru: "Please enter a valid email.",
         uz: "Toʻgʻri e-pochtani kiriting.",
       });
     }
     if (password.length< 6) {
       throw new HttpError(400, {
-        ru: "Пароль должен быть не короче 6 символов.",
+        ru: "The password must be at least 6 characters.",
         uz: "Parol kamida 6 ta belgidan iborat boʻlishi kerak.",
       });
     }
 
     if (db.users.some((entry) =>entry.email === email)) {
       throw new HttpError(409, {
-        ru: "Пользователь с таким email уже зарегистрирован.",
+        ru: "A user with this email is already registered.",
         uz: "Bunday e-pochta bilan foydalanuvchi roʻyxatdan oʻtgan.",
       });
     }
@@ -576,7 +576,7 @@ export async function createUserByResearcher(
 
     if (role === "teacher" && !profile.childClass) {
       throw new HttpError(400, {
-        ru: "Укажите класс или группу учителя.",
+        ru: "Specify the teacher's class or group.",
         uz: "Oʻqituvchi sinf yoki guruhini koʻrsating.",
       });
     }
@@ -618,7 +618,7 @@ export async function loginUser(input: LoginInput): Promise<CurrentUser>{
     const user = db.users.find((entry) => entry.email === identifier);
     if (!user || !verifyPassword(password, user.passwordHash)) {
       throw new HttpError(401, {
-        ru: "Неверный логин или пароль.",
+        ru: "Invalid login or password.",
         uz: "Login yoki parol notoʻgʻri.",
       });
     }
@@ -641,7 +641,7 @@ export async function completeLessonForUser(
     const user = db.users.find((entry) => entry.id === userId);
     if (!user) {
       throw new HttpError(401, {
-        ru: "Сначала войдите в кабинет.",
+        ru: "First, enter the office.",
         uz: "Avval kabinetga kiring.",
       });
     }
@@ -649,7 +649,7 @@ export async function completeLessonForUser(
     const cleanSlug = sanitizeText(lessonSlug);
     if (!cleanSlug) {
       throw new HttpError(400, {
-        ru: "Не указан урок.",
+        ru: "No lesson specified.",
         uz: "Dars koʻrsatilmagan.",
       });
     }
@@ -697,7 +697,7 @@ export async function openLessonForClass(
     );
     if (!teacher) {
       throw new HttpError(404, {
-        ru: "Учитель не найден.",
+        ru: "The teacher was not found.",
         uz: "Oʻqituvchi topilmadi.",
       });
     }
@@ -705,7 +705,7 @@ export async function openLessonForClass(
     const cleanSlug = sanitizeText(lessonSlug);
     if (!cleanSlug) {
       throw new HttpError(400, {
-        ru: "Не указан урок.",
+        ru: "No lesson specified.",
         uz: "Dars koʻrsatilmagan.",
       });
     }
@@ -723,7 +723,7 @@ export async function closeLessonForClass(teacherId: string): Promise<ClassState
     );
     if (!teacher) {
       throw new HttpError(404, {
-        ru: "Учитель не найден.",
+        ru: "The teacher was not found.",
         uz: "Oʻqituvchi topilmadi.",
       });
     }
@@ -753,13 +753,13 @@ export async function addStudentToClass(
 
     if (!teacher) {
       throw new HttpError(404, {
-        ru: "Учитель не найден.",
+        ru: "The teacher was not found.",
         uz: "Oʻqituvchi topilmadi.",
       });
     }
     if (!name) {
       throw new HttpError(400, {
-        ru: "Введите имя ученика.",
+        ru: "Enter the student's name.",
         uz: "Oʻquvchining ismini kiriting.",
       });
     }
@@ -803,7 +803,7 @@ export async function updateStudentGroup(
     );
     if (!student) {
       throw new HttpError(404, {
-        ru: "Ученик не найден.",
+        ru: "Student not found.",
         uz: "Oʻquvchi topilmadi.",
       });
     }
@@ -846,7 +846,7 @@ export async function logAction(
     const user = db.users.find((entry) => entry.id === userId);
     if (!user) {
       throw new HttpError(401, {
-        ru: "Сначала войдите в кабинет.",
+        ru: "First, enter the office.",
         uz: "Avval kabinetga kiring.",
       });
     }
@@ -854,7 +854,7 @@ export async function logAction(
     const lessonSlug = sanitizeText(event.lessonSlug);
     if (!lessonSlug) {
       throw new HttpError(400, {
-        ru: "Не указан урок.",
+        ru: "No lesson specified.",
         uz: "Dars koʻrsatilmagan.",
       });
     }
@@ -889,13 +889,13 @@ export async function submitQuestionnaire(
     const user = db.users.find((entry) => entry.id === userId);
     if (!user) {
       throw new HttpError(401, {
-        ru: "Сначала войдите в кабинет.",
+        ru: "First, enter the office.",
         uz: "Avval kabinetga kiring.",
       });
     }
     if (type !== "initial" && type !== "final") {
       throw new HttpError(400, {
-        ru: "Некорректный тип анкеты.",
+        ru: "Incorrect form type.",
         uz: "Anketa turi notoʻgʻri.",
       });
     }
@@ -909,7 +909,7 @@ export async function submitQuestionnaire(
 
     if (!cleanAnswers.length) {
       throw new HttpError(400, {
-        ru: "Заполните анкету.",
+        ru: "Fill out the form.",
         uz: "Anketani toʻldiring.",
       });
     }

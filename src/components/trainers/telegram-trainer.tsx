@@ -21,7 +21,7 @@ type Props = {
   onDone: (chosen: { correct: boolean }) => void;
   iconMode?: "emoji" | "svg";
   studentMode?: boolean;
-  /** Если задано, тренажёр открывается сразу в этом шаге (например, "chat") */
+  /* UI Module */
   initialStep?: "list" | "chat";
 };
 
@@ -38,10 +38,10 @@ type OtherChat = { name: string; avatar: string; lastMessage: string; time: stri
 
 const defaultOtherChatsByLocale: Record<Locale, OtherChat[]> = {
   ru: [
-    { name: "Группа «Класс 3А»", avatar: "К", lastMessage: "Алиша: Кто ходил вчера?", time: "13:48", unread: 7 },
-    { name: "Папа", avatar: "П", lastMessage: "Я скоро буду дома", time: "12:21" },
-    { name: "Telegram", avatar: "T", lastMessage: "Новый код входа: 4827", time: "вчера" },
-    { name: "Расписание", avatar: "Р", lastMessage: "Завтра физкультура 4-м уроком", time: "пт" },
+    { name: "Group \"Class 3A\"", avatar: "K", lastMessage: "Alisha: Who went yesterday?", time: "13:48", unread: 7 },
+    { name: "Dad", avatar: "P", lastMessage: "I'll be home soon", time: "12:21" },
+    { name: "Telegram", avatar: "T", lastMessage: "New login code: 4827", time: "yesterday" },
+    { name: "Schedule", avatar: "R", lastMessage: "Tomorrow PE 4th period", time: "pt" },
   ],
   uz: [
     { name: "«3-A sinf» guruhi", avatar: "S", lastMessage: "Alisha: Kim kecha bordi?", time: "13:48", unread: 7 },
@@ -53,26 +53,26 @@ const defaultOtherChatsByLocale: Record<Locale, OtherChat[]> = {
 
 const dict = {
   ru: {
-    backLabel: "Назад",
-    typing: "печатает...",
-    online: "в сети",
-    nowLabel: "сейчас",
-    chooseHint: "Выбери, что ответить:",
-    placeholderEmpty: "Выбери ответ справа",
-    placeholderSent: "Сообщение отправлено",
-    taskTitle: "Ответь на сообщение",
-    instruction: "Открой нужный чат и выбери один спокойный ответ.",
-    question: "Что лучше написать?",
-    statusList: "Открой чат, на котором мигает индикатор.",
-    statusNotChosen: "Ответ еще не выбран.",
-    statusSent: "Ответ отправлен в чат.",
-    hint: "Сначала выбери чат, потом — ответ без грубости и без лишних личных данных.",
-    feedbackCorrect: "Правильно",
-    feedbackSoft: "Давай запомним",
-    next: "Дальше",
-    overlayGood: "Молодец!",
-    overlaySoft: "Подумаем вместе",
-    continue: "Продолжить",
+    backLabel: "Back",
+    typing: "prints...",
+    online: "online",
+    nowLabel: "Now",
+    chooseHint: "Choose what to answer:",
+    placeholderEmpty: "Choose the answer on the right",
+    placeholderSent: "Message sent",
+    taskTitle: "Reply to message",
+    instruction: "Open the desired chat and choose one calm answer.",
+    question: "What is better to write?",
+    statusList: "Open the chat with the indicator blinking.",
+    statusNotChosen: "No answer has been selected yet.",
+    statusSent: "The answer has been sent to the chat.",
+    hint: "First, select a chat, then - a response without rudeness and without unnecessary personal data.",
+    feedbackCorrect: "Right",
+    feedbackSoft: "Let's remember",
+    next: "Next",
+    overlayGood: "Well done!",
+    overlaySoft: "Let's think together",
+    continue: "Continue",
   },
   uz: {
     backLabel: "Orqaga",

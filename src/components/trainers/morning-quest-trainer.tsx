@@ -111,82 +111,82 @@ const dict: Locales<{
   messageOptions: { label: string; sub?: string }[];
 }> = {
   ru: {
-    appTitle: "Утро Алишера",
-    stageCounter: (n) => `Шаг ${n} из ${VISIBLE_STAGES}`,
-    skip: "Не знаю",
-    goNext: "Дальше",
-    finish: "Закончить",
-    taskEyebrow: "Что нужно сделать",
-    questionEyebrow: "Вопрос",
-    hintEyebrow: "Подсказка",
-    hintDefault: "Это диагностика — оценок нет. Можно нажать «Не знаю».",
-    doneTitle: "Спасибо! Диагностика пройдена.",
-    doneHint: "Оценок нет. Учитель посмотрит результаты позже.",
-    alarmStop: "Выключить",
-    alarmSnooze: "Отложить",
-    alarmName: "Подъём в школу",
-    alarmTask: "Будильник звенит. Выключи его, потом ответь на вопрос.",
-    alarmDone: "Будильник выключен. Какое сейчас время?",
-    alarmQuestion: "Сколько сейчас времени?",
+    appTitle: "Morning of Alisher",
+    stageCounter: (n) => `Step${n}from${VISIBLE_STAGES}`,
+    skip: "Don't know",
+    goNext: "Next",
+    finish: "Finish",
+    taskEyebrow: "What to do",
+    questionEyebrow: "Question",
+    hintEyebrow: "Clue",
+    hintDefault: "This is a diagnostic - there are no assessments. You can click \"Don't know\".",
+    doneTitle: "Thank you! Diagnostics completed.",
+    doneHint: "No ratings. The teacher will look at the results later.",
+    alarmStop: "Turn off",
+    alarmSnooze: "Postpone",
+    alarmName: "Getting up to school",
+    alarmTask: "The alarm clock is ringing. Turn it off, then answer the question.",
+    alarmDone: "The alarm is turned off. What time is it now?",
+    alarmQuestion: "What time is it now?",
     alarmOptions: [
-      { label: "07:00 утра", sub: "Утро понедельника" },
-      { label: "19:00 вечера", sub: "Вечер, после ужина" },
-      { label: "17:00 дня", sub: "День, после уроков" },
+      { label: "07:00 am", sub: "Monday morning" },
+      { label: "19:00 dinner", sub: "Evening, after dinner" },
+      { label: "17:00 in the afternoon", sub: "Day, after school" },
     ],
-    weatherTask: "На телефоне — погода на сегодня. Посмотри и реши.",
-    weatherCity: "Ташкент",
-    weatherCondition: "Солнечно, жарко днём",
-    weatherQuestion: "Сегодня жарко или прохладно?",
+    weatherTask: "On the phone - the weather for today. Look and decide.",
+    weatherCity: "Tashkent",
+    weatherCondition: "Sunny, hot during the day",
+    weatherQuestion: "Is it hot or cool today?",
     weatherOptions: [
-      { label: "Прохладно — нужна куртка" },
-      { label: "Жарко — нужна панама" },
+      { label: "It's cold - you need a jacket" },
+      { label: "It's hot - you need a Panama hat" },
     ],
-    shelfTask: "Найди и нажми на зубную пасту.",
-    shelfHint: "Смотри на этикетку: на пасте обычно нарисован зуб или щётка.",
+    shelfTask: "Find and click on the toothpaste.",
+    shelfHint: "Look at the label: the toothpaste usually has a tooth or brush on it.",
     shelfItems: [
-      { name: "Шампунь", target: false },
-      { name: "Зубная паста", target: true },
-      { name: "Крем для рук", target: false },
-      { name: "Дезодорант", target: false },
-      { name: "Гель для душа", target: false },
-      { name: "Мыло", target: false },
+      { name: "Shampoo", target: false },
+      { name: "Toothpaste", target: true },
+      { name: "Hand cream", target: false },
+      { name: "Deodorant", target: false },
+      { name: "Shower gel", target: false },
+      { name: "Soap", target: false },
     ],
-    timerTask: "Поставь таймер на 2 минуты для чистки зубов.",
-    timerHint: "Нажимай «+» у минут, пока не появится «2». Потом «Старт».",
-    timerMin: "минуты",
-    timerSec: "секунды",
-    timerStart: "Старт",
-    timerRunning: "Таймер запущен",
-    calendarTask: "На сегодня в календаре — три урока. Посмотри.",
-    calendarDate: "Сегодня · Понедельник",
+    timerTask: "Set a timer for 2 minutes to brush your teeth.",
+    timerHint: "Press “+” for minutes until “2” appears. Then “Start”.",
+    timerMin: "minutes",
+    timerSec: "seconds",
+    timerStart: "Start",
+    timerRunning: "Timer started",
+    calendarTask: "There are three lessons on the calendar today. Look.",
+    calendarDate: "Today is Monday",
     calendarEvents: [
-      { time: "08:30", subject: "Математика" },
-      { time: "10:10", subject: "Физкультура", highlight: true },
-      { time: "11:50", subject: "Русский язык" },
+      { time: "08:30", subject: "Mathematics" },
+      { time: "10:10", subject: "Physical education", highlight: true },
+      { time: "11:50", subject: "Russian language" },
     ],
-    calendarQuestion: "Какой урок требует особой одежды?",
+    calendarQuestion: "Which lesson requires special clothing?",
     calendarOptions: [
-      { label: "Математика" },
-      { label: "Физкультура" },
-      { label: "Русский язык" },
+      { label: "Mathematics" },
+      { label: "Physical education" },
+      { label: "Russian language" },
     ],
-    wardrobeTask: "Открой шкаф. Возьми то, что нужно для физкультуры.",
-    wardrobeHint: "Для физкультуры нужны футболка и шорты — спортивная форма.",
+    wardrobeTask: "Open the closet. Take what you need for physical education.",
+    wardrobeHint: "For physical education you need a T-shirt and shorts - a sports uniform.",
     wardrobeItems: [
-      { key: "uniform", name: "Школьная форма", correct: false },
-      { key: "sport", name: "Спортивная форма", correct: true },
-      { key: "umbrella", name: "Зонтик", correct: false },
-      { key: "jacket", name: "Куртка", correct: false },
+      { key: "uniform", name: "School uniform", correct: false },
+      { key: "sport", name: "Sportswear", correct: true },
+      { key: "umbrella", name: "Umbrella", correct: false },
+      { key: "jacket", name: "Jacket", correct: false },
     ],
-    messageTask: "От мамы пришло сообщение. Прочитай.",
-    messageFrom: "Мама",
+    messageTask: "A message came from mom. Read it.",
+    messageFrom: "Mother",
     messageTime: "07:12",
-    messageText: "Прими витамин после завтрака.",
-    messageQuestion: "Что ответить маме?",
+    messageText: "Take your vitamin after breakfast.",
+    messageQuestion: "What should I answer my mother?",
     messageOptions: [
-      { label: "Хорошо, мам", sub: "Спокойный ответ" },
-      { label: "Хорошо", sub: "Короткий, но понятный ответ" },
-      { label: "Закрыть, не отвечать", sub: "Не отвечать маме" },
+      { label: "Okay mom", sub: "Calm answer" },
+      { label: "Fine", sub: "Short but clear answer" },
+      { label: "Close, don't reply", sub: "Don't answer mom" },
     ],
   },
   uz: {
@@ -552,7 +552,7 @@ export function MorningQuestTrainer({ onDone }: Props) {
             </span>
             <div className="mq-msg-titles">
               <strong>{t.messageFrom}</strong>
-              <small>в сети · {t.messageTime}</small>
+              <small>online ·{t.messageTime}</small>
             </div>
           </div>
           <div className="mq-msg-bubble">
@@ -728,13 +728,13 @@ export function MorningQuestTrainer({ onDone }: Props) {
 
 function ShelfIcon({ name, target }: { name: string; target: boolean }) {
   let artId: LessonItemArtId = "soap";
-  if (target || name.includes("аста") || name.includes("astasi")) {
+  if (target || name.includes("below") || name.includes("astasi")) {
     artId = "toothpaste";
-  } else if (name.includes("Шампунь") || name.includes("Shampun") || name.includes("Гель") || name.includes("Dush")) {
+  } else if (name.includes("Shampoo") || name.includes("Shampun") || name.includes("Gel") || name.includes("Dush")) {
     artId = "shampoo";
-  } else if (name.includes("Крем") || name.includes("krem") || name.includes("Лосьон")) {
+  } else if (name.includes("Cream") || name.includes("krem") || name.includes("Lotion")) {
     artId = "face-cream";
-  } else if (name.includes("Дезод") || name.includes("Dezod")) {
+  } else if (name.includes("Dezod") || name.includes("Dezod")) {
     artId = "deodorant";
   }
 

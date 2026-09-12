@@ -57,45 +57,45 @@ const dict: Locales<{
   plateTitle: string;
 }> = {
   ru: {
-    appTitle: "Здоровый ужин",
-    stepCounter: (n) => `Часть ${n} из ${STEPS}`,
-    taskEyebrow: "Ужин",
-    questionEyebrow: "Выбери",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    next: "Дальше",
-    doneTitle: "Молодец! Ужин сбалансированный.",
-    doneHint: "Здоровый ужин: горячее + овощной гарнир + полезный напиток.",
-    context: "Собери здоровый ужин: горячее, гарнир и напиток.",
-    plateTitle: "Твой ужин",
+    appTitle: "Healthy dinner",
+    stepCounter: (n) => `Part${n}from${STEPS}`,
+    taskEyebrow: "Dinner",
+    questionEyebrow: "Choose",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    next: "Next",
+    doneTitle: "Well done! Dinner is balanced.",
+    doneHint: "Healthy dinner: hot dish + vegetable side dish + healthy drink.",
+    context: "Pack a healthy dinner: main course, side dish and drink.",
+    plateTitle: "Your dinner",
     slots: {
       hot: {
-        question: "Что на горячее?",
-        hint: "Горячее — это варёное или тушёное, не чипсы.",
-        options: [{ id: "soup", label: "Куриный суп" }, { id: "chips", label: "Чипсы" }, { id: "cake", label: "Торт" }],
+        question: "What's hot?",
+        hint: "Hot food is boiled or stewed, not chips.",
+        options: [{ id: "soup", label: "Chicken soup" }, { id: "chips", label: "Chips" }, { id: "cake", label: "Cake" }],
         correct: "soup",
-        chosenLabel: "Куриный суп",
+        chosenLabel: "Chicken soup",
       },
       side: {
-        question: "Какой гарнир?",
-        hint: "Полезный гарнir — овощи или каша.",
-        options: [{ id: "veg", label: "Овощи" }, { id: "candy", label: "Конфеты" }, { id: "soda-cake", label: "Пирожное" }],
+        question: "What side dish?",
+        hint: "A healthy side dish is vegetables or porridge.",
+        options: [{ id: "veg", label: "Vegetables" }, { id: "candy", label: "Candies" }, { id: "soda-cake", label: "Cake" }],
         correct: "veg",
-        chosenLabel: "Овощи",
+        chosenLabel: "Vegetables",
       },
       drink: {
-        question: "Какой напиток?",
-        hint: "Полезный напиток — вода или компот, не газировка.",
-        options: [{ id: "compote", label: "Компот" }, { id: "soda", label: "Газировка" }, { id: "energy", label: "Энергетик" }],
+        question: "What drink?",
+        hint: "A healthy drink is water or compote, not soda.",
+        options: [{ id: "compote", label: "Compote" }, { id: "soda", label: "Soda" }, { id: "energy", label: "Energetic" }],
         correct: "compote",
-        chosenLabel: "Компот",
+        chosenLabel: "Compote",
       },
     },
-    feedbackGood: "Верно! Полезный выбор.",
-    feedbackSoft: "Это не для здорового ужина. Выбери полезное.",
+    feedbackGood: "Right! A useful choice.",
+    feedbackSoft: "This is not for a healthy dinner. Choose what is useful.",
   },
   uz: {
     appTitle: "Sogʻlom kechki ovqat",
@@ -163,7 +163,7 @@ export function MenuBuilderTrainer({ trainer, onDone }: Props) {
       <div className="menu-slots">
         {(["hot", "side", "drink"] as Slot[]).map((slot) => (
           <div key={slot} className={`menu-slot${chosen[slot] ? " menu-slot--filled" : ""}${stage === slot ? " menu-slot--active" : ""}`}>
-            <span className="menu-slot-label">{slot === "hot" ? "Горячее" : slot === "side" ? "Гарнир" : "Напиток"}</span>
+            <span className="menu-slot-label">{slot === "hot" ? "Hot" : slot === "side" ? "Garnish" : "Drink"}</span>
             {chosen[slot] ? (
               <span className="menu-slot-choice">
                 <LessonItemArt id={chosen[slot].art} size={30} />

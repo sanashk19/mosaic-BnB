@@ -45,49 +45,49 @@ const dict: Locales<{
   cases: Record<Trip, { context: string; question: string; hint: string; feedbackGood: string; feedbackSoft: string; distance: string }>;
 }> = {
   ru: {
-    appTitle: "Виды транспорта",
-    stepCounter: (n) => `Поездка ${n} из ${STEPS}`,
-    taskEyebrow: "Куда едем",
-    questionEyebrow: "Какой транспорт подойдёт",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    next: "Следующая поездка",
-    doneTitle: "Молодец! Ты подобрал транспорт к каждой поездке.",
-    doneHint: "Близко — пешком; в городе — автобус; далеко — поезд или самолёт.",
+    appTitle: "Types of transport",
+    stepCounter: (n) => `Trip${n}from${STEPS}`,
+    taskEyebrow: "Where are we going?",
+    questionEyebrow: "What transport is suitable",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    next: "Next trip",
+    doneTitle: "Well done! You have selected transport for each trip.",
+    doneHint: "Close - on foot; in the city - bus; far away - train or plane.",
     transports: {
-      walk: { name: "Пешком", sub: "ничего не стоит, полезно" },
-      bus: { name: "Автобус", sub: "по городу, недорого" },
-      train: { name: "Поезд", sub: "между городами" },
-      plane: { name: "Самолёт", sub: "очень далеко, быстро" },
-      taxi: { name: "Такси", sub: "быстро, но дорого" },
+      walk: { name: "On foot", sub: "costs nothing, useful" },
+      bus: { name: "Bus", sub: "around the city, inexpensive" },
+      train: { name: "Train", sub: "between cities" },
+      plane: { name: "airplane", sub: "very far, fast" },
+      taxi: { name: "Taxi", sub: "fast but expensive" },
     },
     cases: {
       near: {
-        context: "Магазин в соседнем доме, до него 200 метров.",
-        question: "Как добраться до магазина рядом?",
-        hint: "Если очень близко — лучше пешком, не нужно платить.",
-        feedbackGood: "Верно. До магазина рядом — пешком быстрее и полезнее.",
-        feedbackSoft: "Это слишком для 200 метров. Достаточно пешком.",
-        distance: "200 м",
+        context: "The store is in the next house, 200 meters away.",
+        question: "How to get to the store nearby?",
+        hint: "If it’s very close, it’s better to walk, you don’t have to pay.",
+        feedbackGood: "Right. The store is nearby - walking is faster and more useful.",
+        feedbackSoft: "This is too much for 200 meters. Walking is enough.",
+        distance: "200 m",
       },
       city: {
-        context: "Поликлиника в другом районе города, 5 км.",
-        question: "Как доехать до поликлиники в городе?",
-        hint: "По городу удобно автобусом или маршруткой — есть остановка.",
-        feedbackGood: "Верно. По городу — автобус или маршрутка.",
-        feedbackSoft: "Это не лучший вариант для города. Лучше автобус.",
-        distance: "5 км",
+        context: "Clinic in another area of the city, 5 km.",
+        question: "How to get to the clinic in the city?",
+        hint: "It is convenient to get around the city by bus or minibus - there is a stop.",
+        feedbackGood: "Right. Around the city - bus or minibus.",
+        feedbackSoft: "This is not the best option for the city. Better than the bus.",
+        distance: "5 km",
       },
       country: {
-        context: "Бабушка живёт в Москве, 3000 км от Ташкента.",
-        question: "Как доехать до бабушки в Москве?",
-        hint: "За 3000 км пешком и на автобусе долго. Лучше самолёт — за 4 часа.",
-        feedbackGood: "Верно. На большие расстояния — самолёт.",
-        feedbackSoft: "Так очень долго. До Москвы лучше самолётом.",
-        distance: "3000 км",
+        context: "Grandmother lives in Moscow, 3000 km from Tashkent.",
+        question: "How to get to grandma's in Moscow?",
+        hint: "It's a long 3000 km walk and a long bus ride. Better than a plane - in 4 hours.",
+        feedbackGood: "Right. For long distances - an airplane.",
+        feedbackSoft: "So for a very long time. It’s better to get to Moscow by plane.",
+        distance: "3000 km",
       },
     },
   },
@@ -202,7 +202,7 @@ export function TransportTypesTrainer({ trainer, onDone }: Props) {
       <div className="transport-map">
         <div className="transport-pin transport-pin--from" aria-hidden="true">
           <CabinetIcon name="home" />
-          <small>дом</small>
+          <small>house</small>
         </div>
         <div className="transport-route" aria-hidden="true">
           <span>{c.distance}</span>
@@ -290,7 +290,7 @@ export function TransportTypesTrainer({ trainer, onDone }: Props) {
             <div className="mq-panel-question">
               <span className="mq-eyebrow">{t.questionEyebrow}</span>
               <h3>{c.question}</h3>
-              <p className="outfit-pick-summary">Расстояние: <strong>{c.distance}</strong></p>
+              <p className="outfit-pick-summary">Distance:<strong>{c.distance}</strong></p>
             </div>
           ) : null}
 

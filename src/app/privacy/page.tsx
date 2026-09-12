@@ -7,7 +7,7 @@ const dict = {
     paragraphs: [
       [
         "1. General provisions.",
-        "This policy describes how the test educational platform uquvli.uz collects, uses, stores and deletes user data when registering, logging into the account, taking lessons and using the interface.",
+        "This policy describes how the test educational platform mosaic-learning.org collects, uses, stores and deletes user data when registering, logging into the account, taking lessons and using the interface.",
       ],
       [
         "2. User consent.",
@@ -43,7 +43,7 @@ const dict = {
       ],
       [
         "10. Communication on data issues.",
-        "To contact us regarding privacy issues, deleting a profile or revoking consent, you can use the address support@uquvli.uz.",
+        "To contact us regarding privacy issues, deleting a profile or revoking consent, you can use the address support@mosaic-learning.org.",
       ],
     ],
   },
@@ -53,11 +53,11 @@ const dict = {
     paragraphs: [
       [
         "1. Umumiy qoidalar.",
-        " Ushbu siyosat uquvli.uz sinov taʼlim platformasi roʻyxatdan oʻtish, kabinetga kirish, darslarni oʻtish va interfeysdan foydalanish chogʻida foydalanuvchi maʼlumotlarini qanday yigʻishi, ishlatishi, saqlashi va oʻchirishini tavsiflaydi.",
+        "Ushbu siyosat mosaic-learning.org sinov taʼlim platformasi roʻyxatdan oʻtish, kabinetga kirish, darslarni oʻtish va interfeysdan foydalanish chogʻida foydalanuvchi maʼlumotlarini qanday yigʻishi, ishlatishi, saqlashi va oʻchirishini tavsiflaydi.",
       ],
       [
         "2. Foydalanuvchining roziligi.",
-        " Kabinet yaratish, shakllarni toʻldirish, platformadan foydalanishni davom ettirish yoki bola maʼlumotlarini berish orqali foydalanuvchi ushbu siyosat bilan tanishganini va sinov platformasining ishlashi, tekshirilishi, sozlanishi va yaxshilanishi uchun zarur boʻlgan hajmda maʼlumotlarni qayta ishlashga roziligini tasdiqlaydi.",
+        "Kabinet yaratish, shakllarni toʻldirish, platformadan foydalanishni davom ettirish yoki bola maʼlumotlarini berish orqali foydalanuvchi ushbu siyosat bilan tanishganini va sinov platformasining ishlashi, tekshirilishi, sozlanishi va yaxshilanishi uchun zarur boʻlgan hajmda maʼlumotlarni qayta ishlashga roziligini tasdiqlaydi.",
       ],
       [
         "3. Qaysi maʼlumotlar qayta ishlanishi mumkin.",
@@ -65,31 +65,31 @@ const dict = {
       ],
       [
         "4. Qayta ishlash maqsadlari.",
-        " Maʼlumotlardan roʻyxatdan oʻtish va kirish, oʻquv yutuqlarini saqlash, materialni shaxsiylashtirish, foydalanuvchilarni qoʻllab-quvvatlash, xatoliklarni tuzatish, interfeys sifatini tekshirish va sinov platformasining ishlashini tahlil qilish uchun foydalaniladi. Shaxsi aniqlanmaydigan va umumlashtirilgan natijalar darslar mazmuni, tuzilmasi va xizmat funksiyalarini yaxshilash uchun ishlatilishi mumkin.",
+        "Maʼlumotlardan roʻyxatdan oʻtish va kirish, oʻquv yutuqlarini saqlash, materialni shaxsiylashtirish, foydalanuvchilarni qoʻllab-quvvatlash, xatoliklarni tuzatish, interfeys sifatini tekshirish va sinov platformasining ishlashini tahlil qilish uchun foydalaniladi. Shaxsi aniqlanmaydigan va umumlashtirilgan natijalar darslar mazmuni, tuzilmasi va xizmat funksiyalarini yaxshilash uchun ishlatilishi mumkin.",
       ],
       [
         "5. Hozirgi saqlash usuli.",
-        " Platformaning hozirgi versiyasida roʻyxatdan oʻtish maʼlumotlari, sinflar tarkibi, yutuqlar, darslar hodisalari va anketalar platforma serverida saqlanadi. Texnik jihatdan zarur cookie fayllar kirish sessiyasi uchun, localStorage esa interfeysning ayrim sozlamalari va cookie banner orqali tanlangan qaror uchun ishlatiladi.",
+        "Platformaning hozirgi versiyasida roʻyxatdan oʻtish maʼlumotlari, sinflar tarkibi, yutuqlar, darslar hodisalari va anketalar platforma serverida saqlanadi. Texnik jihatdan zarur cookie fayllar kirish sessiyasi uchun, localStorage esa interfeysning ayrim sozlamalari va cookie banner orqali tanlangan qaror uchun ishlatiladi.",
       ],
       [
         "6. Maʼlumotlarni uzatish.",
-        " Platforma shaxsiy maʼlumotlarni sotish yoki ommaviy oshkor qilish uchun moʻljallanmagan. Maʼlumotlarga kirish faqat texnik yordam koʻrsatish, qonun talablarini bajarish, platforma va foydalanuvchi huquqlarini himoya qilish yoki alohida rozilik mavjud boʻlgan hollardagina, zarur hajmda taqdim etilishi mumkin.",
+        "Platforma shaxsiy maʼlumotlarni sotish yoki ommaviy oshkor qilish uchun moʻljallanmagan. Maʼlumotlarga kirish faqat texnik yordam koʻrsatish, qonun talablarini bajarish, platforma va foydalanuvchi huquqlarini himoya qilish yoki alohida rozilik mavjud boʻlgan hollardagina, zarur hajmda taqdim etilishi mumkin.",
       ],
       [
         "7. Bola maʼlumotlari.",
-        " Platformaga bolaning maʼlumotlari kiritilsa, foydalanuvchi ota-ona, qonuniy vakil yoki bunday maʼlumotlarni berish va ularni bola manfaati yoʻlida qayta ishlashga rozilik berishga vakolatli boshqa shaxs sifatida ish koʻrayotganini tasdiqlaydi.",
+        "Platformaga bolaning maʼlumotlari kiritilsa, foydalanuvchi ota-ona, qonuniy vakil yoki bunday maʼlumotlarni berish va ularni bola manfaati yoʻlida qayta ishlashga rozilik berishga vakolatli boshqa shaxs sifatida ish koʻrayotganini tasdiqlaydi.",
       ],
       [
         "8. Saqlash muddati.",
-        " Maʼlumotlar kabinet ishi, natijalarni saqlash va sinov maqsadlari uchun zarur boʻlgan muddatga, yoki foydalanuvchi lokal maʼlumotlarni oʻchirgunicha, rozilikni qaytarib olgunicha yoki platformadan foydalanishni toʻxtatgunicha saqlanadi.",
+        "Maʼlumotlar kabinet ishi, natijalarni saqlash va sinov maqsadlari uchun zarur boʻlgan muddatga, yoki foydalanuvchi lokal maʼlumotlarni oʻchirgunicha, rozilikni qaytarib olgunicha yoki platformadan foydalanishni toʻxtatgunicha saqlanadi.",
       ],
       [
         "9. Foydalanuvchining huquqlari.",
-        " Foydalanuvchi maʼlumotlarni qayta ishlash haqida maʼlumot olishni, maʼlumotlarni aniqlashtirishni yoki oʻchirishni, rozilikni qaytarib olishni, sinovdan chiqishni va platformadan foydalanishni toʻxtatishni talab qilish huquqiga ega.",
+        "Foydalanuvchi maʼlumotlarni qayta ishlash haqida maʼlumot olishni, maʼlumotlarni aniqlashtirishni yoki oʻchirishni, rozilikni qaytarib olishni, sinovdan chiqishni va platformadan foydalanishni toʻxtatishni talab qilish huquqiga ega.",
       ],
       [
         "10. Maʼlumotlar boʻyicha aloqa.",
-        " Maxfiylik masalalari, profilni oʻchirish yoki rozilikni qaytarib olish boʻyicha murojaatlar uchun support@uquvli.uz manzilidan foydalanish mumkin.",
+        " Maxfiylik masalalari, profilni oʻchirish yoki rozilikni qaytarib olish boʻyicha murojaatlar uchun support@mosaic-learning.org manzilidan foydalanish mumkin.",
       ],
     ],
   },

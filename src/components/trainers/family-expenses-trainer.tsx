@@ -28,22 +28,22 @@ const CATEGORY_ART: Record<Category, LessonItemArtId> = {
 
 const ROUNDS: Record<Exclude<Stage, "done">, Purchase[]> = {
   round1: [
-    { id: "bread", name: "Хлеб", price: 5_000, category: "food", art: "recipe-bread-realistic" },
-    { id: "milk", name: "Молоко", price: 12_000, category: "food", art: "expense-grocery-realistic" },
-    { id: "bus", name: "Билет на автобус", price: 1_700, category: "transport", art: "bus" },
-    { id: "movie", name: "Билет в кино", price: 25_000, category: "fun", art: "expense-entertainment-realistic" },
+    { id: "bread", name: "Bread", price: 5_000, category: "food", art: "recipe-bread-realistic" },
+    { id: "milk", name: "Milk", price: 12_000, category: "food", art: "expense-grocery-realistic" },
+    { id: "bus", name: "Bus ticket", price: 1_700, category: "transport", art: "bus" },
+    { id: "movie", name: "Cinema ticket", price: 25_000, category: "fun", art: "expense-entertainment-realistic" },
   ],
   round2: [
-    { id: "water", name: "Счёт за воду", price: 35_000, category: "utilities", art: "expense-utility-realistic" },
-    { id: "taxi", name: "Такси", price: 18_000, category: "transport", art: "taxi" },
-    { id: "apple", name: "Яблоки", price: 22_000, category: "food", art: "expense-grocery-realistic" },
-    { id: "icecream", name: "Мороженое", price: 8_000, category: "fun", art: "menu-cake-realistic" },
+    { id: "water", name: "Water bill", price: 35_000, category: "utilities", art: "expense-utility-realistic" },
+    { id: "taxi", name: "Taxi", price: 18_000, category: "transport", art: "taxi" },
+    { id: "apple", name: "Apples", price: 22_000, category: "food", art: "expense-grocery-realistic" },
+    { id: "icecream", name: "Ice cream", price: 8_000, category: "fun", art: "menu-cake-realistic" },
   ],
   round3: [
-    { id: "gas", name: "Счёт за газ", price: 40_000, category: "utilities", art: "expense-utility-realistic" },
-    { id: "fish", name: "Рыба", price: 55_000, category: "food", art: "cutlets" },
-    { id: "metro", name: "Метро", price: 1_700, category: "transport", art: "expense-transit-realistic" },
-    { id: "concert", name: "Билет на концерт", price: 80_000, category: "fun", art: "entertainment-ticket" },
+    { id: "gas", name: "Gas bill", price: 40_000, category: "utilities", art: "expense-utility-realistic" },
+    { id: "fish", name: "Fish", price: 55_000, category: "food", art: "cutlets" },
+    { id: "metro", name: "Metro", price: 1_700, category: "transport", art: "expense-transit-realistic" },
+    { id: "concert", name: "Concert ticket", price: 80_000, category: "fun", art: "entertainment-ticket" },
   ],
 };
 
@@ -68,28 +68,28 @@ const dict: Locales<{
   feedbackSoft: string;
 }> = {
   ru: {
-    appTitle: "Расходы семьи",
-    stepCounter: (round, n, total) => `Раунд ${round}: ${n}/${total}`,
-    taskEyebrow: "Покупка",
-    questionEyebrow: "Категория",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    next: "Следующая покупка",
-    doneTitle: "Молодец! Ты распределил все покупки.",
-    doneHint: "Так можно вести таблицу семейных расходов на телефоне.",
+    appTitle: "Family expenses",
+    stepCounter: (round, n, total) => `Round${round}: ${n}/${total}`,
+    taskEyebrow: "Purchase",
+    questionEyebrow: "Category",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    next: "Next purchase",
+    doneTitle: "Well done! You distributed all the purchases.",
+    doneHint: "This way you can keep a table of family expenses on your phone.",
     categories: {
-      food: { name: "Еда" },
-      transport: { name: "Транспорт" },
-      utilities: { name: "Коммуналка" },
-      fun: { name: "Развлечения" },
+      food: { name: "Food" },
+      transport: { name: "Transport" },
+      utilities: { name: "Communal" },
+      fun: { name: "Entertainment" },
     },
-    question: "Куда отнести эту покупку?",
-    hint: "Подумай: это еда, поездка, счёт за квартиру или развлечение?",
-    feedbackGood: "Верно! Это правильная категория.",
-    feedbackSoft: "Это другая категория. Подумай ещё раз.",
+    question: "Where should I take this purchase?",
+    hint: "Think about it: is it food, a trip, an apartment bill or entertainment?",
+    feedbackGood: "Right! This is the correct category.",
+    feedbackSoft: "This is a different category. Think again.",
   },
   uz: {
     appTitle: "Oila xarajatlari",
@@ -120,7 +120,7 @@ const dict: Locales<{
 const CATS: Category[] = ["food", "transport", "utilities", "fun"];
 
 function fmt(n: number): string {
-  return n.toLocaleString("ru-RU") + " сум";
+  return n.toLocaleString("ru-RU") + "am";
 }
 
 export function FamilyExpensesTrainer({ trainer, onDone }: Props) {
@@ -193,7 +193,7 @@ export function FamilyExpensesTrainer({ trainer, onDone }: Props) {
             >
               <ExpenseCategoryArt category={c} size={48} className="expenses-cat-art" />
               <strong>{t.categories[c].name}</strong>
-              <small>{filled > 0 ? `${filled} покупок` : "пусто"}</small>
+              <small>{filled > 0 ? `${filled}shopping` : "empty"}</small>
             </div>
           );
         })}

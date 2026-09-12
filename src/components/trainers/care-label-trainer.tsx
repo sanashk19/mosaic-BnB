@@ -44,47 +44,47 @@ const dict: Locales<{
   cases: Record<Fabric, { item: string; description: string; hint: string; feedbackGood: string; feedbackSoft: string; symbolNumber: string }>;
 }> = {
   ru: {
-    appTitle: "Ярлык одежды",
-    stepCounter: (n) => `Ярлык ${n} из ${STEPS}`,
-    taskEyebrow: "Одежда",
-    questionEyebrow: "Какой режим",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    next: "Следующий ярлык",
-    retry: "Попробовать снова",
-    doneTitle: "Молодец! Ты умеешь читать ярлыки.",
-    doneHint: "Шёлк — руками 30°; хлопок — машинка 40°; шерсть — машинка 30°.",
+    appTitle: "Clothes label",
+    stepCounter: (n) => `Shortcut${n}from${STEPS}`,
+    taskEyebrow: "Cloth",
+    questionEyebrow: "What mode",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    next: "Next shortcut",
+    retry: "Try again",
+    doneTitle: "Well done! You can read labels.",
+    doneHint: "Silk - hands 30°; cotton - machine 40°; wool - machine 30°.",
     modes: {
-      "hand-30": { name: "Руками 30°", sub: "ладонь в тазу — деликатно" },
-      "machine-30": { name: "Машинка 30°", sub: "деликатный режим" },
-      "machine-40": { name: "Машинка 40°", sub: "обычная стирка" },
-      "machine-60": { name: "Машинка 60°", sub: "горячая, для белого хлопка" },
+      "hand-30": { name: "Hands 30°", sub: "palm in the pelvis - delicately" },
+      "machine-30": { name: "Machine 30°", sub: "delicate mode" },
+      "machine-40": { name: "Machine 40°", sub: "normal wash" },
+      "machine-60": { name: "Machine 60°", sub: "hot, for white cotton" },
     },
     cases: {
       silk: {
-        item: "Шёлковая блузка",
-        description: "На ярлыке: ладонь в тазу + цифра 30. Машинка перечёркнута.",
-        hint: "Шёлк нельзя в машинке. Только руками 30°.",
-        feedbackGood: "Верно. Шёлк — только руками в холодной воде.",
-        feedbackSoft: "Шёлк в машинке порвётся. Только руками 30°.",
+        item: "Silk blouse",
+        description: "On the label: palm in the basin + number 30. The typewriter is crossed out.",
+        hint: "Silk is not allowed in the machine. Hands only 30°.",
+        feedbackGood: "Right. Silk - only with your hands in cold water.",
+        feedbackSoft: "The silk in the machine will tear. Hands only 30°.",
         symbolNumber: "30",
       },
       cotton: {
-        item: "Хлопковая рубашка",
-        description: "На ярлыке: тазик с водой + цифра 40. Машинка разрешена.",
-        hint: "Хлопок — обычная стирка в машинке при 40°.",
-        feedbackGood: "Верно. Хлопок стирают машинкой при 40°.",
-        feedbackSoft: "Это не подходит. Для хлопка — машинка 40°.",
+        item: "Cotton shirt",
+        description: "On the label: a bowl of water + the number 40. The machine is allowed.",
+        hint: "Cotton - regular machine wash at 40°.",
+        feedbackGood: "Right. Cotton is machine washed at 40°.",
+        feedbackSoft: "This doesn't fit. For cotton - machine 40°.",
         symbolNumber: "40",
       },
       wool: {
-        item: "Шерстяной свитер",
-        description: "На ярлыке: тазик + цифра 30 + значок «деликатно».",
-        hint: "Шерсть — машинка на режиме «деликатный» при 30°.",
-        feedbackGood: "Верно. Шерсть — деликатный режим 30°.",
-        feedbackSoft: "Шерсть от такой температуры сядет. Нужно 30° деликатно.",
+        item: "Wool sweater",
+        description: "On the label: basin + number 30 + “delicate” icon.",
+        hint: "Wool - machine on “delicate” mode at 30°.",
+        feedbackGood: "Right. Wool - delicate mode 30°.",
+        feedbackSoft: "The fur will shrink at this temperature. You need 30° delicately.",
         symbolNumber: "30",
       },
     },
@@ -194,7 +194,7 @@ export function CareLabelTrainer({ trainer, onDone }: Props) {
           <CareSymbol kind="dry" fabric={stage as Fabric} />
           <CareSymbol kind="iron" fabric={stage as Fabric} />
         </div>
-        <small className="care-label-caption">Значки на ярлыке одежды</small>
+        <small className="care-label-caption">Badges on a clothing label</small>
       </div>
     </div>
   );
@@ -258,7 +258,7 @@ export function CareLabelTrainer({ trainer, onDone }: Props) {
           {sit && !feedback ? (
             <div className="mq-panel-question">
               <span className="mq-eyebrow">{t.questionEyebrow}</span>
-              <h3>Как стирать?</h3>
+              <h3>How to wash?</h3>
               <div className="mq-panel-options">
                 {MODES.map((m, i) => (
                   <button
@@ -328,7 +328,7 @@ function CareSymbol({ kind, fabric, number }: { kind: "basin" | "bleach" | "dry"
             <path d="M14 22 L14 12 L18 12 L18 14 L22 14 L22 16 L26 16 L26 22" fill="none" stroke="#0f172a" strokeWidth="2" strokeLinejoin="round" />
             <text x="20" y="32" textAnchor="middle" fontSize="9" fontWeight="700" fill="#0f172a">30</text>
           </svg>
-          <small>руками</small>
+          <small>hands</small>
         </div>
       );
     }
@@ -339,7 +339,7 @@ function CareSymbol({ kind, fabric, number }: { kind: "basin" | "bleach" | "dry"
           <path d="M8 20 Q20 24 32 20" stroke="#0284c7" strokeWidth="2" fill="none" />
           <text x="20" y="32" textAnchor="middle" fontSize="11" fontWeight="700" fill="#0f172a">{number ?? "30"}</text>
         </svg>
-        <small>стирка</small>
+        <small>washing</small>
       </div>
     );
   }
@@ -351,7 +351,7 @@ function CareSymbol({ kind, fabric, number }: { kind: "basin" | "bleach" | "dry"
           <path d="M20 6 L34 32 L6 32 Z" fill="none" stroke="#0f172a" strokeWidth="2" strokeLinejoin="round" />
           <line x1="6" y1="6" x2="34" y2="34" stroke="#dc2626" strokeWidth="2.5" strokeLinecap="round" />
         </svg>
-        <small>не отбеливать</small>
+        <small>Do not bleach</small>
       </div>
     );
   }
@@ -364,7 +364,7 @@ function CareSymbol({ kind, fabric, number }: { kind: "basin" | "bleach" | "dry"
           <circle cx="20" cy="22" r="1.5" fill="#0f172a" />
           {fabric === "silk" ? <line x1="6" y1="6" x2="34" y2="34" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" /> : null}
         </svg>
-        <small>{fabric === "silk" ? "не сушить в машине" : "сушка"}</small>
+        <small>{fabric === "silk" ? "do not tumble dry" : "drying"}</small>
       </div>
     );
   }
@@ -382,7 +382,7 @@ function CareSymbol({ kind, fabric, number }: { kind: "basin" | "bleach" | "dry"
           </>
         ) : null}
       </svg>
-      <small>{fabric === "silk" ? "слабый утюг" : fabric === "wool" ? "тёплый утюг" : "горячий утюг"}</small>
+      <small>{fabric === "silk" ? "weak iron" : fabric === "wool" ? "warm iron" : "hot iron"}</small>
     </div>
   );
   void banned;

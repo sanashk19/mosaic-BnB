@@ -20,9 +20,9 @@ const FLOW: Stage[] = ["small", "medium", "large", "done"];
 const STEPS = 3;
 
 const CASES: Record<CaseKey, { load: string; weight: string; correct: string; options: string[] }> = {
-  small: { load: "Пара футболок", weight: "1 кг", correct: "½", options: ["½", "1", "2", "3"] },
-  medium: { load: "Постельное бельё", weight: "4 кг", correct: "1", options: ["½", "1", "2", "3"] },
-  large: { load: "Большая стирка", weight: "8 кг", correct: "2", options: ["½", "1", "2", "3"] },
+  small: { load: "A couple of T-shirts", weight: "1 kg", correct: "½", options: ["½", "1", "2", "3"] },
+  medium: { load: "Bed sheets", weight: "4 kg", correct: "1", options: ["½", "1", "2", "3"] },
+  large: { load: "Big wash", weight: "8 kg", correct: "2", options: ["½", "1", "2", "3"] },
 };
 
 type Locales<T> = Record<Locale, T>;
@@ -49,30 +49,30 @@ const dict: Locales<{
   context: (load: string, weight: string) => string;
 }> = {
   ru: {
-    appTitle: "Дозировка порошка",
-    stepCounter: (n) => `Стирка ${n} из ${STEPS}`,
-    taskEyebrow: "Загрузка",
-    questionEyebrow: "Сколько порошка",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    next: "Следующая стирка",
-    doneTitle: "Молодец! Дозировка всегда по весу белья.",
-    doneHint: "1 кг — ½ колпачка, 4 кг — 1 колпачок, 8 кг — 2 колпачка.",
-    tableTitle: "Таблица на бутылке",
+    appTitle: "Powder dosage",
+    stepCounter: (n) => `Washing${n}from${STEPS}`,
+    taskEyebrow: "Loading",
+    questionEyebrow: "How much powder",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    next: "Next wash",
+    doneTitle: "Well done! The dosage is always based on the weight of the laundry.",
+    doneHint: "1 kg - ½ cap, 4 kg - 1 cap, 8 kg - 2 caps.",
+    tableTitle: "Table on the bottle",
     rows: [
-      { w: "1–2 кг", cap: "½ колпачка" },
-      { w: "3–5 кг", cap: "1 колпачок" },
-      { w: "6–9 кг", cap: "2 колпачка" },
+      { w: "1–2 kg", cap: "½ cap" },
+      { w: "3–5 kg", cap: "1 cap" },
+      { w: "6–9 kg", cap: "2 caps" },
     ],
-    capWord: (n) => `${n} колпачка`,
-    question: (load, weight) => `${load} (${weight}). Сколько колпачков?`,
-    hint: "Найди в таблице строку с нужным весом и посмотри мерку.",
-    feedbackGood: (cap) => `Верно. ${cap} колпачка — точно по весу.`,
-    feedbackSoft: "Это не по таблице. Слишком много или мало порошка.",
-    context: (load, weight) => `${load} — вес примерно ${weight}.`,
+    capWord: (n) => `${n}cap`,
+    question: (load, weight) => `${load} (${weight}). How many caps?`,
+    hint: "Find the line with the required weight in the table and look at the measurement.",
+    feedbackGood: (cap) => `That's right.${cap}cap - exactly by weight.`,
+    feedbackSoft: "This is not according to the table. Too much or not enough powder.",
+    context: (load, weight) => `${load}- weight approximately${weight}.`,
   },
   uz: {
     appTitle: "Kukun dozasi",

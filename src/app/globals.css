@@ -566,23 +566,10 @@ svg {
   z-index: 1;
   margin-top: auto;
   overflow: hidden;
-  padding: 38px 24px 20px;
-  background:
-    radial-gradient(circle at 82% 10%, rgba(13, 80, 207, 0.24), transparent 32%),
-    linear-gradient(135deg, #071a35 0%, #0b2447 100%);
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.site-footer::before {
-  content: "";
-  position: absolute;
-  right: -90px;
-  bottom: -110px;
-  width: 420px;
-  height: 420px;
-  background: rgba(255, 255, 255, 0.09);
-  -webkit-mask: url("/uzbek-patterns/geometric-corner-multiplied.svg") center / contain no-repeat;
-  mask: url("/uzbek-patterns/geometric-corner-multiplied.svg") center / contain no-repeat;
+  padding: 48px 24px 24px;
+  background: var(--mosaic-bg, #F9F6F1);
+  border-top: 1px solid var(--mosaic-border, #E5E2DC);
+  color: var(--mosaic-text, #59635E);
 }
 
 .footer-grid,
@@ -596,9 +583,9 @@ svg {
 .footer-grid {
   display: grid;
   grid-template-columns: minmax(260px, 1.3fr) repeat(3, minmax(150px, 0.7fr));
-  gap: 30px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--mosaic-border, #E5E2DC);
 }
 
 .footer-emblem {
@@ -608,15 +595,18 @@ svg {
 }
 
 .footer-title {
-  color: #ffffff;
-  font-size: 0.9rem;
-  font-weight: 900;
+  color: var(--mosaic-ink, #22352E);
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .footer-copy {
   max-width: 360px;
   margin-top: 10px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--mosaic-text, #59635E);
+  font-size: 0.9rem;
   line-height: 1.65;
 }
 
@@ -628,12 +618,14 @@ svg {
 
 .footer-links a,
 .footer-links span {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--mosaic-text, #59635E);
   font-size: 0.88rem;
+  transition: color 140ms ease;
 }
 
 .footer-links a:hover {
-  color: #ffffff;
+  color: var(--mosaic-green, #506847);
+  text-decoration: underline;
 }
 
 .footer-socials {
@@ -642,25 +634,28 @@ svg {
   margin-top: 18px;
 }
 
+.footer-socials a,
 .footer-socials span {
   display: grid;
   width: 36px;
   height: 36px;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.09);
-  color: #ffffff;
+  border: 1px solid var(--mosaic-border, #E5E2DC);
+  border-radius: 8px;
+  background: var(--mosaic-surface, #FCFCFB);
+  color: var(--mosaic-ink, #22352E);
   transition:
     background 160ms ease,
     border-color 160ms ease,
     transform 160ms ease;
 }
 
+.footer-socials a:hover,
 .footer-socials span:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.24);
-  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--mosaic-green, #506847);
+  background: var(--mosaic-mint, #EDF2E9);
+  color: var(--mosaic-green-dark, #344934);
 }
 
 .footer-socials svg {
@@ -673,12 +668,14 @@ svg {
   flex-wrap: wrap;
   gap: 14px;
   justify-content: space-between;
-  padding-top: 18px;
-  color: rgba(255, 255, 255, 0.56);
+  padding-top: 20px;
+  color: var(--mosaic-muted, #707877);
+  font-size: 0.86rem;
 }
 
 .footer-bottom a {
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--mosaic-green, #506847);
+  font-weight: 600;
 }
 
 .cookie-banner {
@@ -5512,10 +5509,10 @@ svg {
 .lms-progress-track,
 .progress-track,
 .student-progress-line {
-  height: 9px;
+  height: 8px;
   overflow: hidden;
   border-radius: 999px;
-  background: rgba(13, 80, 207, 0.1);
+  background: var(--mosaic-border-soft, #EBE8E1);
 }
 
 .lms-progress-track span,
@@ -5524,7 +5521,7 @@ svg {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--blue), var(--green));
+  background: var(--mosaic-green, #506847);
 }
 
 .student-stars-grid {
@@ -6045,25 +6042,29 @@ svg {
 
 .lesson-panel {
   display: grid;
-  gap: 14px;
+  gap: 16px;
   min-width: 0;
   max-width: 100%;
-  padding: 18px;
-  border: 1px solid rgba(16, 33, 59, 0.08);
-  border-radius: 10px;
-  background: #ffffff;
-  box-shadow: var(--shadow-soft);
+  padding: 24px;
+  border: 1px solid var(--mosaic-border, #E5E2DC);
+  border-radius: 12px;
+  background: var(--mosaic-surface, #FCFCFB);
+  box-shadow: 0 2px 8px rgba(34, 53, 46, 0.04);
 }
 
 .lesson-step-heading {
+  font-family: var(--font-heading, "Manrope", sans-serif);
   font-size: clamp(1.5rem, 3vw, 2.2rem);
-  line-height: 1.1;
+  font-weight: 800;
+  color: var(--mosaic-ink, #22352E);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .lesson-step-copy,
 .lesson-step-helper,
 .support-copy {
-  color: var(--muted);
+  color: var(--mosaic-text, #59635E);
   line-height: 1.6;
 }
 
@@ -6071,22 +6072,28 @@ svg {
 .lesson-finish-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 12px;
 }
 
 .lesson-rule-card {
   display: grid;
   gap: 8px;
   min-height: 92px;
-  padding: 14px;
-  border: 1px solid rgba(16, 33, 59, 0.08);
-  border-radius: 9px;
-  background: #f8fbff;
+  padding: 16px;
+  border: 1px solid var(--mosaic-border, #E5E2DC);
+  border-radius: 10px;
+  background: var(--mosaic-surface, #FCFCFB);
+  transition: border-color 160ms ease;
+}
+
+.lesson-rule-card:hover {
+  border-color: var(--mosaic-green, #506847);
 }
 
 .lesson-rule-card strong {
-  color: var(--blue);
-  font-size: 1.2rem;
+  color: var(--mosaic-green, #506847);
+  font-size: 1.25rem;
+  font-weight: 800;
 }
 
 .option-list {
@@ -6100,11 +6107,11 @@ svg {
   gap: 12px;
   align-items: center;
   width: 100%;
-  padding: 12px;
-  border: 1px solid rgba(16, 33, 59, 0.1);
-  border-radius: 9px;
-  background: #ffffff;
-  color: var(--ink);
+  padding: 12px 14px;
+  border: 1px solid var(--mosaic-border, #E5E2DC);
+  border-radius: 10px;
+  background: var(--mosaic-surface, #FCFCFB);
+  color: var(--mosaic-ink, #22352E);
   text-align: left;
   transition:
     border-color 160ms ease,
@@ -6114,9 +6121,9 @@ svg {
 
 .option-button:hover,
 .option-button.selected {
-  transform: translateY(-2px);
-  border-color: rgba(13, 80, 207, 0.28);
-  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
+  border-color: var(--mosaic-green, #506847);
+  box-shadow: 0 4px 12px rgba(34, 53, 46, 0.06);
 }
 
 .step-option-index {
@@ -6125,19 +6132,19 @@ svg {
   height: 36px;
   place-items: center;
   border-radius: 8px;
-  background: rgba(13, 80, 207, 0.08);
-  color: var(--blue);
-  font-weight: 950;
+  background: var(--mosaic-mint, #EDF2E9);
+  color: var(--mosaic-green-dark, #344934);
+  font-weight: 800;
 }
 
 .option-button.correct {
-  border-color: rgba(25, 165, 119, 0.32);
-  background: rgba(25, 165, 119, 0.08);
+  border-color: rgba(80, 104, 71, 0.4);
+  background: var(--mosaic-mint, #EDF2E9);
 }
 
 .option-button.wrong {
-  border-color: rgba(217, 75, 95, 0.24);
-  background: rgba(217, 75, 95, 0.07);
+  border-color: rgba(216, 102, 63, 0.3);
+  background: var(--mosaic-peach, #FBECE5);
 }
 
 .feedback {
@@ -6159,12 +6166,84 @@ svg {
   color: var(--muted);
 }
 
-.lesson-experience.focus-mode .lesson-side {
-  display: none;
+.mosaic-adaptive-toolbar {
+  background: var(--mosaic-surface, #FCFCFB);
+  border-bottom: 1px solid var(--mosaic-border, #E5E2DC);
+  padding: 12px 24px;
 }
 
-.lesson-experience.focus-mode .lesson-grid {
-  grid-template-columns: 1fr;
+.mosaic-toolbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.mosaic-toolbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mosaic-sparkle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--mosaic-mint, #EDF2E9);
+  color: var(--mosaic-green-dark, #344934);
+  font-weight: 800;
+  font-size: 0.78rem;
+}
+
+.mosaic-profile-toggle-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mosaic-profile-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid var(--mosaic-border, #E5E2DC);
+  background: var(--mosaic-surface, #FCFCFB);
+  color: var(--mosaic-ink, #22352E);
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.mosaic-profile-btn:hover {
+  border-color: var(--mosaic-green, #506847);
+  background: var(--mosaic-mint, #EDF2E9);
+}
+
+.mosaic-profile-btn.active {
+  background: var(--mosaic-green-dark, #344934);
+  color: #ffffff;
+  border-color: var(--mosaic-green-dark, #344934);
+}
+
+.mosaic-active-adaptation-banner {
+  background: var(--mosaic-mint, #EDF2E9);
+  border-bottom: 1px solid rgba(80, 104, 71, 0.15);
+  padding: 10px 24px;
+}
+
+.mosaic-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--mosaic-green, #506847);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
 }
 
 @media (max-width: 1320px) {

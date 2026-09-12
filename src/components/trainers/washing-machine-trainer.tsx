@@ -28,10 +28,10 @@ const CORRECT: Record<CaseKey, { mode: Mode; temp: Temp }> = {
 };
 
 const MODE_OPTIONS: { id: Mode; name: string }[] = [
-  { id: "cotton", name: "Хлопок" },
-  { id: "delicate", name: "Деликат" },
-  { id: "wool", name: "Шерсть" },
-  { id: "sport", name: "Спорт" },
+  { id: "cotton", name: "Cotton" },
+  { id: "delicate", name: "Delicate" },
+  { id: "wool", name: "Wool" },
+  { id: "sport", name: "Sports" },
 ];
 const TEMP_OPTIONS: Temp[] = [30, 40, 60, 90];
 
@@ -63,28 +63,28 @@ const dict: Locales<{
   question: string;
 }> = {
   ru: {
-    appTitle: "Стиральная машина",
-    stepCounter: (n) => `Стирка ${n} из ${STEPS}`,
-    taskEyebrow: "Загрузка",
-    questionEyebrow: "Настрой машину",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    next: "Следующая стирка",
-    doneTitle: "Молодец! Все 3 стирки запущены правильно.",
-    doneHint: "Шёлк — деликат 30°, джинсы — хлопок 40°, шерсть — шерсть 30°.",
+    appTitle: "Washing machine",
+    stepCounter: (n) => `Washing${n}from${STEPS}`,
+    taskEyebrow: "Loading",
+    questionEyebrow: "Set up your car",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    next: "Next wash",
+    doneTitle: "Well done! All 3 washes started correctly.",
+    doneHint: "Silk - delicate 30°, jeans - cotton 40°, wool - wool 30°.",
     cases: {
-      silk: { item: "Шёлковая блузка", hint: "Шёлк — деликатный режим, 30°.", feedbackGood: "Верно. Шёлк — деликат 30°.", feedbackSoft: "Этот режим испортит шёлк. Нужен «Деликат» 30°." },
-      jeans: { item: "Джинсы", hint: "Джинсы — хлопок, 40° (можно 60° если очень грязные).", feedbackGood: "Верно. Хлопок 40° — то что надо.", feedbackSoft: "Этот режим не подходит. Хлопок 40°." },
-      wool: { item: "Шерстяной свитер", hint: "Шерсть — режим «Шерсть», 30°.", feedbackGood: "Верно. Шерсть 30°.", feedbackSoft: "Шерсть сядет от такого режима. Нужен «Шерсть» 30°." },
+      silk: { item: "Silk blouse", hint: "Silk - delicate mode, 30°.", feedbackGood: "Right. Silk is delicate 30°.", feedbackSoft: "This mode will ruin the silk. You need \"Delicate\" 30°." },
+      jeans: { item: "Jeans", hint: "Jeans - cotton, 40° (can be 60° if very dirty).", feedbackGood: "Right. Cotton 40° is what you need.", feedbackSoft: "This mode is not suitable. Cotton 40°." },
+      wool: { item: "Wool sweater", hint: "Wool – “Wool” mode, 30°.", feedbackGood: "Right. Wool 30°.", feedbackSoft: "The wool will shrink from this regime. You need “Wool” 30°." },
     },
-    pickMode: "Режим",
-    pickTemp: "Температура",
-    start: "Старт",
-    running: "Стирка началась",
-    question: "Выбери режим и температуру",
+    pickMode: "Mode",
+    pickTemp: "Temperature",
+    start: "Start",
+    running: "The washing has started",
+    question: "Select mode and temperature",
   },
   uz: {
     appTitle: "Kir yuvish mashinasi",

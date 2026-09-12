@@ -22,219 +22,219 @@ type ResearcherSection = "dashboard" | "students" | "teachers" | "export";
 const dict = {
   ru: {
     // section config
-    sectionDashboardLabel: "Дашборд",
-    sectionDashboardCaption: "сводка",
-    sectionDashboardTitle: "Дашборд исследователя",
-    sectionDashboardDescription: "Ключевые показатели эксперимента и динамика по неделям.",
-    sectionStudentsLabel: "Ученики",
-    sectionStudentsCaption: "список и профили",
-    sectionStudentsTitle: "Ученики",
-    sectionStudentsDescription: "Фильтрация, поиск, карточка ученика и смена группы.",
-    sectionTeachersLabel: "Учителя",
-    sectionTeachersCaption: "педагоги и классы",
-    sectionTeachersTitle: "Учителя",
-    sectionTeachersDescription: "Список педагогов с группами и добавление новых.",
-    sectionExportLabel: "Экспорт",
-    sectionExportCaption: "данные для PhD",
-    sectionExportTitle: "Экспорт данных",
-    sectionExportDescription: "Выгрузка анонимизированных данных в Excel для SPSS и анализа.",
-    cabinetGroupTitle: "Кабинет",
+    sectionDashboardLabel: "Dashboard",
+    sectionDashboardCaption: "summary",
+    sectionDashboardTitle: "Researcher Dashboard",
+    sectionDashboardDescription: "Key indicators of the experiment and dynamics by week.",
+    sectionStudentsLabel: "Students",
+    sectionStudentsCaption: "list and profiles",
+    sectionStudentsTitle: "Students",
+    sectionStudentsDescription: "Filtering, search, student card and group change.",
+    sectionTeachersLabel: "Teachers",
+    sectionTeachersCaption: "teachers and classes",
+    sectionTeachersTitle: "Teachers",
+    sectionTeachersDescription: "List of teachers with groups and adding new ones.",
+    sectionExportLabel: "Export",
+    sectionExportCaption: "data for PhD",
+    sectionExportTitle: "Export data",
+    sectionExportDescription: "Uploading anonymized data into Excel for SPSS and analysis.",
+    cabinetGroupTitle: "Cabinet",
 
     // relative dates
-    notLoggedIn: "не входил",
-    today: "сегодня",
-    yesterday: "вчера",
-    daysAgo: (n: number) => `${n} дн. назад`,
-    weeksAgo: (n: number) => `${n} нед. назад`,
+    notLoggedIn: "didn't enter",
+    today: "Today",
+    yesterday: "yesterday",
+    daysAgo: (n: number) => `${n}days back`,
+    weeksAgo: (n: number) => `${n}weeks back`,
     dateLocale: "ru-RU",
 
     // errors
-    excelDownloadError: "Не удалось скачать Excel.",
-    loadDataError: "Не удалось загрузить данные исследователя",
-    addStudentError: "Не удалось добавить ученика.",
-    addTeacherError: "Не удалось добавить учителя.",
-    selectTeacherError: "Выберите учителя.",
+    excelDownloadError: "Failed to download Excel.",
+    loadDataError: "Failed to load explorer data",
+    addStudentError: "Failed to add student.",
+    addTeacherError: "Failed to add teacher.",
+    selectTeacherError: "Choose a teacher.",
 
     // charts
-    weeklyActivityAria: "Активность по неделям",
-    legendExperimental: "Экспериментальная",
-    legendControl: "Контрольная",
-    beforeAfterAria: "Сравнение до и после",
-    noQuestionnaireData: "Данные по анкетам пока недоступны — заполните входные и выходные анкеты.",
-    expBefore: "Эксп. — до",
-    expAfter: "Эксп. — после",
-    ctrlBefore: "Контр. — до",
-    ctrlAfter: "Контр. — после",
-    noData: "нет данных",
-    deltaExp: "прирост Эксп.",
-    deltaCtrl: "прирост Контр.",
+    weeklyActivityAria: "Activity by week",
+    legendExperimental: "Experimental",
+    legendControl: "Test",
+    beforeAfterAria: "Comparison before and after",
+    noQuestionnaireData: "Data on the questionnaires is not yet available - fill out the entry and exit questionnaires.",
+    expBefore: "Exp. - up to",
+    expAfter: "Exp. - after",
+    ctrlBefore: "Counter. — to",
+    ctrlAfter: "Counter. - after",
+    noData: "no data",
+    deltaExp: "growth Exp.",
+    deltaCtrl: "growth Contr.",
 
     // dashboard
-    dashboardAria: "Дашборд",
-    summary: "Сводка",
-    experimentInNumbers: "Эксперимент в цифрах",
-    schoolOne: "школа",
-    schoolMany: "школ",
-    totalStudents: "Всего учеников",
-    teachersCount: (n: number) => `${n} учителей`,
-    experimentalGroup: "Экспериментальная",
-    controlGroup: "Контрольная",
-    avgLessonsShort: (v: string) => `ср. ${v} ур.`,
-    activeWeek: "Активны за 7 дней",
-    ofAll: "от всех",
-    initialQuestionnaire: "Анкета входная",
-    finalQuestionnaire: "Анкета выходная",
-    outOf: (n: number) => `из ${n}`,
-    studentWithoutGroupOne: "ученик без группы",
-    studentWithoutGroupMany: "учеников без группы",
-    distribute: "Распределить →",
-    dynamics: "Динамика",
-    completedLessonsByWeek: "Завершённые уроки по неделям",
-    sixWeeks: "6 недель",
-    comparison: "Сравнение",
-    expVsCtrl: "Эксп. vs Контр.",
-    studentsLabel: "Учеников",
-    avgLessonsLabel: "Ср. уроков",
-    avgScoreLabel: "Ср. балл",
-    literacyBeforeAfter: "Грамотность: до и после",
-    avgScoreQuestionnaires: "Средний балл по анкетам",
-    fiveQuestions: "5 вопросов",
-    quickActions: "Быстрые действия",
-    whatNext: "Что дальше",
-    downloadExcel: "Скачать Excel",
-    allStudents: "Все ученики",
-    teachersWithCount: (n: number) => `Учителя (${n})`,
-    schools: "Школы",
-    geography: "География",
-    noSchoolsYet: "Школ ещё нет — добавьте учителя.",
-    teachersShortMany: (n: number) => `${n} уч-лей`,
-    studentsShortMany: (n: number) => `${n} уч-ков`,
+    dashboardAria: "Dashboard",
+    summary: "Summary",
+    experimentInNumbers: "Experiment in numbers",
+    schoolOne: "school",
+    schoolMany: "schools",
+    totalStudents: "Total students",
+    teachersCount: (n: number) => `${n}teachers`,
+    experimentalGroup: "Experimental",
+    controlGroup: "Test",
+    avgLessonsShort: (v: string) => `Wed${v}ur.`,
+    activeWeek: "Active for 7 days",
+    ofAll: "from everyone",
+    initialQuestionnaire: "Entry form",
+    finalQuestionnaire: "Weekend questionnaire",
+    outOf: (n: number) => `from${n}`,
+    studentWithoutGroupOne: "student without group",
+    studentWithoutGroupMany: "students without a group",
+    distribute: "Distribute →",
+    dynamics: "Dynamics",
+    completedLessonsByWeek: "Completed lessons by week",
+    sixWeeks: "6 weeks",
+    comparison: "Comparison",
+    expVsCtrl: "Exp. vs Cont.",
+    studentsLabel: "Students",
+    avgLessonsLabel: "Wed. lessons",
+    avgScoreLabel: "Wed. point",
+    literacyBeforeAfter: "Literacy: before and after",
+    avgScoreQuestionnaires: "Average score on questionnaires",
+    fiveQuestions: "5 questions",
+    quickActions: "Quick Actions",
+    whatNext: "What's next",
+    downloadExcel: "Download Excel",
+    allStudents: "All students",
+    teachersWithCount: (n: number) => `Teachers (${n})`,
+    schools: "Schools",
+    geography: "Geography",
+    noSchoolsYet: "There are no schools yet - add a teacher.",
+    teachersShortMany: (n: number) => `${n}learn`,
+    studentsShortMany: (n: number) => `${n}uch-kov`,
 
     // student drawer
-    studentCardAria: "Карточка ученика",
-    profile: "Профиль",
-    teacherNotAttached: "Учитель не привязан",
-    classNotSet: "класс не указан",
-    closeAria: "Закрыть",
-    identification: "Идентификация",
-    school: "Школа",
-    teacherLabel: "Учитель",
-    loginCode: "Код входа",
-    added: "Добавлен",
-    experimentGroupLabel: "Группа эксперимента",
-    expShort: "Эксп.",
-    ctrlShort: "Контр.",
-    noGroup: "Без группы",
-    progressOf: (done: number, total: number) => `Прогресс • ${done} из ${total} уроков`,
-    completedLessons: "Завершено уроков",
-    averageScore: "Средний балл",
-    lastActivityLabel: "Последняя активность",
-    questionnaires: "Анкеты",
-    initial: "Входная",
-    final: "Выходная",
-    filledOn: (d: string) => `Заполнена ${d}`,
-    notFilled: "Не заполнена",
-    journal: "Журнал",
-    noLessonsYet: "Ученик ещё не проходил уроков.",
-    scoreLabel: (s: number) => `Балл: ${s}`,
-    noScore: "Без оценки",
+    studentCardAria: "Student card",
+    profile: "Profile",
+    teacherNotAttached: "The teacher is not attached",
+    classNotSet: "class not specified",
+    closeAria: "Close",
+    identification: "Identification",
+    school: "School",
+    teacherLabel: "Teacher",
+    loginCode: "At the entrance",
+    added: "Added",
+    experimentGroupLabel: "Experiment group",
+    expShort: "Exp.",
+    ctrlShort: "Counter.",
+    noGroup: "Without a group",
+    progressOf: (done: number, total: number) => `Progress •${done}from${total}lessons`,
+    completedLessons: "Completed lessons",
+    averageScore: "Average score",
+    lastActivityLabel: "Last activity",
+    questionnaires: "Questionnaires",
+    initial: "Entrance",
+    final: "Day off",
+    filledOn: (d: string) => `Filled${d}`,
+    notFilled: "Not filled in",
+    journal: "Magazine",
+    noLessonsYet: "The student has not taken any lessons yet.",
+    scoreLabel: (s: number) => `Point:${s}`,
+    noScore: "No ratings",
 
     // students section
-    studentsAria: "Ученики",
-    filters: "Фильтры",
-    searchAndSegment: "Поиск и сегментация",
-    inSelection: (n: number) => `${n} в выборке`,
-    allSchools: "Все школы",
-    groupLabel: "Группа",
-    all: "Все",
-    searchByName: "Поиск по имени",
-    searchPlaceholder: "Начните вводить имя ученика...",
-    activePrefix: "Активно:",
-    list: "Список",
-    experimentStudents: "Ученики эксперимента",
-    hideForm: "Скрыть форму",
-    addStudent: "+ Добавить ученика",
-    studentName: "Имя ученика",
-    studentNamePlaceholder: "Например, Алина К.",
-    selectTeacher: "Выберите учителя",
-    noOrganization: "без организации",
-    notePlaceholder: "Необязательно",
-    note: "Примечание",
-    adding: "Добавляю...",
-    create: "Создать",
-    cancel: "Отмена",
-    addTeacherFirst: "Сначала добавьте учителя в разделе «Учителя» — ученик привязывается к педагогу.",
-    noStudentsByFilters: "Нет учеников по выбранным фильтрам.",
-    resetFilters: "Сбросить фильтры",
-    colName: "Имя",
-    colSchool: "Школа",
-    colTeacher: "Учитель",
-    colGroup: "Группа",
-    colLessons: "Уроков",
-    colScore: "Балл",
-    colQuestionnaires: "Анкеты",
-    colActivity: "Активность",
-    initialTitle: "Входная",
-    finalTitle: "Выходная",
+    studentsAria: "Students",
+    filters: "Filters",
+    searchAndSegment: "Search and segmentation",
+    inSelection: (n: number) => `${n}in the sample`,
+    allSchools: "All schools",
+    groupLabel: "Group",
+    all: "All",
+    searchByName: "Search by name",
+    searchPlaceholder: "Start typing the student's name...",
+    activePrefix: "Actively:",
+    list: "List",
+    experimentStudents: "Students of the experiment",
+    hideForm: "Hide form",
+    addStudent: "+ Add student",
+    studentName: "Student name",
+    studentNamePlaceholder: "For example, Alina K.",
+    selectTeacher: "Choose a teacher",
+    noOrganization: "without organization",
+    notePlaceholder: "Optional",
+    note: "Note",
+    adding: "I'm adding...",
+    create: "Create",
+    cancel: "Cancel",
+    addTeacherFirst: "First, add a teacher in the “Teachers” section - the student becomes attached to the teacher.",
+    noStudentsByFilters: "There are no students matching the selected filters.",
+    resetFilters: "Reset filters",
+    colName: "Name",
+    colSchool: "School",
+    colTeacher: "Teacher",
+    colGroup: "Group",
+    colLessons: "Lessons",
+    colScore: "Ball",
+    colQuestionnaires: "Questionnaires",
+    colActivity: "Activity",
+    initialTitle: "Entrance",
+    finalTitle: "Day off",
 
     // teachers section
-    teachersAria: "Учителя",
-    educators: "Педагоги",
-    experimentTeachers: "Учителя эксперимента",
-    addTeacher: "+ Добавить учителя",
-    name: "Имя",
-    namePlaceholder: "Ольга Сергеевна",
+    teachersAria: "Teachers",
+    educators: "Teachers",
+    experimentTeachers: "Teachers experiment",
+    addTeacher: "+ Add teacher",
+    name: "Name",
+    namePlaceholder: "Olga Sergeevna",
     email: "Email",
     emailPlaceholder: "teacher@example.com",
-    password: "Пароль",
-    passwordPlaceholder: "минимум 6 символов",
-    organization: "Организация",
-    organizationPlaceholder: "Школа или центр",
-    classLabel: "Класс",
-    classPlaceholder: "3 класс",
-    creatingTeacher: "Добавляю...",
-    createTeacher: "Создать учителя",
-    noTeachersYet: "Учителей ещё нет. Добавьте первого, чтобы привязать к нему учеников.",
-    schoolNotSet: "Школа не указана",
-    classUnknown: "класс ?",
-    studentsLower: "учеников",
-    expLower: "эксп.",
-    ctrlLower: "контр.",
+    password: "Password",
+    passwordPlaceholder: "minimum 6 characters",
+    organization: "Organization",
+    organizationPlaceholder: "School or center",
+    classLabel: "Class",
+    classPlaceholder: "3rd grade",
+    creatingTeacher: "I'm adding...",
+    createTeacher: "Create a teacher",
+    noTeachersYet: "There are no teachers yet. Add the first one to assign students to it.",
+    schoolNotSet: "School not specified",
+    classUnknown: "Class ?",
+    studentsLower: "students",
+    expLower: "exp.",
+    ctrlLower: "counter.",
 
     // export section
-    exportAria: "Экспорт",
-    extract: "Выгрузка",
-    excelForSPSS: "Excel для SPSS и анализа",
-    studentsWithCount: (n: number) => `${n} учеников`,
-    exportFileDescription: "Файл содержит анонимизированные данные эксперимента. Имена сохранены для сверки — при публикации замените на ID.",
-    selection: "Выборка",
-    allWithCount: (n: number) => `Все (${n})`,
-    expWithCount: (n: number) => `Эксп. (${n})`,
-    ctrlWithCount: (n: number) => `Контр. (${n})`,
-    downloadExcelWithCount: (n: number) => `Скачать Excel (${n})`,
-    fileStructure: "Структура файла",
-    whatsInside: "Что внутри",
-    tableOverview: "Обзор",
-    tableOverviewDesc: "Сводная таблица по школам, группам и активности",
-    tableStudents: "Ученики",
-    tableStudentsDesc: "Полный список с ID, кодами входа, прогрессом",
-    tableEvents: "События",
-    tableEventsDesc: "Все действия учеников: уроки, ответы, подсказки",
-    tableQuestionnaires: "Анкеты",
-    tableQuestionnairesDesc: (n: number) => `Входные и выходные анкеты — ${n} записей`,
-    fiveCriteria: "5 критериев",
-    scaleLabel: "Шкала оценки",
-    criterion1: "Понимание текста",
-    criterion2: "Выполнение алгоритма",
-    criterion3: "Самостоятельность",
-    criterion4: "Безопасность",
-    criterion5: "Перенос навыка",
-    fromDissertation: "Из диссертации О.А. Марковой. Детальная оценка появится после расширенного логирования действий.",
-    summaryShort: "Сводка",
-    ofThisExport: "Этой выгрузки",
-    studentsLabel2: "Учеников",
-    teachersLabel: "Учителей",
-    questionnairesLabel: "Анкет",
+    exportAria: "Export",
+    extract: "Unloading",
+    excelForSPSS: "Excel for SPSS and analysis",
+    studentsWithCount: (n: number) => `${n}students`,
+    exportFileDescription: "The file contains anonymized experiment data. Names are saved for verification - when publishing, replace with ID.",
+    selection: "Sample",
+    allWithCount: (n: number) => `All (${n})`,
+    expWithCount: (n: number) => `Exp. (${n})`,
+    ctrlWithCount: (n: number) => `Cont. (${n})`,
+    downloadExcelWithCount: (n: number) => `Download Excel (${n})`,
+    fileStructure: "File structure",
+    whatsInside: "What's inside",
+    tableOverview: "Review",
+    tableOverviewDesc: "Summary table by school, group and activity",
+    tableStudents: "Students",
+    tableStudentsDesc: "Full list with ID, entry codes, progress",
+    tableEvents: "Events",
+    tableEventsDesc: "All student activities: lessons, answers, tips",
+    tableQuestionnaires: "Questionnaires",
+    tableQuestionnairesDesc: (n: number) => `Entry and exit forms -${n}records`,
+    fiveCriteria: "5 criteria",
+    scaleLabel: "Rating scale",
+    criterion1: "Understanding the Text",
+    criterion2: "Execution of the algorithm",
+    criterion3: "Independence",
+    criterion4: "Safety",
+    criterion5: "Skill Transfer",
+    fromDissertation: "From the dissertation of O.A. Markova. A detailed assessment will appear after extensive logging of actions.",
+    summaryShort: "Summary",
+    ofThisExport: "This upload",
+    studentsLabel2: "Students",
+    teachersLabel: "Teachers",
+    questionnairesLabel: "Resume",
   },
   uz: {
     // section config
@@ -750,7 +750,7 @@ function BeforeAfterChart({
   locale: Locale;
 }) {
   const t = dict[locale];
-  // Средние по группам
+  // UI Logic
   const avg = (arr: GroupQScores[], key: "initial" | "final") => {
     const vals = arr.map((r) => r[key]).filter((v): v is number => v !== null);
     return vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null;
@@ -815,7 +815,7 @@ function BeforeAfterChart({
           );
         })}
       </svg>
-      {/* Прирост */}
+      {/* UI Module */}
       <div className="researcher-delta-row">
         {expIni !== null && expFin !== null ? (
           <div className={`researcher-delta ${expFin - expIni >= 0 ? "researcher-delta--pos" : "researcher-delta--neg"}`}>
@@ -877,7 +877,7 @@ function DashboardSection({
 
   return (
     <section className="lms-dashboard" aria-label={t.dashboardAria}>
-      {/* KPI карточки */}
+      {/* UI Module */}
       <article className="lms-panel">
         <div className="lms-section-head">
           <div>
@@ -944,7 +944,7 @@ function DashboardSection({
 
       <div className="lms-grid-today">
         <div className="lms-main-column">
-          {/* График динамики */}
+          {/* UI Module */}
           <article className="lms-panel">
             <div className="lms-section-head">
               <div>
@@ -956,7 +956,7 @@ function DashboardSection({
             <WeeklyChart data={series} locale={locale} />
           </article>
 
-          {/* Сравнение групп */}
+          {/* UI Module */}
           <article className="lms-panel">
             <div className="lms-section-head">
               <div>
@@ -1033,7 +1033,7 @@ function DashboardSection({
             </div>
           </article>
 
-          {/* График До — После по анкетам */}
+          {/* UI Module */}
           <article className="lms-panel">
             <div className="lms-section-head">
               <div>
@@ -1228,7 +1228,7 @@ function StudentDrawer({
         </header>
 
         <div className="researcher-drawer-body">
-          {/* Основные данные */}
+          {/* UI Module */}
           <section className="researcher-drawer-block">
             <p className="lms-kicker">{t.identification}</p>
             <div className="researcher-drawer-defs">
@@ -1253,7 +1253,7 @@ function StudentDrawer({
             </div>
           </section>
 
-          {/* Группа */}
+          {/* UI Module */}
           <section className="researcher-drawer-block">
             <p className="lms-kicker">{t.experimentGroupLabel}</p>
             <div className="researcher-drawer-group">
@@ -1276,7 +1276,7 @@ function StudentDrawer({
             </div>
           </section>
 
-          {/* Прогресс */}
+          {/* UI Module */}
           <section className="researcher-drawer-block">
             <p className="lms-kicker">
               {t.progressOf(completed.length, TOTAL_LESSONS)}
@@ -1300,7 +1300,7 @@ function StudentDrawer({
             </div>
           </section>
 
-          {/* Анкеты */}
+          {/* UI Module */}
           <section className="researcher-drawer-block">
             <p className="lms-kicker">{t.questionnaires}</p>
             <div className="researcher-drawer-anketas">
@@ -1333,7 +1333,7 @@ function StudentDrawer({
             </div>
           </section>
 
-          {/* Журнал активности */}
+          {/* UI Module */}
           <section className="researcher-drawer-block">
             <p className="lms-kicker">{t.journal}</p>
             {recent.length === 0 ? (
@@ -1576,7 +1576,7 @@ function StudentsSection({
 
   return (
     <section className="lms-dashboard" aria-label={t.studentsAria}>
-      {/* Фильтры */}
+      {/* UI Module */}
       <article className="lms-panel">
         <div className="lms-section-head">
           <div>
@@ -1651,7 +1651,7 @@ function StudentsSection({
         ) : null}
       </article>
 
-      {/* Добавить ученика */}
+      {/* UI Module */}
       <article className="lms-panel">
         <div className="lms-section-head">
           <div>

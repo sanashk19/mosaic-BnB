@@ -25,7 +25,7 @@ const dict = {
     eyebrow: "Hujjatlar",
     p1Bold: "1. Platformada nima ishlatiladi.",
     p1:
-      " Platforma kabinet ishini taʼminlash, foydalanuvchi tanlovini saqlash va sinov platformasining asosiy funksiyalarini qoʻllab-quvvatlash uchun cookie fayllar va brauzerning lokal xotirasidan foydalanadi.",
+      "Platforma kabinet ishini taʼminlash, foydalanuvchi tanlovini saqlash va sinov platformasining asosiy funksiyalarini qoʻllab-quvvatlash uchun cookie fayllar va brauzerning lokal xotirasidan foydalanadi.",
     p2Bold: "2. Buning maqsadi.",
     p2:
       " Texnik jihatdan zarur cookie fayllar kabinet sessiyasining xavfsizligini taʼminlaydi, localStorage esa cookie banner orqali tanlangan qaror va interfeysning ayrim sozlamalarini eslab qolish uchun ishlatiladi. Oʻquv yutuqlari va sinf maʼlumotlari platforma serverida saqlanadi.",
@@ -34,7 +34,7 @@ const dict = {
       " Platformaning hozirgi versiyasida reklama cookie fayllari ishlatilmaydi va tashqi marketing kuzatuvi yoʻq. Kelajakda qoʻshimcha tahliliy yoki xizmat vositalari kiritilsa, ular ulanishidan oldin ushbu siyosat yangilanadi.",
     p4Bold: "4. Sozlamalarni boshqarish.",
     p4:
-      " Foydalanuvchi brauzer sozlamalari orqali maʼlumotlar saqlanishini cheklashi yoki localStorage va cookie fayllarini tozalashi mumkin. Bunday holda kirish sessiyasi va ayrim foydalanuvchi sozlamalari oʻchirilishi mumkin.",
+      "Foydalanuvchi brauzer sozlamalari orqali maʼlumotlar saqlanishini cheklashi yoki localStorage va cookie fayllarini tozalashi mumkin. Bunday holda kirish sessiyasi va ayrim foydalanuvchi sozlamalari oʻchirilishi mumkin.",
     p5Bold: "5. Rozilik.",
     p5:
       " Cookie bannerdagi tugmani bosish va ushbu siyosat bilan tanishganidan keyin platformadan foydalanishni davom ettirish — foydalanuvchining sinov platformasi doirasida texnik jihatdan zarur cookie fayllar va lokal xotiradan foydalanishga roziligini bildiradi.",

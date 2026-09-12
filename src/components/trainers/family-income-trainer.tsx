@@ -31,27 +31,27 @@ const INCOME_ART: Record<IncomeRow["icon"], LessonItemArtId> = {
 const CASES: Record<CaseKey, { rows: IncomeRow[]; total: number; options: number[] }> = {
   small: {
     rows: [
-      { name: "Зарплата мамы", amount: 3_000_000, icon: "salary" },
-      { name: "Пенсия бабушки", amount: 1_200_000, icon: "pension" },
+      { name: "Mom's salary", amount: 3_000_000, icon: "salary" },
+      { name: "Grandma's pension", amount: 1_200_000, icon: "pension" },
     ],
     total: 4_200_000,
     options: [4_200_000, 4_000_000, 3_800_000],
   },
   medium: {
     rows: [
-      { name: "Зарплата мамы", amount: 3_000_000, icon: "salary" },
-      { name: "Зарплата папы", amount: 4_500_000, icon: "salary" },
-      { name: "Подработка", amount: 500_000, icon: "gig" },
+      { name: "Mom's salary", amount: 3_000_000, icon: "salary" },
+      { name: "Dad's salary", amount: 4_500_000, icon: "salary" },
+      { name: "Part time job", amount: 500_000, icon: "gig" },
     ],
     total: 8_000_000,
     options: [8_000_000, 7_500_000, 8_500_000],
   },
   large: {
     rows: [
-      { name: "Зарплата мамы", amount: 3_500_000, icon: "salary" },
-      { name: "Зарплата папы", amount: 5_000_000, icon: "salary" },
-      { name: "Пенсия бабушки", amount: 1_500_000, icon: "pension" },
-      { name: "Пособие на ребёнка", amount: 800_000, icon: "child-aid" },
+      { name: "Mom's salary", amount: 3_500_000, icon: "salary" },
+      { name: "Dad's salary", amount: 5_000_000, icon: "salary" },
+      { name: "Grandma's pension", amount: 1_500_000, icon: "pension" },
+      { name: "Child benefit", amount: 800_000, icon: "child-aid" },
     ],
     total: 10_800_000,
     options: [10_800_000, 10_000_000, 11_500_000],
@@ -59,7 +59,7 @@ const CASES: Record<CaseKey, { rows: IncomeRow[]; total: number; options: number
 };
 
 function fmt(n: number): string {
-  return n.toLocaleString("ru-RU") + " сум";
+  return n.toLocaleString("ru-RU") + "am";
 }
 
 type Locales<T> = Record<Locale, T>;
@@ -84,27 +84,27 @@ const dict: Locales<{
   context: Record<CaseKey, string>;
 }> = {
   ru: {
-    appTitle: "Бюджет семьи",
-    stepCounter: (n) => `Семья ${n} из ${STEPS}`,
-    taskEyebrow: "Семья",
-    questionEyebrow: "Общий доход",
-    hintEyebrow: "Подсказка",
-    feedbackEyebrow: "Проверка",
-    skip: "Не знаю",
-    finish: "Закончить",
-    retry: "Попробовать снова",
-    next: "Следующая семья",
-    doneTitle: "Молодец! Ты умеешь складывать доходы.",
-    doneHint: "Доход семьи — это сумма всех зарплат, пенсий и пособий.",
-    total: "Итого",
-    question: "Сколько всего получает семья за месяц?",
-    hint: "Сложи все числа из таблицы — это и есть общий доход.",
-    feedbackGood: "Верно! Это правильная сумма.",
-    feedbackSoft: "Это не та сумма. Сложи ещё раз внимательно.",
+    appTitle: "Family budget",
+    stepCounter: (n) => `Family${n}from${STEPS}`,
+    taskEyebrow: "Family",
+    questionEyebrow: "Total income",
+    hintEyebrow: "Clue",
+    feedbackEyebrow: "Checking",
+    skip: "Don't know",
+    finish: "Finish",
+    retry: "Try again",
+    next: "Next family",
+    doneTitle: "Well done! You know how to add up your income.",
+    doneHint: "Family income is the sum of all salaries, pensions and benefits.",
+    total: "Total",
+    question: "How much does a family receive per month?",
+    hint: "Add up all the numbers from the table - this is your total income.",
+    feedbackGood: "Right! This is the correct amount.",
+    feedbackSoft: "This is not the same amount. Fold it again carefully.",
     context: {
-      small: "Маленькая семья: мама и бабушка. Это их доход за месяц.",
-      medium: "Обычная семья: мама, папа и подработка папы.",
-      large: "Большая семья: мама, папа, бабушка и пособие на младшего ребёнка.",
+      small: "Small family: mother and grandmother. This is their monthly income.",
+      medium: "An ordinary family: mom, dad and dad's part-time job.",
+      large: "Large family: mother, father, grandmother and allowance for the youngest child.",
     },
   },
   uz: {
@@ -178,7 +178,7 @@ export function FamilyIncomeTrainer({ trainer, onDone }: Props) {
     <div className="income-app">
       <table className="income-table">
         <thead>
-          <tr><th>Источник</th><th>Сумма</th></tr>
+          <tr><th>Source</th><th>Sum</th></tr>
         </thead>
         <tbody>
           {c.rows.map((row, i) => (

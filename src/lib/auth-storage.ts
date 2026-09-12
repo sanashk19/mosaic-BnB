@@ -64,7 +64,7 @@ async function apiRequest<T>(path: string, init?: RequestInit): Promise<T>{
       typeof document !== "undefined" &&
       document.cookie.includes("locale=uz")
         ? "Soʻrovni bajarib boʻlmadi."
-        : "Не удалось выполнить запрос.";
+        : "The request failed.";
     throw new Error(payload.error || fallback);
   }
 

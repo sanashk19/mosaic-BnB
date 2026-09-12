@@ -1,15 +1,11 @@
 "use client";
 
-/**
- * Визуальные мокапы цифровых устройств для экрана «Самостоятельная работа»
- * (диагностическая точка 3 — ключевая). Каждый мокап — реалистичная
- * SVG/CSS-имитация устройства из реальной жизни.
- */
+/* UI Module */
 
 import { useEffect, useState } from "react";
 import { LessonItemArt, type LessonItemArtId } from "@/components/lesson-item-art";
 
-// ── Стиральная машина (Урок 11 — эталон) ──────────────────────────────────
+// UI Logic
 
 export type WashingProgram = {
   id: string;
@@ -54,23 +50,23 @@ export function WashingMachineMockup({
 
       <div className="mock-washer">
         <div className="mock-washer-top">
-          <span className="mock-washer-brand">UQUVLI WASH</span>
+          <span className="mock-washer-brand">MOSAIC WASH</span>
           <div className="mock-washer-led">
             {running ? (
-              <span className="mock-washer-led-text mock-washer-led-blink">▶ СТИРКА</span>
+              <span className="mock-washer-led-text mock-washer-led-blink">▶ WASHING</span>
             ) : sel ? (
               <span className="mock-washer-led-text">
                 {sel.temp}°C · {sel.spin.toUpperCase()}
               </span>
             ) : (
-              <span className="mock-washer-led-text mock-washer-led-dim">ВЫБЕРИ ПРОГРАММУ</span>
+              <span className="mock-washer-led-text mock-washer-led-dim">CHOOSE A PROGRAM</span>
             )}
           </div>
         </div>
 
         <div className="mock-washer-panel">
           <div className="mock-washer-dial-area">
-            <span className="mock-washer-dial-label">Программа стирки</span>
+            <span className="mock-washer-dial-label">Washing program</span>
             <div className="mock-washer-programs-list">
               {programs.map((p) => (
                 <button
@@ -90,10 +86,9 @@ export function WashingMachineMockup({
             className="mock-washer-start"
             disabled={!selected || answered}
             onClick={start}
-            aria-label="Пуск стирки"
+            aria-label="Start washing"
           >
-            ПУСК
-          </button>
+            START</button>
         </div>
 
         <div className="mock-washer-door-wrap">
@@ -111,16 +106,16 @@ export function WashingMachineMockup({
   );
 }
 
-// ── Банкомат (Урок 28) ────────────────────────────────────────────────────
+// UI Logic
 
 export type AtmStep = {
-  /** Этап банкомата */
+  /* UI Module */
   phase: "insert" | "pin" | "operation" | "amount" | "take";
-  /** Подсказка-задача */
+  /* UI Module */
   task: string;
-  /** Что считается правильным */
+  /* UI Module */
   correctAction: string;
-  /** Варианты неверных действий */
+  /* UI Module */
   wrongActions: string[];
 };
 
@@ -167,7 +162,7 @@ export function AtmMockup({
 
   const tellPin = () => {
     setExposed(true);
-    onResult(false, "Показал PIN — опасно");
+    onResult(false, "Showed PIN - dangerous");
   };
 
   const finish = (correct: boolean, action: string) => {
@@ -178,20 +173,20 @@ export function AtmMockup({
   return (
     <div className="mock-atm">
       <div className="mock-atm-top">
-        <span className="mock-atm-brand">UQUVLI BANK</span>
+        <span className="mock-atm-brand">MOSAIC BANK</span>
       </div>
 
       <div className="mock-atm-screen-wrap">
       <div className="mock-atm-screen">
         {phase === "insert" && (
           <>
-            <h4>Вставьте карту</h4>
-            <p>Карта вставляется чипом вверх →</p>
+            <h4>Insert card</h4>
+            <p>The card is inserted with the chip facing up →</p>
           </>
         )}
         {phase === "pin" && (
           <>
-            <h4>Введите PIN-код</h4>
+            <h4>Enter your PIN</h4>
             <div className="mock-pin-display">
               {Array.from({ length: pin.length }).map((_, i) => (
                 <span key={i} className={`mock-pin-dot ${i < enteredPin.length ? "is-filled" : ""}`}>
@@ -200,46 +195,47 @@ export function AtmMockup({
               ))}
             </div>
             <p className={shielded ? "ok" : "warn"}>
-              {shielded ? "✓ Клавиатура прикрыта рукой" : "⚠ Прикрой клавиатуру рукой!"}
+              {shielded ? "✓ The keyboard is covered with your hand" : "⚠ Cover the keyboard with your hand!"}
             </p>
-            {exposed ? <p className="warn">❌ PIN показан другим — карта заблокирована</p> : null}
+            {exposed ? <p className="warn">❌ PIN is shown to others - the card is blocked</p> : null}
           </>
         )}
         {phase === "operation" && (
           <>
-            <h4>Выбери операцию</h4>
+            <h4>Select operation</h4>
             <div className="mock-atm-ops">
               <button type="button" onClick={() => setPhase("confirm")}>
-                Снять {amount}
+                
+                Remove{amount}
               </button>
-              <button type="button" onClick={() => finish(false, "Перевод выбран не для снятия")}>
-                Перевод
-              </button>
-              <button type="button" onClick={() => finish(false, "Баланс — но мы хотели снять")}>
-                Баланс
-              </button>
+              <button type="button" onClick={() => finish(false, "Transfer selected not for withdrawal")}>
+                
+                Translation</button>
+              <button type="button" onClick={() => finish(false, "Balance - but we wanted to remove")}>
+                
+                Balance</button>
             </div>
           </>
         )}
         {phase === "confirm" && (
           <>
-            <h4>Снять {amount}?</h4>
-            <p>Проверь сумму перед подтверждением.</p>
+            <h4>Remove{amount}?</h4>
+            <p>Please check the amount before confirming.</p>
             <div className="mock-atm-confirm">
-              <button type="button" className="ok-btn" onClick={() => finish(true, "Сумма проверена и подтверждена")}>
-                ✓ Да, снять
-              </button>
+              <button type="button" className="ok-btn" onClick={() => finish(true, "Amount verified and confirmed")}>
+                
+                ✓ Yes, remove</button>
               <button type="button" className="neutral-btn" onClick={() => setPhase("operation")}>
-                ✗ Отмена
-              </button>
+                
+                ✗ Cancel</button>
             </div>
           </>
         )}
         {phase === "done" && (
           <>
-            <h4>Возьмите карту и деньги</h4>
-            <p>Не забывай карту — она тебе ещё пригодится.</p>
-            <button type="button" className="ok-btn" onClick={reset}>Заново</button>
+            <h4>Take your card and money</h4>
+            <p>Don&apos;t forget the card &mdash; you&apos;ll need it later.</p>
+            <button type="button" className="ok-btn" onClick={reset}>Anew</button>
           </>
         )}
       </div>
@@ -250,8 +246,7 @@ export function AtmMockup({
           <div className="mock-atm-slot-bar" />
           <button type="button" className="mock-atm-insert" onClick={insertCard}>
             <span className="mock-atm-card">💳</span>
-            Вставить карту
-          </button>
+            Insert card</button>
         </div>
       ) : phase === "pin" ? (
         <div className="mock-atm-keypad">
@@ -263,27 +258,26 @@ export function AtmMockup({
             ) : <div key={i} />,
           )}
           <button type="button" className="mock-atm-shield" onClick={toggleShield}>
-            {shielded ? "Открыть" : "🤚 Прикрыть рукой"}
+            {shielded ? "Open" : "🤚 Cover with your hand"}
           </button>
           <button type="button" className="mock-atm-tell" onClick={tellPin}>
-            👁 Показать PIN другому
-          </button>
+            👁 Show PIN to someone else</button>
         </div>
       ) : null}
 
       <div className="mock-atm-cash">
-        {phase === "done" ? <span>💵 {amount}</span> : <span className="mock-atm-cash-empty">⬇ Окно выдачи</span>}
+        {phase === "done" ? <span>💵 {amount}</span> : <span className="mock-atm-cash-empty">⬇ Issue window</span>}
       </div>
     </div>
   );
 }
 
-// ── Цифровой термометр (Урок 26) ──────────────────────────────────────────
+// UI Logic
 
-// 7-сегментный LCD-цифровой рендер (для термометра и других LED-табло)
+// UI Logic
 function SevenSegmentDigit({ digit }: { digit: string }) {
-  // Сегменты: a (верх), b (верх-прав), c (низ-прав), d (низ),
-  //           e (низ-лев), f (верх-лев), g (середина)
+  // UI Logic
+  // UI Logic
   const segs: Record<string, string> = {
     "0": "abcdef", "1": "bc", "2": "abged", "3": "abgcd",
     "4": "fgbc",   "5": "afgcd","6": "afgcde","7": "abc",
@@ -349,29 +343,29 @@ export function ThermometerMockup({
 
       <div className="mock-thermo-scale">
         <div className="mock-thermo-scale-bar">
-          <div className="mock-thermo-scale-low">⬇ ниже 36</div>
-          <div className="mock-thermo-scale-norm">норма 36,0–37,2</div>
-          <div className="mock-thermo-scale-high">⬆ выше 37,2</div>
+          <div className="mock-thermo-scale-low">⬇ below 36</div>
+          <div className="mock-thermo-scale-norm">norm 36.0–37.2</div>
+          <div className="mock-thermo-scale-high">⬆ above 37.2</div>
         </div>
         <div className="mock-thermo-pointer" style={{ left: `${Math.max(0, Math.min(100, ((value - 34) / 6) * 100))}%` }} />
       </div>
 
       <div className="mock-thermo-choices">
         <button type="button" className={`mock-thermo-choice ${zone === "low" ? "is-pulse" : ""}`} onClick={() => onClassify("low")}>
-          Пониженная
-        </button>
+          
+          Reduced</button>
         <button type="button" className={`mock-thermo-choice ${zone === "norm" ? "is-pulse" : ""}`} onClick={() => onClassify("norm")}>
-          Норма
-        </button>
+          
+          Norm</button>
         <button type="button" className={`mock-thermo-choice ${zone === "high" ? "is-pulse" : ""}`} onClick={() => onClassify("high")}>
-          Повышенная
-        </button>
+          
+          Increased</button>
       </div>
     </div>
   );
 }
 
-// ── Регулятор громкости (Урок 8) ─────────────────────────────────────────
+// UI Logic
 
 export function VolumeMockup({
   onSubmit,
@@ -388,7 +382,7 @@ export function VolumeMockup({
       <div className="mock-vol-display">
         <span className={`mock-vol-value ${zone}`}>{v}%</span>
         <span className="mock-vol-label">
-          {zone === "safe" ? "✓ Безопасно" : zone === "warn" ? "⚠ Громко" : "❌ Опасно для слуха"}
+          {zone === "safe" ? "✓ Safe" : zone === "warn" ? "⚠ Loud" : "❌ Harmful to hearing"}
         </span>
       </div>
       <div className="mock-vol-track">
@@ -405,13 +399,13 @@ export function VolumeMockup({
         />
       </div>
       <button type="button" className="mock-vol-submit" onClick={() => onSubmit(v, safe)}>
-        Установить громкость
-      </button>
+        
+        Set volume</button>
     </div>
   );
 }
 
-// ── Прогноз погоды (Урок 5) ───────────────────────────────────────────────
+// UI Logic
 
 export function WeatherMockup({
   temp,
@@ -430,19 +424,20 @@ export function WeatherMockup({
         <div className="mock-weather-icon">{icon}</div>
         <div className="mock-weather-temp">{temp > 0 ? "+" : ""}{temp}°C</div>
         <div className={`mock-weather-uv mock-weather-uv--${uv}`}>
-          УФ-индекс: {uv === "low" ? "низкий" : uv === "mid" ? "средний" : "высокий"}
+          
+          UV index:{uv === "low" ? "short" : uv === "mid" ? "average" : "high"}
         </div>
       </div>
       <div className="mock-weather-choices">
-        <button type="button" onClick={() => onAdvice("hat-cream")}>🧢 + 🧴 Головной убор и крем</button>
-        <button type="button" onClick={() => onAdvice("hat")}>🧢 Только головной убор</button>
-        <button type="button" onClick={() => onAdvice("nothing")}>Ничего не нужно</button>
+        <button type="button" onClick={() => onAdvice("hat-cream")}>🧢 + 🧴 Headdress and cream</button>
+        <button type="button" onClick={() => onAdvice("hat")}>🧢 Headdress only</button>
+        <button type="button" onClick={() => onAdvice("nothing")}>Nothing is needed</button>
       </div>
     </div>
   );
 }
 
-// ── Цифровая этикетка (Урок 6) ────────────────────────────────────────────
+// UI Logic
 
 export function ProductLabelMockup({
   productName,
@@ -465,34 +460,34 @@ export function ProductLabelMockup({
         <div className="mock-label-sticker">
           <strong className="mock-label-name">{productName}</strong>
           <div className="mock-label-line">
-            <span className="mock-label-key">Срок годности:</span>{" "}
+            <span className="mock-label-key">Best before date:</span>{" "}
             <span className={`mock-label-exp ${expired ? "expired" : "fresh"}`}>
-              {expiryYear === null ? "не указан" : `до ${expiryYear} г.`}
+              {expiryYear === null ? "not indicated" : `until${expiryYear}g.`}
             </span>
           </div>
           <div className="mock-label-line">
-            <span className="mock-label-key">Применение:</span>{" "}
-            <span>нанести тонким слоем</span>
+            <span className="mock-label-key">Application:</span>{" "}
+            <span>apply a thin layer</span>
           </div>
           <div className={`mock-label-badge ${expired ? "expired" : "fresh"}`}>
             <span className="mock-label-dot" aria-hidden="true" />
-            {expired ? "ПРОСРОЧЕНО" : "ГОДЕН"}
+            {expired ? "EXPIRED" : "FIT"}
           </div>
         </div>
       </div>
       <div className="mock-label-choices">
         <button type="button" className="ok-btn" onClick={() => onDecide(true)}>
-          ✓ Можно пользоваться
-        </button>
+          
+          ✓ You can use</button>
         <button type="button" className="neutral-btn" onClick={() => onDecide(false)}>
-          ✗ Нельзя пользоваться
-        </button>
+          
+          ✗ Cannot be used</button>
       </div>
     </div>
   );
 }
 
-// ── Мессенджер (Урок 24) ─────────────────────────────────────────────────
+// UI Logic
 
 export function MessengerMockup({
   contact,
@@ -512,7 +507,7 @@ export function MessengerMockup({
         <div className="mock-msg-avatar">👤</div>
         <div>
           <strong>{contact}</strong>
-          <span>был(а) онлайн только что</span>
+          <span>was online just now</span>
         </div>
       </div>
       <div className="mock-msg-thread">
@@ -528,7 +523,7 @@ export function MessengerMockup({
         ) : null}
       </div>
       <div className="mock-msg-options">
-        <span className="mock-msg-hint">Что ты ответишь?</span>
+        <span className="mock-msg-hint">What&apos;s your answer?</span>
         {options.map((o, i) => (
           <button
             key={i}
@@ -545,7 +540,7 @@ export function MessengerMockup({
   );
 }
 
-// ── Цифровое табло (Урок 20) ──────────────────────────────────────────────
+// UI Logic
 
 export function TrainBoardMockup({
   targetTrain,
@@ -561,11 +556,11 @@ export function TrainBoardMockup({
   return (
     <div className="mock-board">
       <div className="mock-board-task">
-        Найди: <strong>{targetTrain}</strong> на <strong>{targetTime}</strong>
+        Find:<strong>{targetTrain}</strong> on<strong>{targetTime}</strong>
       </div>
       <div className="mock-board-table">
         <div className="mock-board-row mock-board-head">
-          <span>Поезд</span><span>Откуда → Куда</span><span>Время</span><span>Платф.</span>
+          <span>Train</span><span>From → To</span><span>Time</span><span>Platf.</span>
         </div>
         {rows.map((r, i) => (
           <button key={i} type="button" className="mock-board-row" onClick={() => onPick(i)}>
@@ -580,7 +575,7 @@ export function TrainBoardMockup({
   );
 }
 
-// ── Опросник кожи в приложении (Урок 4) ──────────────────────────────────
+// UI Logic
 
 export function SkinQuizMockup({
   questions,
@@ -612,9 +607,9 @@ export function SkinQuizMockup({
       <div className="mock-skin">
         <div className="mock-skin-result">
           <div className="mock-skin-result-emoji">✨</div>
-          <strong>Результат опросника</strong>
-          <p>Тип кожи: <span className="ok-result">{correctType}</span></p>
-          <p>Рекомендация: мягкое умывание, лёгкий крем без масла.</p>
+          <strong>Questionnaire result</strong>
+          <p>Skin type:<span className="ok-result">{correctType}</span></p>
+          <p>Recommendation: gentle wash, light cream without oil.</p>
         </div>
       </div>
     );
@@ -626,13 +621,13 @@ export function SkinQuizMockup({
       <div className="mock-skin-app">
         <div className="mock-skin-header">
           <span className="mock-skin-back">←</span>
-          <strong>Опросник «Тип кожи»</strong>
+          <strong>Questionnaire “Skin Type”</strong>
           <span />
         </div>
         <div className="mock-skin-progress">
           <div className="mock-skin-progress-bar" style={{ width: `${((idx) / questions.length) * 100}%` }} />
         </div>
-        <div className="mock-skin-question-num">Вопрос {idx + 1} из {questions.length}</div>
+        <div className="mock-skin-question-num">Question{idx + 1} from{questions.length}</div>
         <p className="mock-skin-question">{q.text}</p>
         <div className="mock-skin-options">
           {q.options.map((o, i) => (
@@ -647,7 +642,7 @@ export function SkinQuizMockup({
   );
 }
 
-// ── Чек-лист ухода за кожей (Урок 7) ──────────────────────────────────────
+// UI Logic
 
 export function ChecklistMockup({
   title,
@@ -691,17 +686,17 @@ export function ChecklistMockup({
         </ul>
         {!submitted ? (
           <button type="button" className="mock-checklist-submit" disabled={!allDone} onClick={() => { setSubmitted(true); onComplete(true); }}>
-            {allDone ? "✓ Готово" : `Осталось ${steps.length - done.size}`}
+            {allDone ? "✓ Done" : `Remaining${steps.length - done.size}`}
           </button>
         ) : (
-          <div className="mock-checklist-done">Все шаги выполнены!</div>
+          <div className="mock-checklist-done">All steps completed!</div>
         )}
       </div>
     </div>
   );
 }
 
-// ── Меню (карточки блюд) — Урок 13 ────────────────────────────────────────
+// UI Logic
 
 export function MenuMockup({
   task,
@@ -730,7 +725,7 @@ export function MenuMockup({
               <div className="mock-menu-emoji">{d.emoji}</div>
               <div className="mock-menu-name">{d.name}</div>
               <div className={`mock-menu-note mock-menu-note--${d.category}`}>
-                {d.category === "good" ? "✓ полезно" : "✗ не лучший выбор"}
+                {d.category === "good" ? "✓ useful" : "✗ not the best choice"}
               </div>
             </button>
           );
@@ -740,7 +735,7 @@ export function MenuMockup({
   );
 }
 
-// ── Рецепт в приложении — Урок 14 ─────────────────────────────────────────
+// UI Logic
 
 export function RecipeMockup({
   recipeName,
@@ -765,7 +760,7 @@ export function RecipeMockup({
           <div className="mock-recipe-emoji">{emoji}</div>
           <strong>{recipeName}</strong>
         </div>
-        <div className="mock-recipe-section-title">Ингредиенты</div>
+        <div className="mock-recipe-section-title">Ingredients</div>
         <ul className="mock-recipe-ingredients">
           {ingredients.map((ing, i) => (
             <li key={i} className={ing.highlight ? "is-highlight" : ""}>
@@ -796,13 +791,13 @@ export function RecipeMockup({
   );
 }
 
-// ── Калькулятор бюджета — Уроки 17 (доход) и 18 (расход) ─────────────────
+// UI Logic
 
 export function BudgetFormMockup({
   mode, // "income" | "expense"
   fields,
   expectedTotal,
-  comparisonValue, // для расходов — сравниваем с доходом
+  comparisonValue, // UI Logic
   onSubmit,
 }: {
   mode: "income" | "expense";
@@ -816,7 +811,7 @@ export function BudgetFormMockup({
 
   const totals = values.map((v) => parseInt(v.replace(/\s/g, "")) || 0);
   const total = totals.reduce((s, n) => s + n, 0);
-  const fmt = (n: number) => n.toLocaleString("ru-RU") + " сум";
+  const fmt = (n: number) => n.toLocaleString("ru-RU") + "am";
 
   const submit = () => {
     setSubmitted(true);
@@ -827,7 +822,7 @@ export function BudgetFormMockup({
     <div className="mock-budget">
       <div className="mock-budget-app">
         <div className="mock-budget-header">
-          <strong>{mode === "income" ? "Доходы семьи за месяц" : "Расходы семьи за месяц"}</strong>
+          <strong>{mode === "income" ? "Family income per month" : "Family expenses per month"}</strong>
         </div>
 
         <div className="mock-budget-fields">
@@ -847,31 +842,30 @@ export function BudgetFormMockup({
                     setValues(next);
                   }}
                 />
-                <span className="mock-budget-currency">сум</span>
+                <span className="mock-budget-currency">am</span>
               </div>
             </div>
           ))}
         </div>
 
         <div className="mock-budget-total-row">
-          <span>Итого:</span>
+          <span>Total:</span>
           <strong className="mock-budget-total">{fmt(total)}</strong>
         </div>
 
         {mode === "expense" && comparisonValue !== undefined ? (
           <div className={`mock-budget-compare ${total > comparisonValue ? "over" : "ok"}`}>
-            <span>Доход: {fmt(comparisonValue)}</span>
-            <span>{total > comparisonValue ? "⚠ Перерасход" : "✓ Уложились в бюджет"}</span>
+            <span>Income:{fmt(comparisonValue)}</span>
+            <span>{total > comparisonValue ? "⚠ Overspending" : "✓ Stayed within budget"}</span>
           </div>
         ) : null}
 
         {!submitted ? (
           <button type="button" className="mock-budget-submit" onClick={submit}>
-            Сохранить
-          </button>
+            Save</button>
         ) : (
           <div className={`mock-budget-result ${total === expectedTotal ? "ok" : "warn"}`}>
-            {total === expectedTotal ? "✓ Расчёт верный" : `⚠ Ожидаемая сумма: ${fmt(expectedTotal)}`}
+            {total === expectedTotal ? "✓ The calculation is correct" : `⚠ Expected amount:${fmt(expectedTotal)}`}
           </div>
         )}
       </div>
@@ -879,7 +873,7 @@ export function BudgetFormMockup({
   );
 }
 
-// ── Портал госуслуг — заполнение формы (Урок 27) ──────────────────────────
+// UI Logic
 
 export function GovPortalMockup({
   serviceName,
@@ -909,13 +903,13 @@ export function GovPortalMockup({
     <div className="mock-gov">
       <div className="mock-gov-bar">
         <strong>my.gov.uz</strong>
-        <span className="mock-gov-user">Дилноза</span>
+        <span className="mock-gov-user">Dear</span>
       </div>
 
       {step === "form" && (
         <>
           <div className="mock-gov-service">
-            <span className="mock-gov-badge">Госуслуга</span>
+            <span className="mock-gov-badge">State service</span>
             <h4>{serviceName}</h4>
           </div>
 
@@ -934,7 +928,7 @@ export function GovPortalMockup({
                     value={values[f.label] || ""}
                     onChange={(e) => setValues({ ...values, [f.label]: e.target.value })}
                   >
-                    <option value="">— выбрать —</option>
+                    <option value="">- choose -</option>
                     {f.options?.map((o) => <option key={o} value={o}>{o}</option>)}
                   </select>
                 )}
@@ -946,15 +940,15 @@ export function GovPortalMockup({
               disabled={fields.some((f) => !values[f.label])}
               onClick={() => setStep("review")}
             >
-              Проверить и подать →
-            </button>
+              
+              Check and submit →</button>
           </div>
         </>
       )}
 
       {step === "review" && (
         <div className="mock-gov-review">
-          <h4>Проверь заявление перед отправкой</h4>
+          <h4>Check your application before submitting</h4>
           <ul>
             {fields.map((f) => (
               <li key={f.label}>
@@ -964,8 +958,8 @@ export function GovPortalMockup({
             ))}
           </ul>
           <div className="mock-gov-review-actions">
-            <button type="button" className="mock-gov-back" onClick={() => setStep("form")}>← Изменить</button>
-            <button type="button" className="mock-gov-confirm" onClick={submit}>✓ Подать заявление</button>
+            <button type="button" className="mock-gov-back" onClick={() => setStep("form")}>← Edit</button>
+            <button type="button" className="mock-gov-confirm" onClick={submit}>✓ Submit an application</button>
           </div>
         </div>
       )}
@@ -973,16 +967,16 @@ export function GovPortalMockup({
       {step === "done" && (
         <div className="mock-gov-done">
           <div className="mock-gov-done-icon">✅</div>
-          <strong>Заявление принято</strong>
-          <p>Номер: <code>UZ-2026-001234</code></p>
-          <p>Срок исполнения: 5 рабочих дней</p>
+          <strong>Application accepted</strong>
+          <p>Number:<code>UZ-2026-001234</code></p>
+          <p>Execution time: 5 working days</p>
         </div>
       )}
     </div>
   );
 }
 
-// ── Договор кредита — подсветить условие (Урок 29) ────────────────────────
+// UI Logic
 
 export function ContractMockup({
   contract,
@@ -997,8 +991,8 @@ export function ContractMockup({
   return (
     <div className="mock-contract">
       <div className="mock-contract-header">
-        <strong>Кредитный договор № 2026/0042</strong>
-        <span className="mock-contract-bank">UQUVLI BANK</span>
+        <strong>Loan agreement No. 2026/0042</strong>
+        <span className="mock-contract-bank">MOSAIC BANK</span>
       </div>
       <p className="mock-contract-task">{question}</p>
       <ol className="mock-contract-list">
@@ -1017,7 +1011,7 @@ export function ContractMockup({
   );
 }
 
-// ── Справочник транспорта (Урок 19) ──────────────────────────────────────
+// UI Logic
 
 export function TransportDirectoryMockup({
   task,
@@ -1041,7 +1035,7 @@ export function TransportDirectoryMockup({
         <span className="mock-transport-search-icon">🔍</span>
         <input
           type="text"
-          placeholder="Поиск: автобус, поезд, метро…"
+          placeholder="Search: bus, train, metro..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -1068,7 +1062,7 @@ export function TransportDirectoryMockup({
   );
 }
 
-// ── Гардероб (Урок 2) ─────────────────────────────────────────────────────
+// UI Logic
 
 export function WardrobeMockup({
   occasion,
@@ -1083,8 +1077,8 @@ export function WardrobeMockup({
   return (
     <div className="mock-wardrobe">
       <div className="mock-wardrobe-header">
-        <strong>Гардероб</strong>
-        <span className="mock-wardrobe-tag">Куда идём: {occasion}</span>
+        <strong>Wardrobe</strong>
+        <span className="mock-wardrobe-tag">Where are we going:{occasion}</span>
       </div>
       <div className="mock-wardrobe-grid">
         {items.map((it) => {
@@ -1107,7 +1101,7 @@ export function WardrobeMockup({
   );
 }
 
-// ── Сервировка стола (Урок 16) — drag-drop приборов ──────────────────────
+// UI Logic
 
 export function TableSettingMockup({
   onResult,
@@ -1135,27 +1129,27 @@ export function TableSettingMockup({
 
   return (
     <div className="mock-table">
-      <div className="mock-table-task">Расставь приборы: вилка слева, нож и ложка справа, стакан сверху.</div>
+      <div className="mock-table-task">Arrange the utensils: fork on the left, knife and spoon on the right, glass on top.</div>
       <div className="mock-table-board">
         <div className="mock-table-slot mock-table-top" onDragOver={(e) => e.preventDefault()} onDrop={() => drop("top")}>
           {Object.entries(placed).filter(([, s]) => s === "top").map(([id]) => (
             <span key={id} className="mock-table-placed">{emojiFor(id)}</span>
           ))}
-          <span className="mock-table-slot-label">сверху</span>
+          <span className="mock-table-slot-label">above</span>
         </div>
         <div className="mock-table-mid">
           <div className="mock-table-slot mock-table-left" onDragOver={(e) => e.preventDefault()} onDrop={() => drop("left")}>
             {Object.entries(placed).filter(([, s]) => s === "left").map(([id]) => (
               <span key={id} className="mock-table-placed">{emojiFor(id)}</span>
             ))}
-            <span className="mock-table-slot-label">слева</span>
+            <span className="mock-table-slot-label">left</span>
           </div>
           <div className="mock-table-plate">🍽️</div>
           <div className="mock-table-slot mock-table-right" onDragOver={(e) => e.preventDefault()} onDrop={() => drop("right")}>
             {Object.entries(placed).filter(([, s]) => s === "right").map(([id]) => (
               <span key={id} className="mock-table-placed">{emojiFor(id)}</span>
             ))}
-            <span className="mock-table-slot-label">справа</span>
+            <span className="mock-table-slot-label">right</span>
           </div>
         </div>
       </div>
@@ -1173,11 +1167,11 @@ export function TableSettingMockup({
         ))}
       </div>
       {Object.values(placed).every((v) => v !== null) && !submitted ? (
-        <button type="button" className="mock-table-submit" onClick={submit}>Проверить</button>
+        <button type="button" className="mock-table-submit" onClick={submit}>Check</button>
       ) : null}
       {submitted ? (
         <div className={`mock-table-result ${correct ? "ok" : "warn"}`}>
-          {correct ? "✓ Сервировка правильная!" : "⚠ Попробуй ещё раз: вилка слева, нож/ложка справа, стакан сверху"}
+          {correct ? "✓ Serving is correct!" : "⚠ Try again: fork on the left, knife/spoon on the right, glass on top"}
         </div>
       ) : null}
     </div>
@@ -1188,10 +1182,10 @@ function emojiFor(id: string): string {
   return { fork: "🍴", knife: "🔪", spoon: "🥄", glass: "🥛" }[id] || "?";
 }
 function nameFor(id: string): string {
-  return { fork: "Вилка", knife: "Нож", spoon: "Ложка", glass: "Стакан" }[id] || id;
+  return { fork: "Fork", knife: "Knife", spoon: "Spoon", glass: "Cup" }[id] || id;
 }
 
-// ── Витрина шампуней (Урок 3) ─────────────────────────────────────────────
+// UI Logic
 
 export function ShampooStoreMockup({
   task,
@@ -1228,7 +1222,7 @@ export function ShampooStoreMockup({
   );
 }
 
-// ── Прогноз на неделю с подбором одежды (Урок 9) ──────────────────────────
+// UI Logic
 
 export function WeeklyWeatherMockup({
   days,
@@ -1255,7 +1249,7 @@ export function WeeklyWeatherMockup({
         ))}
       </div>
       <div className="mock-week-task">
-        Что наденем в <strong>{day.name.toLowerCase()}</strong>? {day.icon} {day.temp > 0 ? "+" : ""}{day.temp}°C
+        What to wear in<strong>{day.name.toLowerCase()}</strong>? {day.icon} {day.temp > 0 ? "+" : ""}{day.temp}°C
       </div>
       <div className="mock-week-options">
         {options.map((o, i) => (
@@ -1275,7 +1269,7 @@ export function WeeklyWeatherMockup({
   );
 }
 
-// ── Ярлык одежды со значками ухода (Урок 10) ──────────────────────────────
+// UI Logic
 
 export function CareLabelMockup({
   fabric,
@@ -1295,7 +1289,7 @@ export function CareLabelMockup({
     <div className="mock-care">
       <div className="mock-care-label">
         <div className="mock-care-header">
-          <strong>УХОД ЗА ИЗДЕЛИЕМ</strong>
+          <strong>PRODUCT CARE</strong>
           <span>{fabric}</span>
         </div>
         <div className="mock-care-symbols">
@@ -1327,7 +1321,7 @@ export function CareLabelMockup({
   );
 }
 
-// ── Упаковка порошка с таблицей дозировки (Урок 12) ───────────────────────
+// UI Logic
 
 export function DetergentBoxMockup({
   loadKg,
@@ -1346,21 +1340,21 @@ export function DetergentBoxMockup({
     <div className="mock-detergent">
       <div className="mock-detergent-box">
         <div className="mock-detergent-front">
-          <div className="mock-detergent-logo">UQUVLI</div>
-          <div className="mock-detergent-name">УНИВЕРСАЛЬНЫЙ ПОРОШОК</div>
-          <div className="mock-detergent-volume">3 кг</div>
+          <div className="mock-detergent-logo">MOSAIC</div>
+          <div className="mock-detergent-name">UNIVERSAL POWDER</div>
+          <div className="mock-detergent-volume">3 kg</div>
         </div>
         <div className="mock-detergent-table-wrap">
-          <strong>Дозировка</strong>
+          <strong>Dosage</strong>
           <table className="mock-detergent-table">
             <thead>
-              <tr><th>Вес белья</th><th>Граммы</th><th>Ложек</th></tr>
+              <tr><th>Laundry weight</th><th>Gram</th><th>spoons</th></tr>
             </thead>
             <tbody>
               {table.map((row, i) => (
                 <tr key={i} className={correctRow && row.kg === correctRow.kg ? "is-highlight" : ""}>
                   <td>{row.kg}</td>
-                  <td>{row.grams} г</td>
+                  <td>{row.grams}  g</td>
                   <td>{row.scoops}</td>
                 </tr>
               ))}
@@ -1369,7 +1363,7 @@ export function DetergentBoxMockup({
         </div>
       </div>
       <div className="mock-detergent-quiz">
-        <p>Сколько порошка нужно для <strong>{loadKg} кг</strong> белья?</p>
+        <p>How much powder is needed for<strong>{loadKg}  kg</strong> linen?</p>
         <div className="mock-detergent-options">
           {options.map((o, i) => (
             <button
@@ -1388,7 +1382,7 @@ export function DetergentBoxMockup({
   );
 }
 
-// ── Таймер духовки (Урок 15) ──────────────────────────────────────────────
+// UI Logic
 
 export function OvenTimerMockup({
   recipeStep,
@@ -1413,7 +1407,7 @@ export function OvenTimerMockup({
         setDone(true);
         setRunning(false);
       }
-    }, 100); // ускоренно — секунда за 100мс для демо
+    }, 100); // UI Logic
     return () => clearTimeout(timer);
   }, [running, remaining]);
 
@@ -1429,14 +1423,14 @@ export function OvenTimerMockup({
   return (
     <div className="mock-oven">
       <div className="mock-oven-recipe">
-        <span className="mock-oven-step">Шаг рецепта</span>
+        <span className="mock-oven-step">Recipe step</span>
         <p>{recipeStep}</p>
-        <span className="mock-oven-hint">По рецепту: {recipeMinutes} минут</span>
+        <span className="mock-oven-hint">According to the recipe:{recipeMinutes}  minutes</span>
       </div>
       <div className="mock-oven-device">
         <div className="mock-oven-display">
           {done ? (
-            <span className="mock-oven-alarm">ГОТОВО!</span>
+            <span className="mock-oven-alarm">DONE!</span>
           ) : running ? (
             <span className="mock-oven-time">{min2(remaining)}:{sec2(remaining * 60 % 60)}</span>
           ) : (
@@ -1445,7 +1439,7 @@ export function OvenTimerMockup({
         </div>
         <div className="mock-oven-knobs">
           <button type="button" className="mock-oven-knob" onClick={() => setMinutes(Math.max(0, minutes - 5))} disabled={running || done}>−5</button>
-          <span className="mock-oven-knob-label">МИНУТЫ</span>
+          <span className="mock-oven-knob-label">MINUTES</span>
           <button type="button" className="mock-oven-knob" onClick={() => setMinutes(minutes + 5)} disabled={running || done}>+5</button>
         </div>
         <button
@@ -1454,14 +1448,14 @@ export function OvenTimerMockup({
           disabled={minutes === 0 || running || done}
           onClick={start}
         >
-          {done ? "✓ ВЫПОЛНЕНО" : running ? "⏳ ИДЁТ" : "▶ СТАРТ"}
+          {done ? "✓ COMPLETED" : running ? "⏳ COMING" : "▶ START"}
         </button>
       </div>
     </div>
   );
 }
 
-// ── Multi-step покупка билета (Урок 21) ───────────────────────────────────
+// UI Logic
 
 export function TicketBookingMockup({
   onComplete,
@@ -1484,8 +1478,8 @@ export function TicketBookingMockup({
   return (
     <div className="mock-ticket">
       <div className="mock-ticket-header">
-        <strong>UZ Railway · Покупка билета</strong>
-        <span>Шаг {Math.min(step + 1, totalSteps)} из {totalSteps}</span>
+        <strong>UZ Railway · Buying a ticket</strong>
+        <span>Step{Math.min(step + 1, totalSteps)} from{totalSteps}</span>
       </div>
       <div className="mock-ticket-progress">
         <div className="mock-ticket-progress-bar" style={{ width: `${(step / totalSteps) * 100}%` }} />
@@ -1494,9 +1488,9 @@ export function TicketBookingMockup({
       <div className="mock-ticket-body">
         {step === 0 && (
           <>
-            <h4>Куда едем?</h4>
+            <h4>Where are we going?</h4>
             <div className="mock-ticket-routes">
-              {["Ташкент → Самарканд", "Ташкент → Бухара", "Ташкент → Андижан"].map((r) => (
+              {["Tashkent → Samarkand", "Tashkent → Bukhara", "Tashkent → Andijan"].map((r) => (
                 <button key={r} type="button" className="mock-ticket-route" onClick={() => { setDirection(r); setStep(1); }}>
                   {r}
                 </button>
@@ -1506,9 +1500,9 @@ export function TicketBookingMockup({
         )}
         {step === 1 && (
           <>
-            <h4>Выбери дату — заданная задача: завтра</h4>
+            <h4>Select a date - given task: tomorrow</h4>
             <div className="mock-ticket-dates">
-              {["Сегодня (26.05)", "Завтра (27.05)", "Послезавтра (28.05)"].map((d) => (
+              {["Today (26.05)", "Tomorrow (27.05)", "The day after tomorrow (28.05)"].map((d) => (
                 <button key={d} type="button" className="mock-ticket-date" onClick={() => { setDate(d); setStep(2); }}>
                   {d}
                 </button>
@@ -1518,10 +1512,10 @@ export function TicketBookingMockup({
         )}
         {step === 2 && (
           <>
-            <h4>Выбери место</h4>
+            <h4>Choose a place</h4>
             <div className="mock-ticket-seats">
               {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
-                <button key={s} type="button" className={`mock-ticket-seat ${s === 4 ? "is-busy" : ""}`} disabled={s === 4} onClick={() => { setSeat(`Место ${s}`); setStep(3); }}>
+                <button key={s} type="button" className={`mock-ticket-seat ${s === 4 ? "is-busy" : ""}`} disabled={s === 4} onClick={() => { setSeat(`Place${s}`); setStep(3); }}>
                   {s}
                 </button>
               ))}
@@ -1530,28 +1524,28 @@ export function TicketBookingMockup({
         )}
         {step === 3 && (
           <>
-            <h4>Проверь и подтверди</h4>
+            <h4>Check and confirm</h4>
             <ul className="mock-ticket-summary">
-              <li><span>Направление:</span> <strong>{direction}</strong></li>
-              <li><span>Дата:</span> <strong>{date}</strong></li>
-              <li><span>{seat}</span> <strong>120 000 сум</strong></li>
+              <li><span>Direction:</span> <strong>{direction}</strong></li>
+              <li><span>Date:</span> <strong>{date}</strong></li>
+              <li><span>{seat}</span> <strong>120,000 soum</strong></li>
             </ul>
             <div className="mock-ticket-actions">
-              <button type="button" className="mock-ticket-back" onClick={() => setStep(2)}>← Изменить</button>
+              <button type="button" className="mock-ticket-back" onClick={() => setStep(2)}>← Edit</button>
               <button
                 type="button"
                 className="mock-ticket-confirm"
-                onClick={() => finish(direction === "Ташкент → Самарканд" && date?.includes("Завтра") || false)}
+                onClick={() => finish(direction === "Tashkent → Samarkand" && date?.includes("Tomorrow") || false)}
               >
-                ✓ Оплатить
-              </button>
+                
+                ✓ Pay</button>
             </div>
           </>
         )}
         {done && (
           <div className="mock-ticket-done">
             <div className="mock-ticket-done-icon">🎫</div>
-            <strong>Билет куплен!</strong>
+            <strong>Ticket purchased!</strong>
             <p>{direction}, {date}, {seat}</p>
           </div>
         )}
@@ -1560,7 +1554,7 @@ export function TicketBookingMockup({
   );
 }
 
-// ── Телефон — звонок и SMS (Урок 23) ──────────────────────────────────────
+// UI Logic
 
 export function PhoneCallMockup({
   task,
@@ -1598,16 +1592,16 @@ export function PhoneCallMockup({
               <div className="mock-phone-task">📞 {task}</div>
               <div className="mock-phone-apps">
                 <button type="button" className="mock-phone-app" onClick={() => setView("dialer")}>
-                  <span>📞</span><span>Звонок</span>
+                  <span>📞</span><span>Call</span>
                 </button>
                 <button type="button" className="mock-phone-app" onClick={() => setView("contacts")}>
-                  <span>👥</span><span>Контакты</span>
+                  <span>👥</span><span>Contacts</span>
                 </button>
-                <button type="button" className="mock-phone-app" onClick={() => alert("SMS — это другая задача")}>
+                <button type="button" className="mock-phone-app" onClick={() => alert("SMS is a different challenge")}>
                   <span>💬</span><span>SMS</span>
                 </button>
                 <button type="button" className="mock-phone-app">
-                  <span>⚙️</span><span>Настройки</span>
+                  <span>⚙️</span><span>Settings</span>
                 </button>
               </div>
             </div>
@@ -1615,8 +1609,8 @@ export function PhoneCallMockup({
 
           {view === "dialer" && (
             <div className="mock-phone-dialer">
-              <button type="button" className="mock-phone-back" onClick={() => setView("home")}>← Назад</button>
-              <div className="mock-phone-number">{dialed || "Набери номер"}</div>
+              <button type="button" className="mock-phone-back" onClick={() => setView("home")}>← Back</button>
+              <div className="mock-phone-number">{dialed || "Dial the number"}</div>
               <div className="mock-phone-keypad">
                 {["1","2","3","4","5","6","7","8","9","*","0","#"].map((d) => (
                   <button key={d} type="button" onClick={() => tapDigit(d)}>{d}</button>
@@ -1624,15 +1618,15 @@ export function PhoneCallMockup({
               </div>
               <div className="mock-phone-actions">
                 <button type="button" className="mock-phone-erase" onClick={erase}>⌫</button>
-                <button type="button" className="mock-phone-call" disabled={!dialed} onClick={() => call(dialed)}>📞 Позвонить</button>
+                <button type="button" className="mock-phone-call" disabled={!dialed} onClick={() => call(dialed)}>📞 Call</button>
               </div>
             </div>
           )}
 
           {view === "contacts" && (
             <div className="mock-phone-contacts">
-              <button type="button" className="mock-phone-back" onClick={() => setView("home")}>← Назад</button>
-              <strong>Контакты</strong>
+              <button type="button" className="mock-phone-back" onClick={() => setView("home")}>← Back</button>
+              <strong>Contacts</strong>
               {contacts.map((c) => (
                 <button key={c.name} type="button" className="mock-phone-contact" onClick={() => call(c.number)}>
                   <span className="mock-phone-avatar">{c.avatar}</span>
@@ -1649,8 +1643,8 @@ export function PhoneCallMockup({
           {view === "calling" && (
             <div className="mock-phone-calling">
               <div className="mock-phone-calling-icon">📞</div>
-              <strong>Звонок на {dialed}</strong>
-              <p>{dialed === correctNumber ? "✓ Правильный номер" : "✗ Неверный номер"}</p>
+              <strong>Call to{dialed}</strong>
+              <p>{dialed === correctNumber ? "✓ Correct number" : "✗ Invalid number"}</p>
             </div>
           )}
         </div>
@@ -1659,7 +1653,7 @@ export function PhoneCallMockup({
   );
 }
 
-// ── Полка с предметами гигиены (Уроки 1 и 32) ────────────────────────────
+// UI Logic
 
 import {
   IconCheck, ICON_MAP,
@@ -1673,17 +1667,17 @@ type HygieneItem = {
 };
 
 const HYGIENE_ITEMS: HygieneItem[] = [
-  { id: "toothbrush", name: "Зубная щётка",     artId: "toothbrush", isHygiene: true },
-  { id: "toothpaste", name: "Зубная паста",     artId: "toothpaste", isHygiene: true },
-  { id: "soap",       name: "Мыло",             artId: "soap",       isHygiene: true },
-  { id: "shampoo",    name: "Шампунь",          artId: "shampoo",    isHygiene: true },
-  { id: "comb",       name: "Расчёска",         artId: "comb",       isHygiene: true },
-  { id: "towel",      name: "Полотенце",        artId: "towel",      isHygiene: true },
-  { id: "scissors",   name: "Ножницы для ногтей", artId: "nail-scissors", isHygiene: true },
-  { id: "deodorant",  name: "Дезодорант",       artId: "deodorant",  isHygiene: true },
-  { id: "ball",       name: "Мяч",              artId: "ball",       isHygiene: false },
-  { id: "lipstick",   name: "Помада",           artId: "lipstick",   isHygiene: false },
-  { id: "mug",        name: "Кружка с чаем",    artId: "mug",        isHygiene: false },
+  { id: "toothbrush", name: "Toothbrush",     artId: "toothbrush", isHygiene: true },
+  { id: "toothpaste", name: "Toothpaste",     artId: "toothpaste", isHygiene: true },
+  { id: "soap",       name: "Soap",             artId: "soap",       isHygiene: true },
+  { id: "shampoo",    name: "Shampoo",          artId: "shampoo",    isHygiene: true },
+  { id: "comb",       name: "Comb",         artId: "comb",       isHygiene: true },
+  { id: "towel",      name: "Towel",        artId: "towel",      isHygiene: true },
+  { id: "scissors",   name: "Nail scissors", artId: "nail-scissors", isHygiene: true },
+  { id: "deodorant",  name: "Deodorant",       artId: "deodorant",  isHygiene: true },
+  { id: "ball",       name: "Ball",              artId: "ball",       isHygiene: false },
+  { id: "lipstick",   name: "Lipstick",           artId: "lipstick",   isHygiene: false },
+  { id: "mug",        name: "Mug with tea",    artId: "mug",        isHygiene: false },
 ];
 
 const MORNING_NEEDED = ["toothbrush", "toothpaste", "soap", "comb", "towel"];
@@ -1719,8 +1713,8 @@ export function HygieneShelfMockup({
     onResult(
       exact,
       exact
-        ? `Молодец! Правильно выбрано ${partial} предметов.`
-        : `Правильно: ${partial} из ${expectedSet.size}. Посмотри, что нужно убрать или добавить.`,
+        ? `Well done! Correctly selected${partial}items.`
+        : `Right:${partial}from${expectedSet.size}. See what needs to be removed or added.`,
     );
   };
 
@@ -1730,8 +1724,8 @@ export function HygieneShelfMockup({
   };
 
   const taskText = mode === "morning"
-    ? "Выбери только то, что нужно тебе утром для умывания и чистки зубов."
-    : "Выбери все предметы, которые относятся к личной гигиене.";
+    ? "Choose only what you need in the morning for washing and brushing your teeth."
+    : "Select all items that relate to personal hygiene.";
 
   return (
     <div className="mock-hygiene">
@@ -1772,19 +1766,19 @@ export function HygieneShelfMockup({
             disabled={picked.size === 0}
             onClick={submit}
           >
-            Готово · выбрано: {picked.size}
+            
+            Done · selected:{picked.size}
           </button>
         ) : (
           <button type="button" className="mock-hygiene-reset" onClick={reset}>
-            Попробовать ещё раз
-          </button>
+            Try again</button>
         )}
       </div>
     </div>
   );
 }
 
-// ── Диагностический урок (старый — оставлен для совместимости) ────────────
+// UI Logic
 
 export function DiagnosticPlatformMockup({
   mode,
@@ -1803,38 +1797,38 @@ export function DiagnosticPlatformMockup({
   const finish = () => {
     setBlock("done");
     onResult(score >= 2, mode === "entry"
-      ? `Входная диагностика: ${score} из 3 верно. Это стартовый уровень.`
-      : `Итоговая диагностика: ${score} из 3 верно. Сравним с началом года.`);
+      ? `Input diagnostics:${score}out of 3 is correct. This is the starting level.`
+      : `Final diagnostics:${score}out of 3 is correct. Let's compare with the beginning of the year.`);
   };
 
   return (
     <div className="mock-diag">
       <div className="mock-diag-card">
         <div className="mock-diag-header">
-          <strong>{mode === "entry" ? "🚀 Входная диагностика" : "🎓 Итоговая диагностика"}</strong>
-          <span className="mock-diag-badge">Без оценок</span>
+          <strong>{mode === "entry" ? "🚀 Input diagnostics" : "🎓 Final diagnostics"}</strong>
+          <span className="mock-diag-badge">No ratings</span>
         </div>
 
         {block === "intro" && (
           <div className="mock-diag-body">
-            <p>Сейчас будут короткие задания. Не торопись, пользуйся подсказками.</p>
+            <p>Now there will be short tasks. Take your time, use the hints.</p>
             <div className="mock-diag-controls">
-              <button type="button" className="mock-diag-tutorial">🔊 Послушать</button>
-              <button type="button" className="mock-diag-tutorial">💡 Помощь</button>
-              <button type="button" className="mock-diag-tutorial">→ Дальше</button>
+              <button type="button" className="mock-diag-tutorial">🔊 Listen</button>
+              <button type="button" className="mock-diag-tutorial">💡 Help</button>
+              <button type="button" className="mock-diag-tutorial">→ Next</button>
             </div>
             <button type="button" className="mock-diag-start" onClick={() => setBlock("reading")}>
-              ▶ Начать
-            </button>
+              
+              ▶ Get started</button>
           </div>
         )}
 
         {block === "reading" && (
           <div className="mock-diag-body">
-            <div className="mock-diag-step">Задание 1 из 3 · Чтение</div>
-            <p className="mock-diag-text">Прочитай: «Утром после сна нужно почистить зубы и умыться». Что делает человек по утрам?</p>
+            <div className="mock-diag-step">Task 1 of 3 Reading</div>
+            <p className="mock-diag-text">Read: “In the morning after sleep, you need to brush your teeth and wash your face.” What does a person do in the morning?</p>
             <div className="mock-diag-options">
-              {["Чистит зубы и умывается", "Сразу идёт гулять", "Спит до обеда"].map((opt, i) => {
+              {["Brushes teeth and washes his face", "Goes for a walk right away", "Sleeps until lunch"].map((opt, i) => {
                 const isCorrect = i === 0;
                 const picked = readingPicked === i;
                 return (
@@ -1859,8 +1853,8 @@ export function DiagnosticPlatformMockup({
 
         {block === "icons" && (
           <div className="mock-diag-body">
-            <div className="mock-diag-step">Задание 2 из 3 · Распознавание значков</div>
-            <p className="mock-diag-text">Какой значок относится к гигиене — мытью и чистоте?</p>
+            <div className="mock-diag-step">Task 2 of 3 · Icon recognition</div>
+            <p className="mock-diag-text">Which icon refers to hygiene - washing and cleanliness?</p>
             <div className="mock-diag-icons">
               {["🧼", "🚗", "🎮", "📺"].map((emoji, i) => {
                 const isCorrect = i === 0;
@@ -1887,13 +1881,13 @@ export function DiagnosticPlatformMockup({
 
         {block === "safety" && (
           <div className="mock-diag-body">
-            <div className="mock-diag-step">Задание 3 из 3 · Здоровая привычка</div>
-            <p className="mock-diag-text">Когда нужно мыть руки?</p>
+            <div className="mock-diag-step">Task 3 of 3 · Healthy habit</div>
+            <p className="mock-diag-text">When should you wash your hands?</p>
             <div className="mock-diag-options">
               {[
-                "Перед едой и после улицы",
-                "Только в субботу",
-                "Никогда не мыть",
+                "Before food and after the street",
+                "Only on Saturday",
+                "Never wash",
               ].map((opt, i) => {
                 const isCorrect = i === 0;
                 const picked = safetyPicked === i;
@@ -1920,9 +1914,9 @@ export function DiagnosticPlatformMockup({
         {block === "done" && (
           <div className="mock-diag-body mock-diag-done">
             <div className="mock-diag-done-emoji">{mode === "entry" ? "📊" : "🎉"}</div>
-            <strong>Диагностика завершена</strong>
-            <p>Результат: <span className="mock-diag-score">{score} из 3</span></p>
-            <p className="mock-diag-note">Это не оценка — мы просто смотрим уровень.</p>
+            <strong>Diagnostics completed</strong>
+            <p>Result:<span className="mock-diag-score">{score}  out of 3</span></p>
+            <p className="mock-diag-note">This is not an assessment - we are just looking at the level.</p>
           </div>
         )}
       </div>
@@ -1930,7 +1924,7 @@ export function DiagnosticPlatformMockup({
   );
 }
 
-// ── Карточки ситуаций «безопасно/опасно» (Урок 25) ───────────────────────
+// UI Logic
 
 export function SafetyCardsMockup({
   situations,
@@ -1966,7 +1960,7 @@ export function SafetyCardsMockup({
 
   return (
     <div className="mock-safety">
-      <div className="mock-safety-progress">Ситуация {idx + 1} / {situations.length}</div>
+      <div className="mock-safety-progress">Situation{idx + 1} / {situations.length}</div>
       <div className="mock-safety-card">
         <div className="mock-safety-icon">
           {ICON_MAP[s.icon] ? (() => { const Ico = ICON_MAP[s.icon]; return <Ico size={56} />; })() : <span>{s.icon}</span>}
@@ -1974,15 +1968,15 @@ export function SafetyCardsMockup({
         <p className="mock-safety-text">{s.text}</p>
         {!showExplanation ? (
           <div className="mock-safety-choices">
-            <button type="button" className="mock-safety-safe" onClick={() => choose(false)}>✓ Безопасно</button>
-            <button type="button" className="mock-safety-danger" onClick={() => choose(true)}>⚠ Опасно</button>
+            <button type="button" className="mock-safety-safe" onClick={() => choose(false)}>✓ Safe</button>
+            <button type="button" className="mock-safety-danger" onClick={() => choose(true)}>⚠ Dangerous</button>
           </div>
         ) : (
           <div className={`mock-safety-feedback ${answers[idx] ? "ok" : "wrong"}`}>
-            <strong>{answers[idx] ? "✓ Правильно" : "✗ Ошибка"}</strong>
+            <strong>{answers[idx] ? "✓ Correct" : "✗ Error"}</strong>
             <p>{s.explanation}</p>
             <button type="button" className="mock-safety-next" onClick={nextCard}>
-              {idx < situations.length - 1 ? "Дальше →" : "Завершить"}
+              {idx < situations.length - 1 ? "Continue →" : "Complete"}
             </button>
           </div>
         )}
@@ -1991,7 +1985,7 @@ export function SafetyCardsMockup({
   );
 }
 
-// ── Отслеживание посылки (Урок 22) ────────────────────────────────────────
+// UI Logic
 
 export function TrackingMockup({
   trackNumber,
@@ -2009,29 +2003,28 @@ export function TrackingMockup({
       <div className="mock-track-input-row">
         <input
           type="text"
-          placeholder="Введите трек-номер"
+          placeholder="Enter tracking number"
           value={input}
           onChange={(e) => setInput(e.target.value.toUpperCase())}
         />
         <button type="button" onClick={() => { setSubmitted(true); onSubmit(input); }}>
-          Проверить
-        </button>
+          Check</button>
       </div>
-      <div className="mock-track-hint">Образец: <code>{trackNumber}</code></div>
+      <div className="mock-track-hint">Sample:<code>{trackNumber}</code></div>
       {submitted ? (
         <div className="mock-track-result">
           {input === trackNumber ? (
             <>
-              <strong className="ok">✓ Посылка найдена</strong>
+              <strong className="ok">✓ Parcel found</strong>
               <div className="mock-track-status">{expectedStatus}</div>
               <div className="mock-track-stages">
-                <span className="done">📮 Отправлена</span>
-                <span className="done">🚚 В пути</span>
-                <span>📦 Доставлена</span>
+                <span className="done">📮 Sent</span>
+                <span className="done">🚚 On the way</span>
+                <span>📦 Delivered</span>
               </div>
             </>
           ) : (
-            <strong className="warn">⚠ Номер не найден — проверь ввод</strong>
+            <strong className="warn">⚠ Number not found - check your input</strong>
           )}
         </div>
       ) : null}
