@@ -41,7 +41,8 @@ type UquvliDatabase = {
 type DemoLoginProfile = (typeof demoLoginProfiles)[number];
 type DemoUserSeed = DemoLoginProfile["user"];
 
-const DATA_FILE = path.join(process.cwd(), "data", "uquvli-db.json");
+const DATA_DIR = process.env.DATA_DIR || path.join(process.cwd(), "data");
+const DATA_FILE = process.env.UQUVLI_DB_PATH || path.join(DATA_DIR, "uquvli-db.json");
 
 const EMPTY_DB: UquvliDatabase = {
   version: 1,
@@ -310,10 +311,18 @@ async function loadDb(): Promise<UquvliDatabase> {
 }
 
 async function saveDb(db: UquvliDatabase) {
-  await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
-  const tmpFile =`${DATA_FILE}.${process.pid}.${Date.now()}.tmp`;
-  await fs.writeFile(tmpFile, `${JSON.stringify(db, null, 2)}\n`, "utf8");
-  await fs.rename(tmpFile, DATA_FILE);
+  try {
+    await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
+    const tmpFile = `${DATA_FILE}.${process.pid}.${Date.now()}.tmp`;
+    await fs.writeFile(tmpFile, `${JSON.stringify(db, null, 2)}\n`, "utf8");
+    await fs.rename(tmpFile, DATA_FILE);
+  } catch (err) {
+    if (isRecord(err) && (err.code === "EROFS" || err.code === "EACCES")) {
+      console.warn("Storage filesystem is read-only. Retaining state in memory cache.", err);
+    } else {
+      throw err;
+    }
+  }
   dbCache = db;
 }
 

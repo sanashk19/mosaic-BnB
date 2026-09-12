@@ -1085,7 +1085,7 @@ function TeacherLessonsSection({
     if (type === "uzum")
       return { name: "Uzum", icon: <UiIcon name="shopping" />, tone: "uzum" };
     if (type === "mygov")
-      return { name: "my.gov.uz", icon: <UiIcon name="shield" />, tone: "mygov" };
+      return { name: "Digital Government Services", icon: <UiIcon name="shield" />, tone: "mygov" };
     if (type === "phone")
       return { name: t.trainer_phone, icon: <CabinetIcon name="phone" />, tone: "phone" };
 
@@ -1110,7 +1110,7 @@ function TeacherLessonsSection({
       "menu":                { name: "Food menu",        tone: "uzum" },
       "recipe":              { name: "Recipe",           tone: "uzum" },
       "budget-form":         { name: "Budget",           tone: "mygov" },
-      "gov-portal":          { name: "my.gov.uz",        tone: "mygov" },
+      "gov-portal":          { name: "Digital Government Services",        tone: "mygov" },
       "contract":            { name: "Agreement",          tone: "mygov" },
       "transport-directory": { name: "Directory",       tone: "phone" },
       "wardrobe":            { name: "Wardrobe",         tone: "uzum" },

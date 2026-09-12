@@ -159,9 +159,9 @@ export function HomepageAdaptationDemo() {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#506847" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                 </span>
                 <span className="mosaic-step-num">2</span>
-                <strong>Adapt with AI</strong>
+                <strong>Adaptive Engine</strong>
               </div>
-              <p>Mosaic analyzes the lesson and learner profile.</p>
+              <p>Mosaic adapts lessons based on learner support preferences.</p>
             </div>
 
             <div className="mosaic-step-arrow" aria-hidden="true">&rarr;</div>

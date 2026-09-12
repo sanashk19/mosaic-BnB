@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth-provider";
 import { DashboardClient } from "@/components/dashboard-client";
 import { ResearcherCabinet } from "@/components/researcher-cabinet";
@@ -34,9 +36,28 @@ type DashboardRouterProps = {
 };
 
 export function DashboardRouter({ demoUser, lessons, modules, roleLabels }: DashboardRouterProps) {
-  const { user } = useAuth();
+  const { user, ready } = useAuth();
+  const router = useRouter();
 
-  if (user?.role === "researcher") {
+  useEffect(() => {
+    if (ready && !user) {
+      router.replace("/login?redirect=/dashboard");
+    }
+  }, [user, ready, router]);
+
+  if (!ready) {
+    return (
+      <div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <p style={{ color: "#707877", fontSize: "0.875rem" }}>Loading dashboard...</p>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return null;
+  }
+
+  if (user.role === "researcher") {
     return <ResearcherCabinet />;
   }
 

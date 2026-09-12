@@ -9,20 +9,6 @@ interface SignVisualItem {
   imageUrl?: string;
 }
 
-const COMMON_WORD_IMAGES: Record<string, string> = {
-  HELLO: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/HELLO.jpg",
-  NAMASTE: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/NAMASTE.jpg",
-  WATER: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/WATER.jpg",
-  HELP: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/HELP.jpg",
-  THANK: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/THANK.jpg",
-  THANKYOU: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/THANK.jpg",
-  LOVE: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/LOVE.jpg",
-  FAMILY: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/FAMILY.jpg",
-  FRIEND: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/FRIEND.jpg",
-  YES: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/YES.jpg",
-  NO: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/NO.jpg",
-};
-
 export function SignLanguageStt() {
   const [inputText, setInputText] = useState<string>("");
   const [isRecording, setIsRecording] = useState<boolean>(false);
@@ -49,29 +35,17 @@ export function SignLanguageStt() {
     const items: SignVisualItem[] = [];
 
     words.forEach((w) => {
-      if (COMMON_WORD_IMAGES[w]) {
+      // Check if word is a known sign token
+      if (w.length > 1) {
         items.push({
           token: w,
           type: "word",
-          imageUrl: COMMON_WORD_IMAGES[w],
         });
       } else {
-        for (let i = 0; i < w.length; i++) {
-          const char = w[i];
-          if (/[A-Z]/.test(char)) {
-            items.push({
-              token: char,
-              type: "letter",
-              imageUrl: `https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/${char}.jpg`,
-            });
-          } else if (/[0-9]/.test(char)) {
-            items.push({
-              token: char,
-              type: "letter",
-              imageUrl: `https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/num_${char}.jpg`,
-            });
-          }
-        }
+        items.push({
+          token: w,
+          type: "letter",
+        });
       }
     });
 
@@ -343,28 +317,13 @@ export function SignLanguageStt() {
                   Step {idx + 1}: {item.token}
                 </span>
 
-                <div className="w-full aspect-square bg-[#EDF2E9] rounded-xl overflow-hidden flex items-center justify-center border border-[#E5E2DC]">
-                  {item.imageUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={item.imageUrl}
-                      alt={`ISL Sign for ${item.token}`}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLElement;
-                        target.style.display = "none";
-                        if (target.nextElementSibling) {
-                          (target.nextElementSibling as HTMLElement).style.display = "flex";
-                        }
-                      }}
-                    />
-                  ) : null}
-                  <div
-                    className="w-full h-full flex items-center justify-center text-3xl font-black text-[#506847] bg-[#EDF2E9]"
-                    style={{ display: item.imageUrl ? "none" : "flex" }}
-                  >
+                <div className="w-full aspect-square bg-[#EDF2E9] rounded-xl overflow-hidden flex flex-col items-center justify-center p-2 border border-[#E5E2DC] text-center">
+                  <span className="text-3xl font-black text-[#506847]">
                     {item.token}
-                  </div>
+                  </span>
+                  <span className="text-[9px] font-semibold text-[#707877] mt-1 px-1 py-0.5 bg-white rounded border border-[#E5E2DC]">
+                    ISL reference media unavailable
+                  </span>
                 </div>
 
                 <span className="px-2 py-0.5 bg-[#EDF2E9] text-[#22352E] rounded-md text-[10px] font-bold uppercase">

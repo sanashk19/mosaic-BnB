@@ -46,7 +46,7 @@ const dict = {
     lessonTopic: "Lesson topic",
     classGroup: "Class/group",
     studentCategory: "Category of students",
-    studentCategoryValue: "children with disabilities, mild mental retardation (F70)",
+    studentCategoryValue: "learners who benefit from accessible step-by-step learning",
     duration: "Duration",
     lessonType: "Lesson type",
     workForm: "Form of work",
@@ -164,7 +164,7 @@ const dict = {
     classGroup: "Sinf / guruh",
     studentCategory: "Oʻquvchilar toifasi",
     studentCategoryValue:
-      "imkoniyati cheklangan bolalar, yengil aqliy zaiflik (F70)",
+      "imkoniyati cheklangan bolalar",
     duration: "Davomiyligi",
     lessonType: "Dars turi",
     workForm: "Ish shakli",
@@ -226,7 +226,7 @@ const dict = {
     correctAnswer: "Toʻgʻri javob",
     question: "Savol",
     options: "Variantlar",
-    footer: "MOSAIC. F70 bolalar uchun IMM dasturi",
+    footer: "MOSAIC. Maxsus talim dasturi",
     header: "MOSAIC | Dars konspekti",
     page: "Sahifa ",
     plannedSubjectDefault: (title: string) =>
@@ -273,7 +273,7 @@ const trainerHumanLabels: Record<string, Record<Locale, string>> = {
   telegram: { ru: "Telegram", uz: "Telegram" },
   gmail: { ru: "Gmail", uz: "Gmail" },
   uzum: { ru: "Uzum Market", uz: "Uzum Market" },
-  mygov: { ru: "my.gov.uz", uz: "my.gov.uz" },
+  mygov: { ru: "Digital Government Services", uz: "Digital Government Services" },
   phone: { ru: "phone call (103)", uz: "telefon qoʻngʻirogʻi (103)" },
 };
 
@@ -298,7 +298,7 @@ function buildAutoMethodology(
     lesson.intro
     ?? (isUz
       ?`«${lesson.title}» mavzusi doirasida yengil aqliy zaiflikka ega bolalarda amaliy koʻnikma shakllantirish.`
-      : `Develop practical skills within the framework of the topic “${lesson.title}» in children with mild mental retardation.`);
+      : `Develop practical skills within the framework of the topic “${lesson.title}» in learners who benefit from accessible step-by-step learning.`);
 
   const tasks = lesson.goals.length
     ? lesson.goals
@@ -586,7 +586,7 @@ const trainerLabels: Record<string, Record<Locale, string>> = {
   telegram: { ru: "Telegram", uz: "Telegram" },
   gmail: { ru: "Gmail", uz: "Gmail" },
   uzum: { ru: "Uzum Market", uz: "Uzum Market" },
-  mygov: { ru: "my.gov.uz", uz: "my.gov.uz" },
+  mygov: { ru: "Digital Government Services", uz: "Digital Government Services" },
   phone: { ru: "Call 103", uz: "103 qoʻngʻiroq" },
 };
 

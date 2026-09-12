@@ -1,9 +1,16 @@
+import { redirect } from "next/navigation";
+import { getSessionUser } from "@/lib/server/session";
 import { DashboardRouter } from "@/components/dashboard-router";
 import { getDemoUserPreview, getRoleLabels } from "@/data/demo-user";
 import { getDisplayLessons, getProgramModules } from "@/data/program";
 import { getLocale } from "@/lib/i18n";
 
 export default async function DashboardPage() {
+  const sessionUser = await getSessionUser();
+  if (!sessionUser) {
+    redirect("/login?redirect=/dashboard");
+  }
+
   const locale = await getLocale();
   const programModules = getProgramModules(locale);
   const displayLessons = getDisplayLessons(locale);

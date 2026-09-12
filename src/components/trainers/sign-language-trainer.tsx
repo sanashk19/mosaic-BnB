@@ -87,6 +87,7 @@ export function SignLanguageTrainer({
   const [practiceSuccess, setPracticeSuccess] = useState<boolean>(false);
   const [backendStatus, setBackendStatus] = useState<string>("Checking...");
   const [showDiagnostics, setShowDiagnostics] = useState<boolean>(false);
+  const [serviceError, setServiceError] = useState<string | null>(null);
 
   // Internal lifecycle and frame refs
   const isMountedRef = useRef<boolean>(true);
@@ -124,7 +125,7 @@ export function SignLanguageTrainer({
     }
 
     setIsCameraActive(false);
-    setCameraStatus("Webcam is currently off");
+    setCameraStatus("Webcam stopped");
     setHandsDetectedCount(0);
     setLandmarkCount(0);
     setBufferCount(0);
@@ -141,10 +142,18 @@ export function SignLanguageTrainer({
       body: JSON.stringify({ data: [new Array(126).fill(0)] }),
     })
       .then((res) => {
-        if (res.ok) setBackendStatus("Connected (Port 8000 / ML Model)");
-        else setBackendStatus("Online (Fallback mode)");
+        if (res.ok) {
+          setBackendStatus("Connected (Port 8000 / ML Model)");
+          setServiceError(null);
+        } else {
+          setBackendStatus("Recognition service unavailable");
+          setServiceError("Recognition service unavailable. Please start the recognition service and try again.");
+        }
       })
-      .catch(() => setBackendStatus("Online (Local simulation)"));
+      .catch(() => {
+        setBackendStatus("Recognition service unavailable");
+        setServiceError("Recognition service unavailable. Please start the recognition service and try again.");
+      });
 
     return () => {
       isMountedRef.current = false;
@@ -167,8 +176,15 @@ export function SignLanguageTrainer({
         body: JSON.stringify({ data: bufferCopy }),
       });
 
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      if (!res.ok) {
+        setBackendStatus("Recognition service unavailable");
+        setServiceError("Recognition service unavailable. Please start the recognition service and try again.");
+        setPredictionText("Service Unavailable");
+        setConfidence(0);
+        return;
+      }
 
+      setServiceError(null);
       const data = await res.json();
 
       if (data && data.prediction) {
@@ -554,6 +570,26 @@ export function SignLanguageTrainer({
         )}
       </div>
 
+      {/* Service Unavailable Alert Banner */}
+      {serviceError && (
+        <div
+          style={{
+            margin: "0 0 1.25rem 0",
+            padding: "0.85rem 1.25rem",
+            backgroundColor: "#FEF2F2",
+            border: "1px solid #FCA5A5",
+            borderRadius: "12px",
+            color: "#991B1B",
+            fontSize: "0.875rem",
+          }}
+        >
+          <strong style={{ display: "block", marginBottom: "0.25rem", fontSize: "0.9375rem" }}>
+            Recognition service unavailable
+          </strong>
+          <span>Please start the recognition service and try again.</span>
+        </div>
+      )}
+
       {/* Practice Match Success Alert */}
       {practiceSuccess && (
         <div className="isl-trainer-success-banner">
@@ -723,18 +759,18 @@ export function SignLanguageTrainer({
           <div className="isl-trainer-demo-card">
             <div className="isl-trainer-demo-head">
               <span>Try with demo gestures</span>
-              <small>Instant simulation</small>
+              <small>Demo simulation</small>
             </div>
             <div className="isl-trainer-demo-buttons">
-              {["A", "B", "C", "1", "2", "Hello", "Namaste", "Water", "Help", "Thank you"].map((s) => (
+              {["A", "B", "C", "1", "2", "NAMASTE", "WATER", "HELP", "THANK YOU"].map((s) => (
                 <button
                   key={s}
                   type="button"
-                  onClick={() => triggerDemoSign(s.toUpperCase())}
+                  onClick={() => triggerDemoSign(s)}
                   className="isl-trainer-demo-btn"
                 >
                   <strong>{s}</strong>
-                  <span>Try sign</span>
+                  <span>Demo simulation</span>
                 </button>
               ))}
             </div>
@@ -776,39 +812,42 @@ export function SignLanguageTrainer({
             )}
 
             {/* Target comparison feedback */}
-            {targetSign && isCameraActive && handsDetectedCount > 0 && predictionText !== "Waiting for a sign..." && (
+            {targetSign && isCameraActive && handsDetectedCount > 0 && predictionText !== "Waiting for a sign..." && predictionText !== "Service Unavailable" && (
               <div style={{ marginTop: "0.75rem" }}>
                 {predictionText.trim().toUpperCase() === targetSign.trim().toUpperCase() ? (
                   <div
                     style={{
-                      padding: "0.5rem 0.75rem",
+                      padding: "0.6rem 0.85rem",
                       backgroundColor: "#EDF2E9",
                       border: "1px solid #C4D3BE",
                       borderRadius: "8px",
                       display: "flex",
                       alignItems: "center",
                       gap: "0.5rem",
-                      color: "#22352E",
-                      fontSize: "0.8125rem",
+                      color: "#166534",
+                      fontSize: "0.9375rem",
                       fontWeight: 700,
                     }}
                   >
-                    <CheckIcon size={16} />
-                    <span>✓ Correct sign: {targetSign}</span>
+                    <CheckIcon size={18} />
+                    <span>✓ Correct sign</span>
                   </div>
                 ) : (
                   <div
                     style={{
-                      padding: "0.5rem 0.75rem",
+                      padding: "0.6rem 0.85rem",
                       backgroundColor: "#FBECE5",
                       border: "1px solid #F1C3AF",
                       borderRadius: "8px",
                       color: "#9A3412",
-                      fontSize: "0.8125rem",
+                      fontSize: "0.875rem",
                       fontWeight: 600,
                     }}
                   >
-                    Try again: Target is &quot;{targetSign}&quot; (detected &quot;{predictionText}&quot;)
+                    <div style={{ fontWeight: 700 }}>Try again</div>
+                    <div style={{ fontSize: "0.8125rem", marginTop: "0.2rem", color: "#7C2D12" }}>
+                      Detected: <strong>{predictionText}</strong>
+                    </div>
                   </div>
                 )}
               </div>

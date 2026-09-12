@@ -142,10 +142,55 @@ def predict_demo():
 
 @app.post("/format")
 def format_sentence(input_data: TextInput):
+    def build_local_sentence(gloss_text: str):
+        gloss = gloss_text.strip()
+        word_map = {
+            "HELLO": "Hello",
+            "THANK": "Thank you",
+            "THANK YOU": "Thank you",
+            "YOU": "you",
+            "I": "I",
+            "WATER": "water",
+            "WANT": "want",
+            "HELP": "help",
+            "PLEASE": "please",
+            "NAMASTE": "Namaste",
+            "STOP": "Stop",
+            "GO": "go",
+            "HOME": "home",
+            "TODAY": "today",
+            "LOVE": "love",
+            "FRIEND": "friend",
+            "FAMILY": "family",
+            "GOOD": "good",
+            "BAD": "bad",
+            "YES": "yes",
+            "NO": "no"
+        }
+        words = gloss.split()
+        sentence_words = []
+        for word in words:
+            if word in word_map:
+                sentence_words.append(word_map[word])
+            elif len(word) == 1:
+                sentence_words.append(word)
+            else:
+                sentence_words.append(word.capitalize())
+        sentence = " ".join(sentence_words)
+        if sentence and not sentence.endswith("."):
+            sentence += "."
+        return {
+            "sentence": sentence if sentence else gloss,
+            "source": "rule_fallback"
+        }
+
+    model_arn = os.getenv("AWS_BEDROCK_MODEL_ARN")
+    if not model_arn:
+        return build_local_sentence(input_data.text)
 
     try:
         response = bedrock.converse(
-            modelId="arn:aws:bedrock:ap-south-1:140023403920:application-inference-profile/47s54r86t1vu",
+            modelId=model_arn,
             messages=[
                 {
                     "role": "user",
@@ -198,21 +243,11 @@ def format_sentence(input_data: TextInput):
         Sentence: Hello, I want water.
 
         Gloss: DAOUI WATER
-        Sentence: I want water.
-
-        Gloss: XQZ WATER
-        Sentence: I want water.
-
-        Gloss: WARNING
-        Sentence: Warning.
-
-        Gloss: STOP
-        Sentence: Stop.
-
-        Now convert the following gloss:
+        Sentence: Water.
 
         Gloss: {input_data.text}
-        Sentence: """
+        Sentence:
+        """
                         }
                     ]
                 }
@@ -223,67 +258,12 @@ def format_sentence(input_data: TextInput):
                 "topP": 0.9
             }
         )
-
         sentence = response["output"]["message"]["content"][0]["text"]
-
-        return {"sentence": sentence.strip()}
+        return {"sentence": sentence.strip(), "source": "aws_bedrock"}
 
     except Exception as e:
-        # Fallback for local testing without AWS credentials
-        logging.warning(f"AWS Bedrock error: {e}. Using fallback sentence formation.")
-        
-        # Simple fallback: Convert gloss to basic sentence
-        gloss = input_data.text.strip()
-        
-        # Basic word mapping for common ISL tokens
-        word_map = {
-            "HELLO": "Hello",
-            "THANK": "Thank you",
-            "YOU": "you",
-            "I": "I",
-            "WATER": "water",
-            "WANT": "want",
-            "HELP": "help",
-            "PLEASE": "please",
-            "NAMASTE": "Namaste",
-            "STOP": "Stop",
-            "GO": "go",
-            "HOME": "home",
-            "TODAY": "today",
-            "LOVE": "love",
-            "FRIEND": "friend",
-            "FAMILY": "family",
-            "GOOD": "good",
-            "BAD": "bad",
-            "YES": "yes",
-            "NO": "no"
-        }
-        
-        # Simple sentence construction
-        words = gloss.split()
-        sentence_words = []
-        
-        for word in words:
-            if word in word_map:
-                sentence_words.append(word_map[word])
-            elif len(word) == 1:  # Single letters
-                sentence_words.append(word)
-            else:
-                sentence_words.append(word.lower())
-        
-        # Very basic grammar: if "I" and "want" and "water" are present
-        if "I" in words and "WANT" in words:
-            if any(w in words for w in ["WATER", "FOOD", "HELP"]):
-                sentence = "I want " + " ".join([w.lower() for w in words if w not in ["I", "WANT"]])
-            else:
-                sentence = "I want something."
-        elif len(sentence_words) == 1:
-            sentence = sentence_words[0] + "."
-        else:
-            sentence = " ".join(sentence_words) + "."
-        
-        return {"sentence": sentence}
-   
+        logging.warning(f"AWS Bedrock error: {e}. Using rule-based fallback sentence formation.")
+        return build_local_sentence(input_data.text)
 
 @app.post("/speak")
 def speak_text(input_data: SpeechInput):

@@ -47,8 +47,8 @@ const categoriesByLocale: Record<Locale, Array<{ label: string; icon: UiIconName
 const dict = {
   ru: {
     timeNow: "09:42",
-    brandTitle: "my.gov.uz",
-    brandSub: "Electronic government",
+    brandTitle: "Digital Government Services",
+    brandSub: "Citizen Services",
     avatarLetter: "AND",
     taskLabel: "Exercise:",
     searchPlaceholder: "Find a service...",
@@ -96,7 +96,7 @@ const dict = {
   },
   uz: {
     timeNow: "09:42",
-    brandTitle: "my.gov.uz",
+    brandTitle: "Digital Government Services",
     brandSub: "Elektron hukumat",
     avatarLetter: "I",
     taskLabel: "Topshiriq:",
@@ -246,7 +246,7 @@ export function MyGovTrainer({ trainer, onDone, studentMode = false }: Props) {
 
       <header className="mygov-mobile-header">
         <div className="mygov-mobile-brand">
-          <span className="mygov-emblem" aria-hidden="true">UZ</span>
+          <span className="mygov-emblem" aria-hidden="true">GOV</span>
           <div>
             <strong>{t.brandTitle}</strong>
             <small>{t.brandSub}</small>

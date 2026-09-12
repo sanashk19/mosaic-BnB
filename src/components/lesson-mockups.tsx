@@ -902,7 +902,7 @@ export function GovPortalMockup({
   return (
     <div className="mock-gov">
       <div className="mock-gov-bar">
-        <strong>my.gov.uz</strong>
+        <strong>Digital Government Services</strong>
         <span className="mock-gov-user">Dear</span>
       </div>
 

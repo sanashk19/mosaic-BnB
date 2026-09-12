@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import type { ProgramLesson } from "@/data/program";
 import type { CurrentUser } from "@/lib/uquvli-types";
@@ -23,11 +23,36 @@ const DEFAULT_SAMPLE_STUDENTS: Array<{
   supportType: AccessibilitySupportType;
   notes: string;
 }> = [
-  { id: "s1", name: "Aisha Karimova", supportType: "reading", notes: "Needs short sentences & audio support" },
-  { id: "s2", name: "Jasur Rahimov", supportType: "visual", notes: "Audio-first, requires interface descriptions" },
-  { id: "s3", name: "Malika Yusupova", supportType: "hearing", notes: "Text-first with captions & visual cues" },
-  { id: "s4", name: "Timur Aliev", supportType: "reading", notes: "Dyslexia profile, relaxed spacing" },
-  { id: "s5", name: "Nodira Umarova", supportType: "none", notes: "Standard lesson format" },
+  {
+    id: "sample-1",
+    name: "Aanya",
+    supportType: "reading",
+    notes: "Prefers plain language, simplified vocabulary, and audio read-aloud support",
+  },
+  {
+    id: "sample-2",
+    name: "Riya",
+    supportType: "sign",
+    notes: "Benefits from visual sign language guides, video demonstrations, and pictorial cues",
+  },
+  {
+    id: "sample-3",
+    name: "Arjun",
+    supportType: "focus",
+    notes: "Requires single-action step presentation, calm UI, reduced sensory distraction",
+  },
+  {
+    id: "sample-4",
+    name: "Kabir",
+    supportType: "motor",
+    notes: "Needs larger tap targets, keyboard navigability, and forgiving input boundaries",
+  },
+  {
+    id: "sample-5",
+    name: "Meera",
+    supportType: "speech",
+    notes: "Best supported by voice recognition alternatives and non-verbal interactive choices",
+  },
 ];
 
 export function AdaptiveLessonStudio({
@@ -36,27 +61,30 @@ export function AdaptiveLessonStudio({
   onOpenLessonForClass,
   activeClassLessonSlug,
 }: AdaptiveLessonStudioProps) {
-  // Choose default lesson (flagship messenger-message or first available)
-  const defaultLesson =
-    lessons.find((l) => l.slug === "messenger-message") ?? lessons[0];
+  const defaultLesson = lessons[0];
   const [selectedSlug, setSelectedSlug] = useState<string>(
-    defaultLesson?.slug ?? "",
+    activeClassLessonSlug || defaultLesson?.slug || "online-banking-safety",
   );
 
-  // Student list state (combining real registered students with sample profiles for full hackathon demonstration)
-  const [roster, setRoster] = useState(() => {
-    if (students && students.length > 0) {
-      return students.map((s, idx) => ({
-        id: s.id,
-        name: s.profile?.childName || s.name,
-        supportType:
-          s.accessibilityProfile?.supportType ||
-          (idx % 3 === 0 ? "reading" : idx % 3 === 1 ? "visual" : "hearing"),
-        notes: s.profile?.supportNotes || "Adaptive learning profile",
-      }));
-    }
-    return DEFAULT_SAMPLE_STUDENTS;
-  });
+  const [supportOverrides, setSupportOverrides] = useState<Record<string, AccessibilitySupportType>>({});
+
+  // Student list state (preferring real registered students from teacher roster, fallback to demo names only if empty)
+  const roster = useMemo(() => {
+    const base =
+      students && students.length > 0
+        ? students.map((s) => ({
+            id: s.id,
+            name: s.profile?.childName || s.name,
+            supportType: s.accessibilityProfile?.supportType || "reading",
+            notes: s.profile?.supportNotes || "Classroom learning profile",
+          }))
+        : DEFAULT_SAMPLE_STUDENTS;
+
+    return base.map((item) => ({
+      ...item,
+      supportType: supportOverrides[item.id] || item.supportType,
+    }));
+  }, [students, supportOverrides]);
 
   const [generationStep, setGenerationStep] = useState<GenerationStep>("idle");
   const [activePreviewTab, setActivePreviewTab] =
@@ -70,25 +98,15 @@ export function AdaptiveLessonStudio({
     studentId: string,
     newSupport: AccessibilitySupportType,
   ) {
-    setRoster((prev) =>
-      prev.map((item) =>
-        item.id === studentId ? { ...item, supportType: newSupport } : item,
-      ),
-    );
+    setSupportOverrides((prev) => ({
+      ...prev,
+      [studentId]: newSupport,
+    }));
   }
 
   // Trigger adaptation generation workflow
   function handleGenerateAdaptations() {
-    setGenerationStep("analyzing");
-    setTimeout(() => {
-      setGenerationStep("applying");
-      setTimeout(() => {
-        setGenerationStep("preparing");
-        setTimeout(() => {
-          setGenerationStep("ready");
-        }, 600);
-      }, 600);
-    }, 600);
+    setGenerationStep("ready");
   }
 
   // Generate adapted lesson for active preview tab

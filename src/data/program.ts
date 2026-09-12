@@ -648,7 +648,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 1"
         ],
         methodology: {
-          objective: "Form a digital activity - undergo an input diagnostic of digital skills - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital activity - undergo an input diagnostic of digital skills - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: rules of personal hygiene",
             "create a step-by-step digital action algorithm",
@@ -828,7 +828,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 32"
         ],
         methodology: {
-          objective: "Form a digital activity - undergo a final diagnosis of digital skills - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital activity - undergo a final diagnosis of digital skills - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: rules of cleanliness and health of the body",
             "create a step-by-step digital action algorithm",
@@ -1031,7 +1031,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 2"
         ],
         methodology: {
-          objective: "Form a digital action - collect a digital image for the situation - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - collect a digital image for the situation - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: wardrobe",
             "create a step-by-step digital action algorithm",
@@ -1212,7 +1212,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 3"
         ],
         methodology: {
-          objective: "Create a digital action - select a product based on hair type on a digital showcase - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Create a digital action - select a product based on hair type on a digital showcase - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: a display of shampoos",
             "create a step-by-step digital action algorithm",
@@ -1393,7 +1393,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 4"
         ],
         methodology: {
-          objective: "Form a digital action - take a digital questionnaire and get a recommendation - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - take a digital questionnaire and get a recommendation - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: skin questionnaire",
             "create a step-by-step digital action algorithm",
@@ -1574,7 +1574,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 5"
         ],
         methodology: {
-          objective: "Form a digital action - read the digital forecast and decide about sun protection - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - read the digital forecast and decide about sun protection - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: weather forecast",
             "create a step-by-step digital action algorithm",
@@ -1755,7 +1755,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 6"
         ],
         methodology: {
-          objective: "Form a digital action - read the digital label of the product - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - read the digital label of the product - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: product label",
             "create a step-by-step digital action algorithm",
@@ -1936,7 +1936,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 7"
         ],
         methodology: {
-          objective: "Form a digital action - go through a digital care checklist step by step - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - go through a digital care checklist step by step - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: care checklist",
             "create a step-by-step digital action algorithm",
@@ -2117,7 +2117,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 8"
         ],
         methodology: {
-          objective: "Form a digital action - set a safe volume on a digital device - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - set a safe volume on a digital device - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: volume control",
             "create a step-by-step digital action algorithm",
@@ -2298,7 +2298,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 26"
         ],
         methodology: {
-          objective: "Form a digital action - read the readings of a digital thermometer and evaluate - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - read the readings of a digital thermometer and evaluate - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: digital thermometer",
             "create a step-by-step digital action algorithm",
@@ -2502,7 +2502,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 9"
         ],
         methodology: {
-          objective: "Form a digital action - collect a set of clothes according to the digital forecast for the week - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - collect a set of clothes according to the digital forecast for the week - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: weekly forecast",
             "create a step-by-step digital action algorithm",
@@ -2683,7 +2683,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 10"
         ],
         methodology: {
-          objective: "Form a digital action - read pictograms on a digital clothing label - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - read pictograms on a digital clothing label - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: clothing label",
             "create a step-by-step digital action algorithm",
@@ -2864,7 +2864,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 11"
         ],
         methodology: {
-          objective: "Create a digital action - start washing on the digital panel of the washing machine - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Create a digital action - start washing on the digital panel of the washing machine - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: washing machine panel",
             "create a step-by-step digital action algorithm",
@@ -3045,7 +3045,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 12"
         ],
         methodology: {
-          objective: "Form a digital action - find the right dosage of the product on the digital packaging - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - find the right dosage of the product on the digital packaging - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: packaging of washing powder",
             "create a step-by-step digital action algorithm",
@@ -3226,7 +3226,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 13"
         ],
         methodology: {
-          objective: "Form a digital action - collect a digital dinner menu from dish cards - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - collect a digital dinner menu from dish cards - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: dish cards",
             "create a step-by-step digital action algorithm",
@@ -3407,7 +3407,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 14"
         ],
         methodology: {
-          objective: "Form a digital action - read a digital recipe and find products and quantities - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - read a digital recipe and find products and quantities - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: digital recipe",
             "create a step-by-step digital action algorithm",
@@ -3588,7 +3588,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 15"
         ],
         methodology: {
-          objective: "Create a digital action - complete a recipe step by step with a digital timer - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Create a digital action - complete a recipe step by step with a digital timer - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: a step-by-step recipe with a timer",
             "create a step-by-step digital action algorithm",
@@ -3769,7 +3769,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 16"
         ],
         methodology: {
-          objective: "Form a digital action—arrange cutlery on a digital serving chart—for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action—arrange cutlery on a digital serving chart—for 7th grade students with intellectual disabilities .",
           tasks: [
             "introduce a digital object: serving scheme",
             "create a step-by-step digital action algorithm",
@@ -3950,7 +3950,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 17"
         ],
         methodology: {
-          objective: "Form a digital action - enter income in digital form and get the result - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - enter income in digital form and get the result - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: a form of income",
             "create a step-by-step digital action algorithm",
@@ -4131,7 +4131,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 18"
         ],
         methodology: {
-          objective: "Create a digital action - fill out a digital table of expenses and compare with income - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Create a digital action - fill out a digital table of expenses and compare with income - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: expense table",
             "create a step-by-step digital action algorithm",
@@ -4335,7 +4335,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 19"
         ],
         methodology: {
-          objective: "Form a digital action - find a mode of transport in a digital directory - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - find a mode of transport in a digital directory - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: transport directory",
             "create a step-by-step digital action algorithm",
@@ -4516,7 +4516,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 20"
         ],
         methodology: {
-          objective: "Create a digital action - read the digital train schedule board - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Create a digital action - read the digital train schedule board - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: a station board",
             "create a step-by-step digital action algorithm",
@@ -4697,7 +4697,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 21"
         ],
         methodology: {
-          objective: "Form a digital action - buy a ticket online (safe educational scenario) - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - buy a ticket online (safe educational scenario) - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: ticket purchasing service",
             "create a step-by-step digital action algorithm",
@@ -4901,7 +4901,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 22"
         ],
         methodology: {
-          objective: "Create a digital action - track a parcel by track number - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Create a digital action - track a parcel by track number - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: tracking page",
             "create a step-by-step digital action algorithm",
@@ -5082,7 +5082,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 23"
         ],
         methodology: {
-          objective: "Create a digital action - make a call and send an SMS on the phone - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Create a digital action - make a call and send an SMS on the phone - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: a phone with contacts",
             "create a step-by-step digital action algorithm",
@@ -5263,7 +5263,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 24"
         ],
         methodology: {
-          objective: "Create a digital action - send a message in the messenger - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Create a digital action - send a message in the messenger - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: messenger",
             "create a step-by-step digital action algorithm",
@@ -5467,7 +5467,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 25"
         ],
         methodology: {
-          objective: "Form digital action - distinguish between safe and dangerous digital situations - among 7th grade students with intellectual disabilities (F70).",
+          objective: "Form digital action - distinguish between safe and dangerous digital situations - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: situation cards",
             "create a step-by-step digital action algorithm",
@@ -5664,14 +5664,14 @@ export const programModules: ProgramModule[] = [
             correctIndex: 2
           }
         ],
-        adultNote: "Show your child the my.gov.uz portal. Explain that this is the official website of the state - they receive documents there.",
+        adultNote: "Show your child the Digital Government Services portal. Explain that this is the official website of the state - they receive documents there.",
         tags: [
           "public services",
           "Digital Public Services & Banking",
           "Lesson 27"
         ],
         methodology: {
-          objective: "Form a digital action - fill out an electronic application on the government services portal - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - fill out an electronic application on the government services portal - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: public services portal",
             "create a step-by-step digital action algorithm",
@@ -5773,12 +5773,12 @@ export const programModules: ProgramModule[] = [
       },
       {
         slug: "atm-cash-withdrawal",
-        title: "Sberbank. Main functions of the bank",
+        title: "Digital Banking: ATM and Card Safety",
         duration: "1 hour",
         summary: "We withdraw money from an ATM: insert the card, enter the PIN code, select the amount, take the card and money.",
         intro: "There is an ATM on the screen. The child goes through all five steps of withdrawing money and always learns to cover the keyboard with his hand when entering the PIN code. This is safe training for a real operation that the graduate will have to face on their own.",
         image: "/generated-images/track-public-services.jpg",
-        imageAlt: "Illustration for the lesson “Sberbank. Main functions of the bank\"",
+        imageAlt: "Illustration for the lesson “Digital Banking: ATM and Card Safety\"",
         goals: [
           "Understand what an ATM is and why it is needed in life.",
           "Master the digital action - withdraw money from an ATM.",
@@ -5852,7 +5852,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 28"
         ],
         methodology: {
-          objective: "Create a digital action - withdraw money from an ATM - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Create a digital action - withdraw money from an ATM - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: ATM",
             "create a step-by-step digital action algorithm",
@@ -6033,7 +6033,7 @@ export const programModules: ProgramModule[] = [
           "Lesson 29"
         ],
         methodology: {
-          objective: "Form a digital action - read the digital contract and find key terms - for 7th grade students with intellectual disabilities (F70).",
+          objective: "Form a digital action - read the digital contract and find key terms - designed for learners who benefit from accessible, step-by-step learning and practical support.",
           tasks: [
             "introduce a digital object: digital contract",
             "create a step-by-step digital action algorithm",

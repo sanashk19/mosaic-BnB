@@ -61,7 +61,7 @@ const dict: Locales<{
   feedbackSoft: string;
 }> = {
   ru: {
-    appTitle: "my.gov.uz",
+    appTitle: "Digital Government Services",
     stepCounter: (n) => `Step${n}from${STEPS}`,
     taskEyebrow: "Statement",
     questionEyebrow: "Choose",
@@ -92,7 +92,7 @@ const dict: Locales<{
     feedbackSoft: "This doesn't fit. Look again.",
   },
   uz: {
-    appTitle: "my.gov.uz",
+    appTitle: "Digital Government Services",
     stepCounter: (n) => `${n} / ${STEPS}-qadam`,
     taskEyebrow: "Ariza",
     questionEyebrow: "Tanla",
@@ -198,7 +198,7 @@ export function MyGovPortalTrainer({ trainer, onDone }: Props) {
         <div className="gov-app-header">
           <LessonItemArt id="mygov-portal-screen-realistic" size={72} className="gov-portal-preview" />
           <div>
-            <strong>my.gov.uz</strong>
+            <strong>Digital Government Services</strong>
             <small>{t.appTitle}</small>
           </div>
         </div>

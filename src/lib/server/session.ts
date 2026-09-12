@@ -7,11 +7,11 @@ const SESSION_COOKIE = "uquvli-session";
 const SESSION_MAX_AGE = 60 * 60 * 24 * 30;
 
 function getSessionSecret() {
-  const secret = process.env.UQUVLI_SESSION_SECRET;
+  const secret = process.env.SESSION_SECRET || process.env.UQUVLI_SESSION_SECRET;
   if (secret) return secret;
 
   if (process.env.NODE_ENV === "production") {
-    throw new Error("UQUVLI_SESSION_SECRET must be set in production.");
+    throw new Error("SESSION_SECRET must be set in production.");
   }
 
   return "uquvli-local-session-secret";

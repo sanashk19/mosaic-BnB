@@ -50,21 +50,20 @@ const ALPHABETS: SignItem[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((char) 
     hindiLabel: `अक्षर ${hindiMap[char] || char}`,
     category: "alphabets",
     description: `Two-handed ISL: Form the standard Indian Sign Language handshape for letter ${char}.`,
-    imageUrl: `https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/${char}.jpg`,
   };
 });
 
 const NUMBERS: SignItem[] = [
-  { id: "0", label: "Number 0", hindiLabel: "शून्य (०)", category: "numbers", description: "Fingers curved together into an oval circle shape.", imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/num_0.jpg" },
-  { id: "1", label: "Number 1", hindiLabel: "एक (१)", category: "numbers", description: "Index finger raised vertically, palm facing inward.", imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/num_1.jpg" },
-  { id: "2", label: "Number 2", hindiLabel: "दो (२)", category: "numbers", description: "Index and middle fingers extended upward in a 'V' shape.", imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/num_2.jpg" },
-  { id: "3", label: "Number 3", hindiLabel: "तीन (३)", category: "numbers", description: "Thumb, index, and middle fingers extended forward.", imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/num_3.jpg" },
-  { id: "4", label: "Number 4", hindiLabel: "चार (४)", category: "numbers", description: "Four fingers extended upward with thumb folded over palm.", imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/num_4.jpg" },
-  { id: "5", label: "Number 5", hindiLabel: "पाँच (५)", category: "numbers", description: "All five fingers spread open, palm facing forward.", imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/num_5.jpg" },
-  { id: "6", label: "Number 6", hindiLabel: "छह (६)", category: "numbers", description: "Thumb and little finger touching across palm, three fingers raised.", imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/num_6.jpg" },
-  { id: "7", label: "Number 7", hindiLabel: "सात (७)", category: "numbers", description: "Thumb and ring finger touching across palm, three fingers up.", imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/num_7.jpg" },
-  { id: "8", label: "Number 8", hindiLabel: "आठ (८)", category: "numbers", description: "Thumb and middle finger touching across palm, remaining fingers up.", imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/num_8.jpg" },
-  { id: "9", label: "Number 9", hindiLabel: "नौ (९)", category: "numbers", description: "Thumb and index finger touching across palm.", imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/num_9.jpg" },
+  { id: "0", label: "Number 0", hindiLabel: "शून्य (०)", category: "numbers", description: "Fingers curved together into an oval circle shape.", },
+  { id: "1", label: "Number 1", hindiLabel: "एक (१)", category: "numbers", description: "Index finger raised vertically, palm facing inward.", },
+  { id: "2", label: "Number 2", hindiLabel: "दो (२)", category: "numbers", description: "Index and middle fingers extended upward in a 'V' shape.", },
+  { id: "3", label: "Number 3", hindiLabel: "तीन (३)", category: "numbers", description: "Thumb, index, and middle fingers extended forward.", },
+  { id: "4", label: "Number 4", hindiLabel: "चार (४)", category: "numbers", description: "Four fingers extended upward with thumb folded over palm.", },
+  { id: "5", label: "Number 5", hindiLabel: "पाँच (५)", category: "numbers", description: "All five fingers spread open, palm facing forward.", },
+  { id: "6", label: "Number 6", hindiLabel: "छह (६)", category: "numbers", description: "Thumb and little finger touching across palm, three fingers raised.", },
+  { id: "7", label: "Number 7", hindiLabel: "सात (७)", category: "numbers", description: "Thumb and ring finger touching across palm, three fingers up.", },
+  { id: "8", label: "Number 8", hindiLabel: "आठ (८)", category: "numbers", description: "Thumb and middle finger touching across palm, remaining fingers up.", },
+  { id: "9", label: "Number 9", hindiLabel: "नौ (९)", category: "numbers", description: "Thumb and index finger touching across palm.", },
 ];
 
 const EVERYDAY_WORDS: SignItem[] = [
@@ -74,7 +73,6 @@ const EVERYDAY_WORDS: SignItem[] = [
     hindiLabel: "नमस्ते",
     category: "everyday",
     description: "Join both palms flat in front of chest and bow head gently in respect (ISLRTC standard greeting).",
-    imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/NAMASTE.jpg",
   },
   {
     id: "HELLO",
@@ -82,7 +80,6 @@ const EVERYDAY_WORDS: SignItem[] = [
     hindiLabel: "हैलो / नमस्ते",
     category: "everyday",
     description: "Open palm waved gently near temple with friendly facial expression.",
-    imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/HELLO.jpg",
   },
   {
     id: "WATER",
@@ -90,7 +87,6 @@ const EVERYDAY_WORDS: SignItem[] = [
     hindiLabel: "पानी",
     category: "everyday",
     description: "Form a 'W' handshape with three fingers and tap side of chin/mouth twice.",
-    imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/WATER.jpg",
   },
   {
     id: "FOOD",
@@ -112,7 +108,6 @@ const EVERYDAY_WORDS: SignItem[] = [
     hindiLabel: "परिवार",
     category: "everyday",
     description: "Both hands form 'F' shapes with thumb and index, circling outward to meet together.",
-    imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/FAMILY.jpg",
   },
   {
     id: "FRIENDS",
@@ -120,7 +115,6 @@ const EVERYDAY_WORDS: SignItem[] = [
     hindiLabel: "दोस्त",
     category: "everyday",
     description: "Both index fingers hooked together and gently interlocked twice in camaraderie.",
-    imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/FRIEND.jpg",
   },
   {
     id: "HELP",
@@ -128,7 +122,6 @@ const EVERYDAY_WORDS: SignItem[] = [
     hindiLabel: "मदद",
     category: "everyday",
     description: "Dominant thumbs-up rested on flat upward palm, lifted gently upward.",
-    imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/HELP.jpg",
   },
   {
     id: "THANK YOU",
@@ -136,7 +129,6 @@ const EVERYDAY_WORDS: SignItem[] = [
     hindiLabel: "धन्यवाद",
     category: "everyday",
     description: "Fingertips touch chin gently and move smoothly forward towards the person.",
-    imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/THANK.jpg",
   },
   {
     id: "YES",
@@ -144,7 +136,6 @@ const EVERYDAY_WORDS: SignItem[] = [
     hindiLabel: "हाँ",
     category: "everyday",
     description: "Closed fist nodded up and down twice, mirroring an affirmative head nod.",
-    imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/YES.jpg",
   },
   {
     id: "NO",
@@ -152,7 +143,55 @@ const EVERYDAY_WORDS: SignItem[] = [
     hindiLabel: "नहीं",
     category: "everyday",
     description: "Index and middle finger snap firmly against thumb twice.",
-    imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/NO.jpg",
+  },
+  {
+    id: "GO",
+    label: "Go",
+    hindiLabel: "जाना",
+    category: "everyday",
+    description: "Both index fingers arc forward away from body, indicating movement or departure.",
+  },
+  {
+    id: "TODAY",
+    label: "Today",
+    hindiLabel: "आज",
+    category: "everyday",
+    description: "Both open hands with palms facing upward move gently downward twice.",
+  },
+  {
+    id: "WANT",
+    label: "Want",
+    hindiLabel: "चाहिए",
+    category: "everyday",
+    description: "Both open hands with curved fingers pull gently towards the chest.",
+  },
+  {
+    id: "WARNING",
+    label: "Warning",
+    hindiLabel: "चेतावनी",
+    category: "everyday",
+    description: "Flat palm facing outward pushing firmly forward, alerting of caution or danger.",
+  },
+  {
+    id: "YOU",
+    label: "You",
+    hindiLabel: "आप / तुम",
+    category: "everyday",
+    description: "Index finger points directly forward toward the conversation partner.",
+  },
+  {
+    id: "SHY",
+    label: "Shy",
+    hindiLabel: "शर्म",
+    category: "everyday",
+    description: "Back of fingers gently stroke the cheek with a pleasant bashful expression.",
+  },
+  {
+    id: "SPIDER-MAN",
+    label: "Spider-Man",
+    hindiLabel: "स्पाइडर-मैन",
+    category: "everyday",
+    description: "Thumb, index, and little finger extended forward with middle and ring fingers folded.",
   },
 ];
 
@@ -274,7 +313,6 @@ const SAFETY_SIGNS: SignItem[] = [
     hindiLabel: "मदद (आपातकाल)",
     category: "safety",
     description: "Thumbs-up resting on flat upward palm, lifted upward urgently with direct eye contact.",
-    imageUrl: "https://signvaarta-models-riya-2026.s3.amazonaws.com/isl-tutorials/HELP.jpg",
   },
   {
     id: "EMERGENCY",
@@ -369,7 +407,7 @@ const ALL_CURRICULUM_ITEMS: Record<ISLCategory, SignItem[]> = {
   india: INDIA_CONTEXT,
 };
 
-const SCHOOL_TOPICS = [
+export const SCHOOL_TOPICS = [
   {
     grade: "Class 1",
     title: "Greetings & Family",
@@ -809,17 +847,12 @@ export function SignLanguageLearningStudio() {
                 </div>
 
                 <div className="isl-sign-visual-box">
-                  {item.imageUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={item.imageUrl} alt={`ISL sign for ${item.label}`} />
-                  ) : (
-                    <div className="isl-sign-visual-fallback">
-                      <span className="isl-sign-visual-char">{item.id.slice(0, 2)}</span>
-                      <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#506847" }}>
-                        Verified ISL Sign
-                      </span>
-                    </div>
-                  )}
+                  <div className="isl-sign-visual-fallback">
+                    <span className="isl-sign-visual-char">{item.id.slice(0, 2)}</span>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#707877" }}>
+                      ISL reference media unavailable
+                    </span>
+                  </div>
                 </div>
 
                 <div className="isl-sign-titles">
@@ -863,34 +896,6 @@ export function SignLanguageLearningStudio() {
               </button>
             </div>
           )}
-        </section>
-
-        {/* ── SECTION 4: INDIAN SCHOOL LEARNING TOPICS ─────────────────── */}
-        <section id="school-topics" className="isl-section">
-          <div className="isl-section-header">
-            <span className="isl-section-eyebrow">Inclusive Primary Education</span>
-            <h2 className="isl-section-title">Learn with Indian School Topics</h2>
-            <p className="isl-section-desc">
-              Curriculum-aligned signs structured for Indian primary school grades (Class 1 to Class 5).
-            </p>
-          </div>
-
-          <div className="isl-school-grid">
-            {SCHOOL_TOPICS.map((topic) => (
-              <div key={topic.grade} className="isl-school-card">
-                <span className="isl-school-card-class">{topic.grade}</span>
-                <h4 className="isl-school-card-title">{topic.title}</h4>
-                <p style={{ fontSize: "0.8125rem", color: "#59635E", margin: "0", lineHeight: "1.4" }}>
-                  {topic.description}
-                </p>
-                <div className="isl-school-card-signs">
-                  {topic.signs.map((s) => (
-                    <span key={s} className="isl-school-chip">{s}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
 
           <div className="isl-attribution-banner">
             <SparkleIcon size={20} />
@@ -1050,7 +1055,7 @@ export function SignLanguageLearningStudio() {
                     {practiceSign.label} ({practiceSign.hindiLabel})
                   </span>
                   <span style={{ fontSize: "0.8125rem", color: "#707877", backgroundColor: "#FFFFFF", padding: "0.25rem 0.75rem", borderRadius: "999px", border: "1px solid #E5E2DC" }}>
-                    Reference media unavailable
+                    ISL reference media unavailable
                   </span>
                 </div>
               )}

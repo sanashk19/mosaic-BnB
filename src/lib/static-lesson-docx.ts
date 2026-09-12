@@ -114,7 +114,7 @@ export const staticLessonDocxBySlug = {
   },
   "atm-cash-withdrawal": {
     publicFile: "atm-cash-withdrawal.docx",
-    downloadName: "Lesson_28_Sberbank. Main functions of the bank_PhD.docx",
+    downloadName: "Lesson_28_Digital_Banking_ATM_Safety.docx",
   },
   "credit-contract-reading": {
     publicFile: "credit-contract-reading.docx",
