@@ -931,11 +931,10 @@ export function SignLanguageLearningStudio() {
         {/* ── SECTION 6: SPEECH TO SIGN ─────────────────────────────────── */}
         <section id="speech-to-sign" className="isl-section">
           <div className="isl-section-header">
-            <span className="isl-section-eyebrow">Two-Way Accessible Communication</span>
-            <h2 className="isl-section-title">Speech to Indian Sign Language</h2>
+            <span className="isl-section-eyebrow">TWO-WAY ACCESSIBLE COMMUNICATION</span>
+            <h2 className="isl-section-title">Speech &amp; Text to Indian Sign Language</h2>
             <p className="isl-section-desc">
-              Speak into the microphone or type below. Mosaic suggests the corresponding Indian Sign
-              Language sequence to bridge communication between hearing and deaf learners.
+              Speak or type a short phrase and Mosaic builds a sequence of supported Indian Sign Language signs.
             </p>
           </div>
 
