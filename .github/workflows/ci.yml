@@ -28,3 +28,5 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          SESSION_SECRET: mosaic-ci-build-session-secret-key-12345

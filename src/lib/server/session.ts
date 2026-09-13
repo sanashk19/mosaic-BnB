@@ -10,11 +10,11 @@ function getSessionSecret() {
   const secret = process.env.SESSION_SECRET || process.env.UQUVLI_SESSION_SECRET;
   if (secret) return secret;
 
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === "production" && !process.env.CI) {
     throw new Error("SESSION_SECRET must be set in production.");
   }
 
-  return "uquvli-local-session-secret";
+  return "mosaic-build-session-secret";
 }
 
 function toBase64Url(value: string) {

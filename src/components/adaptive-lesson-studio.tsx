@@ -32,26 +32,26 @@ const DEFAULT_SAMPLE_STUDENTS: Array<{
   {
     id: "sample-2",
     name: "Riya",
-    supportType: "sign",
-    notes: "Benefits from visual sign language guides, video demonstrations, and pictorial cues",
+    supportType: "visual",
+    notes: "Benefits from audio-first narration, spoken descriptions, and pictorial cues",
   },
   {
     id: "sample-3",
     name: "Arjun",
-    supportType: "focus",
-    notes: "Requires single-action step presentation, calm UI, reduced sensory distraction",
+    supportType: "hearing",
+    notes: "Requires captioned steps, visual cues, and highlighted key concepts",
   },
   {
     id: "sample-4",
     name: "Kabir",
-    supportType: "motor",
-    notes: "Needs larger tap targets, keyboard navigability, and forgiving input boundaries",
+    supportType: "reading",
+    notes: "Needs single-action step presentation, relaxed text spacing, and predictable pace",
   },
   {
     id: "sample-5",
     name: "Meera",
-    supportType: "speech",
-    notes: "Best supported by voice recognition alternatives and non-verbal interactive choices",
+    supportType: "none",
+    notes: "Standard curriculum pace with baseline accessible design",
   },
 ];
 
