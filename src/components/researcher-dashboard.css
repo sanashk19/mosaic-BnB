@@ -1,0 +1,438 @@
+/* ── Researcher Dashboard CSS ───────────────────────────────────────────── */
+.rd-shell {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  font-family: var(--font-body, "Inter", sans-serif);
+  color: #22352E;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────── */
+.rd-header {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.rd-eyebrow {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #506847;
+  margin-bottom: 0.5rem;
+}
+
+.rd-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #22352E;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.rd-desc {
+  font-size: 1.0625rem;
+  color: #57635E;
+  margin: 0;
+  max-width: 720px;
+  line-height: 1.5;
+}
+
+.rd-header-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.rd-protocol-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  background-color: #EDF2E9;
+  color: #506847;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.rd-user-badge {
+  font-size: 0.875rem;
+  color: #707877;
+}
+
+.rd-user-badge strong {
+  color: #22352E;
+}
+
+/* ── Navigation Tabs ────────────────────────────────────────────────────── */
+.rd-nav {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #E5E2DC;
+  padding-bottom: 0.5rem;
+  overflow-x: auto;
+}
+
+.rd-tab-btn {
+  padding: 0.625rem 1.125rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #57635E;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.rd-tab-btn:hover {
+  color: #22352E;
+  background-color: #F8FAF7;
+}
+
+.rd-tab-btn.active {
+  background-color: #506847;
+  color: #FFFFFF;
+  border-color: #506847;
+}
+
+/* ── KPI Grid ──────────────────────────────────────────────────────────── */
+.rd-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.rd-kpi-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E2DC;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 16px rgba(34, 53, 46, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.rd-kpi-card.highlight {
+  border-color: #506847;
+  background-color: #F8FAF7;
+}
+
+.rd-kpi-card.peach {
+  border-color: #F0CDBA;
+  background-color: #FDF6F0;
+}
+
+.rd-kpi-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #707877;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rd-kpi-val {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #22352E;
+  line-height: 1.1;
+}
+
+.rd-kpi-card.highlight .rd-kpi-val {
+  color: #506847;
+}
+
+.rd-kpi-card.peach .rd-kpi-val {
+  color: #C2410C;
+}
+
+.rd-kpi-sub {
+  font-size: 0.8125rem;
+  color: #57635E;
+}
+
+/* ── Cards and Layout ──────────────────────────────────────────────────── */
+.rd-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E2DC;
+  border-radius: 20px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(34, 53, 46, 0.03);
+}
+
+.rd-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.rd-card-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: #22352E;
+  margin: 0 0 0.25rem;
+}
+
+.rd-card-desc {
+  font-size: 0.875rem;
+  color: #57635E;
+  margin: 0;
+}
+
+.rd-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .rd-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── SVG Charts ────────────────────────────────────────────────────────── */
+.rd-chart-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.rd-chart-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #EBE8E1;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #57635E;
+}
+
+.rd-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rd-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+/* ── Progress Bars ─────────────────────────────────────────────────────── */
+.rd-domain-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.rd-domain-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.rd-domain-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.rd-domain-name {
+  font-weight: 700;
+  color: #22352E;
+}
+
+.rd-domain-score {
+  color: #506847;
+  font-weight: 700;
+}
+
+.rd-dual-track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.rd-track {
+  width: 100%;
+  height: 8px;
+  background-color: #E5E2DC;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.rd-fill-pre {
+  height: 100%;
+  background-color: #94A3B8;
+  border-radius: 9999px;
+}
+
+.rd-fill-post {
+  height: 100%;
+  background-color: #506847;
+  border-radius: 9999px;
+}
+
+.rd-track-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #707877;
+}
+
+/* ── Data Tables ───────────────────────────────────────────────────────── */
+.rd-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.rd-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.rd-table th {
+  padding: 0.75rem 1rem;
+  background-color: #F8FAF7;
+  border-bottom: 1.5px solid #E5E2DC;
+  font-weight: 700;
+  color: #22352E;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rd-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid #EBE8E1;
+  color: #33403B;
+}
+
+.rd-table tr:hover td {
+  background-color: #FAFBF9;
+}
+
+.rd-badge-exp {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background-color: #EDF2E9;
+  color: #506847;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.rd-badge-ctrl {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background-color: #F1F5F9;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.rd-search-bar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.rd-search-input {
+  flex: 1;
+  min-width: 240px;
+  padding: 0.625rem 1rem;
+  border: 1px solid #E5E2DC;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  color: #22352E;
+}
+
+.rd-search-input:focus {
+  outline: none;
+  border-color: #506847;
+}
+
+.rd-filter-select {
+  padding: 0.625rem 1rem;
+  border: 1px solid #E5E2DC;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  background-color: #FFFFFF;
+  color: #22352E;
+}
+
+/* ── Export Box ────────────────────────────────────────────────────────── */
+.rd-export-box {
+  background-color: #F8FAF7;
+  border: 1px dashed #506847;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.rd-export-content {
+  flex: 1;
+}
+
+.rd-export-title {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #22352E;
+  margin: 0 0 0.35rem;
+}
+
+.rd-export-desc {
+  font-size: 0.875rem;
+  color: #57635E;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.rd-btn-primary {
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  background-color: #506847;
+  color: #FFFFFF;
+  border: none;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.15s ease;
+}
+
+.rd-btn-primary:hover {
+  background-color: #3E5136;
+}

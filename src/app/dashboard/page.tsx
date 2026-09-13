@@ -30,6 +30,7 @@ export default async function DashboardPage() {
   return (
     <main className="dashboard-page">
       <DashboardRouter
+        initialUser={sessionUser}
         demoUser={demoUserPreview}
         lessons={displayLessons}
         modules={modules}

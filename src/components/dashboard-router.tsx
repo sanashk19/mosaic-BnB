@@ -4,12 +4,14 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth-provider";
 import { DashboardClient } from "@/components/dashboard-client";
-import { ResearcherCabinet } from "@/components/researcher-cabinet";
+import { ResearcherDashboard } from "@/components/researcher-dashboard";
+import type { CurrentUser } from "@/lib/uquvli-types";
 import type { ProgramLesson } from "@/data/program";
 
 type UserRole = "student" | "parent" | "teacher" | "researcher";
 
 type DashboardRouterProps = {
+  initialUser?: CurrentUser | null;
   demoUser: {
     id: string;
     name: string;
@@ -35,17 +37,18 @@ type DashboardRouterProps = {
   roleLabels: Record<UserRole, string>;
 };
 
-export function DashboardRouter({ demoUser, lessons, modules, roleLabels }: DashboardRouterProps) {
-  const { user, ready } = useAuth();
+export function DashboardRouter({ initialUser, demoUser, lessons, modules, roleLabels }: DashboardRouterProps) {
+  const { user: authUser, ready } = useAuth();
+  const user = authUser || initialUser;
   const router = useRouter();
 
   useEffect(() => {
-    if (ready && !user) {
+    if (ready && !user && !initialUser) {
       router.replace("/login?redirect=/dashboard");
     }
-  }, [user, ready, router]);
+  }, [user, ready, router, initialUser]);
 
-  if (!ready) {
+  if (!ready && !user) {
     return (
       <div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <p style={{ color: "#707877", fontSize: "0.875rem" }}>Loading dashboard...</p>
@@ -58,7 +61,7 @@ export function DashboardRouter({ demoUser, lessons, modules, roleLabels }: Dash
   }
 
   if (user.role === "researcher") {
-    return <ResearcherCabinet />;
+    return <ResearcherDashboard user={user} />;
   }
 
   return (
