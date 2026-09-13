@@ -215,15 +215,15 @@ const englishDashboardDict = {
     aria_lessons: "Lessons",
     program_title: "Course program",
     program_subtitle: "14 lessons in 5 modules. Share the lesson with your class, download the plan, or take it yourself.",
-    lessons_count_short: (n: number) => `${n}lessons`,
-    trainer_label: (name: string) => `Trainer:${name}`,
-    live_now: "coming now",
-    btn_close: "Close",
+    lessons_count_short: (n: number) => `${n} ${n === 1 ? "lesson" : "lessons"}`,
+    trainer_label: (name: string) => `Trainer: ${name}`,
+    live_now: "Live now",
+    btn_close: "Close lesson",
     btn_open_for_class: "Open to class",
-    other_actions: "Other actions",
-    downloading: "Download...",
-    lesson_plan_docx: "Lesson plan .docx",
-    try_yourself: "Go through it yourself",
+    other_actions: "More actions",
+    downloading: "Downloading...",
+    lesson_plan_docx: "Download plan (.docx)",
+    try_yourself: "Preview lesson",
 
     // teacher today / class
     aria_teacher_home: "Home teacher",
@@ -1149,14 +1149,16 @@ function TeacherLessonsSection({
           return (
             <section key={module.slug} className="teacher-module-block">
               <header className="teacher-module-head">
-                <span className="teacher-module-num">{String(mIdx + 1).padStart(2, "0")}</span>
-                <div>
-                  <strong>{module.title}</strong>
-                  <small>{t.lessons_count_short(moduleLessons.length)}</small>
+                <div className="teacher-module-head-left">
+                  <span className="teacher-module-num">{String(mIdx + 1).padStart(2, "0")}</span>
+                  <h3 className="teacher-module-title">{module.title}</h3>
                 </div>
+                <span className="teacher-module-count-badge">
+                  {t.lessons_count_short(moduleLessons.length)}
+                </span>
               </header>
 
-              <ol className="teacher-module-lessons">
+              <ul className="teacher-module-lessons">
                 {moduleLessons.map((lesson, lIdx) => {
                   const isLive = openSlug === lesson.slug;
                   const tInfo = trainerInfo(lesson);
@@ -1164,32 +1166,43 @@ function TeacherLessonsSection({
                   const isMenuOpen = openMenu === lesson.slug;
                   return (
                     <li key={lesson.slug} className={`teacher-lesson-line${isLive ? " live" : ""}`}>
-                      {tInfo ? (
-                        <span
-                          className={`teacher-lesson-line-app teacher-lesson-line-app--${tInfo.tone}`}
-                          aria-label={tInfo.name}
-                          title={t.trainer_label(tInfo.name)}
-                        >
-                          {tInfo.icon}
-                        </span>
-                      ) : (
-                        <span className="teacher-lesson-line-app teacher-lesson-line-app--empty" aria-hidden="true">
-                          {lIdx + 1}
-                        </span>
-                      )}
-                      <div className="teacher-lesson-line-info">
-                        <strong>{lesson.title}</strong>
-                        <span className="teacher-lesson-line-meta">
-                          <span>{lesson.duration}</span>
-                          {tInfo ? <span className="teacher-lesson-line-trainer">{tInfo.name}</span> : null}
-                          {isLive ? <span className="teacher-lesson-line-live">{t.live_now}</span> : null}
-                        </span>
+                      <div className="teacher-lesson-line-left">
+                        {tInfo ? (
+                          <span
+                            className={`teacher-lesson-line-app teacher-lesson-line-app--${tInfo.tone}`}
+                            aria-label={tInfo.name}
+                            title={t.trainer_label(tInfo.name)}
+                          >
+                            {tInfo.icon}
+                          </span>
+                        ) : (
+                          <span className="teacher-lesson-line-app teacher-lesson-line-app--empty" aria-hidden="true">
+                            {lIdx + 1}
+                          </span>
+                        )}
+                        <div className="teacher-lesson-line-info">
+                          <h4 className="teacher-lesson-line-title">{lesson.title}</h4>
+                          <div className="teacher-lesson-line-meta">
+                            <span className="teacher-lesson-duration-badge">{lesson.duration}</span>
+                            {tInfo ? <span className="teacher-lesson-line-trainer">{tInfo.name}</span> : null}
+                            {isLive ? <span className="teacher-lesson-line-live">{t.live_now}</span> : null}
+                          </div>
+                        </div>
                       </div>
+
                       <div className="teacher-lesson-line-actions">
+                        <button
+                          type="button"
+                          className="teacher-btn-preview"
+                          onClick={() => onPreviewLesson(lesson.slug)}
+                        >
+                          Preview
+                        </button>
+
                         {isLive ? (
                           <button
                             type="button"
-                            className="button button-primary small teacher-lesson-line-close"
+                            className="teacher-btn-close"
                             onClick={onCloseLessonForClass}
                           >
                             {t.btn_close}
@@ -1197,7 +1210,7 @@ function TeacherLessonsSection({
                         ) : (
                           <button
                             type="button"
-                            className="button button-primary small"
+                            className="teacher-btn-open"
                             onClick={() => onOpenLessonForClass(lesson.slug)}
                           >
                             {t.btn_open_for_class}
@@ -1246,7 +1259,7 @@ function TeacherLessonsSection({
                     </li>
                   );
                 })}
-              </ol>
+              </ul>
             </section>
           );
         })}
