@@ -1,4 +1,4 @@
-# Mosaic — One Lesson. Every Learner.
+# Mosaic - One Lesson. Every Learner.
 
 > **Team Runtime Rebels**
 
