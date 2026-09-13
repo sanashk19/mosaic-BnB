@@ -16,6 +16,7 @@ import {
   XIcon,
   LightbulbIcon,
   ArrowRightIcon,
+  ResetIcon,
 } from "@/components/isl-icons";
 
 export type ISLCategory =
@@ -440,36 +441,92 @@ export const SCHOOL_TOPICS = [
   },
 ];
 
-const QUIZ_QUESTIONS = [
+interface QuizOption {
+  id: string;
+  label: string;
+  hindi: string;
+}
+
+interface QuizQuestion {
+  id: string;
+  gestureClue: string;
+  question: string;
+  correctSign: string;
+  correctLabel: string;
+  options: QuizOption[];
+  explanation: string;
+}
+
+const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
-    question: "What is the authentic Indian Sign Language greeting showing mutual respect?",
+    id: "q1",
+    gestureClue: "Join both palms flat together in front of the chest and bow the head slightly in mutual cultural respect.",
+    question: "Which authentic Indian Sign Language greeting is shown by this gesture?",
     correctSign: "NAMASTE",
-    options: ["NAMASTE", "HELLO", "WATER", "HELP"],
-    hint: "Both palms join flat in front of the chest with a slight nod of the head.",
+    correctLabel: "Namaste",
+    options: [
+      { id: "NAMASTE", label: "Namaste", hindi: "नमस्ते" },
+      { id: "THANK YOU", label: "Thank You", hindi: "धन्यवाद" },
+      { id: "HELP", label: "Help", hindi: "मदद" },
+      { id: "STOP", label: "Stop", hindi: "रुकें" },
+    ],
+    explanation: "In authentic Indian Sign Language, NAMASTE is performed with both palms joined flat at chest level, expressing cultural reverence and welcoming.",
   },
   {
-    question: "How do you sign 'WATER' in Indian Sign Language?",
+    id: "q2",
+    gestureClue: "Form a 'W' handshape with three fingers upright and gently tap twice near the side of the mouth.",
+    question: "Which essential daily need does this Indian Sign Language gesture express?",
     correctSign: "WATER",
-    options: ["WATER", "FOOD", "FAMILY", "NO"],
-    hint: "Form a 'W' handshape with three fingers and tap near the side of the mouth.",
+    correctLabel: "Water",
+    options: [
+      { id: "WATER", label: "Water", hindi: "पानी" },
+      { id: "FOOD", label: "Food", hindi: "खाना" },
+      { id: "HELP", label: "Help", hindi: "मदद" },
+      { id: "HOME", label: "Home", hindi: "घर" },
+    ],
+    explanation: "In ISL, WATER is signed by making a 'W' handshape with index, middle, and ring fingers upright and tapping near the side of the mouth twice.",
   },
   {
-    question: "What is the ISLRTC standard gesture for 'DOCTOR'?",
+    id: "q3",
+    gestureClue: "Touch index and middle fingertips gently to the inner wrist to check the radial pulse.",
+    question: "Which healthcare profession does this ISLRTC standard gesture indicate?",
     correctSign: "DOCTOR",
-    options: ["DOCTOR", "POLICE", "TEACHER", "STOP"],
-    hint: "Touch three fingers gently to the inner wrist to check the pulse.",
+    correctLabel: "Doctor",
+    options: [
+      { id: "DOCTOR", label: "Doctor", hindi: "डॉक्टर" },
+      { id: "POLICE", label: "Police", hindi: "पुलिस" },
+      { id: "TEACHER", label: "Teacher", hindi: "शिक्षक" },
+      { id: "FAMILY", label: "Family", hindi: "परिवार" },
+    ],
+    explanation: "DOCTOR is officially signed by tapping two fingers against the inside of the opposite wrist, imitating a physician checking a pulse.",
   },
   {
-    question: "Which gesture expresses 'HELP' in Indian Sign Language?",
+    id: "q4",
+    gestureClue: "Place a closed fist with thumb upright on top of a flat open palm, then lift both hands together slightly.",
+    question: "Which critical communication sign is formed by this supportive gesture?",
     correctSign: "HELP",
-    options: ["HELP", "YES", "FRIENDS", "BOOK"],
-    hint: "Place a thumbs-up handshape upon a flat open palm and lift upward.",
+    correctLabel: "Help",
+    options: [
+      { id: "HELP", label: "Help", hindi: "मदद" },
+      { id: "YES", label: "Yes", hindi: "हाँ" },
+      { id: "BOOK", label: "Book", hindi: "किताब" },
+      { id: "FRIENDS", label: "Friends", hindi: "दोस्त" },
+    ],
+    explanation: "HELP is signed by placing a supportive thumbs-up fist upon an open palm and lifting them upward, symbolizing supporting or uplifting someone.",
   },
   {
-    question: "What sign represents our country 'INDIA' in ISLRTC standard sign language?",
+    id: "q5",
+    gestureClue: "Touch the thumb tip gently to the center of the forehead, referencing the traditional auspicious Tilak or Bindi.",
+    question: "Which nation sign officially represents our country in Indian Sign Language?",
     correctSign: "INDIA",
-    options: ["INDIA", "DELHI", "MUMBAI", "SCHOOL"],
-    hint: "Touch the thumb tip gently to the center of the forehead (Bindi/Tilak sign).",
+    correctLabel: "India",
+    options: [
+      { id: "INDIA", label: "India", hindi: "भारत" },
+      { id: "SCHOOL", label: "School", hindi: "स्कूल" },
+      { id: "HOSPITAL", label: "Hospital", hindi: "अस्पताल" },
+      { id: "BUS", label: "Bus", hindi: "बस" },
+    ],
+    explanation: "INDIA is officially designated in ISLRTC standards by placing the thumb tip at the midpoint of the forehead, echoing the auspicious Tilak tradition.",
   },
 ];
 
@@ -505,6 +562,7 @@ export function SignLanguageLearningStudio() {
   const [quizScore, setQuizScore] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showQuizExplanation, setShowQuizExplanation] = useState<boolean>(false);
+  const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
 
   const currentCategoryItems = ALL_CURRICULUM_ITEMS[activeCategory] || [];
   const currentItems = currentCategoryItems.filter((item) => {
@@ -528,19 +586,32 @@ export function SignLanguageLearningStudio() {
     }
   };
 
-  const handleAnswerSelect = (option: string) => {
-    if (selectedAnswer !== null) return;
-    setSelectedAnswer(option);
+  const handleAnswerSelect = (optionId: string) => {
+    if (selectedAnswer !== null || quizCompleted) return;
+    setSelectedAnswer(optionId);
     setShowQuizExplanation(true);
-    if (option === QUIZ_QUESTIONS[quizIndex].correctSign) {
+    if (optionId === QUIZ_QUESTIONS[quizIndex].correctSign) {
       setQuizScore((prev) => prev + 1);
     }
   };
 
   const nextQuizQuestion = () => {
+    if (quizIndex >= QUIZ_QUESTIONS.length - 1) {
+      setQuizCompleted(true);
+      setShowQuizExplanation(false);
+    } else {
+      setSelectedAnswer(null);
+      setShowQuizExplanation(false);
+      setQuizIndex((prev) => prev + 1);
+    }
+  };
+
+  const handleRestartQuiz = () => {
+    setQuizIndex(0);
+    setQuizScore(0);
     setSelectedAnswer(null);
     setShowQuizExplanation(false);
-    setQuizIndex((prev) => (prev + 1) % QUIZ_QUESTIONS.length);
+    setQuizCompleted(false);
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -952,60 +1023,145 @@ export function SignLanguageLearningStudio() {
           </div>
 
           <div className="isl-quiz-box">
-            <div className="isl-quiz-head">
-              <span style={{ fontSize: "0.875rem", fontWeight: 700, color: "#506847" }}>
-                Question {quizIndex + 1} of {QUIZ_QUESTIONS.length}
-              </span>
-              <span className="isl-badge isl-badge-mint">
-                Score: {quizScore}
-              </span>
-            </div>
-
-            <h3 className="isl-quiz-question">{QUIZ_QUESTIONS[quizIndex].question}</h3>
-
-            <div className="isl-quiz-options">
-              {QUIZ_QUESTIONS[quizIndex].options.map((option) => {
-                const isSelected = selectedAnswer === option;
-                const isCorrect = option === QUIZ_QUESTIONS[quizIndex].correctSign;
-                let btnClass = "isl-quiz-opt-btn";
-                if (selectedAnswer !== null) {
-                  if (isCorrect) btnClass += " correct";
-                  else if (isSelected) btnClass += " incorrect";
-                }
-
-                return (
-                  <button
-                    key={option}
-                    type="button"
-                    disabled={selectedAnswer !== null}
-                    onClick={() => handleAnswerSelect(option)}
-                    className={btnClass}
-                  >
-                    <span>{option}</span>
-                    {selectedAnswer !== null && isCorrect && <CheckIcon size={18} />}
-                    {selectedAnswer !== null && isSelected && !isCorrect && <XIcon size={18} />}
-                  </button>
-                );
-              })}
-            </div>
-
-            {showQuizExplanation && (
-              <div className="isl-quiz-feedback">
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                  <LightbulbIcon size={20} />
-                  <span style={{ fontSize: "0.875rem", color: "#22352E", fontWeight: 500 }}>
-                    {QUIZ_QUESTIONS[quizIndex].hint}
+            {!quizCompleted ? (
+              <>
+                <div className="isl-quiz-head">
+                  <span style={{ fontSize: "0.875rem", fontWeight: 700, color: "#506847" }}>
+                    Question {quizIndex + 1} of {QUIZ_QUESTIONS.length}
+                  </span>
+                  <span className="isl-badge isl-badge-mint">
+                    Score: {quizScore}
                   </span>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={nextQuizQuestion}
-                  className="isl-btn isl-btn-primary isl-btn-sm"
-                >
-                  <span>Next Question</span>
-                  <ArrowRightIcon size={14} />
-                </button>
+                {/* Gesture Clue Box */}
+                <div className="isl-quiz-clue">
+                  <HandIcon size={20} className="isl-quiz-clue-icon" />
+                  <div className="isl-quiz-clue-content">
+                    <span className="isl-quiz-clue-tag">Physical ISL Gesture</span>
+                    <p className="isl-quiz-clue-text">{QUIZ_QUESTIONS[quizIndex].gestureClue}</p>
+                  </div>
+                </div>
+
+                <h3 className="isl-quiz-question">{QUIZ_QUESTIONS[quizIndex].question}</h3>
+
+                <div className="isl-quiz-options">
+                  {QUIZ_QUESTIONS[quizIndex].options.map((option) => {
+                    const isSelected = selectedAnswer === option.id;
+                    const isCorrect = option.id === QUIZ_QUESTIONS[quizIndex].correctSign;
+                    let btnClass = "isl-quiz-opt-btn";
+                    if (selectedAnswer !== null) {
+                      if (isCorrect) btnClass += " correct";
+                      else if (isSelected) btnClass += " incorrect";
+                    }
+
+                    return (
+                      <button
+                        key={option.id}
+                        type="button"
+                        disabled={selectedAnswer !== null}
+                        onClick={() => handleAnswerSelect(option.id)}
+                        className={btnClass}
+                      >
+                        <div className="isl-quiz-opt-info">
+                          <span className="isl-quiz-opt-label">{option.label}</span>
+                          <span className="isl-quiz-opt-hindi">{option.hindi}</span>
+                        </div>
+                        {selectedAnswer !== null && isCorrect && <CheckIcon size={18} />}
+                        {selectedAnswer !== null && isSelected && !isCorrect && <XIcon size={18} />}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {showQuizExplanation && (
+                  <div className="isl-quiz-feedback">
+                    <div
+                      className={`isl-quiz-feedback-header ${
+                        selectedAnswer === QUIZ_QUESTIONS[quizIndex].correctSign ? "correct" : "incorrect"
+                      }`}
+                    >
+                      {selectedAnswer === QUIZ_QUESTIONS[quizIndex].correctSign ? (
+                        <>
+                          <CheckIcon size={18} />
+                          <span>Correct! Well done.</span>
+                        </>
+                      ) : (
+                        <>
+                          <XIcon size={18} />
+                          <span>Incorrect. The correct sign is {QUIZ_QUESTIONS[quizIndex].correctLabel}.</span>
+                        </>
+                      )}
+                    </div>
+
+                    <div className="isl-quiz-feedback-body">
+                      <LightbulbIcon size={18} />
+                      <span>{QUIZ_QUESTIONS[quizIndex].explanation}</span>
+                    </div>
+
+                    <div className="isl-quiz-feedback-footer">
+                      <button
+                        type="button"
+                        onClick={nextQuizQuestion}
+                        className="isl-btn isl-btn-primary isl-btn-sm"
+                      >
+                        <span>
+                          {quizIndex < QUIZ_QUESTIONS.length - 1 ? "Next Question" : "See Final Results"}
+                        </span>
+                        <ArrowRightIcon size={14} />
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="isl-quiz-completed-box">
+                <div className="isl-quiz-completed-icon">
+                  <TrophyIcon size={32} />
+                </div>
+                <h3 className="isl-quiz-completed-title">Quiz Completed!</h3>
+                <div className="isl-quiz-completed-score">
+                  {quizScore} / {QUIZ_QUESTIONS.length} Correct ({Math.round((quizScore / QUIZ_QUESTIONS.length) * 100)}%)
+                </div>
+                <div className="isl-quiz-progress-track">
+                  <div
+                    className="isl-quiz-progress-fill"
+                    style={{ width: `${(quizScore / QUIZ_QUESTIONS.length) * 100}%` }}
+                  />
+                </div>
+                <p className="isl-quiz-completed-msg">
+                  {quizScore === QUIZ_QUESTIONS.length
+                    ? "Outstanding! You've mastered all 5 core everyday Indian Sign Language signs in this quiz."
+                    : quizScore >= 3
+                    ? "Great job! You have a solid grasp of everyday ISL communication. Retake to try for a perfect score or practice with your camera."
+                    : "Good effort! Practice makes permanent. Retake the quiz or try the live camera practice to reinforce your recognition."}
+                </p>
+                <div className="isl-quiz-completed-actions">
+                  <button
+                    type="button"
+                    onClick={handleRestartQuiz}
+                    className="isl-btn isl-btn-primary isl-btn-sm"
+                  >
+                    <ResetIcon size={16} />
+                    <span>Retake Quiz</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollToSection("live-recognition")}
+                    className="isl-btn isl-btn-secondary isl-btn-sm"
+                  >
+                    <CameraIcon size={16} />
+                    <span>Practice with Camera</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollToSection("curriculum")}
+                    className="isl-btn isl-btn-secondary isl-btn-sm"
+                  >
+                    <BookIcon size={16} />
+                    <span>Browse All Signs</span>
+                  </button>
+                </div>
               </div>
             )}
           </div>

@@ -1057,12 +1057,52 @@
   border-bottom: 1px solid #EBE8E1;
 }
 
+.isl-quiz-clue {
+  background-color: #F8FAF7;
+  border: 1px solid #D8E2D5;
+  border-left: 4px solid #506847;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+}
+
+.isl-quiz-clue-icon {
+  color: #506847;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.isl-quiz-clue-content {
+  flex: 1;
+}
+
+.isl-quiz-clue-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #506847;
+  margin-bottom: 0.25rem;
+}
+
+.isl-quiz-clue-text {
+  font-size: 0.975rem;
+  color: #22352E;
+  line-height: 1.5;
+  font-weight: 500;
+  margin: 0;
+}
+
 .isl-quiz-question {
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #22352E;
   margin-bottom: 1.5rem;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .isl-quiz-options {
@@ -1079,24 +1119,27 @@
 }
 
 .isl-quiz-opt-btn {
-  padding: 1rem;
+  padding: 1rem 1.25rem;
   border-radius: 12px;
   border: 1.5px solid #E5E2DC;
   background-color: #FFFFFF;
   color: #22352E;
-  font-weight: 700;
-  font-size: 1rem;
   text-align: left;
   cursor: pointer;
   transition: all 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .isl-quiz-opt-btn:hover:not(:disabled) {
   border-color: #506847;
   background-color: #F8FAF7;
+}
+
+.isl-quiz-opt-btn:disabled {
+  cursor: default;
 }
 
 .isl-quiz-opt-btn.correct {
@@ -1111,16 +1154,143 @@
   color: #C2410C;
 }
 
+.isl-quiz-opt-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.isl-quiz-opt-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: inherit;
+}
+
+.isl-quiz-opt-hindi {
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: #707877;
+}
+
+.isl-quiz-opt-btn.correct .isl-quiz-opt-hindi {
+  color: #506847;
+}
+
+.isl-quiz-opt-btn.incorrect .isl-quiz-opt-hindi {
+  color: #C2410C;
+}
+
 .isl-quiz-feedback {
   background-color: #FCFCFB;
   border: 1px solid #E5E2DC;
-  border-radius: 12px;
-  padding: 1rem;
+  border-radius: 14px;
+  padding: 1.25rem;
   margin-top: 1rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 1rem;
+}
+
+.isl-quiz-feedback-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.isl-quiz-feedback-header.correct {
+  color: #506847;
+}
+
+.isl-quiz-feedback-header.incorrect {
+  color: #C2410C;
+}
+
+.isl-quiz-feedback-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: #22352E;
+  line-height: 1.5;
+}
+
+.isl-quiz-feedback-body svg {
+  flex-shrink: 0;
+  color: #506847;
+  margin-top: 0.15rem;
+}
+
+.isl-quiz-feedback-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+  border-top: 1px solid #EBE8E1;
+}
+
+/* Quiz Completion View */
+.isl-quiz-completed-box {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.isl-quiz-completed-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #EDF2E9;
+  color: #506847;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.isl-quiz-completed-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #22352E;
+  margin-bottom: 0.5rem;
+}
+
+.isl-quiz-completed-score {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #506847;
+  margin-bottom: 0.75rem;
+}
+
+.isl-quiz-progress-track {
+  width: 100%;
+  max-width: 320px;
+  height: 8px;
+  background-color: #E5E2DC;
+  border-radius: 9999px;
+  margin: 0 auto 1.25rem;
+  overflow: hidden;
+}
+
+.isl-quiz-progress-fill {
+  height: 100%;
+  background-color: #506847;
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+}
+
+.isl-quiz-completed-msg {
+  font-size: 0.95rem;
+  color: #4A5550;
+  max-width: 480px;
+  margin: 0 auto 1.75rem;
+  line-height: 1.5;
+}
+
+.isl-quiz-completed-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* ── Practice Modal ────────────────────────────────────────────────────── */
